@@ -9,6 +9,7 @@ public class StatemachineTest : MonoBehaviour
 
     public DelegateState idle = new DelegateState();
     public DelegateState jump = new DelegateState();
+    public DelegateState movement = new DelegateState();
     
     // Start is called before the first frame update
     void Start()
@@ -21,14 +22,55 @@ public class StatemachineTest : MonoBehaviour
         jump.Enter = OnJumpEnter;
         jump.Update = OnJumpUpdate;
         jump.Exit = OnJumpExit;
-        
+
+        movement.Enter = OnMovementEnter;
+        movement.Update = OnMovementUpdate;
+        movement.Exit = OnMovementExit;
         
         
         DelegateStateManager.ChangeState(idle);
 
     }
 
-    
+    private void OnMovementExit()
+    {
+        Debug.Log("OnMovementExit");
+    }
+
+    private void OnMovementUpdate()
+    {
+        Debug.Log("OnMovementUpdate");
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            GetComponent<Rigidbody>().AddForce(5, 0, 0, ForceMode.VelocityChange);
+            
+        }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            GetComponent<Rigidbody>().AddForce(0, 0, 5, ForceMode.VelocityChange);
+            
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            GetComponent<Rigidbody>().AddForce(0, 0, -5, ForceMode.VelocityChange);
+            
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            GetComponent<Rigidbody>().AddForce(-5, 0, 0, ForceMode.VelocityChange);
+            
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            DelegateStateManager.ChangeState(jump);
+        }
+    }
+
+    private void OnMovementEnter()
+    {
+        Debug.Log("OnMovementEnter");
+    }
 
 
     private void OnJumpExit()
@@ -40,16 +82,11 @@ public class StatemachineTest : MonoBehaviour
     private void OnJumpUpdate()
     {
         Debug.Log("OnJumpUpdate");
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            GetComponent<Rigidbody>().AddForce(0, 10, 0, ForceMode.VelocityChange);
-            
-        }
-
-        if (Input.GetKeyUp(KeyCode.LeftControl))
-        {
-            DelegateStateManager.ChangeState(idle);
-        }
+        
+            GetComponent<Rigidbody>().AddForce(0, 5, 0, ForceMode.VelocityChange);
+            DelegateStateManager.ChangeState(movement);
+        
+        
     }
 
     private void OnJumpEnter()
@@ -66,12 +103,8 @@ public class StatemachineTest : MonoBehaviour
     private void OnIdleUpdate()
     {
         Debug.Log("OnIdleUpdate");
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            DelegateStateManager.ChangeState(jump);
-        }
-
-        
+        GetComponent<Renderer>().material.color = Color.red;
+        DelegateStateManager.ChangeState(movement);
     }
 
     private void OnIdleEnter()
