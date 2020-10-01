@@ -2,39 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveForward : MonoBehaviour
+namespace Niall
 {
-    public Rigidbody rb;
-    public float speed = 2;
-    public float rot;
-    public float perlinY;
-
-    void Start()
+    public class MoveForward : MonoBehaviour
     {
-        rb = GetComponent<Rigidbody>();
-    }
+        public Rigidbody rb;
+        public float speed = 2;
+        public float rot;
+        public float perlinY;
 
-    void Update()
-    {
-
-        if (perlinY <= 0.49f)
+        void Start()
         {
-            rot = -perlinY;
+            rb = GetComponent<Rigidbody>();
         }
 
-        else
+        void Update()
         {
-            rot = perlinY;
+            if (perlinY <= 0.49f)
+            {
+                rot = -perlinY;
+            }
+
+            else
+            {
+                rot = perlinY;
+            }
+
+
+            perlinY = Mathf.PerlinNoise(0, Time.time / 10f);
+
+            rb.AddForce(transform.forward * speed);
+            transform.Rotate(0, rot, 0);
         }
-
-
-
-
-        perlinY = Mathf.PerlinNoise(0, Time.time/10f);
-        
-        rb.AddForce(transform.forward * speed);
-        transform.Rotate(0, rot, 0);
-
-       
     }
 }
