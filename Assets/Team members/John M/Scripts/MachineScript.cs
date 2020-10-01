@@ -21,13 +21,12 @@ public class MachineScript : MonoBehaviour
         spin.Update = OnSpinUpdate;
         spin.Exit = OnSpinExit;
 
-        DelegateStateManager.ChangeState(idle);
+        stateManager.ChangeState(idle);
     }
 
    void Update()
     {
-        DelegateStateManager.UpdateCurrentState();
-        
+        stateManager.UpdateCurrentState();
     }
 
     void OnIdleEnter()
@@ -41,7 +40,7 @@ public class MachineScript : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            DelegateStateManager.ChangeState(spin);
+            stateManager.ChangeState(spin);
         }
     }
 
@@ -64,7 +63,7 @@ public class MachineScript : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            DelegateStateManager.ChangeState(idle);
+            stateManager.ChangeState(idle);
         }
     }
 
