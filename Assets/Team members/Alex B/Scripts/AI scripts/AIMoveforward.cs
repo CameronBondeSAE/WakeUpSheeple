@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Mirror.Examples.RigidbodyPhysics;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,6 +8,7 @@ public class AIMoveforward : MonoBehaviour
 {
     public Transform[] waypoints;
     public int speed;
+    
 
     private int waypointIndex;
     private float dist;
@@ -29,7 +31,9 @@ public class AIMoveforward : MonoBehaviour
 
     void Patrol()
     {
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        GetComponent<Rigidbody>().AddForce(transform.forward*3);
+        
+        //(Vector3.forward * speed * Time.deltaTime);
     }
 
     void IncreaseIndex()
