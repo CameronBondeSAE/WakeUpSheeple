@@ -33,7 +33,7 @@ namespace AJ
 
         void Patrol()
         {
-            GetComponent<Rigidbody>().AddForce(transform.forward*3);
+            GetComponent<Rigidbody>().AddForce(transform.forward*speed);
         
             //(Vector3.forward * speed * Time.deltaTime);
         }
