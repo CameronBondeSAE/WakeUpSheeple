@@ -7,7 +7,7 @@ namespace Niall
     public class MoveForward : MonoBehaviour
     {
         public Rigidbody rb;
-        public float speed = 2;
+        public float speed = 5;
         public float rot;
         public float perlinY;
 
