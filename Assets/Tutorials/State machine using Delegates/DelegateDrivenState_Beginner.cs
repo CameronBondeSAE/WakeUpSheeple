@@ -21,6 +21,33 @@ public class DelegateDrivenState_Beginner : MonoBehaviour
 		run.Update = OnRunUpdate;
 
 		DelegateStateManager.ChangeState(idle);
+		
+		GetComponent<Renderer>().material.color = Color.red;
+	}
+
+	private void OnRunUpdate()
+	{
+		throw new System.NotImplementedException();
+	}
+
+	private void OnRunEnter()
+	{
+		throw new System.NotImplementedException();
+	}
+
+	private void OnIdleExit()
+	{
+		throw new System.NotImplementedException();
+	}
+
+	private void OnIdleUpdate()
+	{
+		throw new System.NotImplementedException();
+	}
+
+	private void OnIdleEnter()
+	{
+		throw new System.NotImplementedException();
 	}
 
 	void Update()
@@ -31,36 +58,4 @@ public class DelegateDrivenState_Beginner : MonoBehaviour
 
 	
 	
-	
-	private void OnRunEnter()
-	{
-		Debug.Log("OnRunEnter");
-	}
-
-	private void OnRunUpdate()
-	{
-		Debug.Log("OnRunExecute");
-	}
-
-	private void OnIdleEnter()
-	{
-		Debug.Log("OnIdleEnter");
-	}
-
-	private void OnIdleUpdate()
-	{
-		Debug.Log("OnIdleExecute");
-	
-		// Just me forcing the state to change for testing
-		// if (InputSystem.GetDevice<Keyboard>().spaceKey.wasPressedThisFrame)
-		if (Input.GetKeyDown(KeyCode.Space))
-		{
-			DelegateStateManager.ChangeState(run);
-		}
-	}
-
-	private void OnIdleExit()
-	{
-		Debug.Log("OnIdleExit");
-	}
 }
