@@ -14,6 +14,7 @@ public class EventStateR : MonoBehaviour
     public DelegateState right = new DelegateState();
     public DelegateState back = new DelegateState();
     //
+    public AudioSource soundPlayer;
     public float force = 5.0f;
     public Rigidbody rb;
     void Start() // Start is called before the first frame update
@@ -81,10 +82,7 @@ public class EventStateR : MonoBehaviour
     }
     private void jumpStart()
     {
-        using(var soundPlayer = new SoundPlayer(@"C:\Users\User\Documents\1. Study\20T3\GPG\WakeUpSheeple\Assets\Sounds\jump.wav"))
-        {
-            soundPlayer.Play();
-        }
+        soundPlayer.Play();
     }
     private void jumpUpdate() //our jump state update constantly refreshes
     {
