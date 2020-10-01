@@ -595,9 +595,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ed3548f30c9b2349827fe6065087fb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceApplied: {x: 0, y: 0, z: 0}
+  forceApplied: {x: 0, y: 0, z: 0.05}
   clampSpeed: 1
-  maxSpeed: 0.2
+  maxSpeed: 1
   velocity: {x: 0, y: 0, z: 0}
 --- !u!54 &1521166418
 Rigidbody:
