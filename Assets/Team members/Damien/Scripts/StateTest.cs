@@ -9,7 +9,7 @@ public class StateTest : MonoBehaviour
     public DelegateState jump = new DelegateState();
     void Start()
     {
-        standing.Enter = 
+        
         
     }
 
