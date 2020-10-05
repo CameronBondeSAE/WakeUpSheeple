@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class DelegateDrivenState_Beginner : MonoBehaviour
 {
@@ -8,46 +11,54 @@ public class DelegateDrivenState_Beginner : MonoBehaviour
 	public DelegateState idle = new DelegateState();
 	public DelegateState run  = new DelegateState();
 
+	public int        health;
+	public string     name;
+	public GameObject target;
+	public Action     thing;
+
 	void Start()
 	{
 		Debug.Log("Press space to change to run state. HACK: It's just to test");
-		
-		// I'm ASSIGNING the variables to specific functions. Remember, variable just POINT to things... ANY thing! ints, strings, gameobjects, components... and... FUNCTIONS!
-		idle.Enter   = OnIdleEnter;
-		idle.Update = OnIdleUpdate;
-		idle.Exit    = OnIdleExit;
 
-		run.Enter   = OnRunEnter;
+		// I'm ASSIGNING the variables to specific functions. Remember, variable just POINT to things... ANY thing! ints, strings, gameobjects, components... and... FUNCTIONS!
+		// This DOESN'T run the function here. It just REMEMBERS IT for later! (My statemanager code)
+		idle.Enter  = OnIdleEnter;
+		idle.Update = OnIdleUpdate;
+		idle.Exit   = OnIdleExit;
+
+		run.Enter  = OnRunEnter;
 		run.Update = OnRunUpdate;
 
 		DelegateStateManager.ChangeState(idle);
-		
-		GetComponent<Renderer>().material.color = Color.red;
+
+		// GetComponent<Renderer>().material.color = Color.red;
+
+		StartCoroutine(Sequence());
+		Debug.Log("I happened AFTER the call to coroutine");
 	}
 
-	private void OnRunUpdate()
+	public IEnumerator Sequence()
 	{
-		throw new System.NotImplementedException();
-	}
+		while (true)
+		{
+			transform.position += new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
 
-	private void OnRunEnter()
-	{
-		throw new System.NotImplementedException();
-	}
 
-	private void OnIdleExit()
-	{
-		throw new System.NotImplementedException();
-	}
+			// Vector3 randomOffset = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
+			// transform.position = transform.position + randomOffset;
+			
+			GetComponent<Renderer>().material.color = Color.red;
+			Debug.Log("Wait");
+			yield return new WaitForSeconds(1f);
+			GetComponent<Renderer>().material.color = Color.green;
+			Debug.Log("Do stuff");
+			yield return new WaitForSeconds(1f);
+			GetComponent<Renderer>().material.color = Color.blue;
+			Debug.Log("Finished");
+			yield return new WaitForSeconds(3f);
+		}
 
-	private void OnIdleUpdate()
-	{
-		throw new System.NotImplementedException();
-	}
-
-	private void OnIdleEnter()
-	{
-		throw new System.NotImplementedException();
+		// StartCoroutine(Sequence());
 	}
 
 	void Update()
@@ -56,6 +67,24 @@ public class DelegateDrivenState_Beginner : MonoBehaviour
 		DelegateStateManager.UpdateCurrentState();
 	}
 
-	
-	
+
+	private void OnRunUpdate()
+	{
+	}
+
+	private void OnRunEnter()
+	{
+	}
+
+	private void OnIdleExit()
+	{
+	}
+
+	private void OnIdleUpdate()
+	{
+	}
+
+	private void OnIdleEnter()
+	{
+	}
 }
