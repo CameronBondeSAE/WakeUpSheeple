@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.VersionControl;
 using UnityEngine;
 
-public class SimpleStateTest : MonoBehaviour
+public class SimpleStateTest2 : MonoBehaviour
 {
     
     public DelegateStateManager DelegateStateManager = new DelegateStateManager();

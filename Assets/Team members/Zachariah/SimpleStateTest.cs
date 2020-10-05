@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEditor.VersionControl;
 using UnityEngine;
 
+namespace Zach
+{
+	
 public class SimpleStateTest : MonoBehaviour
 {
     
@@ -74,4 +77,6 @@ public class SimpleStateTest : MonoBehaviour
     {
         DelegateStateManager.UpdateCurrentState();
     }
+}
+
 }
