@@ -1,5 +1,37 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &44643929425511472
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5899091370383499049}
+  m_Layer: 0
+  m_Name: Hat
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5899091370383499049
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44643929425511472}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1312004366748626827}
+  - {fileID: 1312004366772409887}
+  m_Father: {fileID: 1312004366523323080}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1188285224295736981
 GameObject:
   m_ObjectHideFlags: 0
@@ -29,7 +61,7 @@ Transform:
   m_Children:
   - {fileID: 1312004367364161915}
   m_Father: {fileID: 1312004366523323080}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1312004366009202773
 GameObject:
@@ -248,8 +280,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1312004366748626827}
-  - {fileID: 1312004366772409887}
+  - {fileID: 5899091370383499049}
   - {fileID: 2910982689069844233}
   - {fileID: 4546262757709275264}
   m_Father: {fileID: 1312004367042300335}
@@ -268,7 +299,7 @@ GameObject:
   - component: {fileID: 1312004366748626825}
   - component: {fileID: 1312004366748626826}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: Brim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -285,7 +316,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.878, z: 0}
   m_LocalScale: {x: 1.0320694, y: 0.045980386, z: 1.0417007}
   m_Children: []
-  m_Father: {fileID: 1312004366523323080}
+  m_Father: {fileID: 5899091370383499049}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1312004366748626824
@@ -364,7 +395,7 @@ GameObject:
   - component: {fileID: 1312004366772409885}
   - component: {fileID: 1312004366772409886}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -378,10 +409,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1312004366772408800}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.1718147, z: 0}
+  m_LocalPosition: {x: 0, y: 1.1718148, z: 0}
   m_LocalScale: {x: 0.6119346, y: 0.34070185, z: 0.6176452}
   m_Children: []
-  m_Father: {fileID: 1312004366523323080}
+  m_Father: {fileID: 5899091370383499049}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1312004366772409884
@@ -1039,8 +1070,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63415ebe8c23f9a49be52f2ff9aab338, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PerlinY: 0
-  PerlinZ: 0
+  perlinY: 0
+  speed: 1
 --- !u!1 &6109674359854445303
 GameObject:
   m_ObjectHideFlags: 0
@@ -1070,7 +1101,7 @@ Transform:
   m_Children:
   - {fileID: 1312004367664952064}
   m_Father: {fileID: 1312004366523323080}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7681073120422692452
 GameObject:
@@ -1116,5 +1147,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63415ebe8c23f9a49be52f2ff9aab338, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PerlinY: 0
-  PerlinZ: 0
+  perlinY: 0
+  speed: 1
