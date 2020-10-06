@@ -1,13 +1,38 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RandomTests : MonoBehaviour
+public class EventTests : MonoBehaviour
 {
 	public float amount;
 	public float newShade;
 
 	public float perlinY;
+
+	private void Awake()
+	{
+	}
+
+	private void OnEnable()
+	{
+		// Slight HACK. Find the PauseManager
+		// Subscribe/Observer/Listen to event
+		FindObjectOfType<PauseManager>().PauseEvent += OnPauseEvent;
+	}
+
+	// This gets called when you get destroyed or disabled.
+	private void OnDisable()
+	{
+		// UNsubscribe to event
+		FindObjectOfType<PauseManager>().PauseEvent -= OnPauseEvent;
+	}
+
+	private void OnPauseEvent()
+	{
+		Debug.Log("CAM PAUSE");
+	}
+
 
 	// Start is called before the first frame update
 	void Start()
