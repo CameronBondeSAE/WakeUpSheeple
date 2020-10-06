@@ -17,6 +17,8 @@ public class EventStateR : MonoBehaviour
     public AudioSource soundPlayer;
     public float force = 5.0f;
     public Rigidbody rb;
+
+    public int timeWait;
     void Start() // Start is called before the first frame update
     {
         standing.Enter = standingStart; //sets the standing function enter called standingEnter
@@ -83,14 +85,19 @@ public class EventStateR : MonoBehaviour
     private void jumpStart()
     {
         soundPlayer.Play();
+        timeWait = 0;
     }
     private void jumpUpdate() //our jump state update constantly refreshes
     {
-        if (transform.position.y < 0.5f)
+        if (transform.position.y < 0.8f)
         {
             rb.AddForce(transform.up * force);
         }
         else
+        {
+            timeWait = timeWait + 1;
+        }
+        if (timeWait > 300)
         {
             stateManager.ChangeState(standing);//we can change our state back to standing here
         }
