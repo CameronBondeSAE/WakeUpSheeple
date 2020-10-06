@@ -2,21 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RelativeTests : MonoBehaviour
+namespace Cam
 {
-	public Vector3 speed;
-	
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
+	public class RelativeTests : MonoBehaviour
 	{
-		Vector3 localSpeed = transform.InverseTransformDirection(speed);
-		
-        GetComponent<Rigidbody>().AddForce(localSpeed); 
+		public Vector3 speed;
+
+		// Start is called before the first frame update
+		void Start()
+		{
+		}
+
+		// Update is called once per frame
+		void Update()
+		{
+			Vector3 localSpeed = transform.InverseTransformDirection(speed);
+
+			GetComponent<Rigidbody>().AddForce(localSpeed);
+		}
 	}
 }
