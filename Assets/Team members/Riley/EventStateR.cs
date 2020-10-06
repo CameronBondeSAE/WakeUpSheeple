@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Media;
@@ -14,11 +15,15 @@ public class EventStateR : MonoBehaviour
     public DelegateState right = new DelegateState();
     public DelegateState back = new DelegateState();
     //
+    public DelegateState rileyPState = new DelegateState();
+    public bool bPSR;
+
     public AudioSource soundPlayer;
     public float force = 5.0f;
     public Rigidbody rb;
 
     public int timeWait;
+    public int timeSWaitR;
     void Start() // Start is called before the first frame update
     {
         standing.Enter = standingStart; //sets the standing function enter called standingEnter
@@ -27,7 +32,7 @@ public class EventStateR : MonoBehaviour
         jump.Enter = jumpStart;
         jump.Update = jumpUpdate;
         jump.Exit = jumpExit;
-        //
+        //Unneeded Movement using state
         forward.Enter = forwardStart;
         forward.Update = forwardUpdate;
         forward.Exit = forwardExit;
@@ -40,18 +45,33 @@ public class EventStateR : MonoBehaviour
         back.Enter = backStart;
         back.Update = backUpdate;
         back.Exit = backExit;
-        //
-        stateManager.ChangeState(standing); //on start set the default state to standing
+        //Unneeded Movement using state
+        rileyPState.Enter = rileyPStateStart;
+        rileyPState.Update = rileyPStateUpdate;
+        rileyPState.Exit = rileyPStateExit;
+        //Find the pause manager and whenever PauseEvent is called run pauseEventR
+        FindObjectOfType<PauseManager>().PauseEvent += pauseEventR;
+        //on start set the default state to standing
+        stateManager.ChangeState(standing); 
         rb = GetComponent<Rigidbody>();
     }
     // Update is called once per frame
+    private void pauseEventR() //Makes functions run whenever PauseEvent is called
+    {
+        if (bPSR == false) //This allows us to only use BoolPauseStateR to determine if we are already paused or not
+        {
+            Debug.Log("PausedR"); //Our debug message for paused
+            bPSR = true; //This tells us we are paused
+            stateManager.ChangeState(rileyPState); //This sends us to the paused state
+        }
+    }
     void Update()
     {
         stateManager.UpdateCurrentState(); //refreshes our state each frame of the script running (Delta time)
     }
     private void standingStart() //makes the previously assigned "standing.Enter" function
     {
-        
+        bPSR = false;
     }
     private void standingUpdate() //our standing update constantly refreshes
     {
@@ -184,4 +204,34 @@ public class EventStateR : MonoBehaviour
         
     }
     //
+    private void rileyPStateStart()
+    {
+        //Making the initial timer value worth 0 whenever we enter pause
+        timeSWaitR = 0;
+        rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezePositionY;
+    }
+    private void rileyPStateUpdate()
+    {
+        //This is the timer we wait for when we pause
+        timeSWaitR = timeSWaitR + 1;
+        //If we get the pause key again but this time we have a time delay so it wont activate and deactivate instantly
+        if (Input.GetKeyDown(KeyCode.P) && timeSWaitR > 50)
+        {
+            //Change our state back to standing so we can return the system however we want.
+            stateManager.ChangeState(standing);
+            //Give a debug so we know the system is working
+            Debug.Log("Exiting Pause");
+        }
+    }
+    private void rileyPStateExit()
+    {
+        //Reset our BoolPauseStateR to false
+        bPSR = false;
+        rb.constraints = RigidbodyConstraints.None;
+    }
+
+    private void OnDisable()
+    {
+        FindObjectOfType<PauseManager>().PauseEvent -= pauseEventR;
+    }
 }
