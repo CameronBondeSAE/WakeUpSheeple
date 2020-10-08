@@ -7,9 +7,7 @@ namespace Niall
     public class MoveForward : MonoBehaviour
     {
         public Rigidbody rb;
-        public float speed = 5;
-        public float rot;
-        public float perlinY;
+        public float speed;
 
         void Start()
         {
@@ -18,21 +16,8 @@ namespace Niall
 
         void Update()
         {
-            if (perlinY <= 0.49f)
-            {
-                rot = -perlinY;
-            }
-
-            else
-            {
-                rot = perlinY;
-            }
-
-
-            perlinY = Mathf.PerlinNoise(0, Time.time / 10f);
 
             rb.AddForce(transform.forward * speed);
-            transform.Rotate(0, rot, 0);
         }
     }
 }

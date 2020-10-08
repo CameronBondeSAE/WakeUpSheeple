@@ -1,7 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.UI;
 using UnityEngine;
+
+namespace Tim
+{
+    
 
 public class StatemachineTest : MonoBehaviour
 {
@@ -30,6 +35,21 @@ public class StatemachineTest : MonoBehaviour
         
         DelegateStateManager.ChangeState(idle);
 
+    }
+    
+    private void OnEnable()
+    {
+        FindObjectOfType<PauseManager>().PauseEvent += OnPauseEvent;
+    }
+
+    private void OnPauseEvent()
+    {
+        Debug.Log("Tim Pause");
+    }
+
+    private void OnDisable()
+    {
+        FindObjectOfType<PauseManager>().PauseEvent -= OnPauseEvent;
     }
 
     private void OnMovementExit()
@@ -118,5 +138,7 @@ public class StatemachineTest : MonoBehaviour
     {
         DelegateStateManager.UpdateCurrentState();
     }
+}
+
 }
 
