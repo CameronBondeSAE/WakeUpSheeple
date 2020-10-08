@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Chemplane
   - Bird
+  - platformR
   layers:
   - Default
   - TransparentFX
