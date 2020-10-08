@@ -16,6 +16,7 @@ public class ChemtrailTest : MonoBehaviour
     private Vector3 velocity;
     public GameObject enemy;
     public GameObject wall;
+    public float planeHeight;
 
     
     // Start is called before the first frame update
@@ -42,7 +43,7 @@ public class ChemtrailTest : MonoBehaviour
         {
             Debug.Log("Restarting");
             yield return new WaitForSeconds(5f);
-            Vector3 position = new Vector3(Random.Range(-41f, 58f), 2, Random.Range(-46, 54));
+            Vector3 position = new Vector3(Random.Range(-41f, 58f), planeHeight, Random.Range(-46, 54));
             yield return new WaitForSeconds(5f);
             transform.position = position;
             velocity = (target.position - transform.position).normalized * speed;
