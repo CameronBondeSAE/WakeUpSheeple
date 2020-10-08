@@ -8,7 +8,6 @@ namespace Niall
     {
         public Rigidbody rb;
         public float speed;
-        public float perlinY;
 
         void Start()
         {
@@ -17,12 +16,6 @@ namespace Niall
 
         void Update()
         {
-            perlinY = Mathf.PerlinNoise(0, Time.time/10f);
-
-
-            perlinY = ((perlinY * 2f) - 1f);
-
-            transform.Rotate(0, perlinY, 0);
 
             rb.AddForce(transform.forward * speed);
         }
