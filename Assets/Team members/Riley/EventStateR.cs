@@ -4,112 +4,74 @@ using System.Collections.Generic;
 using System.Media;
 using UnityEngine;
 
+//Problem & Needed code (Solution)
+
+//Mole needs to be unobstructed when coming out of the ground (Use a capsule that runs into the sheep where the mole effect runs along the ground)
+//This method adds a problem where the mole cant come out of the ground if there is something directly above (it also fixes this however)
+//Movement (Waypoint to a group, check if there are multiple in a radius, then make a path based on the distance that moves in a curve)
+
 public class EventStateR : MonoBehaviour
 {
-    public DelegateStateManager stateManager = new DelegateStateManager(); //create a delegatestatemanager to the term stateManager
-    public DelegateState standing = new DelegateState(); //make two delegatestates from the delegatestate script called standing and jump to use in our functions from the script
+    public DelegateStateManager stateManager = new DelegateStateManager();
+    public DelegateState standing = new DelegateState();
     public DelegateState jump = new DelegateState();
-    //
-    public DelegateState forward = new DelegateState();
-    public DelegateState left = new DelegateState();
-    public DelegateState right = new DelegateState();
-    public DelegateState back = new DelegateState();
-    //
-    public DelegateState rileyPState = new DelegateState();
-    public bool bPSR;
-
+    public DelegateState pauseStateR = new DelegateState();
+    public bool bPSR; //Bool for out "pausedstateR" so we can determine if we are already paused or not
     public AudioSource soundPlayer;
     public float force = 5.0f;
     public Rigidbody rb;
-
-    public int timeWait;
-    public int timeSWaitR;
-    void Start() // Start is called before the first frame update
+    public int timeWait; //Time wait int for the jump function to determine how long the mole is out of the ground
+    public int timeSWaitR; //Time wait for the pause button so when we click pause it doesn't instantly unpause
+    public int timeHoverWait;
+    //----------------------------------UPDATE/START
+    void Start()
     {
-        standing.Enter = standingStart; //sets the standing function enter called standingEnter
+        standing.Enter = standingStart;
         standing.Update = standingUpdate;
         standing.Exit = standingExit;
         jump.Enter = jumpStart;
-        jump.Update = jumpUpdate;
+        jump.Update = jumpUpdate; 
         jump.Exit = jumpExit;
-        //Unneeded Movement using state
-        forward.Enter = forwardStart;
-        forward.Update = forwardUpdate;
-        forward.Exit = forwardExit;
-        left.Enter = leftStart;
-        left.Update = leftUpdate;
-        left.Exit = leftExit;
-        right.Enter = rightStart;
-        right.Update = rightUpdate;
-        right.Exit = rightExit;
-        back.Enter = backStart;
-        back.Update = backUpdate;
-        back.Exit = backExit;
-        //Unneeded Movement using state
-        rileyPState.Enter = rileyPStateStart;
-        rileyPState.Update = rileyPStateUpdate;
-        rileyPState.Exit = rileyPStateExit;
-        //Find the pause manager and whenever PauseEvent is called run pauseEventR
-        FindObjectOfType<PauseManager>().PauseEvent += pauseEventR;
-        //on start set the default state to standing
-        stateManager.ChangeState(standing); 
+        pauseStateR.Enter = pauseStateRStart;
+        pauseStateR.Update = pauseStateRUpdate;
+        pauseStateR.Exit = pauseStateRExit;
+        FindObjectOfType<PauseManager>().PauseEvent += pauseEventR; //Find the pause manager and whenever PauseEvent is called run pauseEventR
+        stateManager.ChangeState(standing); //on start set the default state to standing
         rb = GetComponent<Rigidbody>();
-    }
-    // Update is called once per frame
-    private void pauseEventR() //Makes functions run whenever PauseEvent is called
-    {
-        if (bPSR == false) //This allows us to only use BoolPauseStateR to determine if we are already paused or not
-        {
-            Debug.Log("PausedR"); //Our debug message for paused
-            bPSR = true; //This tells us we are paused
-            stateManager.ChangeState(rileyPState); //This sends us to the paused state
-        }
+        bPSR = false;
     }
     void Update()
     {
-        stateManager.UpdateCurrentState(); //refreshes our state each frame of the script running (Delta time)
+        stateManager.UpdateCurrentState();
     }
-    private void standingStart() //makes the previously assigned "standing.Enter" function
+    //----------------------------------UPDATE/START
+    //----------------------------------STANDING
+    private void standingStart()
     {
-        bPSR = false;
+        timeHoverWait = 0;
     }
-    private void standingUpdate() //our standing update constantly refreshes
+    private void standingUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) //when we press space the next function activates
+        timeHoverWait = timeHoverWait + 1;
+        if (timeHoverWait > 600 && bPSR != true)
         {
-            stateManager.ChangeState(jump); //change our current state to "jump"
+            stateManager.ChangeState(jump);
         }
-        //
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            stateManager.ChangeState(forward);
-        }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            stateManager.ChangeState(left);
-        }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            stateManager.ChangeState(right);
-        }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            stateManager.ChangeState(back);
-        }
-        //
     }
     private void standingExit()
     {
         
     }
+    //----------------------------------STANDING
+    //----------------------------------JUMP
     private void jumpStart()
     {
         soundPlayer.Play();
-        timeWait = 0;
+        timeWait = 0; //reset our timewait to 0 whenever we start the jump function
     }
-    private void jumpUpdate() //our jump state update constantly refreshes
+    private void jumpUpdate()
     {
-        if (transform.position.y < 0.8f)
+        if (transform.position.y < 0.8f) //NEEDS AMENDING, this makes the player bob at this height
         {
             rb.AddForce(transform.up * force);
         }
@@ -117,121 +79,50 @@ public class EventStateR : MonoBehaviour
         {
             timeWait = timeWait + 1;
         }
-        if (timeWait > 300)
+        if (timeWait > 300 && bPSR != true)
         {
-            stateManager.ChangeState(standing);//we can change our state back to standing here
+            stateManager.ChangeState(standing);
         }
     }
     private void jumpExit()
     {
         
     }
-    //
-    private void forwardStart()
+    //----------------------------------JUMP
+    //----------------------------------PAUSE
+    private void pauseEventR()
     {
-        
-    }
-    private void forwardUpdate()
-    {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (bPSR == false)
         {
-            stateManager.ChangeState(standing);    
-        }
-        else
-        {
-            rb.AddForce(transform.forward * force);
+            Debug.Log("PausedR");
+            bPSR = true; //This tells us we are paused
+            stateManager.ChangeState(pauseStateR);
         }
     }
-    private void forwardExit()
+    private void pauseStateRStart()
     {
-        
-    }
-    private void leftStart()
-    {
-        
-    }
-    private void leftUpdate()
-    {
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            stateManager.ChangeState(standing);    
-        }
-        else
-        {
-            rb.AddForce(transform.right * -force);
-        }
-    }
-    private void leftExit()
-    {
-        
-    }
-    private void rightStart()
-    {
-        
-    }
-    private void rightUpdate()
-    {
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            stateManager.ChangeState(standing);    
-        }
-        else
-        {
-            rb.AddForce(transform.right * force);
-        }
-    }
-    private void rightExit()
-    {
-        
-    }
-    private void backStart()
-    {
-        
-    }
-    private void backUpdate()
-    {
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            stateManager.ChangeState(standing);    
-        }
-        else
-        {
-            rb.AddForce(transform.forward * -force);
-        }
-    }
-    private void backExit()
-    {
-        
-    }
-    //
-    private void rileyPStateStart()
-    {
-        //Making the initial timer value worth 0 whenever we enter pause
         timeSWaitR = 0;
-        rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezePositionY;
+        rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezePositionY; //Something similar to this can be used above "AMENDMENT"
     }
-    private void rileyPStateUpdate()
+    private void pauseStateRUpdate()
     {
-        //This is the timer we wait for when we pause
-        timeSWaitR = timeSWaitR + 1;
-        //If we get the pause key again but this time we have a time delay so it wont activate and deactivate instantly
-        if (Input.GetKeyDown(KeyCode.P) && timeSWaitR > 50)
+        timeSWaitR = timeSWaitR + 1; //This is the timer we wait for when we pause to prevent pressing p and instantly un-pausing after a pause (Could be changed)
+        if (Input.GetKeyDown(KeyCode.P) && timeSWaitR > 100)
         {
-            //Change our state back to standing so we can return the system however we want.
             stateManager.ChangeState(standing);
-            //Give a debug so we know the system is working
             Debug.Log("Exiting Pause");
         }
     }
-    private void rileyPStateExit()
+    private void pauseStateRExit()
     {
-        //Reset our BoolPauseStateR to false
-        bPSR = false;
-        rb.constraints = RigidbodyConstraints.None;
+        bPSR = false; //Reset our BoolPauseStateR to false so we can use pause again
+        rb.constraints = ~RigidbodyConstraints.FreezePositionX | ~RigidbodyConstraints.FreezePositionZ | ~RigidbodyConstraints.FreezePositionY;
     }
-
-    private void OnDisable()
-    {
-        FindObjectOfType<PauseManager>().PauseEvent -= pauseEventR;
-    }
+    //----------------------------------PAUSE
+    /// <summary>
+    /// private void OnDisable()
+    /// {
+    /// FindObjectOfType<PauseManager>().PauseEvent -= pauseEventR;
+    /// }
+    /// </summary>
 }

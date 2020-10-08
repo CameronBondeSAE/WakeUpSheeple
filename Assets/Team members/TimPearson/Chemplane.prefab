@@ -109,3 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 820fce0377e11e147bed385bdd48e640, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  speed: 0
+  enemy: {fileID: 0}
+  wall: {fileID: 0}
