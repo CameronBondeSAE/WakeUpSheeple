@@ -17,7 +17,7 @@ namespace Niall
         // Start is called before the first frame update
         void Start()
         {
-            agentCollider = GetComponent<Collider>();
+            agentCollider = GetComponentInChildren<Collider>();
         }
 
         public void Move(Vector3 velocity)

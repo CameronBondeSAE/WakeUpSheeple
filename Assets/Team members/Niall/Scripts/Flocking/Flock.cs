@@ -4,8 +4,6 @@ using UnityEngine;
 
 namespace Niall
 {
-
-
     public class Flock : MonoBehaviour
     {
         public FlockAgent agentPrefab;
@@ -37,7 +35,7 @@ namespace Niall
             squareMaxSpeed = maxSpeed * maxSpeed;
             squareNeighbourRadius = neighbourRadius * neighbourRadius;
             squareAvoidanceRadius = squareNeighbourRadius * avoidanceRadiusMultiplier * avoidanceRadiusMultiplier;
-            
+
             for (int i = 0; i < startingCount; i++)
             {
                 FlockAgent newAgent = Instantiate(agentPrefab, Random.insideUnitSphere * startingCount * AgentDensity,
@@ -47,7 +45,26 @@ namespace Niall
                 agents.Add(newAgent);
             }
         }
-       List<Transform> GetNearbyObjects(FlockAgent agent)
+
+        // Update is called once per frame
+        void Update()
+        {
+            foreach (FlockAgent agent in agents)
+            {
+                List<Transform> context = GetNearbyObjects(agent);
+
+                Vector3 move = behaviour.CalculateMove(agent, context, this);
+                move *= driveFactor;
+                if (move.sqrMagnitude > squareMaxSpeed)
+                {
+                    move = move.normalized * maxSpeed;
+                }
+
+                agent.Move(move);
+            }
+        }
+
+        List<Transform> GetNearbyObjects(FlockAgent agent)
         {
             List<Transform> context = new List<Transform>();
             Collider[] contextColliders = Physics.OverlapSphere(agent.transform.position, neighbourRadius);
@@ -62,25 +79,5 @@ namespace Niall
 
             return context;
         }
-        // Update is called once per frame
-        void Update()
-        {
-            foreach (FlockAgent agent in agents)
-            {
-                List<Transform> context = GetNearbyObjects(agent);
-            }
-            
-            
-            // Vector3 move = behaviour.CalculateMove(agent, context, this);
-            // move *= driveFactor;
-            // if (move.sqrMagnitude > squareMaxSpeed)
-            // {
-            //     move = move.normalized * maxSpeed;
-            // }
-            //
-            // agent.Move(move);
-        }
-
- 
     }
 }
