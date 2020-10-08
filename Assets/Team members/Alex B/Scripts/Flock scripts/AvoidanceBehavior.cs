@@ -4,18 +4,33 @@ using UnityEngine;
 
 namespace AJ
 {
-    public class AvoidanceBehavior : MonoBehaviour
+    [CreateAssetMenu(menuName = "Flock/Behavior,Avoidance")]
+    public class AvoidanceBehavior : FlockBehavior
     {
-        // Start is called before the first frame update
-        void Start()
-        {
-        
-        }
+        private FlockBehavior _flockBehaviorImplementation;
 
-        // Update is called once per frame
-        void Update()
+        public override Vector2 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock)
         {
-        
+            if (context.Count == 0)
+                return Vector2.zero;
+            
+            Vector2 avoidanceMove = Vector2.zero;
+            int nAvoid = 0;
+            foreach (Transform item in context)
+            {
+                if (Vector2.SqrMagnitude(item.position - agent.transform.position) < flock.SquareAvoidanceRadius)
+                {
+                    nAvoid++;
+                    avoidanceMove += (Vector2)(agent.transform.position - item.position);
+                }
+                
+            }
+
+            if (nAvoid > 0)
+                avoidanceMove /= nAvoid;
+
+            return avoidanceMove;
+
         }
     }
 }
