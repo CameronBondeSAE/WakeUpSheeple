@@ -44,7 +44,8 @@ public class PlayerMovement : MonoBehaviour
         }.normalized;
      
       
-        transform.Translate(movement * (movementSpeed * Time.deltaTime));
+        transform.Translate(movement * (movementSpeed * Time.deltaTime),Space.World);
+        transform.rotation = Quaternion.LookRotation(movement);
 
 
     }
