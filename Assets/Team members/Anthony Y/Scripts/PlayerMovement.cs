@@ -17,31 +17,34 @@ public class PlayerMovement : NetworkBehaviour
     {
         controls = new PlayerControls();
     }
-
-    [ClientCallback] // prevents the server from running this method
+    
+    
     private void OnEnable()
     {
 
         controls.GamePlayer.Enable();
     }
-[ClientCallback]
+    
     private void OnDisable()
     {
      controls.GamePlayer.Disable();   
     }
 
+    private void Start()
+    {
+      
+    }
 
-    [ClientCallback] // Easier for beginners but will be terrible in the long run. Better solution is Server Authority
+    [Client] 
     void Update()
     {
         if (!isLocalPlayer)
         {
-            Move();
+            RpcMove();
         }
-        
     }
-    [Client]
-    private void Move()
+    [ClientRpc]
+    private void RpcMove()
     {
         var movementInput = controls.GamePlayer.Movement.ReadValue<Vector2>();
         var movement = new Vector3
@@ -54,6 +57,15 @@ public class PlayerMovement : NetworkBehaviour
         transform.Translate(movement * (movementSpeed * Time.deltaTime),Space.World);
         transform.rotation = Quaternion.LookRotation(movement);
 
+    }
+    //Actually moving the player on server
+    [Command]
+    private void CmdMove()
+    {
+        if (!isLocalPlayer)
+        {
+            RpcMove();
+        }
     }
     
 
