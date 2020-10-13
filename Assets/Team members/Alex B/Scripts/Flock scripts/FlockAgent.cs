@@ -8,13 +8,32 @@ namespace AJ
 
     public class FlockAgent : MonoBehaviour
     {
+        private Flock agentFlock;
+        public Flock AgentFlock
+        {
+            get
+            {
+                return agentFlock; 
+                
+            }
+        }
+        
         Collider2D agentCollider;
         //public Rigidbody2D rb2D;
         //private float thrust = 10.0f;
 
         public Collider2D AgentCollider
         {
-            get { return agentCollider; }
+            get
+            {
+                return agentCollider; 
+                
+            }
+        }
+
+        public void Initialize(Flock flock)
+        {
+            agentFlock = flock;
         }
 
         // Start is called before the first frame update

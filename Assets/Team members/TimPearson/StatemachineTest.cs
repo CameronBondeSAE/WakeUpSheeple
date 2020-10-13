@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEditor.UI;
 using UnityEngine;
 
+
 namespace Tim
 {
     
@@ -17,7 +18,7 @@ public class StatemachineTest : MonoBehaviour
     public DelegateState movement = new DelegateState();
     
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         Debug.Log(message:"Press space to test if code works");
         idle.Enter = OnIdleEnter;
@@ -37,20 +38,19 @@ public class StatemachineTest : MonoBehaviour
 
     }
     
-    private void OnEnable()
-    {
-        FindObjectOfType<PauseManager>().PauseEvent += OnPauseEvent;
-    }
-
-    private void OnPauseEvent()
-    {
-        Debug.Log("Tim Pause");
-    }
-
-    private void OnDisable()
-    {
-        FindObjectOfType<PauseManager>().PauseEvent -= OnPauseEvent;
-    }
+    // private void OnPauseEvent()
+    // {
+    //     Debug.Log("Tim Pause");
+    // }
+    // private void OnEnable()
+    // {
+    //     FindObjectOfType<PauseManager>().PauseEvent += OnPauseEvent;
+    // }
+    //
+    // private void OnDisable()
+    // {
+    //     FindObjectOfType<PauseManager>().PauseEvent -= OnPauseEvent;
+    // }
 
     private void OnMovementExit()
     {

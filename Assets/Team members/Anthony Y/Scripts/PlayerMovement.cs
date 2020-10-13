@@ -1,41 +1,51 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Mirror;
+using Mirror.Examples.Chat;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : NetworkBehaviour
 {
-    private PlayerControls controls;
+    [SyncVar]
     public float movementSpeed;
+    
+    
+    private PlayerControls controls;
 
     private void Awake()
     {
         controls = new PlayerControls();
     }
-
+    
+    
     private void OnEnable()
     {
 
         controls.GamePlayer.Enable();
     }
-
+    
     private void OnDisable()
     {
      controls.GamePlayer.Disable();   
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+      
     }
 
-    // Update is called once per frame
-    void Update() => Move();
-
-    private void Move()
+    [Client] 
+    void Update()
     {
-        //QUICK SHIT HACK
+        if (!isLocalPlayer)
+        {
+            RpcMove();
+        }
+    }
+    [ClientRpc]
+    private void RpcMove()
+    {
         var movementInput = controls.GamePlayer.Movement.ReadValue<Vector2>();
         var movement = new Vector3
         {
@@ -44,8 +54,19 @@ public class PlayerMovement : MonoBehaviour
         }.normalized;
      
       
-        transform.Translate(movement * (movementSpeed * Time.deltaTime));
-
+        transform.Translate(movement * (movementSpeed * Time.deltaTime),Space.World);
+        transform.rotation = Quaternion.LookRotation(movement);
 
     }
+    //Actually moving the player on server
+    [Command]
+    private void CmdMove()
+    {
+        if (!isLocalPlayer)
+        {
+            RpcMove();
+        }
+    }
+    
+
 }

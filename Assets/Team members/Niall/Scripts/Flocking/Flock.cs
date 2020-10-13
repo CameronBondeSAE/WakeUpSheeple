@@ -28,8 +28,7 @@ namespace Niall
         {
             get { return squareAvoidanceRadius; }
         }
-
-        // Start is called before the first frame update
+        
         void Start()
         {
             squareMaxSpeed = maxSpeed * maxSpeed;
@@ -38,15 +37,14 @@ namespace Niall
 
             for (int i = 0; i < startingCount; i++)
             {
-                FlockAgent newAgent = Instantiate(agentPrefab, Random.insideUnitSphere * startingCount * AgentDensity,
+                FlockAgent newAgent = Instantiate(agentPrefab, Random.insideUnitSphere * (startingCount * AgentDensity),
                     Quaternion.Euler(Vector3.forward * Random.Range(0f, 360f)), transform);
 
                 newAgent.name = "Agent" + i;
                 agents.Add(newAgent);
             }
         }
-
-        // Update is called once per frame
+        
         void Update()
         {
             foreach (FlockAgent agent in agents)

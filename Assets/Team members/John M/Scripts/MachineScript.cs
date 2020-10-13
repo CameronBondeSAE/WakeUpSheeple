@@ -59,7 +59,7 @@ public class MachineScript : MonoBehaviour
     void OnSpinUpdate()
     {
         Debug.Log("Currently Spinning");
-        transform.Rotate(Random.Range(1,50),Random.Range(1,10),Random.Range(1,50));
+        transform.Rotate(Random.Range(1,7),Random.Range(1,3),Random.Range(1,8));
         
         if (Input.GetKeyDown(KeyCode.Space))
         {
