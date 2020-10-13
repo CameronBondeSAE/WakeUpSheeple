@@ -16,7 +16,8 @@ public class VirusBehaviour : MonoBehaviour
     //public GameObject Sheep;
     public bool isAttached = false;
     public GameObject Virus;
-    public Transform virusLocation;
+    public Vector3 virusLocation;
+    public float incubation = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,7 @@ public class VirusBehaviour : MonoBehaviour
     {
         //transform.LookAt(Sheep.transform);
         //transform.position += transform.forward * velocity * Time.deltaTime;
+        incubation += Time.deltaTime;
     }
 
     
@@ -51,7 +53,15 @@ public class VirusBehaviour : MonoBehaviour
             }else if (isAttached)
             {
                 //finish creating the instatiate (creates another prefab of virus to simulate infection)
-                Instantiate(Virus,virusLocation.localPosition, virusLocation.localRotation);
+                //create if statement that uses the incubation float to create new viruses 
+                Debug.Log("Incubate Start");
+                if (incubation > 5f)
+                {
+                    Instantiate(Virus, other.transform.position, new Quaternion(0, 0, 0, 0));
+                    Debug.Log("new virus");
+                    incubation = 0f;
+                    Debug.Log("Reset incubation");
+                }
             }
               
             //record that I have been attached
