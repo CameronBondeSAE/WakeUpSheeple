@@ -32,9 +32,9 @@ public class EventStateR : MonoBehaviour
         jump.Enter = jumpStart;
         jump.Update = jumpUpdate; 
         jump.Exit = jumpExit;
-        pauseStateR.Enter = pauseStateRStart;
-        pauseStateR.Update = pauseStateRUpdate;
-        pauseStateR.Exit = pauseStateRExit;
+        pauseStateR.Enter = PauseStateRStart;
+        pauseStateR.Update = PauseStateRUpdate;
+        pauseStateR.Exit = PauseStateRExit;
         FindObjectOfType<PauseManager>().PauseEvent += pauseEventR; //Find the pause manager and whenever PauseEvent is called run pauseEventR
         stateManager.ChangeState(standing); //on start set the default state to standing
         rb = GetComponent<Rigidbody>();
@@ -99,12 +99,12 @@ public class EventStateR : MonoBehaviour
             stateManager.ChangeState(pauseStateR);
         }
     }
-    private void pauseStateRStart()
+    private void PauseStateRStart()
     {
         timeSWaitR = 0;
-        rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezePositionY; //Something similar to this can be used above "AMENDMENT"
+        rb.constraints = RigidbodyConstraints.FreezeAll; //Something similar to this can be used above "AMENDMENT"
     }
-    private void pauseStateRUpdate()
+    private void PauseStateRUpdate()
     {
         timeSWaitR = timeSWaitR + 1; //This is the timer we wait for when we pause to prevent pressing p and instantly un-pausing after a pause (Could be changed)
         if (Input.GetKeyDown(KeyCode.P) && timeSWaitR > 100)
@@ -113,16 +113,14 @@ public class EventStateR : MonoBehaviour
             Debug.Log("Exiting Pause");
         }
     }
-    private void pauseStateRExit()
+    private void PauseStateRExit()
     {
         bPSR = false; //Reset our BoolPauseStateR to false so we can use pause again
-        rb.constraints = ~RigidbodyConstraints.FreezePositionX | ~RigidbodyConstraints.FreezePositionZ | ~RigidbodyConstraints.FreezePositionY;
+        rb.constraints = RigidbodyConstraints.None | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
     }
     //----------------------------------PAUSE
-    /// <summary>
-    /// private void OnDisable()
-    /// {
-    /// FindObjectOfType<PauseManager>().PauseEvent -= pauseEventR;
-    /// }
-    /// </summary>
+    private void OnDisable()
+    { 
+        FindObjectOfType<PauseManager>().PauseEvent -= pauseEventR;
+    }
 }

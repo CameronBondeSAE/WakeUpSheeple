@@ -2,11 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using Mirror;
+using Mirror.Examples.Chat;
 using UnityEngine;
 
 public class PlayerMovement : NetworkBehaviour
 {
-    
+    [SyncVar]
     public float movementSpeed;
     
     
@@ -53,7 +54,7 @@ public class PlayerMovement : NetworkBehaviour
         transform.Translate(movement * (movementSpeed * Time.deltaTime),Space.World);
         transform.rotation = Quaternion.LookRotation(movement);
 
-
     }
+    
 
 }
