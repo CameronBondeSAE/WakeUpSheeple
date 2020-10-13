@@ -17,6 +17,8 @@ public class ChemtrailTest : MonoBehaviour
     public GameObject enemy;
     public GameObject wall;
     public float planeHeight;
+    public ParticleSystem trail;
+    public List<ParticleCollisionEvent> collisionEvents;
 
     
     // Start is called before the first frame update
@@ -25,8 +27,30 @@ public class ChemtrailTest : MonoBehaviour
         //Vector3 position = new Vector3(Random.Range(-41f,58f),2,Random.Range(-46,54));
         //Instantiate(enemy, position, Quaternion.identity);
         StartCoroutine("Restart");
-        
-        
+        trail = GetComponent<ParticleSystem>();
+        collisionEvents = new List<ParticleCollisionEvent>();
+
+
+    }
+
+    private void OnParticleCollision(GameObject other)
+    {
+        int numCollisionEvents = trail.GetCollisionEvents(other, collisionEvents);
+
+        Rigidbody rb = other.GetComponent<Rigidbody>();
+        int i = 0;
+
+        while (i < numCollisionEvents)
+        {
+            if (rb)
+            {
+                Vector3 pos = collisionEvents[i].intersection;
+                Vector3 force = collisionEvents[i].velocity * 10;
+                rb.AddForce(force);
+            }
+
+            i++;
+        }
     }
 
     // Update is called once per frame

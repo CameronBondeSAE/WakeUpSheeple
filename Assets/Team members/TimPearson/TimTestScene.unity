@@ -1110,7 +1110,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 100
+      scalar: 20
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -4037,7 +4037,7 @@ ParticleSystem:
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
@@ -5373,6 +5373,10 @@ PrefabInstance:
       propertyPath: planeHeight
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 4574523729256967023, guid: dc37545f7ae60614b80639ac5edac216, type: 3}
+      propertyPath: trail
+      value: 
+      objectReference: {fileID: 361700140}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: dc37545f7ae60614b80639ac5edac216, type: 3}
