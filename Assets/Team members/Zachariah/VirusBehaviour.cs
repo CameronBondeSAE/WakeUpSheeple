@@ -13,10 +13,10 @@ public class VirusBehaviour : MonoBehaviour
 {
     //private Vector3 currentVelocity;
     public float velocity;
-    public GameObject Sheep;
+    //public GameObject Sheep;
     public bool isAttached = false;
     public GameObject Virus;
-    
+    public Transform virusLocation;
 
     // Start is called before the first frame update
     void Start()
@@ -42,14 +42,16 @@ public class VirusBehaviour : MonoBehaviour
         {
             if (isAttached == false)
             {
-                transform.parent = other.transform;
-                transform.localPosition = new Vector3(0,0,0);
+                var transform1 = transform;
+                transform1.parent = other.transform;
+                transform1.localPosition = new Vector3(0,1,0);
+                
                 isAttached = true;
                 Debug.Log("Virus Attached");
             }else if (isAttached)
             {
                 //finish creating the instatiate (creates another prefab of virus to simulate infection)
-                Instantiate(Virus,);
+                Instantiate(Virus,virusLocation.localPosition, virusLocation.localRotation);
             }
               
             //record that I have been attached
