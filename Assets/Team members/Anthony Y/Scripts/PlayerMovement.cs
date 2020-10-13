@@ -10,7 +10,6 @@ public class PlayerMovement : NetworkBehaviour
     [SyncVar]
     public float movementSpeed;
     
-    
     private PlayerControls controls;
 
     private void Awake()
@@ -21,7 +20,6 @@ public class PlayerMovement : NetworkBehaviour
     
     private void OnEnable()
     {
-
         controls.GamePlayer.Enable();
     }
     
@@ -29,25 +27,23 @@ public class PlayerMovement : NetworkBehaviour
     {
      controls.GamePlayer.Disable();   
     }
-
-    private void Start()
-    {
-      
-    }
-
-    [Client] 
+    
+    
     void Update()
     {
-        if (!isLocalPlayer)
+        Debug.Log(isLocalPlayer);
+        if (isLocalPlayer)
         {
-            RpcMove();
+            Vector3 movementInput = controls.GamePlayer.Movement.ReadValue<Vector2>();
+            CmdMove(movementInput);
+            
         }
     }
     [ClientRpc]
-    private void RpcMove()
+    private void RpcMove(Vector2 movementInput)
     {
-        var movementInput = controls.GamePlayer.Movement.ReadValue<Vector2>();
-        var movement = new Vector3
+       
+        Vector3 movement = new Vector3
         {
             x = movementInput.x,
             z = movementInput.y
@@ -59,13 +55,11 @@ public class PlayerMovement : NetworkBehaviour
 
     }
     //Actually moving the player on server
+    //***************************************SERVER CODE****************************
     [Command]
-    private void CmdMove()
+    private void CmdMove(Vector2 movementInput)
     {
-        if (!isLocalPlayer)
-        {
-            RpcMove();
-        }
+        RpcMove(movementInput);
     }
     
 
