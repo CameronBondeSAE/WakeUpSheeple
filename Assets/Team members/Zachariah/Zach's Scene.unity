@@ -315,6 +315,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbb76a17196e75c42882ecbc463011dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  velocity: 1
+  Sheep: {fileID: 1226472076}
+  isAttached: 0
+  Virus: {fileID: 1053091919}
 --- !u!135 &1053091921
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -420,7 +424,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1226472076}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.571, y: 1.049, z: -0.004615741}
+  m_LocalPosition: {x: -5.67, y: 1.049, z: -4.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -550,7 +554,7 @@ Transform:
   m_GameObject: {fileID: 1626189129}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.18, z: 0}
-  m_LocalScale: {x: 10, y: -0.082618, z: 10}
+  m_LocalScale: {x: 20, y: -0.082618, z: 20}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -576,15 +580,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4775116355693366806, guid: e9becea97fca0c242bedfecf9161a56e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.14174081
+      value: -5.82
       objectReference: {fileID: 0}
     - target: {fileID: 4775116355693366806, guid: e9becea97fca0c242bedfecf9161a56e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.191259
+      value: 1.67
       objectReference: {fileID: 0}
     - target: {fileID: 4775116355693366806, guid: e9becea97fca0c242bedfecf9161a56e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.344
+      value: -7.69
       objectReference: {fileID: 0}
     - target: {fileID: 4775116355693366806, guid: e9becea97fca0c242bedfecf9161a56e, type: 3}
       propertyPath: m_LocalRotation.x
