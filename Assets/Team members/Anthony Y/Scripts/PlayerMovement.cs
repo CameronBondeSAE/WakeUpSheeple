@@ -1,41 +1,47 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Mirror;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : NetworkBehaviour
 {
-    private PlayerControls controls;
+    
     public float movementSpeed;
+    
+    
+    private PlayerControls controls;
 
     private void Awake()
     {
         controls = new PlayerControls();
     }
 
+    [ClientCallback] // prevents the server from running this method
     private void OnEnable()
     {
 
         controls.GamePlayer.Enable();
     }
-
+[ClientCallback]
     private void OnDisable()
     {
      controls.GamePlayer.Disable();   
     }
 
-    // Start is called before the first frame update
-    void Start()
+
+    [ClientCallback] // Easier for beginners but will be terrible in the long run. Better solution is Server Authority
+    void Update()
     {
+        if (!isLocalPlayer)
+        {
+            Move();
+        }
         
     }
-
-    // Update is called once per frame
-    void Update() => Move();
-
+    [Client]
     private void Move()
     {
-        //QUICK SHIT HACK
         var movementInput = controls.GamePlayer.Movement.ReadValue<Vector2>();
         var movement = new Vector3
         {
@@ -49,4 +55,5 @@ public class PlayerMovement : MonoBehaviour
 
 
     }
+
 }

@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 2299596439350243935}
   - component: {fileID: 885933283}
   - component: {fileID: 412964123}
+  - component: {fileID: 6646331748093941500}
+  - component: {fileID: 6123762923093497166}
   m_Layer: 0
   m_Name: Clay Mate
   m_TagString: Untagged
@@ -124,4 +126,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a2138553fa7352438d20161b102611e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   movementSpeed: 10
+--- !u!114 &6646331748093941500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2299596439350243934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9281cf7a6befff1468c95fd4a668b198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  player: {fileID: 2299596439350243938}
+--- !u!114 &6123762923093497166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2299596439350243934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  serverOnly: 0
+  m_AssetId: 
+  hasSpawned: 0
