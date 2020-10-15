@@ -9,9 +9,8 @@ namespace AnthonyY
     public class PlayerRotate : NetworkBehaviour
     {
         [SyncVar]
-        public float rotateForce = 2f;
-
-        [SyncVar]public float direction = 50;
+        public float rotateForce = 360000f;
+        
         
         
         public Rigidbody rb;

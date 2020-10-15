@@ -259,7 +259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  movementSpeed: 360000
+  movementSpeed: 10
 --- !u!114 &6961167091236266823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,7 +274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  rotateForce: 90
+  rotateForce: 36000
   rb: {fileID: 5906288632234204624}
 --- !u!114 &6123762923093497166
 MonoBehaviour:
