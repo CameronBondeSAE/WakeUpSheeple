@@ -9,36 +9,53 @@ namespace AnthonyY
     public class PlayerRotate : NetworkBehaviour
     {
         [SyncVar]
-        public float rotateForce = 90f;
+        public float rotateForce = 360000f;
+        
+        
+        
         public Rigidbody rb;
+
+        private PlayerControls controls;
     
-        void Start()
+        private void OnEnable()
         {
-            rb = rb.GetComponent<Rigidbody>();
+            controls.GamePlayer.Enable();
+        }
+    
+        private void OnDisable()
+        {
+            controls.GamePlayer.Disable();   
         }
 
-        [Client]
         void Update()
         { 
-            if(!hasAuthority){return;}
-
-            if (!Input.GetKeyDown(KeyCode.Space)) {return;};
+           Debug.Log(isLocalPlayer);
+           
             // rb.AddTorque(0,rotateForce,0);
-       
-            CmdRotate();
+            if (isLocalPlayer)
+            {
+                if (Input.GetKey(KeyCode.Space))
+                {
+                    CmdRotate();
+                }
+                
+            }
+            
         }
-
+        [ClientRpc]
+        private void RPCRotate()
+        {
+           transform.Rotate(Vector3.up,rotateForce * Time.deltaTime);
+        } 
+        
+        //******************SERVER CODE********************************
         [Command]
         public void CmdRotate()
         {
             RPCRotate();
 
         }
-        [ClientRpc]
-        private void RPCRotate()
-        {
-            rb.AddTorque(0,rotateForce,0);
-        } 
+       
     }
 
 }

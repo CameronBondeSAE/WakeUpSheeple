@@ -25,6 +25,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Rotate"",
+                    ""type"": ""Button"",
+                    ""id"": ""7e7ddfb6-cf38-43f8-ba9d-662f718b2196"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -82,6 +90,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c9082f85-6ef2-4220-8ebc-371d1771942f"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -108,6 +127,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         // GamePlayer
         m_GamePlayer = asset.FindActionMap("GamePlayer", throwIfNotFound: true);
         m_GamePlayer_Movement = m_GamePlayer.FindAction("Movement", throwIfNotFound: true);
+        m_GamePlayer_Rotate = m_GamePlayer.FindAction("Rotate", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -158,11 +178,13 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputActionMap m_GamePlayer;
     private IGamePlayerActions m_GamePlayerActionsCallbackInterface;
     private readonly InputAction m_GamePlayer_Movement;
+    private readonly InputAction m_GamePlayer_Rotate;
     public struct GamePlayerActions
     {
         private @PlayerControls m_Wrapper;
         public GamePlayerActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_GamePlayer_Movement;
+        public InputAction @Rotate => m_Wrapper.m_GamePlayer_Rotate;
         public InputActionMap Get() { return m_Wrapper.m_GamePlayer; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -175,6 +197,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Movement.started -= m_Wrapper.m_GamePlayerActionsCallbackInterface.OnMovement;
                 @Movement.performed -= m_Wrapper.m_GamePlayerActionsCallbackInterface.OnMovement;
                 @Movement.canceled -= m_Wrapper.m_GamePlayerActionsCallbackInterface.OnMovement;
+                @Rotate.started -= m_Wrapper.m_GamePlayerActionsCallbackInterface.OnRotate;
+                @Rotate.performed -= m_Wrapper.m_GamePlayerActionsCallbackInterface.OnRotate;
+                @Rotate.canceled -= m_Wrapper.m_GamePlayerActionsCallbackInterface.OnRotate;
             }
             m_Wrapper.m_GamePlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -182,6 +207,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Movement.started += instance.OnMovement;
                 @Movement.performed += instance.OnMovement;
                 @Movement.canceled += instance.OnMovement;
+                @Rotate.started += instance.OnRotate;
+                @Rotate.performed += instance.OnRotate;
+                @Rotate.canceled += instance.OnRotate;
             }
         }
     }
@@ -198,5 +226,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     public interface IGamePlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
+        void OnRotate(InputAction.CallbackContext context);
     }
 }

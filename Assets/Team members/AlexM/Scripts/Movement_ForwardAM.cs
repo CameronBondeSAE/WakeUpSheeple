@@ -63,7 +63,7 @@ public class Movement_ForwardAM : MonoBehaviour
 
       if (clampSpeed)
       {
-         //Negatives arent clamped for now...
+         //Negatives aren't clamped for now...
          if (localSpeed.z > maxSpeed)
          {
             _rB.velocity = new Vector3(vel.x, vel.y, maxSpeed);
@@ -75,6 +75,7 @@ public class Movement_ForwardAM : MonoBehaviour
       }
       else
       {
+         //Un-Clamped
          _rB.AddRelativeForce(0,0,forceApplied.z);
       }
    }
