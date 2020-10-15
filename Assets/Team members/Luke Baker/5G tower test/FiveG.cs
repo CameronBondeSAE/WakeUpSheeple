@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class FiveG : MonoBehaviour
 {
-    //Energising is when the animals gain a speed boost.
-    //Attracting is when UFO's and black sheep travel toward tower location.
+    //Energising is when the animals gain a speed boost???.
+    //Attracting is when UFO's or helis and black sheep travel toward tower location.
     
     //Reference to the TriggerMarshallers
     public TriggerMarshaller energiserTrigger;
@@ -18,6 +18,7 @@ public class FiveG : MonoBehaviour
     
     //variables for event functionality
     public float attractSpeed;
+    //this probably needs to be set for current parents position
     public Vector3 attractionTargetPos;
 
     //Subscribing
@@ -39,12 +40,10 @@ public class FiveG : MonoBehaviour
     public void Attraction(Collider trigger)
     {
         Debug.Log(trigger.name+ " triggered " + attractorCol.name);
-
-        float step = attractSpeed * Time.deltaTime;
         trigger.GetComponent<Rigidbody>().AddForce((attractionTargetPos - trigger.attachedRigidbody.transform.position).normalized * attractSpeed * Time.deltaTime);
     }
 
-    //when energise event triggered, sheep will get a speed boost for a certain amount of time while in the inner trigger but can attract Heli's???
+    //when energise event triggered, sheep will get a speed boost for a certain amount of time while in the inner trigger but can attract Helis???
     public void Energise(Collider trigger)
     {
         Debug.Log(trigger.name + " triggered " + energiserCol.name);

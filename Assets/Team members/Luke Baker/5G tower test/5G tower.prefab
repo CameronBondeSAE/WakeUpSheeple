@@ -549,7 +549,7 @@ MonoBehaviour:
   attractorTrigger: {fileID: 8846854178892276979}
   energiserCol: {fileID: 9194886305766292342}
   attractorCol: {fileID: 8657903045666766096}
-  speed: 1000
+  attractSpeed: 1000
   attractionTargetPos: {x: -1.7756, y: 2.05, z: 2.844781}
 --- !u!1 &9194886306139340341
 GameObject:
