@@ -6,6 +6,8 @@ using Random = UnityEngine.Random;
 
 public class HeliBehaviour : MonoBehaviour
 {
+
+    public GameObject HelicopterPrefab;
     public Transform[] SpawnLocations;
     public Transform[] WaitLocations;
     public Transform[] ExitLocations;
@@ -22,16 +24,12 @@ public class HeliBehaviour : MonoBehaviour
     public int RandomExit;
     
     
-    //transform.position = Vector3.MoveTowards(transform.position, WaitLocations[1].position, move);
-    public void Start()
+    public void Awake()
     {
-        //spawning.Enter = SpawnHeli;
-        spawning.Update = SpawnHeli;
+        spawning.Update = ToSpawn;
         waiting.Update = WaitingHeli;
         exiting.Update = ExitHeli;
-        
         FlyingState.ChangeState(spawning);
-
         RandomSpawn = Random.Range(0, SpawnLocations.Length);
         RandomWait = Random.Range(0, WaitLocations.Length);
         RandomExit = Random.Range(0, ExitLocations.Length);
@@ -40,9 +38,19 @@ public class HeliBehaviour : MonoBehaviour
     {
         move = 15 * Time.deltaTime;
         FlyingState.UpdateCurrentState();
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            SpawnNewHeli();
+        }
     }
-    
-    void SpawnHeli()
+
+    public void SpawnNewHeli()
+    {
+        Instantiate(HelicopterPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+    }
+
+    void ToSpawn()
     {
         transform.position = Vector3.MoveTowards(transform.position, SpawnLocations[RandomSpawn].position, move);
         if (Vector3.Distance(transform.position, SpawnLocations[RandomSpawn].position) == 0)
@@ -69,6 +77,10 @@ public class HeliBehaviour : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(transform.position, ExitLocations[RandomExit].position, move);
         }
+        if (Vector3.Distance(transform.position, ExitLocations[RandomExit].position) == 0)
+        {
+            Destroy(gameObject);
+        }  
     }
         
 
