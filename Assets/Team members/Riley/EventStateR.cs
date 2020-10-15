@@ -23,6 +23,16 @@ public class EventStateR : MonoBehaviour
     public int timeWait; //Time wait int for the jump function to determine how long the mole is out of the ground
     public int timeSWaitR; //Time wait for the pause button so when we click pause it doesn't instantly unpause
     public int timeHoverWait;
+    //----------------------------------WAYPOINT VARIABLES
+    public DelegateState moveToWaypoint = new DelegateState();
+    public List<Transform> waypointsList = new List<Transform>();
+    private Transform currentWaypoint;
+    private int currentWaypointIndex;
+    private float safeDistance = 0.8f;
+    private int previousWaypointIndex;
+    private float movementSpeed = 0.05f;
+    public bool waypointFirstRound;
+    //----------------------------------WAYPOINT VARIABLES
     //----------------------------------UPDATE/START
     void Start()
     {
@@ -39,6 +49,14 @@ public class EventStateR : MonoBehaviour
         stateManager.ChangeState(standing); //on start set the default state to standing
         rb = GetComponent<Rigidbody>();
         bPSR = false;
+        //----------------------------------WAYPOINT VARIABLES
+        moveToWaypoint.Enter = moveToWaypointStart;
+        moveToWaypoint.Update = moveToWaypointUpdate;
+        moveToWaypoint.Exit = moveToWaypointExit;
+        currentWaypointIndex = 0;
+        currentWaypoint = waypointsList[currentWaypointIndex];
+        waypointFirstRound = false;
+        //----------------------------------WAYPOINT VARIABLES
     }
     void Update()
     {
@@ -55,7 +73,7 @@ public class EventStateR : MonoBehaviour
         timeHoverWait = timeHoverWait + 1;
         if (timeHoverWait > 600 && bPSR != true)
         {
-            stateManager.ChangeState(jump);
+            stateManager.ChangeState(moveToWaypoint);
         }
     }
     private void standingExit()
@@ -89,6 +107,45 @@ public class EventStateR : MonoBehaviour
         
     }
     //----------------------------------JUMP
+    //----------------------------------WAYPOINT
+    private void moveToWaypointStart()
+    {
+        timeHoverWait = 0;
+        if (currentWaypointIndex == 0 && waypointFirstRound == false)
+        {
+            waypointFirstRound = true;
+            currentWaypointIndex = 0;
+            currentWaypoint = waypointsList[currentWaypointIndex];
+        }
+        //else
+        //{
+            //currentWaypointIndex = currentWaypointIndex + 1;
+            //currentWaypoint = waypointsList[currentWaypointIndex];
+        //}
+        
+    }
+    private void moveToWaypointUpdate()
+    {
+        timeHoverWait = timeHoverWait + 1;
+        
+        if (Vector3.Distance(transform.position, currentWaypoint.position) > safeDistance)
+        {
+            transform.LookAt(currentWaypoint);
+            rb.AddRelativeForce(Vector3.forward * movementSpeed, ForceMode.Force);
+        }
+        else
+        {
+            if (timeHoverWait > 1600 && bPSR == false)
+            {
+                stateManager.ChangeState(jump);
+            }
+        }
+    }
+    private void moveToWaypointExit()
+    {
+        
+    }
+    //----------------------------------WAYPOINT
     //----------------------------------PAUSE
     private void pauseEventR()
     {
