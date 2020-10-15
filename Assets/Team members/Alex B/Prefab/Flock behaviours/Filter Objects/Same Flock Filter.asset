@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 928509003d65df4418af1c2ff0a0da02, type: 3}
-  m_Name: New Alignment Behavior
+  m_Script: {fileID: 11500000, guid: 90b5d574492277949ad164b9aba3d901, type: 3}
+  m_Name: Same Flock Filter
   m_EditorClassIdentifier: 
-  filter: {fileID: 11400000, guid: bebe53e3c6d9fbe4a80466d1402dbc46, type: 2}

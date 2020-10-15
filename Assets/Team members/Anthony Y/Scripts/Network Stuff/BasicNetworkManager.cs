@@ -9,6 +9,10 @@ public class BasicNetworkManager : NetworkManager
 {
     public static event Action OnClientConnected;
     public static event Action OnClientDisconnected;
+    public static event Action<NetworkConnection> onServerReadiedEvent;
+
+   
+    
     
     public void SetHostName(string hostName)
     {
@@ -46,4 +50,12 @@ public class BasicNetworkManager : NetworkManager
         }
 
     }
+//When some clicks ready or joins the game
+    public override void OnServerReady(NetworkConnection conn)
+    {
+        base.OnServerReady(conn);
+        onServerReadiedEvent?.Invoke(conn);
+    }
+
+  
 }

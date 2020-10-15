@@ -6,7 +6,7 @@ using UnityEngine;
 namespace AJ
 {
     [CreateAssetMenu(menuName = "Flock/Behavior,Cohesion")]
-    public class CohesionBehavior : FlockBehavior
+    public class CohesionBehavior : FilteredFlockBehavior
     {
         private FlockBehavior _flockBehaviorImplementation;
 
@@ -16,7 +16,8 @@ namespace AJ
                 return Vector2.zero;
             
             Vector2 cohesionMove = Vector2.zero;
-            foreach (Transform item in context)
+            List<Transform> filteredContext = (filter == null) ? context : filter.Filter(agent, context);
+            foreach (Transform item in filteredContext)
             {
                 cohesionMove += (Vector2) item.position;
             }
