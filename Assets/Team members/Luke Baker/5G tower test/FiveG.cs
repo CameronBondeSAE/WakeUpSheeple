@@ -17,11 +17,8 @@ public class FiveG : MonoBehaviour
     public Collider attractorCol;
     
     //variables for event functionality
-    public float speed;
-    public float timeEffected;
+    public float attractSpeed;
     public Vector3 attractionTargetPos;
-    public bool canAttract = false;
-    public bool canEnergise = false;
 
     //Subscribing
     private void OnEnable()
@@ -42,20 +39,19 @@ public class FiveG : MonoBehaviour
     public void Attraction(Collider trigger)
     {
         Debug.Log(trigger.name+ " triggered " + attractorCol.name);
-        canAttract = true;
-        
-        float step = speed * Time.deltaTime;
-        trigger.GetComponent<Rigidbody>().AddForce((attractionTargetPos - trigger.attachedRigidbody.transform.position).normalized * speed * Time.deltaTime);
+
+        float step = attractSpeed * Time.deltaTime;
+        trigger.GetComponent<Rigidbody>().AddForce((attractionTargetPos - trigger.attachedRigidbody.transform.position).normalized * attractSpeed * Time.deltaTime);
     }
 
-    //when energise event triggered, sheep will get a speed boost for a certain amount of time while in the inner trigger but can attract UFO's???
+    //when energise event triggered, sheep will get a speed boost for a certain amount of time while in the inner trigger but can attract Heli's???
     public void Energise(Collider trigger)
     {
         Debug.Log(trigger.name + " triggered " + energiserCol.name);
-        canEnergise = true;
+        attractorTrigger.onTriggerStayEvent -= Attraction;
+
+        //TODO: make a component for speed in a sheep script or speed script apply this for a certain amount of time
         
-        //TODO: make a direction variable the sheep are facing or speed change to energise within 5g collider
-        
-        trigger.GetComponent<Rigidbody>().AddForce((Vector3.forward * speed * Time.deltaTime).normalized);
+        //trigger.GetComponent<Rigidbody>().AddForce((Vector3.forward * speed * Time.deltaTime).normalized);
     }
 }

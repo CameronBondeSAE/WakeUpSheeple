@@ -19,6 +19,7 @@ public class TriggerMarshaller : MonoBehaviour
         onTriggerStayEvent?.Invoke(trigger);
     }
 
+    //in case someone wants to use it
     void OnTriggerExit(Collider trigger)
     {
         onTriggerExitEvent?.Invoke(trigger);
