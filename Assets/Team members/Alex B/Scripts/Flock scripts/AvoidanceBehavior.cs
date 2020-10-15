@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 namespace AJ
 {
     [CreateAssetMenu(menuName = "Flock/Behavior,Avoidance")]
-    public class AvoidanceBehavior : FlockBehavior
+    public class AvoidanceBehavior : FilteredFlockBehavior
+    
     {
         private FlockBehavior _flockBehaviorImplementation;
 
@@ -16,7 +18,8 @@ namespace AJ
             
             Vector2 avoidanceMove = Vector2.zero;
             int nAvoid = 0;
-            foreach (Transform item in context)
+            List<Transform> filteredContext = (filter == null) ? context : filter.Filter(agent, context);
+            foreach (Transform item in filteredContext)
             {
                 if (Vector2.SqrMagnitude(item.position - agent.transform.position) < flock.SquareAvoidanceRadius)
                 {

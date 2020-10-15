@@ -6,7 +6,7 @@ using UnityEngine;
 namespace AJ
 {
     [CreateAssetMenu(menuName = "Flock/Behavior,Steered Cohesion")]
-    public class SteeredCohesion : FlockBehavior
+    public class SteeredCohesion : FilteredFlockBehavior
     {
         Vector2 currentVelocity;
         //how long it takes the agent to get from it's current state to calculated state.
@@ -22,7 +22,8 @@ namespace AJ
             
             //add all points together and average
             Vector2 cohesionMove = Vector2.zero;
-            foreach (Transform item in context)
+            List<Transform> filteredContext = (filter == null) ? context : filter.Filter(agent, context);
+            foreach (Transform item in filteredContext)
             {
                 cohesionMove += (Vector2) item.position;
             }

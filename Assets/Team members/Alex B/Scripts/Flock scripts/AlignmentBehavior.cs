@@ -6,7 +6,7 @@ using UnityEngine;
 namespace AJ
 {
     [CreateAssetMenu(menuName = "Flock/Behavior,Alignment")]
-    public class AlignmentBehavior : FlockBehavior
+    public class AlignmentBehavior : FilteredFlockBehavior
     {
         private FlockBehavior _flockBehaviorImplementation;
 
@@ -16,7 +16,8 @@ namespace AJ
                 return agent.transform.up;
             
             Vector2 alignmentMove = Vector2.zero;
-            foreach (Transform item in context)
+            List<Transform> filteredContext = (filter == null) ? context : filter.Filter(agent, context);
+            foreach (Transform item in filteredContext)
             {
                 alignmentMove += (Vector2) item.transform.transform.up;
             }
