@@ -27,7 +27,6 @@ using UnityEngine;
 
 		 private void Move()
 		 {
-			 
 			 _detector.detector_fwd_dist += f => { dist = f; };
 
 			 if (dist >= 10)

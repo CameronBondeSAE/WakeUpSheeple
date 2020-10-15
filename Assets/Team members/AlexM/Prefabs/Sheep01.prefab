@@ -10,11 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7828059398278480904}
   - component: {fileID: 1521166418}
-  - component: {fileID: 3025574096365241139}
   - component: {fileID: 1521166416}
   - component: {fileID: 1521166417}
-  - component: {fileID: 8986222774458312047}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sheep01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,18 +55,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3025574096365241139
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2372177631083542375}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8961b1e0a7fa8f47a5901c0e1dd726c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1521166416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,18 +83,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   yForce: 0
---- !u!114 &8986222774458312047
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2372177631083542375}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be57e4c2747636740ac7b02bde5483e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4369274410258664551
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,7 +95,7 @@ GameObject:
   - component: {fileID: 600426598239821462}
   - component: {fileID: 216347508652531906}
   - component: {fileID: 1194678179462907539}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216,7 +190,7 @@ GameObject:
   - component: {fileID: 7472212680046124202}
   - component: {fileID: 8911564195205557213}
   - component: {fileID: 1578514892}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -312,7 +286,7 @@ GameObject:
   - component: {fileID: 6696128435479563525}
   - component: {fileID: 8269789629119920501}
   - component: {fileID: 961163076008220403}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Leg (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -407,7 +381,7 @@ GameObject:
   - component: {fileID: 7134791532378700571}
   - component: {fileID: 6570404111733107632}
   - component: {fileID: 1988554071482142319}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Leg (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -502,7 +476,7 @@ GameObject:
   - component: {fileID: 6663539560469842399}
   - component: {fileID: 4237963483284668882}
   - component: {fileID: 649927868233580221}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Leg (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -597,7 +571,7 @@ GameObject:
   - component: {fileID: 5375004319136876246}
   - component: {fileID: 1634760434853057680}
   - component: {fileID: 3489029304547892167}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
