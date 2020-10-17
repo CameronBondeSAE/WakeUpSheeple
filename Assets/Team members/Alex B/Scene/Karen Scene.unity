@@ -246,7 +246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agentPrefab: {fileID: 8522546211026094331, guid: 58f344799b29d1342a34f6e19b2378ce, type: 3}
   behavior: {fileID: 11400000, guid: d37bf734dcd1b7c44a9b618e745eb822, type: 2}
-  startingCount: 1500
+  startingCount: 500
   driveFactor: 50
   maxSpeed: 50
   neighborRadius: 7
@@ -260,7 +260,7 @@ Transform:
   m_GameObject: {fileID: 362836907}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 6, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -296,7 +296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agentPrefab: {fileID: 7119511714556738324, guid: d459049814186f6499b65138e4498c33, type: 3}
   behavior: {fileID: 11400000, guid: d37bf734dcd1b7c44a9b618e745eb822, type: 2}
-  startingCount: 1500
+  startingCount: 500
   driveFactor: 50
   maxSpeed: 50
   neighborRadius: 7
@@ -310,7 +310,7 @@ Transform:
   m_GameObject: {fileID: 826030784}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 6, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -346,7 +346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agentPrefab: {fileID: 8522546211026094331, guid: ce0419e3bd1753346a067a77572630a5, type: 3}
   behavior: {fileID: 11400000, guid: d37bf734dcd1b7c44a9b618e745eb822, type: 2}
-  startingCount: 1500
+  startingCount: 500
   driveFactor: 50
   maxSpeed: 50
   neighborRadius: 7
@@ -360,7 +360,7 @@ Transform:
   m_GameObject: {fileID: 1417673862}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 6, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4

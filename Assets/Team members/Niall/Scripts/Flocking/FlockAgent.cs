@@ -26,8 +26,8 @@ namespace Niall
         public void Move(Vector3 velocity)
         {
             transform.forward = velocity;
-            rb.AddForce(velocity * Time.deltaTime);
-          //  transform.position += velocity * Time.deltaTime;
+            //rb.AddForce(velocity * Time.deltaTime);
+            transform.position += velocity * Time.deltaTime;
         }
     }
 }
