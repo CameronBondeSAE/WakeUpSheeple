@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 362836909}
   - component: {fileID: 362836908}
   m_Layer: 0
-  m_Name: Flock Red
+  m_Name: Flock White
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -246,7 +246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agentPrefab: {fileID: 8522546211026094331, guid: 58f344799b29d1342a34f6e19b2378ce, type: 3}
   behavior: {fileID: 11400000, guid: d37bf734dcd1b7c44a9b618e745eb822, type: 2}
-  startingCount: 1500
+  startingCount: 500
   driveFactor: 50
   maxSpeed: 50
   neighborRadius: 7
@@ -296,7 +296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agentPrefab: {fileID: 7119511714556738324, guid: d459049814186f6499b65138e4498c33, type: 3}
   behavior: {fileID: 11400000, guid: d37bf734dcd1b7c44a9b618e745eb822, type: 2}
-  startingCount: 1500
+  startingCount: 500
   driveFactor: 50
   maxSpeed: 50
   neighborRadius: 7
@@ -346,7 +346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agentPrefab: {fileID: 8522546211026094331, guid: ce0419e3bd1753346a067a77572630a5, type: 3}
   behavior: {fileID: 11400000, guid: d37bf734dcd1b7c44a9b618e745eb822, type: 2}
-  startingCount: 1500
+  startingCount: 500
   driveFactor: 50
   maxSpeed: 50
   neighborRadius: 7
@@ -401,8 +401,8 @@ Camera:
   m_GameObject: {fileID: 1513003557}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
