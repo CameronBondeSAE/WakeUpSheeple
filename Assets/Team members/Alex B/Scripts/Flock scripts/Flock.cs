@@ -10,7 +10,7 @@ namespace AJ
         List<FlockAgent> agents = new List<FlockAgent>();
         public FlockBehavior behavior;
 
-        [Range(10, 500)] public int startingCount = 250;
+        [Range(10, 1500)] public int startingCount = 250;
         const float AgentDensity = 0.08f;
 
         [Range(1f, 100f)] public float driveFactor = 10f;
@@ -41,11 +41,11 @@ namespace AJ
 
             for (int i = 0; i < startingCount; i++)
             {
-                FlockAgent newAgent = Instantiate(agentPrefab, Random.insideUnitCircle * startingCount * AgentDensity,
+                FlockAgent newAgent = Instantiate(agentPrefab, Random.insideUnitCircle * (startingCount * AgentDensity),
                     Quaternion.Euler(Vector3.forward * Random.Range(0f, 360f)), transform);
 
                 newAgent.name = "Agent " + i;
-                newAgent.Initialize(this);
+                //newAgent.Initialize(this);
                 agents.Add(newAgent);
             }
         }
@@ -59,7 +59,7 @@ namespace AJ
                 
                 //agent.GetComponentInChildren<SpriteRenderer>().color = Color.Lerp(Color.white, Color.green, context.Count / 6f);
 
-                Vector2 move = behavior.CalculateMove(agent, context, this);
+                Vector3 move = behavior.CalculateMove(agent, context, this);
                 move *= driveFactor;
                 if (move.sqrMagnitude > squareMaxSpeed)
                 {
@@ -73,8 +73,8 @@ namespace AJ
         List<Transform> GetNearbyObjects(FlockAgent agent)
         {
             List<Transform> context = new List<Transform>();
-            Collider2D[] contextCOlliders = Physics2D.OverlapCircleAll(agent.transform.position, neighborRadius);
-            foreach (Collider2D c in contextCOlliders)
+            Collider[] contextCOlliders = Physics.OverlapSphere(agent.transform.position, neighborRadius);
+            foreach (Collider c in contextCOlliders)
             {
                 if (c != agent.AgentCollider)
                 {
