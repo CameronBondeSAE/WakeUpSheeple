@@ -3,37 +3,56 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace AlexM
 {
+	[RequireComponent(typeof(Canvas), typeof(CanvasScaler))]
 	public class AchievementManager : MonoBehaviour
 	{
 		/// <summary>
-		/// PLEASE NOTE: This is all purely for testing the concept and to get feedback during class/when possible on if this is the
-		/// right direction to go in the first place.
-		/// Launch the achievementTestScene, hit up arrow really fast to get above the jumpAchievementThreshold
+		/// PLEASE NOTE:
+		/// You only need to add the TestGuy from the scene, and set a duration for how long the achievement popup is visible.
+		///
+		/// To add new achievements, just subscribe to their event (please make the event with plenty of into attached)
+		/// And just call TriggerAchievement("Title", "SubText") inside the function created when subscribing to the event.
 		/// </summary>
-		public float achievementShowTimer;
+		
+		[Header("Settings")]
+		[Tooltip("How long the Achievement will show for when triggered.")]
+		public float visibleDuration = 5;
+		
+		
+		[Header("Achievement Variables")]
 		public TestGuyStuff testGuy;
+		
+		//General
+		[HideInInspector]
 		public List<GameObject> GOStoToggle;
+		[HideInInspector]
 		public TextMeshProUGUI _title, _text;
 
 		private float jumpTimer;
 		private int jumpAchievementThreshold = 5;
-
+		
 		private void OnEnable()
 		{
-			//ToggleGameObjects();
-			testGuy.jumpEvent += TestGuyOnjumpEvent;
+			title_prefab = Resources.Load<TextMeshProUGUI>("AchievementManager/TXT_AchievementTitle");
+			text_prefab = Resources.Load<TextMeshProUGUI>("AchievementManager/TXT_AchievementText");
+			SetGOListState(false);
+
+			if (testGuy)
+			{
+				testGuy.jumpEvent += TestGuyOnjumpEvent;
+			}
 		}
 
 		private void TestGuyOnjumpEvent(GameObject obj, int jumpCount)
 		{
 			if (jumpCount > 5)
 			{
-				Debug.Log("YOU GOT OVER 5, YAY!");
+				//Debug.Log("YOU GOT OVER 5, YAY!");
 				TriggerAchievement("Jump King", "You got lots of jumps!");
-				return;
 			}
 		}
 
@@ -41,44 +60,62 @@ namespace AlexM
 
 		public void TriggerAchievement(string title, string text)
 		{
-			//TODO:Make it so that they first enable/show the text for a set time, then disable it, but it seems to be doing things a bit differently than i expected.
-			//StartCoroutine(showAchievementFor(achievementShowTimer, "Jump King", "You got lots of jumps!"));
-			_title.SetText(title);
-			_text.SetText(text);
+			StartCoroutine(durationToShow(visibleDuration, title, text));
 		}
 
-		IEnumerator showAchievementFor(float time, string title, string text)
+		IEnumerator durationToShow(float time, string title, string text)
 		{
-			ToggleGameObjects();
-			// _title.SetText(title);
-			// _text.SetText(text);
+			SetGOListState(true);
+			 _title.SetText(title);
+			 _text.SetText(text);
 			yield return new WaitForSeconds(time);
-			ToggleGameObjects();
+			SetGOListState(false);
 		}
 
 	#region EditorUiStuff
 
 		//This region is just dedicated to the button i've added in the editor for this script. will add relevant fields in their correct positions.
-
+		[HideInInspector]
 		public TextMeshProUGUI title_prefab, text_prefab;
 
 		public void QuickSetup()
 		{
+			title_prefab = Resources.Load<TextMeshProUGUI>("AchievementManager/TXT_AchievementTitle");
+			text_prefab = Resources.Load<TextMeshProUGUI>("AchievementManager/TXT_AchievementText");
+
+
+			if (!_title)
+			{
+				_title = Instantiate(title_prefab, this.transform, false);
+			}
+
+			if (!_text)
+			{
+				_text = Instantiate(text_prefab, this.transform, false);
+			}
+
+			GOStoToggle.Add(_title.gameObject);
+			GOStoToggle.Add(_text.gameObject);
+
+
 			//TODO: Fix the anchor stuff, messes with postioning for some reason..
-			var title = Instantiate(title_prefab, this.transform, false);
-			var text = Instantiate(text_prefab, this.transform, false);
-			_title = title;
-			_text = text;
 			// title.rectTransform.anchorMin = new Vector2(0.5f, 1);
 			// title.rectTransform.anchorMax = new Vector2(0.5f, 1);
-			
-			var titleX = title.rectTransform.position.x;
-			var titleY = title.rectTransform.position.y;
+
+
+			var titleX = _title.rectTransform.position.x;
+			var titleY = _title.rectTransform.position.y;
 			titleX = 0;
 			titleY = 85;
-			
 		}
 
+	#region Game Objects To Toggle Stuff
+
+		/// <summary>
+		/// If either of these two functions are having issues then its because the GOSToToggle list isnt populating properly.
+		/// Make the List public and figure out what the issues is there.
+		/// OR the quick setup is broken for some reason.
+		/// </summary>
 		public void ToggleGameObjects()
 		{
 			foreach (var GO in GOStoToggle)
@@ -94,6 +131,16 @@ namespace AlexM
 			}
 		}
 
+		public void SetGOListState(bool state)
+		{
+			foreach (var GO in GOStoToggle)
+			{
+				GO.SetActive(state);
+			}
+		}
+		
+
+	#endregion
 	#endregion
 	}
 

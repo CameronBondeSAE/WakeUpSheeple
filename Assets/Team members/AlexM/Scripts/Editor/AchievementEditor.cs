@@ -17,9 +17,9 @@ namespace AlexM
 
             GUILayout.BeginHorizontal();
             
-            if (GUILayout.Button("ToggleTest", GUILayout.Width(80)))
+            if (GUILayout.Button("Test Popup", GUILayout.Width(80)))
             {
-                ((AchievementManager) target).ToggleGameObjects();
+                ((AchievementManager) target).TriggerAchievement("Test Complete", "Yeah, This is all it really does!");
             }
 
             if (GUILayout.Button("Quick Setup", GUILayout.Width(80)))
