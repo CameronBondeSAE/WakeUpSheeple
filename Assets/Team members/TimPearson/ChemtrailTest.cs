@@ -15,7 +15,6 @@ public class ChemtrailTest : MonoBehaviour
     private int current;
     private Vector3 velocity;
     public GameObject enemy;
-    public GameObject wall;
     public float planeHeight;
     public ParticleSystem trail;
     public List<ParticleCollisionEvent> collisionEvents;
@@ -35,28 +34,31 @@ public class ChemtrailTest : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        int numCollisionEvents = trail.GetCollisionEvents(other, collisionEvents);
-
-        Rigidbody rb = other.GetComponent<Rigidbody>();
-        int i = 0;
-
-        while (i < numCollisionEvents)
+        if (!(trail is null))
         {
-            if (rb)
-            {
-                Vector3 pos = collisionEvents[i].intersection;
-                Vector3 force = collisionEvents[i].velocity * 10;
-                rb.AddForce(force);
-            }
+            int numCollisionEvents = trail.GetCollisionEvents(other, collisionEvents);
 
-            i++;
+            Rigidbody rb = other.GetComponent<Rigidbody>();
+            int i = 0;
+
+            while (i < numCollisionEvents)
+            {
+                if (rb)
+                {
+                    Vector3 pos = collisionEvents[i].intersection;
+                    Vector3 force = collisionEvents[i].velocity * 10;
+                    rb.AddForce(force);
+                }
+
+                i++;
+            }
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        GetComponent < Rigidbody > ().velocity=velocity;
+        GetComponent<Rigidbody>().velocity=velocity;
         
         
     }
@@ -70,7 +72,9 @@ public class ChemtrailTest : MonoBehaviour
             Vector3 position = new Vector3(Random.Range(-41f, 58f), planeHeight, Random.Range(-46, 54));
             yield return new WaitForSeconds(5f);
             transform.position = position;
-            velocity = (target.position - transform.position).normalized * speed;
+            Vector3 targetPos = target.position;
+            targetPos.y = planeHeight;
+            velocity = (targetPos - transform.position).normalized * speed;
             
         }
         
@@ -78,16 +82,6 @@ public class ChemtrailTest : MonoBehaviour
         
 
     }
-
-
-
-    // private void OnCollisionEnter(Collision wall)
-    // {
-    //     if (wall.gameObject.tag == "Enemy")
-    //     {
-    //         Destroy(enemy.gameObject);
-    //     }
-    //  
-    // }
+    
 }
 }

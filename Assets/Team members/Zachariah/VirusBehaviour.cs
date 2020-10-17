@@ -15,14 +15,15 @@ public class VirusBehaviour : MonoBehaviour
     public float velocity;
     //public GameObject Sheep;
     public bool isAttached = false;
-    public GameObject Virus;
+    public GameObject virus;
     public Vector3 virusLocation;
     public float incubation = 0f;
+    public float deathTimer;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        deathTimer = 15f;
     }
 
     // Update is called once per frame
@@ -32,6 +33,16 @@ public class VirusBehaviour : MonoBehaviour
         //transform.LookAt(Sheep.transform);
         //transform.position += transform.forward * velocity * Time.deltaTime;
         incubation += Time.deltaTime;
+        if (deathTimer >0f)
+        {
+            deathTimer -= 1*Time.deltaTime; 
+        }else if (deathTimer <0f)
+        {
+            Destroy(gameObject);
+        }else if (isAttached)
+        {
+            
+        }
     }
 
     
@@ -42,7 +53,7 @@ public class VirusBehaviour : MonoBehaviour
         //transform.parent;
         if (other.gameObject.CompareTag("Player"))
         {
-            if (isAttached == false)
+            if (isAttached == false && !other.gameObject.GetComponentInChildren<VirusBehaviour>())
             {
                 var transform1 = transform;
                 transform1.parent = other.transform;
@@ -55,14 +66,12 @@ public class VirusBehaviour : MonoBehaviour
                 //finish creating the instatiate (creates another prefab of virus to simulate infection)
                 //create if statement that uses the incubation float to create new viruses 
                 Debug.Log("Incubate Start");
-                if (incubation > 5f)
+                if (incubation > 5f && !other.GetComponentInChildren<VirusBehaviour>())
                 {
-                    Instantiate(Virus, other.transform.position, new Quaternion(0, 0, 0, 0));
-                    Debug.Log("new virus");
+                    Instantiate(virus, other.transform.position, new Quaternion(0, 0, 0, 0));
                     incubation = 0f;
-                    Debug.Log("Reset incubation");
                 }
-            }
+            } 
               
             //record that I have been attached
         }
