@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class TriggerMoleR : MonoBehaviour
 {
+    
     private void OnTriggerEnter(Collider other)
     {
         if (!other.gameObject.CompareTag("platformR"))

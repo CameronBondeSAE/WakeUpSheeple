@@ -516,6 +516,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8250375454534769690, guid: 19da5110a310baf49a5a0eccfb79b2cb, type: 3}
+      propertyPath: playerSpawnSystem
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8250375454534769691, guid: 19da5110a310baf49a5a0eccfb79b2cb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.935736
@@ -560,6 +564,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8250375454534769692, guid: 19da5110a310baf49a5a0eccfb79b2cb, type: 3}
+      propertyPath: playerSpawnSystem
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8250375454534769692, guid: 19da5110a310baf49a5a0eccfb79b2cb, type: 3}
+      propertyPath: playerPrefab
+      value: 
+      objectReference: {fileID: 2299596439350243934, guid: 17c71fbe5b598ae4c83f06ae4f2bea0c, type: 3}
     - target: {fileID: 8250375454534769695, guid: 19da5110a310baf49a5a0eccfb79b2cb, type: 3}
       propertyPath: m_Name
       value: Basic Network Manager

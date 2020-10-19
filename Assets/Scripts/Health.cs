@@ -3,9 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Health : MonoBehaviour
 {
-	private float amount;
+	public float maxHealth;
+	public float currentHealth;
 
-	public event Action deathEvent;
+	public event Action<Health> changeHealth;
+	
+	
+
+
+
 }

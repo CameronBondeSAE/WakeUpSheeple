@@ -28,11 +28,14 @@ public class EventStateR : MonoBehaviour
     public List<Transform> waypointsList = new List<Transform>();
     private Transform currentWaypoint;
     private int currentWaypointIndex;
-    private float safeDistance = 0.8f;
+    private float safeDistance = 1.5f;
     private int previousWaypointIndex;
-    private float movementSpeed = 0.05f;
+    private float movementSpeed = 0.1f;
     public bool waypointFirstRound;
     //----------------------------------WAYPOINT VARIABLES
+    //----------------------------------TRIGGER VARIABLES
+    private TriggerMoleR TriggerScriptR;
+    //----------------------------------TRIGGER VARIABLES
     //----------------------------------UPDATE/START
     void Start()
     {
@@ -57,6 +60,9 @@ public class EventStateR : MonoBehaviour
         currentWaypoint = waypointsList[currentWaypointIndex];
         waypointFirstRound = false;
         //----------------------------------WAYPOINT VARIABLES
+        //----------------------------------TRIGGER VARIABLES
+        TriggerScriptR = GetComponent<TriggerMoleR>();
+        //----------------------------------TRIGGER VARIABLES
     }
     void Update()
     {
@@ -123,6 +129,12 @@ public class EventStateR : MonoBehaviour
             //currentWaypoint = waypointsList[currentWaypointIndex];
         //}
         
+        
+        
+        //
+        //Use a loop to add all sheep to the list of waypoints
+        //
+        
     }
     private void moveToWaypointUpdate()
     {
@@ -141,6 +153,9 @@ public class EventStateR : MonoBehaviour
             }
         }
     }
+    //
+    // Move to a different sheep after a specified set time to add randomness (Also use a trigger to detect how many sheep are in range to activate the popup)
+    //
     private void moveToWaypointExit()
     {
         
@@ -173,7 +188,7 @@ public class EventStateR : MonoBehaviour
     private void PauseStateRExit()
     {
         bPSR = false; //Reset our BoolPauseStateR to false so we can use pause again
-        rb.constraints = RigidbodyConstraints.None | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+        rb.constraints = RigidbodyConstraints.None | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
     }
     //----------------------------------PAUSE
     private void OnDisable()

@@ -7,10 +7,11 @@ namespace Niall
     public class spin : MonoBehaviour
     {
 
-        
-        void Update()
+        [Range(0, 10)] public float speed;
+
+            void Update()
         {
-            transform.Rotate(0,2f, 0);
+            transform.Rotate(0,speed, 0);
         }
     }
 }

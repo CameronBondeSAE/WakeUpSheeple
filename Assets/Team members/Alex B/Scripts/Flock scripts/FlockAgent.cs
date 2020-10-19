@@ -4,10 +4,11 @@ using UnityEngine;
 
 namespace AJ
 {
-    [RequireComponent(typeof(Collider2D))]
+    [RequireComponent(typeof(Collider))]
 
     public class FlockAgent : MonoBehaviour
     {
+        public Rigidbody rb;
         private Flock agentFlock;
         public Flock AgentFlock
         {
@@ -18,11 +19,9 @@ namespace AJ
             }
         }
         
-        Collider2D agentCollider;
-        //public Rigidbody2D rb2D;
-        //private float thrust = 10.0f;
-
-        public Collider2D AgentCollider
+        Collider agentCollider;
+        
+        public Collider AgentCollider
         {
             get
             {
@@ -39,14 +38,13 @@ namespace AJ
         // Start is called before the first frame update
         void Start()
         {
-            agentCollider = GetComponent<Collider2D>();
-            
-            
+            agentCollider = GetComponent<Collider>();
         }
 
-        public void Move(Vector2 velocity)
+        public void Move(Vector3 velocity)
         {
-            transform.up = velocity;
+            transform.forward = velocity;
+            //rb.AddForce(velocity * Time.deltaTime);
             transform.position += (Vector3)velocity * Time.deltaTime;
 
             

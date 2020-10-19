@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &546495260431623021
+--- !u!1 &2514153509697124241
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,11 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 546495260431623318}
-  - component: {fileID: 546495260431623313}
-  - component: {fileID: 546495260431623312}
-  - component: {fileID: 546495260431623315}
-  - component: {fileID: 546495260431623314}
+  - component: {fileID: 2514153509697122410}
+  - component: {fileID: 2514153509697122413}
+  - component: {fileID: 2514153509697122412}
+  - component: {fileID: 2514153509697122415}
+  - component: {fileID: 2514153509697122414}
   m_Layer: 0
   m_Name: Helicopter
   m_TagString: Untagged
@@ -20,13 +20,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &546495260431623318
+--- !u!4 &2514153509697122410
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 546495260431623021}
+  m_GameObject: {fileID: 2514153509697124241}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 3, z: -1.3}
   m_LocalScale: {x: 5, y: 5, z: 5}
@@ -34,21 +34,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &546495260431623313
+--- !u!33 &2514153509697122413
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 546495260431623021}
+  m_GameObject: {fileID: 2514153509697124241}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &546495260431623312
+--- !u!23 &2514153509697122412
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 546495260431623021}
+  m_GameObject: {fileID: 2514153509697124241}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -83,44 +83,44 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &546495260431623315
+--- !u!65 &2514153509697122415
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 546495260431623021}
+  m_GameObject: {fileID: 2514153509697124241}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &546495260431623314
+--- !u!114 &2514153509697122414
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 546495260431623021}
+  m_GameObject: {fileID: 2514153509697124241}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd058128586ba594a94d1ee593364299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HelicopterPrefab: {fileID: 546495260431623021}
+  HelicopterPrefab: {fileID: 2514153509697124241}
   SpawnLocations:
-  - {fileID: 7466110815464490442, guid: cdb638cd11d77794897a3478d78d38af, type: 3}
-  - {fileID: 8325289736403322196, guid: 9e32e565a811f704e874f4af4517cfba, type: 3}
-  - {fileID: 4654030062811611371, guid: 2dd9239706df1274184d361c566f3f71, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   WaitLocations:
-  - {fileID: 4930623016228419535, guid: b732c63d67b485e4d9753dc7a9f034f8, type: 3}
-  - {fileID: 2654474255983442129, guid: b714897c7558a0a40bcd92175e8ae0ca, type: 3}
-  - {fileID: 7618053340483194513, guid: c1aa5c2b0a206d04589a55e6809abe28, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   ExitLocations:
-  - {fileID: 8438405537123458998, guid: 38b753211675ea24b81bf76049508729, type: 3}
-  - {fileID: 1494241515476540834, guid: 0fd911da5ba0b754cb90dde724fccdc0, type: 3}
-  - {fileID: 9125551449444039828, guid: 9a54ebb502d4e0c47b2a781b474c3fa0, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   spawning:
     active: 0
   waiting:

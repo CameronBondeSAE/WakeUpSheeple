@@ -15,10 +15,10 @@ public class Movement_ForwardAM : MonoBehaviour
    [Tooltip("Adjust these to make the object move in the given direction")]
    public float zForce;
    private Vector3 forceApplied;
-   [Tooltip("Tick this to have more fine control over movement.")]
-   public bool clampSpeed;
-   [Tooltip("if Clamp Speed is true, the max 'forward' speed will be capped to this value")]
-   public float maxSpeed;
+   // [Tooltip("Tick this to have more fine control over movement.")]
+   // public bool clampSpeed;
+   // [Tooltip("if Clamp Speed is true, the max 'forward' speed will be capped to this value")]
+   // public float maxSpeed;
 
    public event Action<Vector3> velEvent;
    
@@ -61,23 +61,31 @@ public class Movement_ForwardAM : MonoBehaviour
       forceApplied.z = zForce;
       Vector3 localSpeed = transform.InverseTransformDirection(forceApplied);
 
-      if (clampSpeed)
-      {
-         //Negatives aren't clamped for now...
-         if (localSpeed.z > maxSpeed)
-         {
-            _rB.velocity = new Vector3(vel.x, vel.y, maxSpeed);
-         }
-         else
-         {
-            _rB.AddRelativeForce(0,0,forceApplied.z);
-         }
-      }
-      else
-      {
-         //Un-Clamped
-         _rB.AddRelativeForce(0,0,forceApplied.z);
-      }
+      _rB.AddRelativeForce(0,0,forceApplied.z);
+      
+   #region BrokenMovement
+
+      //TODO: Camping totally breaks movement. Figure out why if time permits.
+      
+      // if (clampSpeed)
+      // {
+      //    //Negatives aren't clamped for now...
+      //    if (localSpeed.z > maxSpeed)
+      //    {
+      //       _rB.velocity = new Vector3(vel.x, vel.y, maxSpeed);
+      //    }
+      //    else
+      //    {
+      //       _rB.AddRelativeForce(0,0,forceApplied.z);
+      //    }
+      // }
+      // else
+      // {
+      //    //Un-Clamped
+      //    _rB.AddRelativeForce(0,0,forceApplied.z);
+      // }
+
+   #endregion
    }
 
    void DoStop()
