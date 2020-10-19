@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 namespace Damien
@@ -30,10 +31,7 @@ namespace Damien
         private void Update()
         {
             UpdateInRange();
-            if (inRange == null)
-            {
-                //Debug.Log("The Sheep is not in range");
-            }
+            
         }
 
         void UpdateInRange()
@@ -59,7 +57,7 @@ namespace Damien
                 if (partToRotate.transform.localRotation.eulerAngles.y <openAngle)
                 {
                   //  Debug.Log("Rotation is less than 90");
-                    partToRotate.transform.Rotate(0f, rotateAngle * Time.deltaTime, 0f); 
+                    partToRotate.transform.Rotate(0f, rotateAngle * Time.deltaTime, 0f);
                 }
             }
             else 
