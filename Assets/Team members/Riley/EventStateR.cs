@@ -92,6 +92,8 @@ public class EventStateR : MonoBehaviour
     {
         soundPlayer.Play();
         timeWait = 0; //reset our timewait to 0 whenever we start the jump function
+        rb.velocity = new Vector3(0, 0, 0);
+        rb.isKinematic = false;
     }
     private void jumpUpdate()
     {
@@ -110,7 +112,7 @@ public class EventStateR : MonoBehaviour
     }
     private void jumpExit()
     {
-        
+        waypointFirstRound = false;
     }
     //----------------------------------JUMP
     //----------------------------------WAYPOINT
@@ -123,33 +125,32 @@ public class EventStateR : MonoBehaviour
             currentWaypointIndex = 0;
             currentWaypoint = waypointsList[currentWaypointIndex];
         }
-        //else
-        //{
-            //currentWaypointIndex = currentWaypointIndex + 1;
-            //currentWaypoint = waypointsList[currentWaypointIndex];
-        //}
-        
-        
-        
+        else
+        {
+            currentWaypointIndex = currentWaypointIndex + 1;
+            currentWaypoint = waypointsList[currentWaypointIndex];
+        }
         //
         //Use a loop to add all sheep to the list of waypoints
         //
-        
     }
     private void moveToWaypointUpdate()
     {
-        timeHoverWait = timeHoverWait + 1;
-        
+        //if (Trigger is active) {timeHoverWait = timeHoverWait + 1;} 
+        timeHoverWait = timeHoverWait + 1; //Once trigger is implemented this needs to be changed to another else so it will change the sheep if the timer changes after specified time
         if (Vector3.Distance(transform.position, currentWaypoint.position) > safeDistance)
         {
-            transform.LookAt(currentWaypoint);
+            Vector3 currentWaypointNoHeight = new Vector3(currentWaypoint.position.x, transform.position.y, currentWaypoint.position.z);
+            transform.LookAt(currentWaypointNoHeight);
             rb.AddRelativeForce(Vector3.forward * movementSpeed, ForceMode.Force);
         }
         else
         {
+            rb.isKinematic = true;
             if (timeHoverWait > 1600 && bPSR == false)
             {
                 stateManager.ChangeState(jump);
+                timeHoverWait = 0;
             }
         }
     }
@@ -191,8 +192,20 @@ public class EventStateR : MonoBehaviour
         rb.constraints = RigidbodyConstraints.None | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
     }
     //----------------------------------PAUSE
+    //----------------------------------BUTTON FUNCTIONS
+    public void ForceJumpState()
+    {
+        stateManager.ChangeState(jump);
+    }
+
+    public void ForceWaypointState()
+    {
+        stateManager.ChangeState(moveToWaypoint);
+    }
+    //----------------------------------BUTTON FUNCTIONS
     private void OnDisable()
     { 
         FindObjectOfType<PauseManager>().PauseEvent -= pauseEventR;
     }
+    
 }
