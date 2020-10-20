@@ -21,9 +21,17 @@ public class VirusBehaviour : MonoBehaviour
     public float deathTimer;
 
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        //resetting bool here due to instantiate cloning instance not prefab
+        isAttached = false;
+    }
+
     void Start()
     {
         deathTimer = 15f;
+        
     }
 
     // Update is called once per frame
@@ -39,9 +47,10 @@ public class VirusBehaviour : MonoBehaviour
         }else if (deathTimer <0f)
         {
             Destroy(gameObject);
-        }else if (isAttached)
+        }
+        if (isAttached)
         {
-            
+            deathTimer = 10000f;
         }
     }
 
@@ -68,8 +77,8 @@ public class VirusBehaviour : MonoBehaviour
                 Debug.Log("Incubate Start");
                 if (incubation > 5f && !other.GetComponentInChildren<VirusBehaviour>())
                 {
-                    Instantiate(virus, other.transform.position, new Quaternion(0, 0, 0, 0));
                     incubation = 0f;
+                    GameObject instantiate = Instantiate(virus, other.transform.position, new Quaternion(0, 0, 0, 0));
                 }
             } 
               
