@@ -2114,11 +2114,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45bd2f1bd4070ad4a81c5c5c366af684, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agentPrefab: {fileID: 6555555029450623357, guid: 840863e018fe3474a946e8a81be88bdf, type: 3}
+  agentPrefab: {fileID: 4864553450105590583, guid: 9502d95f5c3cc3246a0a17888a637658, type: 3}
   behaviour: {fileID: 11400000, guid: 1b28cf91443d0624998a17e3405af1d0, type: 2}
   startingCount: 500
-  driveFactor: 10
-  maxSpeed: 21.7
+  driveFactor: 37.4
+  maxSpeed: 100
   neighbourRadius: 3
   avoidanceRadiusMultiplier: 0.5
 --- !u!4 &1723335645
