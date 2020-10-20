@@ -22,7 +22,8 @@ public class EndGoalChecker : MonoBehaviour
             Debug.Log(other.gameObject.name);
             boxes.Add(other);
            //****SHEEP CODE**************
-            sheep.Add(other.GetComponent<Movement_ForwardAM>());
+            sheep.Add(other.transform.root.GetComponent<Movement_ForwardAM>());
+            Destroy(other.gameObject);
             Debug.Log(sheep.Count.ToString());
         }
     }
@@ -32,10 +33,9 @@ public class EndGoalChecker : MonoBehaviour
         if (other.gameObject.GetComponent<Collider>())
         {
             //****SHEEP CODE**************
-            Debug.Log(other.gameObject.name + ": has left the zone");
-            sheep.Remove(other.GetComponent<Movement_ForwardAM>());
+            Debug.Log(other.transform.root.gameObject.name + ": has left the zone");
+            sheep.Remove(other.transform.root.GetComponent<Movement_ForwardAM>());
             Debug.Log(sheep.Count.ToString());
-            
             
             boxes.Remove(other);
             
