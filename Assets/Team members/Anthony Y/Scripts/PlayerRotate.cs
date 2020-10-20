@@ -29,7 +29,7 @@ namespace AnthonyY
 
         void Update()
         { 
-           Debug.Log(isLocalPlayer);
+           // Debug.Log(isLocalPlayer);
            
             // rb.AddTorque(0,rotateForce,0);
             if (isLocalPlayer)

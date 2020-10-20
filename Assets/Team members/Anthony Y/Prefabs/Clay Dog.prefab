@@ -310,7 +310,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   rotateForce: 36000
-  rb: {fileID: 0}
+  rb: {fileID: 5906288632234204624}
 --- !u!114 &1140070419739311833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,5 +323,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feddce9a9f893e84e8eba013721ed539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   originalPrefab: {fileID: 2299596439350243934}
   replacementPrefab: {fileID: 2469789914222127193, guid: cf96c0d5423c238419289e927d0304de, type: 3}
+  used: 1
