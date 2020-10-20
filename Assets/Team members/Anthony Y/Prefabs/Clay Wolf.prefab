@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 2469789914222127172}
   - component: {fileID: 2469789914222127194}
   - component: {fileID: 129383195452605327}
+  - component: {fileID: -7016549943907383493}
   m_Layer: 0
   m_Name: Clay Wolf
   m_TagString: Untagged
@@ -261,3 +262,19 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   movementSpeed: 20
+--- !u!114 &-7016549943907383493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2469789914222127193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feddce9a9f893e84e8eba013721ed539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  originalPrefab: {fileID: 2469789914222127193}
+  replacementPrefab: {fileID: 2299596439350243934, guid: 17c71fbe5b598ae4c83f06ae4f2bea0c, type: 3}

@@ -52,6 +52,7 @@ public class PlayerMovement : NetworkBehaviour
       
         transform.Translate(movement * (movementSpeed * Time.deltaTime),Space.World);
         transform.rotation = Quaternion.LookRotation(movement);
+        transform.forward = GetComponent<Rigidbody>().velocity;
 
     }
     //Actually moving the player on server
