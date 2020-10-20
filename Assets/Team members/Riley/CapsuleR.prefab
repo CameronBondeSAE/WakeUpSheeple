@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 11375450}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -2, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -3, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 3318568442365278924}
   m_RootOrder: 1
@@ -123,8 +123,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1198780233845797372}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.25, y: -1.5, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.75}
+  m_LocalPosition: {x: 0, y: -2.5, z: 0.8}
+  m_LocalScale: {x: 1.5, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3318568442365278924}
   m_RootOrder: 0
@@ -223,7 +223,7 @@ Transform:
   m_GameObject: {fileID: 5324599527495822684}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 1974141316140771221}
   - {fileID: 11375451}
@@ -319,6 +319,12 @@ MonoBehaviour:
   timeWait: 0
   timeSWaitR: 0
   timeHoverWait: 0
+  moveToWaypoint:
+    active: 0
+  waypointsList:
+  - {fileID: 0}
+  - {fileID: 0}
+  waypointFirstRound: 0
 --- !u!82 &-6582681566880705499
 AudioSource:
   m_ObjectHideFlags: 0
@@ -429,7 +435,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 96
   m_CollisionDetection: 0
 --- !u!114 &875412896833982610
 MonoBehaviour:
@@ -438,11 +444,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5324599527495822684}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 29c2de9f19798a5458829222f3ba5806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waypointsList:
+  - {fileID: 0}
+  rb: {fileID: 7610377570722618803}
 --- !u!1 &5807642418534906128
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,7 +480,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5807642418534906128}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.76, z: 0}
+  m_LocalPosition: {x: 0, y: -3, z: 0}
   m_LocalScale: {x: 10, y: 1, z: 10}
   m_Children: []
   m_Father: {fileID: 3318568442365278924}
