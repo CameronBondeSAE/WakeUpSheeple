@@ -11,22 +11,22 @@ public class TransformInto : NetworkBehaviour
     public GameObject originalPrefab;
 
     public GameObject replacementPrefab;
-    private bool used = false;
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+   [SerializeField] private bool used = false;
+   
     private void Update()
     {
+        Debug.Log(isLocalPlayer);
         if (isLocalPlayer)
         {
-            if (!used && Input.GetKey(KeyCode.E))
+            if (!used && Input.GetKeyDown(KeyCode.E))
             {
                 CmdReplace(originalPrefab,replacementPrefab);
                 Debug.Log("Replaced");
                 used = true; 
+            }
+            else
+            {
+                used = false;
             }
         }
     }
@@ -36,12 +36,16 @@ public class TransformInto : NetworkBehaviour
         Instantiate(obj2, obj1.transform.position, Quaternion.identity);
         Destroy(obj1);
     }
+    //**************************SERVER CODE****************************************
 [Command]
     public void CmdReplace(GameObject obj1, GameObject obj2)
     {
         RPCReplace(obj1,obj2);
     }
 }
+
+//******************************EDITOR CODE********************************
+
 [CustomEditor(typeof(TransformInto))]
 public class TransformIntoWolf : Editor
 {
