@@ -23,7 +23,7 @@ public class EndGoalChecker : MonoBehaviour
             boxes.Add(other);
            //****SHEEP CODE**************
             sheep.Add(other.transform.root.GetComponent<Movement_ForwardAM>());
-            Destroy(other.gameObject);
+            Destroy(other.transform.root.GetComponent<Movement_ForwardAM>());
             Debug.Log(sheep.Count.ToString());
         }
     }

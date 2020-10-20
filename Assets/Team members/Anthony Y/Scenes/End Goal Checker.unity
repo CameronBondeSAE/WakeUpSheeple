@@ -350,7 +350,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1521166416, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
       propertyPath: zForce
-      value: 30
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 2372177631083542375, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
       propertyPath: m_Name
