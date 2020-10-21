@@ -7,10 +7,10 @@ using UnityEngine.UI;
 
 namespace AlexM
 {
-	[RequireComponent(typeof(Canvas), typeof(CanvasScaler))]
 	public class AchievementManager : MonoBehaviour
 	{
 		/// <summary>
+		/// THIS SHOULD ALWAYS BE ON A CANVAS.
 		/// PLEASE NOTE:
 		/// You only need to add the TestGuy from the scene, and set a duration for how long the achievement popup is visible.
 		///
@@ -21,20 +21,21 @@ namespace AlexM
 		[Header("Settings")]
 		[Tooltip("How long the Achievement will show for when triggered.")]
 		public float visibleDuration = 5;
-		
-		
+
+
 		[Header("Achievement Variables")]
-		public TestGuyStuff testGuy;
 		
+		public TestGuyStuff testGuy;
+		private float jumpTimer;
+		private int jumpAchievementThreshold = 5;
+
 		//General
+
 		[HideInInspector]
 		public List<GameObject> GOStoToggle;
 		[HideInInspector]
 		public TextMeshProUGUI _title, _text;
 
-		private float jumpTimer;
-		private int jumpAchievementThreshold = 5;
-		
 		private void OnEnable()
 		{
 			title_prefab = Resources.Load<TextMeshProUGUI>("AchievementManager/TXT_AchievementTitle");
@@ -46,6 +47,8 @@ namespace AlexM
 				testGuy.jumpEvent += TestGuyOnjumpEvent;
 			}
 		}
+
+	#region Achievements Go Here!
 
 		private void TestGuyOnjumpEvent(GameObject obj, int jumpCount)
 		{
@@ -66,11 +69,13 @@ namespace AlexM
 		IEnumerator durationToShow(float time, string title, string text)
 		{
 			SetGOListState(true);
-			 _title.SetText(title);
-			 _text.SetText(text);
+			_title.SetText(title);
+			_text.SetText(text);
 			yield return new WaitForSeconds(time);
 			SetGOListState(false);
 		}
+
+	#endregion
 
 	#region EditorUiStuff
 
@@ -94,13 +99,14 @@ namespace AlexM
 				_text = Instantiate(text_prefab, this.transform, false);
 			}
 
+			GOStoToggle = new List<GameObject>();
 			GOStoToggle.Add(_title.gameObject);
 			GOStoToggle.Add(_text.gameObject);
 
 
 			//TODO: Fix the anchor stuff, messes with postioning for some reason..
-			// title.rectTransform.anchorMin = new Vector2(0.5f, 1);
-			// title.rectTransform.anchorMax = new Vector2(0.5f, 1);
+			 //_title.rectTransform.anchorMin = new Vector2(0.5f, 1);
+			 //_title.rectTransform.anchorMax = new Vector2(0.5f, 1);
 
 
 			var titleX = _title.rectTransform.position.x;

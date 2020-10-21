@@ -16,6 +16,6 @@ public class HeliSpawner : MonoBehaviour
     
     public void SpawnNewHeli()
     {
-        Instantiate(HelicopterPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        Instantiate(HelicopterPrefab, new Vector3(-75, 3, 0), Quaternion.identity);
     }
 }
