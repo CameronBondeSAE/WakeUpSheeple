@@ -19,6 +19,7 @@ public class VirusBehaviour : MonoBehaviour
     public Vector3 virusLocation;
     public float incubation = 0f;
     public float deathTimer;
+    public GameObject instantiate;
 
     // Start is called before the first frame update
 
@@ -78,12 +79,17 @@ public class VirusBehaviour : MonoBehaviour
                 if (incubation > 5f && !other.GetComponentInChildren<VirusBehaviour>())
                 {
                     incubation = 0f;
-                    GameObject instantiate = Instantiate(virus, other.transform.position, new Quaternion(0, 0, 0, 0));
+                    instantiate = Instantiate(virus, other.transform.position, new Quaternion(0, 0, 0, 0));
                 }
             } 
               
             //record that I have been attached
         }
+    }
+
+    public void Breed()
+    {
+        instantiate = Instantiate(virus, transform.position, new Quaternion(0, 0, 0, 0));
     }
 
     private void OnTriggerExit(Collider other)
