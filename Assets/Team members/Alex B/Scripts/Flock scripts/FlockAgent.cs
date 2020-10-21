@@ -44,8 +44,9 @@ namespace AJ
         public void Move(Vector3 velocity)
         {
             transform.forward = velocity;
-            //rb.AddForce(velocity * Time.deltaTime);
-            transform.position += (Vector3)velocity * Time.deltaTime;
+            velocity = new Vector3(velocity.x, transform.position.y, velocity.z);
+            rb.AddForce(velocity * Time.deltaTime);
+            //transform.position += (Vector3)velocity * Time.deltaTime;
 
             
 

@@ -42,9 +42,11 @@ namespace AJ
             for (int i = 0; i < startingCount; i++)
             {
                 FlockAgent newAgent = Instantiate(agentPrefab, Random.insideUnitCircle * (startingCount * AgentDensity),
-                    Quaternion.Euler(Vector3.forward * Random.Range(0f, 360f)), transform);
+                    Quaternion.identity, transform);
 
                 newAgent.name = "Agent " + i;
+                newAgent.rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ |
+                                          RigidbodyConstraints.FreezeRotationY;
                 //newAgent.Initialize(this);
                 agents.Add(newAgent);
             }
