@@ -65,7 +65,7 @@ public class Movement_ForwardAM : MonoBehaviour
       
    #region BrokenMovement
 
-      //TODO: Camping totally breaks movement. Figure out why if time permits.
+      //TODO: Clamping totally breaks movement. Figure out why if time permits.
       
       // if (clampSpeed)
       // {
