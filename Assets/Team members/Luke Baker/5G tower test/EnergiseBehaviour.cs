@@ -8,10 +8,11 @@ public class EnergiseBehaviour : MonoBehaviour
 {
     //variables
     public int timeEffected = 3;
-
+    public bool isEnergised;
+    
     IEnumerator EnergiseForTime()
     {
-        //apply the energise buff here
+        //apply the energise buff or de-buff here
         //gameObject.GetComponent<Movement>.speed * 3 ??
 
         yield return new WaitForSeconds(timeEffected);
@@ -20,8 +21,11 @@ public class EnergiseBehaviour : MonoBehaviour
         Destroy(this);
     }
 
-    private void Update()
+    private void Start()
     {
-        StartCoroutine(EnergiseForTime());
+        if (isEnergised = true)
+        {
+            StartCoroutine(EnergiseForTime());
+        }
     }
 }
