@@ -800,6 +800,10 @@ PrefabInstance:
       propertyPath: virus
       value: 
       objectReference: {fileID: 2704142560674385399, guid: e9becea97fca0c242bedfecf9161a56e, type: 3}
+    - target: {fileID: 2704142560674385384, guid: e9becea97fca0c242bedfecf9161a56e, type: 3}
+      propertyPath: instantiate
+      value: 
+      objectReference: {fileID: 2704142560674385399, guid: e9becea97fca0c242bedfecf9161a56e, type: 3}
     - target: {fileID: 2704142560674385388, guid: e9becea97fca0c242bedfecf9161a56e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.82

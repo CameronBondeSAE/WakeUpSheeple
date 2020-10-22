@@ -12,7 +12,7 @@ using UnityEngine;
 public class VirusBehaviour : MonoBehaviour
 {
     //private Vector3 currentVelocity;
-    public float velocity;
+    //public float velocity;
     //public GameObject Sheep;
     public bool isAttached = false;
     public GameObject virus;
@@ -61,7 +61,7 @@ public class VirusBehaviour : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //transform.parent;
-        if (other.gameObject.CompareTag("Player"))
+        if (other.GetComponent<CharacterBase>())
         {
             if (isAttached == false && !other.gameObject.GetComponentInChildren<VirusBehaviour>())
             {
