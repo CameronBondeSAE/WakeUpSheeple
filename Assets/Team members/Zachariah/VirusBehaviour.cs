@@ -61,7 +61,7 @@ public class VirusBehaviour : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //transform.parent;
-        if (other.gameObject.CompareTag("Player"))
+        if (other.GetComponent<CharacterBase>())
         {
             if (isAttached == false && !other.gameObject.GetComponentInChildren<VirusBehaviour>())
             {
