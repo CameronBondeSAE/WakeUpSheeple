@@ -90,7 +90,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1058317524803091805}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -430,7 +430,7 @@ MonoBehaviour:
   sheepTag: sheep
   range: 3
   rotateAngle: 15
-  partToRotate: {fileID: 0}
+  partToRotate: {fileID: 8500678148521956260}
 --- !u!1 &6572913784585241961
 GameObject:
   m_ObjectHideFlags: 0
