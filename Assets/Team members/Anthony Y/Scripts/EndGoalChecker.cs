@@ -14,6 +14,7 @@ public class EndGoalChecker : MonoBehaviour
     [Header("List of Sheep")]
     public List<Movement_ForwardAM> sheep;
     public int maxSheepCount;
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<Collider>())
