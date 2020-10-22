@@ -12,7 +12,7 @@ using UnityEngine;
 public class VirusBehaviour : MonoBehaviour
 {
     //private Vector3 currentVelocity;
-    public float velocity;
+    //public float velocity;
     //public GameObject Sheep;
     public bool isAttached = false;
     public GameObject virus;
