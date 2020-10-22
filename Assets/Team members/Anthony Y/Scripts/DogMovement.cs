@@ -5,7 +5,7 @@ using Mirror;
 using Mirror.Examples.Chat;
 using UnityEngine;
 
-public class PlayerMovement : NetworkBehaviour
+public class DogMovement : NetworkBehaviour
 {
     [SyncVar]
     public float movementSpeed;
