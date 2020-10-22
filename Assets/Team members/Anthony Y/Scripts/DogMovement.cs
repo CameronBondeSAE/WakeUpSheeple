@@ -32,11 +32,11 @@ public class DogMovement : NetworkBehaviour
     void Update()
     {
         Debug.Log(isLocalPlayer);
-        // if (isLocalPlayer)
-        {
+        // if ()
+        // {
             Vector3 movementInput = controls.GamePlayer.Movement.ReadValue<Vector2>();
             CmdMove(movementInput);
-        }
+        // }
     }
 
     [ClientRpc]
