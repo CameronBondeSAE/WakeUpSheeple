@@ -129,7 +129,6 @@ GameObject:
   - component: {fileID: 6123762923093497166}
   - component: {fileID: 4569540882187185504}
   - component: {fileID: 4887145999256628070}
-  - component: {fileID: 5614932833609671218}
   m_Layer: 0
   m_Name: Clay Dog
   m_TagString: Untagged
@@ -276,9 +275,9 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   clientAuthority: 1
-  localPositionSensitivity: 0.01
-  localRotationSensitivity: 0.01
-  localScaleSensitivity: 0.01
+  localPositionSensitivity: 1
+  localRotationSensitivity: 1
+  localScaleSensitivity: 1
 --- !u!114 &4887145999256628070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,19 +293,3 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   movementSpeed: 10
---- !u!114 &5614932833609671218
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2299596439350243934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65c7867672f7f56449942d41ff26a229, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  rotateForce: 36000
-  rb: {fileID: 5906288632234204624}
