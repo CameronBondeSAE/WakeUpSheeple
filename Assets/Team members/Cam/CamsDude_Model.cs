@@ -3,18 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
 // PickARandomAngle
 // Move to the edge of the level
 // Find the center of the biggest flock
 
-public class CamsDude_Model : MonoBehaviour
+public class CamsDude_Model : CharacterBase
 {
 	public event Action<string> doSomethingEvent;
 	public Material             clay;
 	public event Action         JumpEvent;
-
 
 	public float health;
 	
@@ -33,6 +33,7 @@ public class CamsDude_Model : MonoBehaviour
 		
 		if (Input.GetKeyDown(KeyCode.C))
 		{
+			GetBigOrDieTrying();
 			doSomethingEvent?.Invoke("Cam woz ere!");
 			JumpEvent?.Invoke();
 		}
@@ -40,5 +41,10 @@ public class CamsDude_Model : MonoBehaviour
 		
 		GetComponent<Renderer>().material.SetInt("RotationAmount", Random.Range(0, 360));
 		// clay.SetInt("RotationAmount", Random.Range(0,360));
+	}
+
+	public void GetBigOrDieTrying()
+	{
+		transform.localScale = new Vector3(4f, 4f, 4f);
 	}
 }

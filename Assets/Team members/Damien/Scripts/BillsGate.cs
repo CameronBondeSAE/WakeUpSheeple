@@ -38,6 +38,16 @@ namespace Damien
             
         }
 
+        private void OnTriggerEnter(Collider target)
+        {
+            AdministerVaccine();
+            
+        }
+
+        void AdministerVaccine()
+        {
+            Debug.Log("Administer Vaccine");
+        }
         void UpdateInRange()
         {
             //Find nearest sheep
@@ -53,8 +63,10 @@ namespace Damien
                     shortestDistance = distanceToSheep;
                     nearestSheep = sheep;
                 }
-            }
+            } 
             
+            
+
             if (nearestSheep != null && shortestDistance <= range)
             {
                 //Debug.Log("Sheep is in Range");
