@@ -9,7 +9,7 @@ namespace Tim
 {
     
 
-public class StatemachineTest : MonoBehaviour
+public class StatemachineTest : CharacterBase
 {
     public DelegateStateManager DelegateStateManager = new DelegateStateManager();
 
