@@ -25,9 +25,10 @@ public class ChemtrailTest : MonoBehaviour
     {
         //Vector3 position = new Vector3(Random.Range(-41f,58f),2,Random.Range(-46,54));
         //Instantiate(enemy, position, Quaternion.identity);
-        StartCoroutine("Restart");
-        trail = GetComponent<ParticleSystem>();
+        StartCoroutine("FlyOverSequence");
+       // trail = GetComponent<ParticleSystem>();
         collisionEvents = new List<ParticleCollisionEvent>();
+        
 
 
     }
@@ -53,6 +54,7 @@ public class ChemtrailTest : MonoBehaviour
                 i++;
             }
         }
+        
     }
 
     // Update is called once per frame
@@ -63,24 +65,33 @@ public class ChemtrailTest : MonoBehaviour
         
     }
 
-    IEnumerator Restart()
+    IEnumerator FlyOverSequence()
     {
         while (true)
         {
             Debug.Log("Restarting");
-            yield return new WaitForSeconds(5f);
+            //yield return new WaitForSeconds(5f);
             Vector3 position = new Vector3(Random.Range(-41f, 58f), planeHeight, Random.Range(-46, 54));
-            yield return new WaitForSeconds(5f);
             transform.position = position;
             Vector3 targetPos = target.position;
             targetPos.y = planeHeight;
             velocity = (targetPos - transform.position).normalized * speed;
-            
+            yield return new WaitForSeconds(5f);
         }
         
         //Instantiate(enemy, position, Quaternion.identity);
         
 
+    }
+
+    public void TrailOff()
+    {
+        trail.Stop();
+    }
+
+    public void TrailOn()
+    {
+        trail.Play();
     }
     
 }
