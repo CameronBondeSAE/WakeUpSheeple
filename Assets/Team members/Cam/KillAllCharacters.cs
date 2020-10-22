@@ -5,14 +5,22 @@ using UnityEngine;
 
 public class KillAllCharacters : MonoBehaviour
 {
+	List<CharacterBase> CharacterBases;
+	
 	void OnTriggerEnter(Collider other)
 	{
 		CharacterBase characterBase = other.GetComponent<CharacterBase>();
-		characterBase.isAwesome = false;
+		
+		
 		
 		if (characterBase)
 		{
 			Destroy(other.gameObject);
+
+			if (characterBase as CamsDude_Model)
+			{
+				
+			}
 		}
 	}
 }
