@@ -17,15 +17,14 @@ namespace AlexM
 		/// To add new achievements, just subscribe to their event (please make the event with plenty of into attached)
 		/// And just call TriggerAchievement("Title", "SubText") inside the function created when subscribing to the event.
 		/// </summary>
-		
 		[Header("Settings")]
 		[Tooltip("How long the Achievement will show for when triggered.")]
 		public float visibleDuration = 5;
 
 
 		[Header("Achievement Variables")]
-		
 		public TestGuyStuff testGuy;
+
 		private float jumpTimer;
 		private int jumpAchievementThreshold = 5;
 
@@ -33,6 +32,7 @@ namespace AlexM
 
 		[HideInInspector]
 		public List<GameObject> GOStoToggle;
+
 		[HideInInspector]
 		public TextMeshProUGUI _title, _text;
 
@@ -58,7 +58,6 @@ namespace AlexM
 				TriggerAchievement("Jump King", "You got lots of jumps!");
 			}
 		}
-
 
 
 		public void TriggerAchievement(string title, string text)
@@ -105,8 +104,8 @@ namespace AlexM
 
 
 			//TODO: Fix the anchor stuff, messes with postioning for some reason..
-			 //_title.rectTransform.anchorMin = new Vector2(0.5f, 1);
-			 //_title.rectTransform.anchorMax = new Vector2(0.5f, 1);
+			//_title.rectTransform.anchorMin = new Vector2(0.5f, 1);
+			//_title.rectTransform.anchorMax = new Vector2(0.5f, 1);
 
 
 			var titleX = _title.rectTransform.position.x;
@@ -144,10 +143,9 @@ namespace AlexM
 				GO.SetActive(state);
 			}
 		}
-		
 
 	#endregion
+
 	#endregion
 	}
-
 }

@@ -17,6 +17,8 @@ namespace AlexM
 
             GUILayout.BeginHorizontal();
             
+            //Make it so Test Popup is only for PLAY MADE.
+            
             if (GUILayout.Button("Test Popup", GUILayout.Width(80)))
             {
                 ((AchievementManager) target).TriggerAchievement("Test Complete", "Yeah, This is all it really does!");
