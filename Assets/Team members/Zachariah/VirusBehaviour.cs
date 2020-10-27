@@ -15,11 +15,15 @@ public class VirusBehaviour : MonoBehaviour
     //public float velocity;
     //public GameObject Sheep;
     public bool isAttached = false;
+    [Tooltip("Prefab for the Virus for instantiate")]
     public GameObject virus;
-    public Vector3 virusLocation;
+    //public Vector3 virusLocation;
+    [Tooltip("How long it takes for the virus to be able to breed")]
     public float incubation = 0f;
+    [Tooltip("How long it takes the virus to die without being attached")]
     public float deathTimer;
     [SerializeField]
+    [Tooltip("Location for the virus prefab to be stored")]
     private GameObject instantiate;
 
     // Start is called before the first frame update
