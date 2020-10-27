@@ -3,31 +3,34 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(FiveG))]
-public class FiveGEditor : Editor
+namespace LukeBaker
 {
-    public override void OnInspectorGUI()
+    [CustomEditor(typeof(FiveG))]
+    public class FiveGEditor : Editor
     {
-        base.OnInspectorGUI();
-        
-        if (GUILayout.Button("Attractor On"))
+        public override void OnInspectorGUI()
         {
-            (target as FiveG)?.AttractOn();
-        }
-        
-        if (GUILayout.Button("Attractor Off"))
-        {
-            (target as FiveG)?.AttractOff();
-        }
-        
-        if (GUILayout.Button("Energiser On"))
-        {
-            (target as FiveG)?.EnergiseOn();
-        }
-        
-        if (GUILayout.Button("Energiser Off"))
-        {
-            (target as FiveG)?.EnergiseOff();
+            base.OnInspectorGUI();
+
+            if (GUILayout.Button("Attractor On"))
+            {
+                (target as FiveG)?.AttractOn();
+            }
+
+            if (GUILayout.Button("Attractor Off"))
+            {
+                (target as FiveG)?.AttractOff();
+            }
+
+            if (GUILayout.Button("Energiser On"))
+            {
+                (target as FiveG)?.EnergiseOn();
+            }
+
+            if (GUILayout.Button("Energiser Off"))
+            {
+                (target as FiveG)?.EnergiseOff();
+            }
         }
     }
 }
