@@ -76,7 +76,14 @@ public class EventStateR : MonoBehaviour
     }
     private void standingUpdate()
     {
-        timeHoverWait = timeHoverWait + 1;
+        if (transform.position.y > -1f) //NEEDS AMENDING, this makes the player bob at this height
+        {
+            rb.AddForce(-transform.up * force);
+        }
+        else
+        {
+            timeHoverWait = timeHoverWait + 1;
+        }
         if (timeHoverWait > 600 && bPSR != true)
         {
             stateManager.ChangeState(moveToWaypoint);
@@ -97,7 +104,7 @@ public class EventStateR : MonoBehaviour
     }
     private void jumpUpdate()
     {
-        if (transform.position.y < 0.8f) //NEEDS AMENDING, this makes the player bob at this height
+        if (transform.position.y < 0.3f) //NEEDS AMENDING, this makes the player bob at this height
         {
             rb.AddForce(transform.up * force);
         }

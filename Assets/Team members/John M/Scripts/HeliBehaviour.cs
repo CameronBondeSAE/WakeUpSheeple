@@ -7,16 +7,16 @@ using Random = UnityEngine.Random;
 public class HeliBehaviour : MonoBehaviour
 {
 
-    public Transform[] SpawnLocations;
-    public Transform[] WaitLocations;
-    public Transform[] ExitLocations;
+    public List <Transform> SpawnLocations;
+    public List <Transform> WaitLocations;
+    public List <Transform> ExitLocations;
     
-    public DelegateStateManager FlyingState = new DelegateStateManager();
-    public DelegateState spawning = new DelegateState();
-    public DelegateState waiting = new DelegateState();
-    public DelegateState exiting = new DelegateState();
-    public float move;
-    public float timer;
+    DelegateStateManager FlyingState = new DelegateStateManager();
+    DelegateState spawning = new DelegateState();
+    DelegateState waiting = new DelegateState();
+    DelegateState exiting = new DelegateState();
+    float move;
+    float timer;
 
     public int RandomSpawn;
     public int RandomWait;
@@ -28,17 +28,18 @@ public class HeliBehaviour : MonoBehaviour
         spawning.Update = ToSpawn;
         waiting.Update = WaitingHeli;
         exiting.Update = ExitHeli;
-        FlyingState.ChangeState(spawning);
-        RandomSpawn = Random.Range(0, SpawnLocations.Length);
-        RandomWait = Random.Range(0, WaitLocations.Length);
-        RandomExit = Random.Range(0, ExitLocations.Length);
+        RandomSpawn = Random.Range(0, SpawnLocations.Count);
+        RandomWait = Random.Range(0, WaitLocations.Count);
+        RandomExit = Random.Range(0, ExitLocations.Count);
         timer = Random.Range(5, 10);
+        FlyingState.ChangeState(spawning);
         
     }
     void Update()
     {
         move = 15 * Time.deltaTime;
         FlyingState.UpdateCurrentState();
+        
     }
 
     
