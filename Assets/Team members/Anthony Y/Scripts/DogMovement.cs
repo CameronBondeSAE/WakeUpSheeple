@@ -3,9 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using Mirror;
 using Mirror.Examples.Chat;
+using Student_workspace.Dylan.Scripts.NetworkLobby;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class DogMovement : NetworkBehaviour
+public class DogMovement : NetworkBehaviour,IOwnable
 {
     [SyncVar]
     public float movementSpeed;
@@ -28,15 +30,23 @@ public class DogMovement : NetworkBehaviour
         controls.GamePlayer.Disable();
     }
 
-
+    public NetworkIdentity Owner { get; set; }
     void Update()
     {
-        Debug.Log(isLocalPlayer);
-        // if ()
+        // Debug.Log(Owner);
+        // if (isClient)
         // {
-            Vector3 movementInput = controls.GamePlayer.Movement.ReadValue<Vector2>();
-            CmdMove(movementInput);
+        //     if (Owner != null)
+        //     {
+        //         if (Owner.isLocalPlayer)
+        //         {
+        //             Vector3 movementInput = controls.GamePlayer.Movement.ReadValue<Vector2>();
+        //             CmdMove(movementInput);
+        //         }
+        //     }
         // }
+        Vector3 movementInput = controls.GamePlayer.Movement.ReadValue<Vector2>();
+        CmdMove(movementInput);
     }
 
     [ClientRpc]
