@@ -4839,9 +4839,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbb76a17196e75c42882ecbc463011dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 1
   isAttached: 0
   virus: {fileID: 2704142560674385399}
   virusLocation: {x: 0, y: 0, z: 0}
   incubation: 0
   deathTimer: 0
+  instantiate: {fileID: 2704142560674385399}

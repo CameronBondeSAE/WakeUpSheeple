@@ -19,7 +19,8 @@ public class VirusBehaviour : MonoBehaviour
     public Vector3 virusLocation;
     public float incubation = 0f;
     public float deathTimer;
-    public GameObject instantiate;
+    [SerializeField]
+    private GameObject instantiate;
 
     // Start is called before the first frame update
 
@@ -87,6 +88,7 @@ public class VirusBehaviour : MonoBehaviour
         }
     }
 
+    //Button test for breeding the virus
     public void Breed()
     {
         instantiate = Instantiate(virus, transform.position, new Quaternion(0, 0, 0, 0));
