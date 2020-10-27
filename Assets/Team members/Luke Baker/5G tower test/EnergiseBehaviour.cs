@@ -4,28 +4,25 @@ using System.Collections.Generic;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
-public class EnergiseBehaviour : MonoBehaviour
+namespace LukeBaker
 {
-    //variables
-    public int timeEffected = 3;
-    public bool isEnergised;
-    
-    IEnumerator EnergiseForTime()
+    public class EnergiseBehaviour : MonoBehaviour
     {
-        //apply the energise buff or de-buff here
-        //gameObject.GetComponent<Movement>.speed * 3 ??
+        //This script needs work, figure out what energise does and it would make it easier.
+        //variables
+        public bool isEnergised;
 
-        yield return new WaitForSeconds(timeEffected);
-        
-        //removes the script from the object
-        Destroy(this);
-    }
-
-    private void Start()
-    {
-        if (isEnergised = true)
+        public void EnergiseObject()
         {
-            StartCoroutine(EnergiseForTime());
+            while (isEnergised = true)
+            {
+                //apply buff or de-buff
+            }
+        }
+
+        private void OnEnable()
+        {
+            EnergiseObject();
         }
     }
 }
