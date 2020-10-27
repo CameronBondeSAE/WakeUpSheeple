@@ -91,9 +91,4 @@ public class VirusBehaviour : MonoBehaviour
     {
         instantiate = Instantiate(virus, transform.position, new Quaternion(0, 0, 0, 0));
     }
-
-    private void OnTriggerExit(Collider other)
-    {
-        throw new NotImplementedException();
-    }
 }
