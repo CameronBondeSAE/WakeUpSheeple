@@ -36,6 +36,9 @@ public class EventStateR : MonoBehaviour
     //----------------------------------TRIGGER VARIABLES
     private TriggerMoleR TriggerScriptR;
     //----------------------------------TRIGGER VARIABLES
+    //----------------------------------TEXTMESH
+    public TMPTextHandlerR textMeshHandlerR;
+    //----------------------------------TEXTMESH
     //----------------------------------UPDATE/START
     void Start()
     {
@@ -73,6 +76,7 @@ public class EventStateR : MonoBehaviour
     private void standingStart()
     {
         timeHoverWait = 0;
+        textMeshHandlerR.OnStand();
     }
     private void standingUpdate()
     {
@@ -101,6 +105,7 @@ public class EventStateR : MonoBehaviour
         timeWait = 0; //reset our timewait to 0 whenever we start the jump function
         rb.velocity = new Vector3(0, 0, 0);
         rb.isKinematic = false;
+        textMeshHandlerR.OnJumpState();
     }
     private void jumpUpdate()
     {
@@ -137,6 +142,7 @@ public class EventStateR : MonoBehaviour
             currentWaypointIndex = currentWaypointIndex + 1;
             currentWaypoint = waypointsList[currentWaypointIndex];
         }
+        textMeshHandlerR.OnWaypointFollow();
         //
         //Use a loop to add all sheep to the list of waypoints
         //
