@@ -6,7 +6,7 @@ using TMPro;
 
 public class TMPTextHandlerR : MonoBehaviour
 {
-    private TextMeshProUGUI textMeshR;
+    public TextMeshProUGUI textMeshR;
 
     private void Start()
     {
