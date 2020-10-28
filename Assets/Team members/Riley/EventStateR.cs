@@ -36,6 +36,9 @@ public class EventStateR : MonoBehaviour
     //----------------------------------TRIGGER VARIABLES
     private TriggerMoleR TriggerScriptR;
     //----------------------------------TRIGGER VARIABLES
+    //----------------------------------TEXTMESH
+    public TMPTextHandlerR textMeshHandlerR;
+    //----------------------------------TEXTMESH
     //----------------------------------UPDATE/START
     void Start()
     {
@@ -73,10 +76,18 @@ public class EventStateR : MonoBehaviour
     private void standingStart()
     {
         timeHoverWait = 0;
+        textMeshHandlerR.OnStand();
     }
     private void standingUpdate()
     {
-        timeHoverWait = timeHoverWait + 1;
+        if (transform.position.y > -1f) //NEEDS AMENDING, this makes the player bob at this height
+        {
+            rb.AddForce(-transform.up * force);
+        }
+        else
+        {
+            timeHoverWait = timeHoverWait + 1;
+        }
         if (timeHoverWait > 600 && bPSR != true)
         {
             stateManager.ChangeState(moveToWaypoint);
@@ -94,10 +105,11 @@ public class EventStateR : MonoBehaviour
         timeWait = 0; //reset our timewait to 0 whenever we start the jump function
         rb.velocity = new Vector3(0, 0, 0);
         rb.isKinematic = false;
+        textMeshHandlerR.OnJumpState();
     }
     private void jumpUpdate()
     {
-        if (transform.position.y < 0.8f) //NEEDS AMENDING, this makes the player bob at this height
+        if (transform.position.y < 0.3f) //NEEDS AMENDING, this makes the player bob at this height
         {
             rb.AddForce(transform.up * force);
         }
@@ -130,6 +142,7 @@ public class EventStateR : MonoBehaviour
             currentWaypointIndex = currentWaypointIndex + 1;
             currentWaypoint = waypointsList[currentWaypointIndex];
         }
+        textMeshHandlerR.OnWaypointFollow();
         //
         //Use a loop to add all sheep to the list of waypoints
         //

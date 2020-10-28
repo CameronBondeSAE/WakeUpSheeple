@@ -108,11 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd058128586ba594a94d1ee593364299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HelicopterPrefab: {fileID: 2514153509697124241}
-  SpawnLocations:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  SpawnLocations: []
   WaitLocations:
   - {fileID: 0}
   - {fileID: 0}
@@ -121,14 +117,3 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  spawning:
-    active: 0
-  waiting:
-    active: 0
-  exiting:
-    active: 0
-  move: 0
-  timer: 10
-  RandomSpawn: 0
-  RandomWait: 0
-  RandomExit: 0

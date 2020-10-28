@@ -24,6 +24,11 @@ public class ChemtrailTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (target == null)
+        {
+           Debug.LogWarning("Chemplane NEEDS a target set",this);
+           return;
+        }
         //Vector3 position = new Vector3(Random.Range(-41f,58f),2,Random.Range(-46,54));
         //Instantiate(enemy, position, Quaternion.identity);
         StartCoroutine("FlyOverSequence");
@@ -47,8 +52,8 @@ public class ChemtrailTest : MonoBehaviour
             {
                 Vector3 pos = collisionEvents[i].intersection;
                 Vector3 force = collisionEvents[i].velocity * 10;
-                Instantiate(Virus, pos, Quaternion.identity);
-                
+                GameObject trailVirus = Instantiate(Virus, pos, Quaternion.identity);
+                trailVirus.GetComponent<VirusBehaviour>().deathTimer = 0.5f;
             }
             
         }
@@ -67,7 +72,7 @@ public class ChemtrailTest : MonoBehaviour
     {
         while (true)
         {
-            Debug.Log("Restarting");
+            
             //yield return new WaitForSeconds(5f);
             Vector3 position = new Vector3(Random.Range(-41f, 58f), planeHeight, Random.Range(-46, 54));
             transform.position = position;
