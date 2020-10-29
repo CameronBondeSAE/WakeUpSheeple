@@ -228,7 +228,7 @@ GameObject:
   m_Layer: 0
   m_Name: Flock White
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -246,9 +246,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agentPrefab: {fileID: 8522546211026094331, guid: 58f344799b29d1342a34f6e19b2378ce, type: 3}
   behavior: {fileID: 11400000, guid: d37bf734dcd1b7c44a9b618e745eb822, type: 2}
-  startingCount: 10
-  driveFactor: 50
-  maxSpeed: 100
+  startingCount: 100
+  driveFactor: 1
+  maxSpeed: 29
   neighborRadius: 7
   avoidanceRadiusMultiplier: 0.5
 --- !u!4 &362836909
@@ -278,7 +278,7 @@ GameObject:
   m_Layer: 0
   m_Name: Flock Green
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -296,9 +296,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agentPrefab: {fileID: 7119511714556738324, guid: d459049814186f6499b65138e4498c33, type: 3}
   behavior: {fileID: 11400000, guid: d37bf734dcd1b7c44a9b618e745eb822, type: 2}
-  startingCount: 10
-  driveFactor: 50
-  maxSpeed: 100
+  startingCount: 100
+  driveFactor: 1
+  maxSpeed: 29
   neighborRadius: 7
   avoidanceRadiusMultiplier: 0.5
 --- !u!4 &826030787
@@ -309,7 +309,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 826030784}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 83.8, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -328,7 +328,7 @@ GameObject:
   m_Layer: 0
   m_Name: Flock Yellow
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -346,9 +346,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agentPrefab: {fileID: 8522546211026094331, guid: ce0419e3bd1753346a067a77572630a5, type: 3}
   behavior: {fileID: 11400000, guid: d37bf734dcd1b7c44a9b618e745eb822, type: 2}
-  startingCount: 10
-  driveFactor: 50
-  maxSpeed: 100
+  startingCount: 100
+  driveFactor: 1
+  maxSpeed: 29
   neighborRadius: 7
   avoidanceRadiusMultiplier: 0.5
 --- !u!4 &1417673865
@@ -359,7 +359,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1417673862}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -80.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -569,7 +569,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1890138638}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -50, z: 0}
+  m_LocalPosition: {x: 0, y: -17.2, z: 0}
   m_LocalScale: {x: 602.3881, y: 1.9364, z: 500.90796}
   m_Children: []
   m_Father: {fileID: 0}

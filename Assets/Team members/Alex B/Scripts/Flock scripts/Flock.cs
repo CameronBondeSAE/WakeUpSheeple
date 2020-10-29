@@ -27,11 +27,7 @@ namespace AJ
         {
             get { return squareAvoidanceRadius; }
         }
-    
-    
-    
-    
-    
+
         // Start is called before the first frame update
         void Start()
         {
@@ -41,6 +37,7 @@ namespace AJ
 
             for (int i = 0; i < startingCount; i++)
             {
+                //I need to spawn the prefabs at a specific location.
                 FlockAgent newAgent = Instantiate(agentPrefab, Random.insideUnitCircle * (startingCount * AgentDensity),
                     Quaternion.identity, transform);
 
@@ -68,7 +65,6 @@ namespace AJ
                     move = move.normalized * maxSpeed;
                 }
                 agent.Move(move);
-
             }
         }
 
@@ -83,10 +79,8 @@ namespace AJ
                     context.Add(c.transform);
                 }
             }
-
             return context;
         }
     }
-
 }
 

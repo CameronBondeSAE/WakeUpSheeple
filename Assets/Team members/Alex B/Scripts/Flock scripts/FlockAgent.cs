@@ -10,23 +10,22 @@ namespace AJ
     {
         public Rigidbody rb;
         private Flock agentFlock;
+        
         public Flock AgentFlock
         {
             get
             {
-                return agentFlock; 
-                
+                return agentFlock;
             }
         }
         
         Collider agentCollider;
-        
+        public float force = 1000;
         public Collider AgentCollider
         {
             get
             {
-                return agentCollider; 
-                
+                return agentCollider;
             }
         }
 
@@ -43,14 +42,10 @@ namespace AJ
 
         public void Move(Vector3 velocity)
         {
+            velocity = new Vector3(velocity.x, 0, velocity.z);
             transform.forward = velocity;
-            velocity = new Vector3(velocity.x, transform.position.y, velocity.z);
-            rb.AddForce(velocity * Time.deltaTime);
-            //transform.position += (Vector3)velocity * Time.deltaTime;
-
-            
-
-            //Use add force for speed and torque for angles after finishing the tutorial.
+            rb.AddForce(velocity * force * Time.deltaTime);
+            //transform.position += velocity * Time.deltaTime;
         }
     }
 }
