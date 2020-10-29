@@ -3,9 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using AnthonyY;
 using Mirror;
+using Student_workspace.Dylan.Scripts.NetworkLobby;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : NetworkBehaviour
 {
     //Event for players spawned
     public event Action playersSpawnedEvent;
@@ -23,6 +24,8 @@ public class GameManager : MonoBehaviour
 //Will be linked to sheep spawn manager later (TOTAL SHEEP)
     public List<Movement_ForwardAM> sheepinLevel;
 
+   [SerializeField] private GameNetworkManager networkManager;
+
 
     private void OnEnable()
     {
@@ -32,7 +35,7 @@ public class GameManager : MonoBehaviour
         playersSpawnedEvent += PlayersSpawned;
         MapOverviewEvent += OverviewOfMap;
     }
-
+    
     private void OnDisable()
     {
         YouWonEvent -= EndGoalTrackerWin;
@@ -52,6 +55,7 @@ public class GameManager : MonoBehaviour
     {
         playersSpawnedEvent?.Invoke();
         GetComponent<ClayDogBehaviour>().controls.Disable();
+        // networkManager.SpawnPlayer(conn);
         Debug.Log("GameManager Event: PLAYERS SPAWNER");
     }
 
