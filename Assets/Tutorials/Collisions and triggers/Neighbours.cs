@@ -4,7 +4,13 @@ using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
-public class FakeSheep : MonoBehaviour{}
+public class FakeSheep : MonoBehaviour
+{
+	public void Dead()
+	{
+		throw new NotImplementedException();
+	}
+}
 
 public class Neighbours : MonoBehaviour
 {

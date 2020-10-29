@@ -16,20 +16,36 @@ public class CamsDude_Model : CharacterBase
 	public Material             clay;
 	public event Action         JumpEvent;
 
-	public float health;
-	
+	public Health health;
+
 	// Start is called before the first frame update
 	void Start()
 	{
 		Debug.Log("Test");
 	}
 	
+	void OnEnable()
+	{
+		health.DeathEvent += CamsDeath;
+	}
+
+	void OnDisable()
+	{
+		health.DeathEvent -= CamsDeath;
+	}
+
+	public void CamsDeath(Health health)
+	{
+		// CamsDude death code here
+		GetComponent<AudioSource>().Play();
+		Destroy(gameObject);
+	}
+
+
 	// Update is called once per frame
+
 	void Update()
 	{
-		if(health<=0)
-			Destroy(gameObject);
-		
 		
 		if (Input.GetKeyDown(KeyCode.C))
 		{
