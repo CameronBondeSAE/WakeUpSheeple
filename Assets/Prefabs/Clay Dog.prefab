@@ -293,8 +293,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  movementSpeed: 0
-  health: {fileID: 0}
+  movementSpeed: 10
+  health: {fileID: -725918390782881256}
 --- !u!114 &-725918390782881256
 MonoBehaviour:
   m_ObjectHideFlags: 0
