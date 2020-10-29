@@ -14,6 +14,8 @@ public class EndGoalChecker : MonoBehaviour
     [Header("List of Sheep")]
     public List<Movement_ForwardAM> sheep;
     public int maxSheepCount;
+
+    public event Action sheepMadeitEvent; 
     
     private void OnTriggerEnter(Collider other)
     {
@@ -26,6 +28,7 @@ public class EndGoalChecker : MonoBehaviour
             sheep.Add(other.transform.root.GetComponent<Movement_ForwardAM>());
             Destroy(other.transform.root.GetComponent<Movement_ForwardAM>());
             Debug.Log(sheep.Count.ToString());
+           
         }
     }
 
@@ -48,6 +51,13 @@ public class EndGoalChecker : MonoBehaviour
         
     }
 
+    public void EndGoalReached()
+    {
+        if (sheep.Count > maxSheepCount)
+        {
+            sheepMadeitEvent?.Invoke();
+        }
+    }
     private void OnDrawGizmos()
     {
         Gizmos.color = new Color(1, 0, 0, 0.5f);
