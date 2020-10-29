@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using AJ;
+using AnthonyY;
 using Mirror;
 using Student_workspace.Blaide.scripts;
 using Student_workspace.Dylan.Scripts.Player;
@@ -53,17 +54,20 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
         public List<NetworkGamePlayer> GamePlayers { get; } = new List<NetworkGamePlayer>();
 
         [Tooltip("Not floating network dude")]
-        public List<DogMovement> topDownPlayers = new List<DogMovement>();
+        public List<ClayDogBehaviour> topDownPlayers = new List<ClayDogBehaviour>();
 
         [Header("Lobby")]
         public GameObject lobbyUI;
+
         public GameObject nameInputUI;
         public GameObject mainMenu;
-        
+
         public bool useSameScene;
 
-        [Scene] [SerializeField] public List<string> levels;
-        
+        [Scene]
+        [SerializeField]
+        public List<string> levels;
+
         public override void Start()
         {
             // Debug.Log("Level Loaded");
@@ -104,7 +108,7 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
             base.Start();
         }
 
-        public void LoadLevel(string levelToLoadName,bool loadNextLevel)
+        public void LoadLevel(string levelToLoadName, bool loadNextLevel)
         {
             //possible issues might come up with gamescene not being this new scene
             //if so just assign game scene to this new scene when we load it here
@@ -117,10 +121,9 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
             }
             else
             {
-                
                 ServerChangeScene(levelToLoadName);
-
             }
+
             nextIndex = 0;
         }
 
@@ -129,7 +132,7 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
             string currentLevel = SceneManager.GetActiveScene().path;
             int currentlevelIndex = levels.IndexOf(currentLevel);
 
-            return  ( currentlevelIndex < levels.Count) ? levels[currentlevelIndex + 1] : null;
+            return (currentlevelIndex < levels.Count) ? levels[currentlevelIndex + 1] : null;
         }
 
         void UIOff(NetworkGamePlayer ngp)
@@ -313,7 +316,6 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
             //Changing scenes is deleting the physical player that gets spawned on start game..
             // and it also deletes them even if they're spawned in OnServerChangeScene
             base.ServerChangeScene(newSceneName);
-            
         }
 
         public void RestartLevel()
@@ -323,7 +325,6 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
             nextIndex = 0;
         }
 
-        
 
         public override void OnServerChangeScene(string sceneName)
         {
@@ -356,6 +357,7 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
         /// Spawn physical player at Spawn point
         /// </summary>
         private static List<Transform> spawnPoints = new List<Transform>();
+
         private int nextIndex = 0;
 
         [SerializeField]
@@ -394,12 +396,12 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
             float totalHeight = maxHeight - minHeight;
 
             NetworkServer.Spawn(playerInstance, conn);
-            
-            
-            topDownPlayers.Add(playerInstance.GetComponent<DogMovement>());
-            
+
+
+            topDownPlayers.Add(playerInstance.GetComponent<ClayDogBehaviour>());
+
             nextIndex++;
-            
+
             if (nextIndex >= spawnPoints.Count)
             {
                 nextIndex = 0;
