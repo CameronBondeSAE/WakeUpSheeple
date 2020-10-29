@@ -15,8 +15,8 @@ namespace AnthonyY
         public float movementSpeed;
 
         public Health health;
-    
-        private PlayerControls controls;
+
+        public PlayerControls controls;
     
         private void Awake()
         {
