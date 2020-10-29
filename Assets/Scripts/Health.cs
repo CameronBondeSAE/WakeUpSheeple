@@ -20,10 +20,10 @@ public class Health : MonoBehaviour
 		currentHealth = startingHealth;
 	}
 
-	public void ChangeHealth(int amount)
+	public void Damage(int amount)
 	{
 		currentHealth = currentHealth - amount;
-		Debug.Log(gameObject.name + "current health :" + currentHealth);
+		Debug.Log(gameObject.name + " current health : " + currentHealth);
 
 		if (currentHealth <= 0)
 		{
