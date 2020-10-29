@@ -20,7 +20,7 @@ public class ChemtrailTest : MonoBehaviour
     public List<ParticleCollisionEvent> collisionEvents;
     public GameObject Virus;
 
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,26 +34,19 @@ public class ChemtrailTest : MonoBehaviour
         StartCoroutine("FlyOverSequence");
        // trail = GetComponent<ParticleSystem>();
         collisionEvents = new List<ParticleCollisionEvent>();
-        
-
-
     }
 
     private void OnParticleCollision(GameObject other)
     {
-        if (!(trail is null))
+        if (!(trail is null) && (!(other.GetComponent<CharacterBase>()is null)))
         {
             int numCollisionEvents = trail.GetCollisionEvents(other, collisionEvents);
-
-            Rigidbody rb = other.GetComponent<Rigidbody>();
-            
 
             for (int i = 0; i < collisionEvents.Count; i++)
             {
                 Vector3 pos = collisionEvents[i].intersection;
-                Vector3 force = collisionEvents[i].velocity * 10;
                 GameObject trailVirus = Instantiate(Virus, pos, Quaternion.identity);
-                trailVirus.GetComponent<VirusBehaviour>().deathTimer = 0.5f;
+                trailVirus.GetComponent<Zach.VirusBehaviour>().deathTimer = 0.5f;
             }
             
         }
@@ -64,8 +57,10 @@ public class ChemtrailTest : MonoBehaviour
     void Update()
     {
         GetComponent<Rigidbody>().velocity=velocity;
-        
-        
+        Rigidbody rb = GetComponent<Rigidbody>();
+        transform.forward = rb.velocity;
+
+
     }
 
     IEnumerator FlyOverSequence()
