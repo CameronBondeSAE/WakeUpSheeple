@@ -27,11 +27,7 @@ namespace AJ
         {
             get { return squareAvoidanceRadius; }
         }
-    
-    
-    
-    
-    
+
         // Start is called before the first frame update
         void Start()
         {
@@ -68,7 +64,6 @@ namespace AJ
                     move = move.normalized * maxSpeed;
                 }
                 agent.Move(move);
-
             }
         }
 
@@ -83,10 +78,8 @@ namespace AJ
                     context.Add(c.transform);
                 }
             }
-
             return context;
         }
     }
-
 }
 
