@@ -3,8 +3,8 @@
 namespace Zach
 {
     //locate nearest sheep
-//move towards nearest sheep
-//attach to sheep and create new virus object
+    //move towards nearest sheep
+    //attach to sheep and create new virus object
     public class VirusBehaviour : MonoBehaviour
     {
         //private Vector3 currentVelocity;
@@ -20,7 +20,7 @@ namespace Zach
         public float incubation;
 
         [Tooltip("How long it takes the virus to die without being attached")]
-        public float deathTimer;
+        public float deathTimer = 15f;
 
         [SerializeField] [Tooltip("Location for the virus prefab to be stored")]
         private GameObject instantiate;
@@ -33,10 +33,7 @@ namespace Zach
             isAttached = false;
         }
 
-        private void Start()
-        {
-            deathTimer = 15f;
-        }
+        
 
         // Update is called once per frame
         // Movement and location of sheep
