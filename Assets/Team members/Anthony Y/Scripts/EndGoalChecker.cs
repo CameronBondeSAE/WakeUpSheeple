@@ -45,10 +45,7 @@ public class EndGoalChecker : MonoBehaviour
 
     private void Update()
     {
-        if (sheep.Count >= maxSheepCount)
-        {
-            Destroy(boxCollider);
-        }
+        
     }
 
     private void OnDrawGizmos()
