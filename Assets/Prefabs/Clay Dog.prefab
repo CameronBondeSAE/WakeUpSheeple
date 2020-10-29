@@ -291,6 +291,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a2138553fa7352438d20161b102611e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  movementSpeed: 0
+  health: {fileID: 0}
 --- !u!114 &-725918390782881256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,5 +307,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81826528f9bf8604a83a62a697465fed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
+  startingHealth: 0
   currentHealth: 0
