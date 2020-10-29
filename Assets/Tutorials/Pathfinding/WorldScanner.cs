@@ -46,7 +46,7 @@ public class WorldScanner : MonoBehaviour
 		{
 			for (int z = 0; z < zNum; z++)
 			{
-				if (Nodes[x,z] != null && Nodes[x,z].isBlocked)
+				if (Nodes != null && Nodes[x,z].isBlocked)
 				{
 					Gizmos.DrawCube(transformPosition + new Vector3(x, 0, z), size);
 				}

@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class DeathCube : MonoBehaviour
 {
+	public int amount = 10;
+	
 	void OnTriggerEnter(Collider other)
 	{
-		other.GetComponent<Health>().Damage(50);
+		other.GetComponent<Health>().Damage(amount);
 	}
 }
