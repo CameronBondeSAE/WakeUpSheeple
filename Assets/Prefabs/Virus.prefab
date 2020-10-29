@@ -170,7 +170,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.34
+      scalar: 0.37
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -286,7 +286,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.25
+      scalar: 0.34
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4841,7 +4841,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAttached: 0
   virus: {fileID: 2704142560674385399}
-  virusLocation: {x: 0, y: 0, z: 0}
   incubation: 0
   deathTimer: 0
   instantiate: {fileID: 2704142560674385399}
