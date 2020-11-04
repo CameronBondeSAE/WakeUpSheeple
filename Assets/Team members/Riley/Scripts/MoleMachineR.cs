@@ -10,7 +10,7 @@ using UnityEngine;
 //This method adds a problem where the mole cant come out of the ground if there is something directly above (it also fixes this however)
 //Movement (Waypoint to a group, check if there are multiple in a radius, then make a path based on the distance that moves in a curve)
 
-public class EventStateR : MonoBehaviour
+public class MoleMachineR : MonoBehaviour
 {
     public DelegateStateManager stateManager = new DelegateStateManager();
     public DelegateState standing = new DelegateState();
