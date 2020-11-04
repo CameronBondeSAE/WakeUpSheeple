@@ -1,19 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(VirusBehaviour))]
-public class VirusBehaviourEditor : Editor
+namespace Zach
 {
-    public override void OnInspectorGUI()
+    [CustomEditor(typeof(VirusBehaviour))]
+    public class VirusBehaviourEditor : Editor
     {
-        base.OnInspectorGUI();
-
-        if (GUILayout.Button("Breed"))
+        public override void OnInspectorGUI()
         {
-            //testing if the object is a virus behaviour 
-            (target as VirusBehaviour)?.Breed();
+            base.OnInspectorGUI();
+
+            if (GUILayout.Button("Breed"))
+                //testing if the object is a virus behaviour 
+                (target as VirusBehaviour)?.Breed();
         }
     }
 }

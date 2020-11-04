@@ -11,8 +11,6 @@ public class KillAllCharacters : MonoBehaviour
 	{
 		CharacterBase characterBase = other.GetComponent<CharacterBase>();
 		
-		
-		
 		if (characterBase)
 		{
 			Destroy(other.gameObject);

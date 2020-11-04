@@ -1297,11 +1297,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1545417727 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2514153509697124241, guid: 7149c958a210d6346bfeafcb972c2e9e, type: 3}
-  m_PrefabInstance: {fileID: 2514153508825023598}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1581778630
 GameObject:
   m_ObjectHideFlags: 0
@@ -1711,7 +1706,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c50164789f5cfbd49b9406a03a5166f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HelicopterPrefab: {fileID: 1545417727}
+  HelicopterPrefab: {fileID: 2514153509697124241, guid: 7149c958a210d6346bfeafcb972c2e9e, type: 3}
+  SpawnLocations:
+  - {fileID: 1900490561}
+  - {fileID: 1816339252}
+  - {fileID: 572265122}
+  WaitLocations:
+  - {fileID: 616590688}
+  - {fileID: 1581778631}
+  - {fileID: 173033486}
+  ExitLocations:
+  - {fileID: 448030912}
+  - {fileID: 1609542781}
+  - {fileID: 344373083}
 --- !u!4 &1969306289
 Transform:
   m_ObjectHideFlags: 0
@@ -1855,6 +1862,18 @@ PrefabInstance:
     - target: {fileID: 2514153509697122410, guid: 7149c958a210d6346bfeafcb972c2e9e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2514153509697122414, guid: 7149c958a210d6346bfeafcb972c2e9e, type: 3}
+      propertyPath: WaitLocations.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2514153509697122414, guid: 7149c958a210d6346bfeafcb972c2e9e, type: 3}
+      propertyPath: ExitLocations.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2514153509697122414, guid: 7149c958a210d6346bfeafcb972c2e9e, type: 3}
+      propertyPath: SpawnLocations.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2514153509697122414, guid: 7149c958a210d6346bfeafcb972c2e9e, type: 3}
       propertyPath: SpawnLocations.Array.data[0]

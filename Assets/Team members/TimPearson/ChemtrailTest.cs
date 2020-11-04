@@ -20,35 +20,33 @@ public class ChemtrailTest : MonoBehaviour
     public List<ParticleCollisionEvent> collisionEvents;
     public GameObject Virus;
 
-    
+
     // Start is called before the first frame update
     void Start()
     {
+        if (target == null)
+        {
+           Debug.LogWarning("Chemplane NEEDS a target set",this);
+           return;
+        }
         //Vector3 position = new Vector3(Random.Range(-41f,58f),2,Random.Range(-46,54));
         //Instantiate(enemy, position, Quaternion.identity);
         StartCoroutine("FlyOverSequence");
        // trail = GetComponent<ParticleSystem>();
         collisionEvents = new List<ParticleCollisionEvent>();
-        
-
-
     }
 
     private void OnParticleCollision(GameObject other)
     {
-        if (!(trail is null))
+        if (!(trail is null) && (!(other.GetComponent<CharacterBase>()is null)))
         {
             int numCollisionEvents = trail.GetCollisionEvents(other, collisionEvents);
-
-            Rigidbody rb = other.GetComponent<Rigidbody>();
-            
 
             for (int i = 0; i < collisionEvents.Count; i++)
             {
                 Vector3 pos = collisionEvents[i].intersection;
-                Vector3 force = collisionEvents[i].velocity * 10;
-                Instantiate(Virus, pos, Quaternion.identity);
-                
+                GameObject trailVirus = Instantiate(Virus, pos, Quaternion.identity);
+                trailVirus.GetComponent<Zach.VirusBehaviour>().deathTimer = 0.5f;
             }
             
         }
@@ -59,15 +57,17 @@ public class ChemtrailTest : MonoBehaviour
     void Update()
     {
         GetComponent<Rigidbody>().velocity=velocity;
-        
-        
+        Rigidbody rb = GetComponent<Rigidbody>();
+        transform.forward = rb.velocity;
+
+
     }
 
     IEnumerator FlyOverSequence()
     {
         while (true)
         {
-            Debug.Log("Restarting");
+            
             //yield return new WaitForSeconds(5f);
             Vector3 position = new Vector3(Random.Range(-41f, 58f), planeHeight, Random.Range(-46, 54));
             transform.position = position;

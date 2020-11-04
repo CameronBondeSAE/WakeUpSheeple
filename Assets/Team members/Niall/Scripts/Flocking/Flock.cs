@@ -17,7 +17,6 @@ namespace Niall
         [Range(1f, 100f)] public float driveFactor = 10f;
         [Range(1f, 100f)] public float maxSpeed = 5f;
         [Range(1f, 10f)] public float neighbourRadius = 1.5f;
-
         [Range(0f, 1f)] public float avoidanceRadiusMultiplier = 0.5f;
 
         private float squareMaxSpeed;
@@ -38,7 +37,7 @@ namespace Niall
             for (int i = 0; i < startingCount; i++)
             {
                 FlockAgent newAgent = Instantiate(agentPrefab, Random.insideUnitSphere * (startingCount * AgentDensity),
-                    Quaternion.Euler(Vector3.forward * Random.Range(0f, 360f)), transform);
+                    Quaternion.Euler(Vector3.forward * Random.Range(0f, 360f)), parent: transform);
 
                 newAgent.name = "Agent" + i;
                 agents.Add(newAgent);
@@ -74,6 +73,7 @@ namespace Niall
                     context.Add(c.transform);
                 }
             }
+            
 
             return context;
         }

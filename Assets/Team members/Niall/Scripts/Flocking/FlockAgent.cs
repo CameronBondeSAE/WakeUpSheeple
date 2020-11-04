@@ -6,6 +6,7 @@ namespace Niall
 {
 
 [RequireComponent(typeof(Collider))]
+[RequireComponent(typeof(Rigidbody))]
     public class FlockAgent : MonoBehaviour
     {
         private Collider agentCollider;

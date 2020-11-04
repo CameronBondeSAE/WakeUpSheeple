@@ -12,9 +12,14 @@ public class EndGoalChecker : MonoBehaviour
     public List<Collider> boxes;
     public BoxCollider boxCollider;
     [Header("List of Sheep")]
-    public List<Movement_ForwardAM> sheep;
+    public List<Movement_ForwardAM> safeSheep;
     public int maxSheepCount;
+
+    public event Action SheepMadeitEvent;
     
+    //may not need this event
+    public event Action ASheepMadeitEvent;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<Collider>())
@@ -23,9 +28,11 @@ public class EndGoalChecker : MonoBehaviour
             Debug.Log(other.gameObject.name);
             boxes.Add(other);
            //****SHEEP CODE**************
-            sheep.Add(other.transform.root.GetComponent<Movement_ForwardAM>());
+            safeSheep.Add(other.transform.root.GetComponent<Movement_ForwardAM>());
             Destroy(other.transform.root.GetComponent<Movement_ForwardAM>());
-            Debug.Log(sheep.Count.ToString());
+            Debug.Log(safeSheep.Count.ToString());
+            ASheepMadeitEvent?.Invoke();
+           
         }
     }
 
@@ -35,8 +42,8 @@ public class EndGoalChecker : MonoBehaviour
         {
             //****SHEEP CODE**************
             Debug.Log(other.transform.root.gameObject.name + ": has left the zone");
-            sheep.Remove(other.transform.root.GetComponent<Movement_ForwardAM>());
-            Debug.Log(sheep.Count.ToString());
+            safeSheep.Remove(other.transform.root.GetComponent<Movement_ForwardAM>());
+            Debug.Log(safeSheep.Count.ToString());
             
             boxes.Remove(other);
             
@@ -45,12 +52,26 @@ public class EndGoalChecker : MonoBehaviour
 
     private void Update()
     {
-        if (sheep.Count >= maxSheepCount)
+        
+    }
+
+    public void EndGoalReached()
+    {
+        if (safeSheep.Count >= maxSheepCount)
         {
-            Destroy(boxCollider);
+            SheepMadeitEvent?.Invoke();
         }
     }
 
+    public void EndGoalNotReached()
+    {
+        if (safeSheep.Count < maxSheepCount)
+        {
+            //I dont know how this may work because this will keep spamming the event if there isn't enough sheep
+            //in the list
+            
+        }
+    }
     private void OnDrawGizmos()
     {
         Gizmos.color = new Color(1, 0, 0, 0.5f);
