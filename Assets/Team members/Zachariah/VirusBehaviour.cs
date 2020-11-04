@@ -12,13 +12,14 @@ using UnityEngine;
 public class VirusBehaviour : MonoBehaviour
 {
     //private Vector3 currentVelocity;
-    public float velocity;
+    //public float velocity;
     //public GameObject Sheep;
     public bool isAttached = false;
     public GameObject virus;
     public Vector3 virusLocation;
     public float incubation = 0f;
     public float deathTimer;
+    public GameObject instantiate;
 
     // Start is called before the first frame update
 
@@ -60,7 +61,7 @@ public class VirusBehaviour : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //transform.parent;
-        if (other.gameObject.CompareTag("Player"))
+        if (other.GetComponent<CharacterBase>())
         {
             if (isAttached == false && !other.gameObject.GetComponentInChildren<VirusBehaviour>())
             {
@@ -78,12 +79,17 @@ public class VirusBehaviour : MonoBehaviour
                 if (incubation > 5f && !other.GetComponentInChildren<VirusBehaviour>())
                 {
                     incubation = 0f;
-                    GameObject instantiate = Instantiate(virus, other.transform.position, new Quaternion(0, 0, 0, 0));
+                    instantiate = Instantiate(virus, other.transform.position, new Quaternion(0, 0, 0, 0));
                 }
             } 
               
             //record that I have been attached
         }
+    }
+
+    public void Breed()
+    {
+        instantiate = Instantiate(virus, transform.position, new Quaternion(0, 0, 0, 0));
     }
 
     private void OnTriggerExit(Collider other)

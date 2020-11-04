@@ -199,7 +199,6 @@ Light:
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
-  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!4 &1967606171
@@ -328,12 +327,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2040425581}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 536b8fdb4d0efc8408d3a6ea55111394, type: 3}
+  m_Script: {fileID: 11500000, guid: 211c0ba21c1e1614c99f2a8d6a17127e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 3.15
-  newShade: 0
-  perlinY: 0
+  clay: {fileID: 0}
+  health: 3.97
 --- !u!65 &2040425583
 BoxCollider:
   m_ObjectHideFlags: 0

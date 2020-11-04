@@ -15,11 +15,15 @@ namespace Damien
     {
         
         public string sheepTag = "sheep";
-
+    
         private Transform inRange;
+        
+        
+        
         public float range = 3f;
         private float openAngle = 90f;
         public float rotateAngle = 15f;
+        
         public Transform partToRotate;
         
         // Start is called before the first frame update
@@ -34,6 +38,16 @@ namespace Damien
             
         }
 
+        private void OnTriggerEnter(Collider target)
+        {
+            AdministerVaccine();
+            
+        }
+
+        void AdministerVaccine()
+        {
+            Debug.Log("Administer Vaccine");
+        }
         void UpdateInRange()
         {
             //Find nearest sheep
@@ -49,8 +63,10 @@ namespace Damien
                     shortestDistance = distanceToSheep;
                     nearestSheep = sheep;
                 }
-            }
+            } 
             
+            
+
             if (nearestSheep != null && shortestDistance <= range)
             {
                 //Debug.Log("Sheep is in Range");

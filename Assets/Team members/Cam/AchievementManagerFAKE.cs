@@ -11,6 +11,14 @@ public class AchievementManagerFAKE : MonoBehaviour
 	private void OnEnable()
 	{
 		CamsDudeModel.JumpEvent += CamsDudeModelOnJumpEvent;
+
+		// DANGEROUS: Static access of a GLOBAL variable
+		// FakeSheep.sheepDeathEventStatic += FakeSheepOnsheepDeathEventStatic;
+	}
+
+	private void FakeSheepOnsheepDeathEventStatic(FakeSheep fakeSheep)
+	{
+		Debug.Log("Sheep died : Name = "+fakeSheep.name);
 	}
 
 	private void OnDisable()
