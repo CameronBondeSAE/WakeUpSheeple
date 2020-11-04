@@ -50,12 +50,7 @@ public class Movement_ForwardAM : MonoBehaviour
       DoStop();
       
    }
-
-   private void FixedUpdate()
-   {
-      //GoForward();
-   }
-
+   
    public void GoForward()
    {
       forceApplied.z = zForce;
