@@ -8,7 +8,7 @@ using Mirror;
 
 namespace LukeBaker
 {
-    public class FiveG : NetworkBehaviour
+    public class FiveG : MonoBehaviour
     {
         //Energising is when the animals gain a buff or de-buff.
         //Attracting is when UFO's or helis and black sheep travel toward tower location.

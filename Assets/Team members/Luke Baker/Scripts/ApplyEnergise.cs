@@ -8,7 +8,7 @@ using Mirror;
 
 namespace LukeBaker
 {
-    public class ApplyEnergise : NetworkBehaviour
+    public class ApplyEnergise : MonoBehaviour
     {
         //This script needs work, figure out what energise does and it would make it easier.
         //variables
