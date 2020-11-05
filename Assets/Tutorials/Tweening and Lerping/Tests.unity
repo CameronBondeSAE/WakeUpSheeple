@@ -1000,10 +1000,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -6534006516393420730, guid: 375d01fe536047044b128a3478fb07d4, type: 3}
-      propertyPath: ParticleSystem
-      value: 
-      objectReference: {fileID: 4380357957177940974}
     - target: {fileID: 7514330408605435760, guid: 375d01fe536047044b128a3478fb07d4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.390951
@@ -1054,11 +1050,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 375d01fe536047044b128a3478fb07d4, type: 3}
---- !u!198 &4380357957177940974 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 3680495633775389571, guid: 375d01fe536047044b128a3478fb07d4, type: 3}
-  m_PrefabInstance: {fileID: 4380357957177940973}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &4380357957177940975 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: -6534006516393420730, guid: 375d01fe536047044b128a3478fb07d4, type: 3}
@@ -1070,3 +1061,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85f26d1d2b2092241bf2afebd3aa346b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &9153591895579287371
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 9153591896295005456, guid: ebade01d85a40bc42b3ba4994b686539, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -27.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 9153591896295005456, guid: ebade01d85a40bc42b3ba4994b686539, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.893
+      objectReference: {fileID: 0}
+    - target: {fileID: 9153591896295005456, guid: ebade01d85a40bc42b3ba4994b686539, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -28.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9153591896295005456, guid: ebade01d85a40bc42b3ba4994b686539, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9153591896295005456, guid: ebade01d85a40bc42b3ba4994b686539, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9153591896295005456, guid: ebade01d85a40bc42b3ba4994b686539, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9153591896295005456, guid: ebade01d85a40bc42b3ba4994b686539, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9153591896295005456, guid: ebade01d85a40bc42b3ba4994b686539, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 9153591896295005456, guid: ebade01d85a40bc42b3ba4994b686539, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9153591896295005456, guid: ebade01d85a40bc42b3ba4994b686539, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9153591896295005456, guid: ebade01d85a40bc42b3ba4994b686539, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9153591896295005459, guid: ebade01d85a40bc42b3ba4994b686539, type: 3}
+      propertyPath: m_Name
+      value: Dog to Wolf - Running functions inside a sequence
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ebade01d85a40bc42b3ba4994b686539, type: 3}
