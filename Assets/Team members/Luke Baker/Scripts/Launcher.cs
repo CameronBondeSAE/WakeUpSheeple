@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using Mirror.Examples.RigidbodyPhysics;
 using UnityEngine;
 using DG.Tweening;
+using Mirror;
 
 namespace LukeBaker
 {
-    public class Launcher : MonoBehaviour
+    public class Launcher : NetworkBehaviour
     {
         public float launchPower;
         public int launchDelay;
@@ -19,12 +20,14 @@ namespace LukeBaker
             
             StartCoroutine(Launch(other.attachedRigidbody));
             
+            //Health script for if the object has health apply some damage to it
             if (health != null)
             {
                 health.Damage(launchDamage);
             }
         }
 
+        //Launch the object that has entered
         IEnumerator Launch(Rigidbody rb)
         {
             yield return new WaitForSeconds(launchDelay);

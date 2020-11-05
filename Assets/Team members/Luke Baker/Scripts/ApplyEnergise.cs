@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using Mirror;
 
 namespace LukeBaker
 {
-    public class ApplyEnergise : MonoBehaviour
+    public class ApplyEnergise : NetworkBehaviour
     {
         //This script needs work, figure out what energise does and it would make it easier.
         //variables
@@ -34,6 +35,7 @@ namespace LukeBaker
             energiserTrigger.onTriggerExitEvent -= EnergiseObject;
         }
         
+        //Function for the inner collider of the 5G tower
         void EnergiseObject(Collider trigger)
         {
             Sequence sequence = DOTween.Sequence();
