@@ -36,7 +36,7 @@ namespace Niall
 
             for (int i = 0; i < startingCount; i++)
             {
-                FlockAgent newAgent = Instantiate(agentPrefab, Random.insideUnitSphere * (startingCount * AgentDensity),
+                FlockAgent newAgent = Instantiate(agentPrefab, transform.position + (Random.insideUnitSphere * (startingCount * AgentDensity)),
                     Quaternion.Euler(Vector3.forward * Random.Range(0f, 360f)), parent: transform);
 
                 newAgent.name = "Agent" + i;

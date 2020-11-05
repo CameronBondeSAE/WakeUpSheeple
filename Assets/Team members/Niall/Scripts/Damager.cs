@@ -7,7 +7,7 @@ public class Damager : MonoBehaviour
 {
 
     public Health health;
-
+[Tooltip("True = receiving damage. False = dealing damage")]
     public bool Damagee;
     void Awake()
     {
@@ -22,14 +22,14 @@ public class Damager : MonoBehaviour
 
     void Deathhh(Health health)
     {
-        Destroy(this);
+        Destroy(gameObject);
     }
 
     private void OnCollisionEnter(Collision other)
     {
         if (Damagee == false)
         {
-            other.gameObject.GetComponent<Health>().Damage(20);
+            other.gameObject.GetComponent<Health>()?.Damage(50);
         }
     }
 

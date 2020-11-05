@@ -9,8 +9,9 @@ public class Health : MonoBehaviour
 {
 	public int startingHealth;
 	
-	[SerializeField]
-	private int currentHealth;
+
+	[ReadOnly]
+	public int currentHealth;
 
 	
 	public event Action<Health> DeathEvent;
