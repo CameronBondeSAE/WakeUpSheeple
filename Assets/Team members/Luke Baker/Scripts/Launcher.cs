@@ -8,7 +8,7 @@ using Mirror;
 
 namespace LukeBaker
 {
-    public class Launcher : NetworkBehaviour
+    public class Launcher : MonoBehaviour
     {
         public float launchPower;
         public int launchDelay;

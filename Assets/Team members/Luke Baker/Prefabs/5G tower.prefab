@@ -263,7 +263,6 @@ GameObject:
   - component: {fileID: 2732209737635966215}
   - component: {fileID: 6516724221856867679}
   - component: {fileID: 7785905163080179751}
-  - component: {fileID: 8588506920764556326}
   m_Layer: 0
   m_Name: 5G tower
   m_TagString: Untagged
@@ -300,8 +299,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4363c73a36daf9e489c1c09a6720ed29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
   attractorTrigger: {fileID: 2357169482924936433}
   attractorCol: {fileID: 2474449638159111442}
   attractSpeed: 1000
@@ -317,29 +314,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e68388ff0a1fdce44a283c2853f1d150, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
   energiserTrigger: {fileID: 55807206401657017}
   energiseDuration: 15
   waitForEnergise: 2
   ease: 35
   energiseEndPosition: {fileID: 0}
---- !u!114 &8588506920764556326
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2732209737635966213}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneId: 0
-  serverOnly: 0
-  m_AssetId: 
-  hasSpawned: 0
 --- !u!1 &2732209737812006455
 GameObject:
   m_ObjectHideFlags: 0
