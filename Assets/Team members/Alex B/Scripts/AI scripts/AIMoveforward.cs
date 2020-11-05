@@ -24,7 +24,7 @@ namespace AJ
         void Update()
         {
             dist = Vector3.Distance(transform.position, waypoints[waypointIndex].position);
-            if (dist < 1f)
+            if (dist < 100f)
             {
                 IncreaseIndex();
             }
@@ -33,7 +33,7 @@ namespace AJ
 
         void Patrol()
         {
-            GetComponent<Rigidbody>().AddForce(transform.forward*speed);
+            GetComponentInChildren<Rigidbody>().AddForce(transform.forward*speed);
         
             //(Vector3.forward * speed * Time.deltaTime);
         }
