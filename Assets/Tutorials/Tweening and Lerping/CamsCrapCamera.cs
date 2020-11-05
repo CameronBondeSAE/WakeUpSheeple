@@ -13,6 +13,7 @@ public class CamsCrapCamera : MonoBehaviour
     void Update()
 	{
 		// Uses Unity's "Move" functions to do a very simple Tween/Lerp smooth movement
-		transform.position = Vector3.MoveTowards(transform.position, target.position + offset, speed * Time.deltaTime);
+		// transform.position = Vector3.MoveTowards(transform.position, target.position + offset, speed * Time.deltaTime);
+		transform.position = Vector3.Slerp(transform.position, target.position + offset, speed * Time.deltaTime);
 	}
 }
