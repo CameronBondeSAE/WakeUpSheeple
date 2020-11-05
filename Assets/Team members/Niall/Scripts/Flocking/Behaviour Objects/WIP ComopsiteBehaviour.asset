@@ -12,5 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bef4100555f3d749a6535e59437fde9, type: 3}
   m_Name: WIP ComopsiteBehaviour
   m_EditorClassIdentifier: 
-  behaviours: []
-  weights: []
+  behaviours:
+  - {fileID: 11400000, guid: 1d3ada4b7396dc342a6af4bc7637e4d3, type: 2}
+  - {fileID: 11400000, guid: 3c10436cedb6d5f4f97c4def09e2f997, type: 2}
+  - {fileID: 11400000, guid: 279dcc20974001149928ccccd5062d79, type: 2}
+  - {fileID: 11400000, guid: 7b846394ace2552438cf2b026bf82ddc, type: 2}
+  weights:
+  - 4
+  - 1
+  - 3
+  - 1
