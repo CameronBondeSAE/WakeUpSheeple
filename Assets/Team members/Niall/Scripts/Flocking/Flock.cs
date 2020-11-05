@@ -43,7 +43,7 @@ namespace Niall
                 agents.Add(newAgent);
             }
         }
-        
+
         void Update()
         {
             foreach (FlockAgent agent in agents)
