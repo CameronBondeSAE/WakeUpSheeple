@@ -202,7 +202,7 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
             }
             else
             {
-                Debug.Log("Possesable = null");
+                // Debug.Log("Possesable = null");
                 FindPosessable();
             }
         }
@@ -215,7 +215,7 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
             }
             else
             {
-                Debug.Log("Possesable = null");
+                // Debug.Log("Possesable = null");
                 FindPosessable();
             }
         }

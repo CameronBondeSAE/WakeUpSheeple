@@ -22,7 +22,7 @@ public class GameManager : NetworkBehaviour
     public EndGoalChecker endGoalChecker;
 
 //Will be linked to sheep spawn manager later (TOTAL SHEEP)
-    public List<Movement_ForwardAM> sheepinLevel;
+    public List<Movement_ForwardAM> sheepInLevel;
 
    [SerializeField] private GameNetworkManager networkManager;
 
@@ -72,7 +72,7 @@ public class GameManager : NetworkBehaviour
         //TODO
         //KEEP TRACK OF SHEEP HERE LINKING IT TO THE SPAWN MANAGER
         //SPAWN MANAGER WILL KEEP TRACK WILL SPAWN THE AMOUNT OF SHEEP NEEDED
-        Debug.Log(sheepinLevel.Count.ToString());
+        Debug.Log(sheepInLevel.Count.ToString());
 
         //Remove sheep from list when it dies
 
@@ -84,7 +84,7 @@ public class GameManager : NetworkBehaviour
         //     }
         // }
 
-        if (sheepinLevel.Count < 0)
+        if (sheepInLevel.Count < 0)
         {
             EndGoalTrackerLost();
         }
