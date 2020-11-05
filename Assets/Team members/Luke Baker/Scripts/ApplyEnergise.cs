@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
@@ -11,8 +12,16 @@ namespace LukeBaker
         //This script needs work, figure out what energise does and it would make it easier.
         //variables
         public TriggerMarshaller energiserTrigger;
-        public Collider energiserCol;
-        public bool isEnergised;
+        
+        //Tweening or animation variables
+        [Tooltip("The duration of the energise movement")]
+        public float energiseDuration;
+        [Tooltip("The time waiting for the object that is energised to move")]
+        public float waitForEnergise;
+        [Tooltip("The animation type for the movement of the energised object")]
+        public Ease ease;
+        [Tooltip("When the energiser is triggered by an object, the object will moves toward the energiseEndPosition"),Header("Required")]
+        public Transform energiseEndPosition;
 
         //Event Subscription
         private void OnEnable()
@@ -23,16 +32,12 @@ namespace LukeBaker
         private void OnDisable()
         {
             energiserTrigger.onTriggerExitEvent -= EnergiseObject;
-            isEnergised = false;
         }
         
-        public void EnergiseObject(Collider trigger)
+        void EnergiseObject(Collider trigger)
         {
-            // isEnergised = true;
-            // while (isEnergised = true)
-            // {
-            //     //apply buff or de-buff
-            // }
+            Sequence sequence = DOTween.Sequence();
+            sequence.Append(trigger.gameObject.transform.DOMove(energiseEndPosition.position, energiseDuration *Time.deltaTime, true)).SetDelay(waitForEnergise).SetEase(ease);
         }
     }
 }

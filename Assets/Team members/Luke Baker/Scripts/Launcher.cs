@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Mirror.Examples.RigidbodyPhysics;
 using UnityEngine;
+using DG.Tweening;
 
 namespace LukeBaker
 {

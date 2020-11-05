@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 2732209737486087716}
   - component: {fileID: 2732209737486087717}
   m_Layer: 0
-  m_Name: Body
+  m_Name: View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -315,8 +315,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energiserTrigger: {fileID: 55807206401657017}
-  energiserCol: {fileID: 2732209737455211380}
-  isEnergised: 0
+  energiseDuration: 15
+  waitForEnergise: 2
+  ease: 35
+  energiseEndPosition: {fileID: 0}
 --- !u!1 &2732209737812006455
 GameObject:
   m_ObjectHideFlags: 0
