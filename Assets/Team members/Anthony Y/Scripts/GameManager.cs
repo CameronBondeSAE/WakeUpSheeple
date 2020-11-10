@@ -5,26 +5,41 @@ using AnthonyY;
 using Mirror;
 using Student_workspace.Dylan.Scripts.NetworkLobby;
 using UnityEngine;
+using Random = System.Random;
 
 public class GameManager : NetworkBehaviour
 {
+    
+    [SerializeField]
+    private GameNetworkManager networkManager;
     //Event for players spawned
     public event Action playersSpawnedEvent;
 
-    //Event for actually playing the game
+    //Event for actually starting the game
     public event Action GamestartedEvent;
 
+    //Win or Lose State
     public event Action YouWonEvent;
     public event Action YouLostEvent;
-
+//Map mechanics
     public event Action MapOverviewEvent;
-
+//Game Done
+    public event Action GameOverEvent;
+    
+    
     public EndGoalChecker endGoalChecker;
+    private bool isGameDone;
+    
 
+    [Header("Sheep in Level")]
 //Will be linked to sheep spawn manager later (TOTAL SHEEP)
     public List<Movement_ForwardAM> sheepInLevel;
-
-   [SerializeField] private GameNetworkManager networkManager;
+    public List<Movement_ForwardAM> deadSheep;
+    
+    [Header("Percentage of Sheep")]
+    private float percentageOfSheepNeeded;
+    public float percentage = 75;
+    private float percentageIncrease = 0.01f;
 
 
     private void OnEnable()
@@ -34,8 +49,9 @@ public class GameManager : NetworkBehaviour
         GamestartedEvent += Playing;
         playersSpawnedEvent += PlayersSpawned;
         MapOverviewEvent += OverviewOfMap;
+        GameOverEvent += GameOver;
     }
-    
+
     private void OnDisable()
     {
         YouWonEvent -= EndGoalTrackerWin;
@@ -43,6 +59,7 @@ public class GameManager : NetworkBehaviour
         GamestartedEvent -= Playing;
         playersSpawnedEvent -= PlayersSpawned;
         MapOverviewEvent -= OverviewOfMap;
+        GameOverEvent -= GameOver;
     }
 
     public void OverviewOfMap()
@@ -56,14 +73,14 @@ public class GameManager : NetworkBehaviour
         playersSpawnedEvent?.Invoke();
         GetComponent<ClayDogBehaviour>().controls.Disable();
         // networkManager.SpawnPlayer(conn);
-        Debug.Log("GameManager Event: PLAYERS SPAWNER");
+        Debug.Log("GameManager Event: PLAYERS SPAWNEd but cannot move");
     }
 
     public void Playing()
     {
         GamestartedEvent?.Invoke();
         GetComponent<ClayDogBehaviour>().controls.Enable();
-        Debug.Log("GameManager Event: PLAYERS Player Playing");
+        Debug.Log("GameManager Event: PLAYERS are Playing & player can be moved");
     }
 
 //TOTAL SHEEP/DYING SHEEP
@@ -73,16 +90,22 @@ public class GameManager : NetworkBehaviour
         //KEEP TRACK OF SHEEP HERE LINKING IT TO THE SPAWN MANAGER
         //SPAWN MANAGER WILL KEEP TRACK WILL SPAWN THE AMOUNT OF SHEEP NEEDED
         Debug.Log(sheepInLevel.Count.ToString());
-
+        
+       
         //Remove sheep from list when it dies
 
-        // foreach (var sheep in sheepinLevel)
+        // foreach (var sheep in sheepInLevel)
         // {
-        //     if (sheep.Death)
+        //     if (sheep.GetComponent<Health>().Death())
         //     {
         //         sheepinLevel.Remove(sheep);
+        //         deadSheep.Add();
         //     }
         // }
+        
+        
+        percentageOfSheepNeeded = sheepInLevel.Count * percentage * percentageIncrease;
+        
 
         if (sheepInLevel.Count < 0)
         {
@@ -94,17 +117,34 @@ public class GameManager : NetworkBehaviour
     public void EndGoalTrackerWin()
     {
         //SAFE SHEEP
-        endGoalChecker.safeSheep.Count.ToString();
-        endGoalChecker.EndGoalReached();
-        YouWonEvent?.Invoke();
-        Debug.Log("GAME MANAGER: YOU WON THE  GAME ._.");
+        if (endGoalChecker.safeSheep.Count >= percentageOfSheepNeeded)
+        {
+            endGoalChecker.safeSheep.Count.ToString();
+            YouWonEvent?.Invoke();
+            Debug.Log("GAME MANAGER: YOU WON THE  GAME ._.");
+        }
     }
-
     public void EndGoalTrackerLost()
     {
         SheepTracker();
-        endGoalChecker.EndGoalNotReached();
         YouLostEvent?.Invoke();
         Debug.Log("GAME MANAGER: YOU LOST THE GAME :(");
+    }
+
+    public void EndGoalNotReached()
+    {
+        if (endGoalChecker.safeSheep.Count < percentageOfSheepNeeded)
+        {
+            //I dont know how this may work because this will keep spamming the event if there isn't enough sheep
+            //in the list
+        }
+    }
+
+    public void GameOver()
+    {
+        if (isGameDone == true)
+        {
+            GameOverEvent?.Invoke();
+        }
     }
 }
