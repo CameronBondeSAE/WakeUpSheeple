@@ -8,7 +8,7 @@ public class RoadHandlerR : MonoBehaviour
     public GameObject CarObjectToSpawn;
     private Vector3 carVector;
     private Rigidbody rb;
-    private float speedCarR = 0.2f;
+    private float speedCarR = 50f;
     GameObject instantiate;
     // Start is called before the first frame update
     void Start()
@@ -18,17 +18,10 @@ public class RoadHandlerR : MonoBehaviour
         instantiate = Instantiate<GameObject>(CarObjectToSpawn, carVector, transform.rotation);
         rb = instantiate.GetComponent<Rigidbody>();
         //FindObjectOfType<CarHandlerR>().DeleteEvent += deleteEvent;
+        rb.AddForce(-transform.right * speedCarR);
     }
     // Update is called once per frame
     void Update()
     {
-        rb.AddForce(-transform.right * speedCarR);
     }
-
-    void deleteEvent()
-    {
-        
-    }
-    
-    
 }

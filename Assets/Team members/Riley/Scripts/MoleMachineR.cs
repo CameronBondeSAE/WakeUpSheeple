@@ -33,12 +33,14 @@ public class MoleMachineR : MonoBehaviour
     private float movementSpeed = 0.1f;
     public bool waypointFirstRound;
     //----------------------------------WAYPOINT VARIABLES
+    //----------------------------------EVENT VARIABLES
+    public event Action tmpEventStand;
+    public event Action tmpEventJump;
+    public event Action tmpEventWaypoint;
+    //----------------------------------EVENT VARIABLES
     //----------------------------------TRIGGER VARIABLES
     private TriggerMoleR TriggerScriptR;
     //----------------------------------TRIGGER VARIABLES
-    //----------------------------------TEXTMESH
-    public TMPTextHandlerR textMeshHandlerR;
-    //----------------------------------TEXTMESH
     //----------------------------------UPDATE/START
     void Start()
     {
@@ -66,6 +68,7 @@ public class MoleMachineR : MonoBehaviour
         //----------------------------------TRIGGER VARIABLES
         TriggerScriptR = GetComponent<TriggerMoleR>();
         //----------------------------------TRIGGER VARIABLES
+        tmpEventStand?.Invoke();
     }
     void Update()
     {
@@ -76,7 +79,8 @@ public class MoleMachineR : MonoBehaviour
     private void standingStart()
     {
         timeHoverWait = 0;
-        textMeshHandlerR.OnStand();
+        tmpEventStand?.Invoke();
+        rb.drag = 0.05f;
     }
     private void standingUpdate()
     {
@@ -101,11 +105,12 @@ public class MoleMachineR : MonoBehaviour
     //----------------------------------JUMP
     private void jumpStart()
     {
+        rb.drag = 2.5f;
         soundPlayer.Play();
         timeWait = 0; //reset our timewait to 0 whenever we start the jump function
         rb.velocity = new Vector3(0, 0, 0);
         rb.isKinematic = false;
-        textMeshHandlerR.OnJumpState();
+        tmpEventJump?.Invoke();
     }
     private void jumpUpdate()
     {
@@ -142,7 +147,7 @@ public class MoleMachineR : MonoBehaviour
             currentWaypointIndex = currentWaypointIndex + 1;
             currentWaypoint = waypointsList[currentWaypointIndex];
         }
-        textMeshHandlerR.OnWaypointFollow();
+        tmpEventWaypoint?.Invoke();
         //
         //Use a loop to add all sheep to the list of waypoints
         //
