@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6636582331373893860}
   - component: {fileID: 1034292682019495130}
   - component: {fileID: 6325943595923594360}
+  - component: {fileID: 4069756698681322061}
   m_Layer: 0
   m_Name: CamsDude
   m_TagString: Untagged
@@ -111,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clay: {fileID: 0}
-  health: 0
+  health: {fileID: 0}
 --- !u!54 &6325943595923594360
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -128,3 +129,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4069756698681322061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8110363568846134216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81826528f9bf8604a83a62a697465fed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 100
+  currentHealth: 100

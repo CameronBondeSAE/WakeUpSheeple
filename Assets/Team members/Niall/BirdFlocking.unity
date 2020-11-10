@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &21377259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2114,11 +2114,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45bd2f1bd4070ad4a81c5c5c366af684, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agentPrefab: {fileID: 4864553450105590583, guid: 9502d95f5c3cc3246a0a17888a637658, type: 3}
-  behaviour: {fileID: 11400000, guid: 1b28cf91443d0624998a17e3405af1d0, type: 2}
+  agentPrefab: {fileID: 6555555029450623357, guid: 840863e018fe3474a946e8a81be88bdf, type: 3}
+  behaviour: {fileID: 11400000, guid: 35732d751ab3cdb4ba108b89adb24279, type: 2}
   startingCount: 500
-  driveFactor: 37.4
-  maxSpeed: 100
+  driveFactor: 1
+  maxSpeed: 30
   neighbourRadius: 3
   avoidanceRadiusMultiplier: 0.5
 --- !u!4 &1723335645

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Mirror.Examples.RigidbodyPhysics;
 using UnityEngine;
 
-namespace luke
+namespace LukeBaker
 {
     public class SimpleStateTest : MonoBehaviour
     {
@@ -71,8 +71,6 @@ namespace luke
         private void OnSpinEnter()
         {
             Debug.Log("OnSpinEnter");
-
-
         }
 
         private void OnSpinUpdate()

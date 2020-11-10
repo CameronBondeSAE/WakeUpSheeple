@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.Design;
 using UnityEngine;
 using UnityEngine.Rendering;
+using Mirror;
 
 namespace LukeBaker
 {
@@ -37,7 +38,7 @@ namespace LukeBaker
             attractorTrigger.onTriggerExitEvent -= Attraction;
         }
 
-        // when attract event triggered, attract black sheep, UFOs and/or heli's when in the outer trigger
+        // when attract event triggered, attract objects entered
         public void Attraction(Collider attractedCollider)
         {
             attractedCollider.GetComponent<Rigidbody>().AddForce(
