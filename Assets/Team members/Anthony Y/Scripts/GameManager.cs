@@ -12,20 +12,22 @@ public class GameManager : NetworkBehaviour
     
     [SerializeField]
     private GameNetworkManager networkManager;
-    //Event for players spawned
+    ///Event for players spawned
     public event Action playersSpawnedEvent;
 
-    //Event for actually starting the game
+    ///Event for actually starting the game
     public event Action GamestartedEvent;
 
-    //Win or Lose State
-    public event Action YouWonEvent;
-    public event Action YouLostEvent;
-//Map mechanics
+    ///Win or Lose State
+    public event Action WonEvent;
+    public event Action LostEvent;
+///Map mechanics
     public event Action MapOverviewEvent;
-//Game Done
+///Game Done
     public event Action GameOverEvent;
     
+    public event Action SheepSavedEvent;
+    public event Action SheepDiedEvent;
     
     public EndGoalChecker endGoalChecker;
     private bool isGameDone;
@@ -40,25 +42,25 @@ public class GameManager : NetworkBehaviour
     private float percentageOfSheepNeeded;
     public float percentage = 75;
     private float percentageIncrease = 0.01f;
-
+    
 
     private void OnEnable()
     {
-        YouWonEvent += EndGoalTrackerWin;
-        YouLostEvent += EndGoalTrackerLost;
-        GamestartedEvent += Playing;
+        WonEvent += EndGoalTrackerWin;
+        LostEvent += EndGoalTrackerLost;
+        // GamestartedEvent += Playing;
         playersSpawnedEvent += PlayersSpawned;
-        MapOverviewEvent += OverviewOfMap;
+        // MapOverviewEvent += OverviewOfMap;
         GameOverEvent += GameOver;
     }
 
     private void OnDisable()
     {
-        YouWonEvent -= EndGoalTrackerWin;
-        YouLostEvent -= EndGoalTrackerLost;
-        GamestartedEvent -= Playing;
+        WonEvent -= EndGoalTrackerWin;
+        LostEvent -= EndGoalTrackerLost;
+        // GamestartedEvent -= Playing;
         playersSpawnedEvent -= PlayersSpawned;
-        MapOverviewEvent -= OverviewOfMap;
+        // MapOverviewEvent -= OverviewOfMap;
         GameOverEvent -= GameOver;
     }
 
@@ -66,14 +68,15 @@ public class GameManager : NetworkBehaviour
     {
         //CONTROLLING THE CAMERA TO SHOW NEW MECHANICS IN THE GAME
         MapOverviewEvent?.Invoke();
+        Debug.Log("SHOWING OVERVIEW OF MAP");
     }
 
-    private void PlayersSpawned()
+    public void PlayersSpawned()
     {
         playersSpawnedEvent?.Invoke();
         GetComponent<ClayDogBehaviour>().controls.Disable();
         // networkManager.SpawnPlayer(conn);
-        Debug.Log("GameManager Event: PLAYERS SPAWNEd but cannot move");
+        Debug.Log("GameManager Event: PLAYERS SPAWNED but cannot move");
     }
 
     public void Playing()
@@ -120,14 +123,14 @@ public class GameManager : NetworkBehaviour
         if (endGoalChecker.safeSheep.Count >= percentageOfSheepNeeded)
         {
             endGoalChecker.safeSheep.Count.ToString();
-            YouWonEvent?.Invoke();
+            WonEvent?.Invoke();
             Debug.Log("GAME MANAGER: YOU WON THE  GAME ._.");
         }
     }
     public void EndGoalTrackerLost()
     {
         SheepTracker();
-        YouLostEvent?.Invoke();
+        LostEvent?.Invoke();
         Debug.Log("GAME MANAGER: YOU LOST THE GAME :(");
     }
 
@@ -145,6 +148,7 @@ public class GameManager : NetworkBehaviour
         if (isGameDone == true)
         {
             GameOverEvent?.Invoke();
+            Debug.Log("GAME OVER!");
         }
     }
 }
