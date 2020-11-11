@@ -12,6 +12,7 @@ public class Health : MonoBehaviour
 
 	[ReadOnly]
 	public int currentHealth;
+	
 
 	
 	public event Action<Health> DeathEvent;
