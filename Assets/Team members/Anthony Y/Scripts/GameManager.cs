@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using AlexM;
 using AnthonyY;
 using Mirror;
+using Mirror.Examples.Chat;
 using Student_workspace.Dylan.Scripts.NetworkLobby;
 using UnityEngine;
 using Random = System.Random;
@@ -77,7 +78,7 @@ public event Action SheepDiedEvent;
     public void PlayersSpawned()
     {
         playersSpawnedEvent?.Invoke();
-       GetComponent<ClayDogBehaviour>()?.controls.Disable();
+       GetComponent<PlayerBehaviour>()?.controls.Disable();
        // networkManager.SpawnPlayer(conn);
         Debug.Log("GameManager Event: PLAYERS SPAWNED but cannot move");
     }
@@ -87,7 +88,7 @@ public event Action SheepDiedEvent;
         GamestartedEvent?.Invoke();
         if (isLocalPlayer)
         {
-            GetComponent<ClayDogBehaviour>()?.controls.Enable();
+            GetComponent<PlayerBehaviour>()?.controls.Enable();
         }
      
         Debug.Log("GameManager Event: PLAYERS are Playing & player can be moved");
