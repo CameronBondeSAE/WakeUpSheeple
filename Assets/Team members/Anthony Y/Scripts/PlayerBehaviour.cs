@@ -9,7 +9,7 @@ using UnityEngine.InputSystem;
 
 namespace AnthonyY
 {
-    public class ClayDogBehaviour : NetworkBehaviour,IOwnable
+    public class PlayerBehaviour : NetworkBehaviour,IOwnable
     {
         [SyncVar]
         public float movementSpeed;
@@ -18,6 +18,10 @@ namespace AnthonyY
 
         public PlayerControls controls;
         public AudioSource dogBark;
+        public AudioSource wolfHowl;
+
+        [SerializeField]
+        private bool amIWolf;
     
         private void Awake()
         {
@@ -27,15 +31,18 @@ namespace AnthonyY
     
         private void OnEnable()
         {
-            controls.GamePlayer.Enable();
+            controls.Dog.Enable();
             health.DeathEvent += Death;
-            controls.GamePlayer.Bark.performed += _  => RpcBark();
+            controls.Dog.Bark.performed += _  => RpcBark();
+            controls.Wolf.Howl.performed += _ => RpcHowl();
+            controls.Wolf.Enable();
         }
     
         private void OnDisable()
         {
-            controls.GamePlayer.Disable();
+            controls.Dog.Disable();
             health.DeathEvent -= Death;
+            controls.Wolf.Disable();
         }
     
         public NetworkIdentity Owner { get; set; }
@@ -53,7 +60,7 @@ namespace AnthonyY
             //         }
             //     }
             // }
-            Vector3 movementInput = controls.GamePlayer.Movement.ReadValue<Vector2>();
+            Vector3 movementInput = controls.Dog.Movement.ReadValue<Vector2>();
             CmdMove(movementInput);
         }
     
@@ -72,10 +79,27 @@ namespace AnthonyY
             transform.forward = GetComponent<Rigidbody>().velocity;
         }
 
-        private void RpcBark()
+        public void RpcBark()
         {
-            dogBark.Play();
-            Debug.Log("Audio Played");
+            amIWolf = false;
+            if (amIWolf == false)
+            {
+                dogBark.Play();
+                Debug.Log("Audio Played");
+                controls.Wolf.Disable();
+            }
+            
+        }
+        
+
+        public void RpcHowl()
+        {
+            amIWolf = true;
+            if (amIWolf)
+            {
+                wolfHowl.Play();
+                controls.Dog.Disable();
+            }
         }
 
         private void Death(Health health)

@@ -54,7 +54,7 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
         public List<NetworkGamePlayer> GamePlayers { get; } = new List<NetworkGamePlayer>();
 
         [Tooltip("Not floating network dude")]
-        public List<ClayDogBehaviour> topDownPlayers = new List<ClayDogBehaviour>();
+        public List<PlayerBehaviour> topDownPlayers = new List<PlayerBehaviour>();
 
         [Header("Lobby")]
         public GameObject lobbyUI;
@@ -68,6 +68,9 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
         [SerializeField]
         public List<string> levels;
 
+        public GameManager gameManager;
+       
+        
         public override void Start()
         {
             // Debug.Log("Level Loaded");
@@ -102,8 +105,7 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
                 //run this on an event, invoke the event
                 UIOff();
             }
-
-
+            
             // Need to subscribe before network starts
             base.Start();
         }
@@ -144,6 +146,8 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
         {
             lobbyUI.SetActive(false);
         }
+
+    
 
         /// <summary>
         ///when using prefabs to spawn objects you need to load them in when you start or connect to the server
@@ -377,6 +381,7 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
                 spawnPoints[nextIndex].position.y + heightOffset, spawnPoints[nextIndex].position.z);
 
             GameObject playerInstance = Instantiate(physicalPlayerPrefab, spawnOffset, spawnPoints[nextIndex].rotation);
+           
 
             float maxHeight = 0, minHeight = 0;
 
@@ -396,9 +401,10 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
             float totalHeight = maxHeight - minHeight;
 
             NetworkServer.Spawn(playerInstance, conn);
+            gameManager.PlayersSpawned();
 
 
-            topDownPlayers.Add(playerInstance.GetComponent<ClayDogBehaviour>());
+            topDownPlayers.Add(playerInstance.GetComponent<PlayerBehaviour>());
 
             nextIndex++;
 
