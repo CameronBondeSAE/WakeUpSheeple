@@ -21,7 +21,7 @@ namespace AnthonyY
         public AudioSource wolfHowl;
 
         [SerializeField]
-        private bool amIWolf;
+        private bool amIWolf = false;
     
         private void Awake()
         {
@@ -32,17 +32,20 @@ namespace AnthonyY
         private void OnEnable()
         {
             controls.Dog.Enable();
+            controls.Wolf.Enable();
+            controls.Movement.Enable();
             health.DeathEvent += Death;
             controls.Dog.Bark.performed += _  => RpcBark();
             controls.Wolf.Howl.performed += _ => RpcHowl();
-            controls.Wolf.Enable();
         }
     
         private void OnDisable()
         {
             controls.Dog.Disable();
-            health.DeathEvent -= Death;
             controls.Wolf.Disable();
+            controls.Movement.Disable();
+            health.DeathEvent -= Death;
+           
         }
     
         public NetworkIdentity Owner { get; set; }
@@ -60,7 +63,7 @@ namespace AnthonyY
             //         }
             //     }
             // }
-            Vector3 movementInput = controls.Dog.Movement.ReadValue<Vector2>();
+            Vector3 movementInput = controls.Movement.Movement.ReadValue<Vector2>();
             CmdMove(movementInput);
         }
     
@@ -81,26 +84,20 @@ namespace AnthonyY
 
         public void RpcBark()
         {
-            amIWolf = false;
-            if (amIWolf == false)
-            {
-                dogBark.Play();
-                Debug.Log("Audio Played");
-                controls.Wolf.Disable();
-            }
-            
+            dogBark.Play();
+            Debug.Log("Dog Audio Played");
+
+
         }
-        
+
 
         public void RpcHowl()
         {
-            amIWolf = true;
-            if (amIWolf)
-            {
-                wolfHowl.Play();
-                controls.Dog.Disable();
-            }
+            wolfHowl.Play();
+            Debug.Log("Wolf Audio Played");
+            
         }
+
 
         private void Death(Health health)
         {

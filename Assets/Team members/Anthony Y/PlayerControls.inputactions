@@ -6,22 +6,6 @@
             "id": "ba2e97a6-76d9-4ac8-91c9-288286dd9483",
             "actions": [
                 {
-                    "name": "Movement",
-                    "type": "Button",
-                    "id": "1d655281-c1c9-4390-8fc1-1d36a7d56459",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Rotate",
-                    "type": "Button",
-                    "id": "7e7ddfb6-cf38-43f8-ba9d-662f718b2196",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "Bark",
                     "type": "Button",
                     "id": "9caae968-c468-4f6d-a693-e56d4fe1c74e",
@@ -31,72 +15,6 @@
                 }
             ],
             "bindings": [
-                {
-                    "name": "WASD",
-                    "id": "95ecf91d-c28f-49b6-89ca-78d086b332af",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "6f997e62-99f9-4e47-a76e-afb1a9f5956c",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard & Mouse",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "eace2ed9-2c35-4478-9429-799f81d508a5",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard & Mouse",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "a628fb9e-25f7-4986-ae96-24f19aced402",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard & Mouse",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "9afb8ddc-cee8-4090-b64c-de4aa769a09a",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard & Mouse",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "c9082f85-6ef2-4220-8ebc-371d1771942f",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard & Mouse",
-                    "action": "Rotate",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "",
                     "id": "068df5a8-0546-4778-84b3-00a0692fd9dc",
@@ -115,14 +33,6 @@
             "id": "62e53835-136a-4afd-b782-d3019ed1728b",
             "actions": [
                 {
-                    "name": "Movement",
-                    "type": "Button",
-                    "id": "27f16c3e-526b-42fb-85bf-2fba7e1b586d",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "Howl",
                     "type": "Button",
                     "id": "2d6ff240-dded-4f06-9903-10d9b76aaf61",
@@ -133,64 +43,9 @@
             ],
             "bindings": [
                 {
-                    "name": "WASD",
-                    "id": "f7e71a6d-68b5-4583-bca2-9ae6925d0de1",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "c3610ffb-c796-44c1-8ce3-500ced8ae993",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard & Mouse",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "0d466d36-0c06-4652-99c2-f3b0c19450f0",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard & Mouse",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "1d16028b-0365-485e-8034-2b5ee846a644",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard & Mouse",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "e00e4c90-1317-4018-9dc5-dda3c46ef3aa",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard & Mouse",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "",
                     "id": "fed1bf11-6b56-4603-93d7-31071057ede2",
-                    "path": "<Keyboard>/f",
+                    "path": "<Keyboard>/e",
                     "interactions": "Tap",
                     "processors": "",
                     "groups": "Keyboard & Mouse",
@@ -202,12 +57,12 @@
         },
         {
             "name": "Movement",
-            "id": "b77d48d2-8b99-440d-9591-8310c47aa988",
+            "id": "14671110-03d1-42fa-b833-3310640caf7e",
             "actions": [
                 {
-                    "name": "New action",
+                    "name": "Movement",
                     "type": "Button",
-                    "id": "6cb441a6-da0f-4706-9009-ffe7c97f9694",
+                    "id": "35776884-72dc-4023-9a8c-832ff251fc17",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -215,15 +70,59 @@
             ],
             "bindings": [
                 {
-                    "name": "",
-                    "id": "04461700-029b-4305-bde2-50a969790cf7",
-                    "path": "",
+                    "name": "WASD",
+                    "id": "b936e204-678d-4ed6-8904-70f5fd4dbdc5",
+                    "path": "2DVector",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
-                    "isComposite": false,
+                    "action": "Movement",
+                    "isComposite": true,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "698e8fe3-68b7-4c49-85d6-87bf7ce81ae9",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "429474d4-7874-42e8-bea1-1da384bf49ef",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "65d2ea6d-4419-4645-a2b8-b7fc11867fb4",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "ae84c183-53f6-435b-bf08-ed5f10053a18",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }
