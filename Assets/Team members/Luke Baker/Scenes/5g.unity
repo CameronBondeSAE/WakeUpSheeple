@@ -883,5 +883,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Launcher
       objectReference: {fileID: 0}
+    - target: {fileID: 5446095006494154338, guid: 844f5e41d4af2aa45993b443f6568018, type: 3}
+      propertyPath: launchPower
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 844f5e41d4af2aa45993b443f6568018, type: 3}
