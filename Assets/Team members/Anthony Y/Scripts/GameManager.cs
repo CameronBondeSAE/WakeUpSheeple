@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using AlexM;
 using AnthonyY;
 using Mirror;
 using Student_workspace.Dylan.Scripts.NetworkLobby;
@@ -35,8 +36,8 @@ public class GameManager : NetworkBehaviour
 
     [Header("Sheep in Level")]
 //Will be linked to sheep spawn manager later (TOTAL SHEEP)
-    public List<Movement_ForwardAM> sheepInLevel;
-    public List<Movement_ForwardAM> deadSheep;
+    public List<Sheep> sheepInLevel;
+    public List<Sheep> deadSheep;
     
     [Header("Percentage of Sheep")]
     private float percentageOfSheepNeeded;

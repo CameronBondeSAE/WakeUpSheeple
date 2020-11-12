@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using AlexM;
 using Mirror.Examples.Chat;
 using UnityEditor;
 using UnityEditor.IMGUI.Controls;
@@ -12,7 +13,7 @@ public class EndGoalChecker : MonoBehaviour
     public List<Collider> boxes;
     public BoxCollider boxCollider;
     [Header("List of Sheep")]
-    public List<Movement_ForwardAM> safeSheep;
+    public List<Sheep> safeSheep;
     public int sheepRequired;
 
     public event Action SheepMadeitEvent;
@@ -27,8 +28,8 @@ public class EndGoalChecker : MonoBehaviour
             Debug.Log(other.gameObject.name);
             boxes.Add(other);
            //****SHEEP CODE**************
-            safeSheep.Add(other.transform.root.GetComponent<Movement_ForwardAM>());
-            Destroy(other.transform.root.GetComponent<Movement_ForwardAM>());
+            safeSheep.Add(other.transform.root.GetComponent<Sheep>());
+            Destroy(other.transform.root.GetComponent<Sheep>());
             Debug.Log(safeSheep.Count.ToString());
             SheepMadeitEvent?.Invoke();
            
@@ -41,7 +42,7 @@ public class EndGoalChecker : MonoBehaviour
         {
             //****SHEEP CODE**************
             Debug.Log(other.transform.root.gameObject.name + ": has left the zone");
-            safeSheep.Remove(other.transform.root.GetComponent<Movement_ForwardAM>());
+            safeSheep.Remove(other.transform.root.GetComponent<Sheep>());
             Debug.Log(safeSheep.Count.ToString());
             
             boxes.Remove(other);
