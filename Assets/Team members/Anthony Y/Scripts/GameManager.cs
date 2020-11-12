@@ -13,22 +13,25 @@ public class GameManager : NetworkBehaviour
     
     [SerializeField]
     private GameNetworkManager networkManager;
-    ///Event for players spawned
+    ///Players spawned
     public event Action playersSpawnedEvent;
 
-    ///Event for actually starting the game
+    ///Actually starting the game
     public event Action GamestartedEvent;
 
-    ///Win or Lose State
+    ///Win the game
     public event Action WonEvent;
+  ///Lose the Game
     public event Action LostEvent;
 ///Map mechanics
     public event Action MapOverviewEvent;
-///Game Done
+///Game Done, Happens whether you won or lost
     public event Action GameOverEvent;
     
+///Happens when a sheep is saved
     public event Action SheepSavedEvent;
-    public event Action SheepDiedEvent;
+///Happens when  a sheep died
+public event Action SheepDiedEvent;
     
     public EndGoalChecker endGoalChecker;
    [SerializeField] private bool isGameDone;
