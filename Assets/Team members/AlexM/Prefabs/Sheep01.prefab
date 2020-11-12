@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7828059398278480904}
   - component: {fileID: 1521166418}
-  - component: {fileID: 1521166416}
-  - component: {fileID: 1521166417}
   m_Layer: 8
   m_Name: Sheep01
   m_TagString: Untagged
@@ -55,34 +53,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1521166416
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2372177631083542375}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ed3548f30c9b2349827fe6065087fb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  zForce: 0
-  clampSpeed: 1
-  maxSpeed: 1
---- !u!114 &1521166417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2372177631083542375}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc1d43f33b4e6ba44ac214266783a54a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  yForce: 0
 --- !u!1 &4369274410258664551
 GameObject:
   m_ObjectHideFlags: 0
