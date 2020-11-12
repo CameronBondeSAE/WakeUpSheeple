@@ -34,8 +34,7 @@ public class GameManager : NetworkBehaviour
 public event Action SheepDiedEvent;
     
     public EndGoalChecker endGoalChecker;
-   [SerializeField] private bool isGameDone;
-    
+
 
     [Header("Sheep in Level")]
 //Will be linked to sheep spawn manager later (TOTAL SHEEP)
@@ -50,22 +49,22 @@ public event Action SheepDiedEvent;
 
     private void OnEnable()
     {
-        WonEvent += EndGoalTrackerWin;
-        LostEvent += EndGoalTrackerLost;
-        // GamestartedEvent += Playing;
-        playersSpawnedEvent += PlayersSpawned;
-        // MapOverviewEvent += OverviewOfMap;
-        GameOverEvent += GameOver;
+        // WonEvent += EndGoalTrackerWin;
+        // LostEvent += EndGoalTrackerLost;
+        // // GamestartedEvent += Playing;
+        // playersSpawnedEvent += PlayersSpawned;
+        // // MapOverviewEvent += OverviewOfMap;
+        // // GameOverEvent += GameOver;
     }
 
     private void OnDisable()
     {
-        WonEvent -= EndGoalTrackerWin;
-        LostEvent -= EndGoalTrackerLost;
-        // GamestartedEvent -= Playing;
-        playersSpawnedEvent -= PlayersSpawned;
-        // MapOverviewEvent -= OverviewOfMap;
-        GameOverEvent -= GameOver;
+    //     WonEvent -= EndGoalTrackerWin;
+    //     LostEvent -= EndGoalTrackerLost;
+    //     // GamestartedEvent -= Playing;
+    //     playersSpawnedEvent -= PlayersSpawned;
+    //     // MapOverviewEvent -= OverviewOfMap;
+    //     // GameOverEvent -= GameOver;
     }
 
     public void OverviewOfMap()
@@ -78,16 +77,25 @@ public event Action SheepDiedEvent;
     public void PlayersSpawned()
     {
         playersSpawnedEvent?.Invoke();
-        GetComponent<ClayDogBehaviour>().controls.Disable();
+        if (isLocalPlayer)
+        {
+            GetComponent<ClayDogBehaviour>()?.controls.Disable();
+        }
+        
         // networkManager.SpawnPlayer(conn);
         Debug.Log("GameManager Event: PLAYERS SPAWNED but cannot move");
     }
 
-    public void Playing()
+    public void PlayPhaseStarted()
     {
         GamestartedEvent?.Invoke();
-        GetComponent<ClayDogBehaviour>().controls.Enable();
+        if (isLocalPlayer)
+        {
+            GetComponent<ClayDogBehaviour>()?.controls.Enable();
+        }
+     
         Debug.Log("GameManager Event: PLAYERS are Playing & player can be moved");
+        //who spawned
     }
 
 //TOTAL SHEEP/DYING SHEEP
@@ -149,10 +157,7 @@ public event Action SheepDiedEvent;
 
     public void GameOver()
     {
-        if (isGameDone == true)
-        {
-            GameOverEvent?.Invoke();
-            Debug.Log("GAME OVER!");
-        }
+        GameOverEvent?.Invoke();
+        Debug.Log("GAME OVER!");
     }
 }

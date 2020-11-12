@@ -18,7 +18,7 @@ public class GameManagerEditor : Editor
       }
       if (GUILayout.Button("Game Started"))
       {
-         gameManager.Playing();
+         gameManager.PlayPhaseStarted();
       }
       if (GUILayout.Button("Players Spawned"))
       {
