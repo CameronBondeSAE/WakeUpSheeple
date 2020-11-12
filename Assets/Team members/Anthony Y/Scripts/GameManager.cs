@@ -77,12 +77,8 @@ public event Action SheepDiedEvent;
     public void PlayersSpawned()
     {
         playersSpawnedEvent?.Invoke();
-        if (isLocalPlayer)
-        {
-            GetComponent<ClayDogBehaviour>()?.controls.Disable();
-        }
-        
-        // networkManager.SpawnPlayer(conn);
+       GetComponent<ClayDogBehaviour>()?.controls.Disable();
+       // networkManager.SpawnPlayer(conn);
         Debug.Log("GameManager Event: PLAYERS SPAWNED but cannot move");
     }
 

@@ -17,6 +17,7 @@ namespace AnthonyY
         public Health health;
 
         public PlayerControls controls;
+        public AudioSource dogBark;
     
         private void Awake()
         {
@@ -28,6 +29,7 @@ namespace AnthonyY
         {
             controls.GamePlayer.Enable();
             health.DeathEvent += Death;
+            controls.GamePlayer.Bark.performed += _  => RpcBark();
         }
     
         private void OnDisable()
@@ -68,6 +70,12 @@ namespace AnthonyY
             transform.Translate(movement * (movementSpeed * Time.deltaTime), Space.World);
             transform.rotation = Quaternion.LookRotation(movement);
             transform.forward = GetComponent<Rigidbody>().velocity;
+        }
+
+        private void RpcBark()
+        {
+            dogBark.Play();
+            Debug.Log("Audio Played");
         }
 
         private void Death(Health health)

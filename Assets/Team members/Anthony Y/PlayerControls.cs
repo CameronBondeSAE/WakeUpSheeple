@@ -33,6 +33,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Bark"",
+                    ""type"": ""Button"",
+                    ""id"": ""9caae968-c468-4f6d-a693-e56d4fe1c74e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -101,6 +109,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Rotate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""068df5a8-0546-4778-84b3-00a0692fd9dc"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Bark"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -128,6 +147,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_GamePlayer = asset.FindActionMap("GamePlayer", throwIfNotFound: true);
         m_GamePlayer_Movement = m_GamePlayer.FindAction("Movement", throwIfNotFound: true);
         m_GamePlayer_Rotate = m_GamePlayer.FindAction("Rotate", throwIfNotFound: true);
+        m_GamePlayer_Bark = m_GamePlayer.FindAction("Bark", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -179,12 +199,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private IGamePlayerActions m_GamePlayerActionsCallbackInterface;
     private readonly InputAction m_GamePlayer_Movement;
     private readonly InputAction m_GamePlayer_Rotate;
+    private readonly InputAction m_GamePlayer_Bark;
     public struct GamePlayerActions
     {
         private @PlayerControls m_Wrapper;
         public GamePlayerActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_GamePlayer_Movement;
         public InputAction @Rotate => m_Wrapper.m_GamePlayer_Rotate;
+        public InputAction @Bark => m_Wrapper.m_GamePlayer_Bark;
         public InputActionMap Get() { return m_Wrapper.m_GamePlayer; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -200,6 +222,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Rotate.started -= m_Wrapper.m_GamePlayerActionsCallbackInterface.OnRotate;
                 @Rotate.performed -= m_Wrapper.m_GamePlayerActionsCallbackInterface.OnRotate;
                 @Rotate.canceled -= m_Wrapper.m_GamePlayerActionsCallbackInterface.OnRotate;
+                @Bark.started -= m_Wrapper.m_GamePlayerActionsCallbackInterface.OnBark;
+                @Bark.performed -= m_Wrapper.m_GamePlayerActionsCallbackInterface.OnBark;
+                @Bark.canceled -= m_Wrapper.m_GamePlayerActionsCallbackInterface.OnBark;
             }
             m_Wrapper.m_GamePlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -210,6 +235,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Rotate.started += instance.OnRotate;
                 @Rotate.performed += instance.OnRotate;
                 @Rotate.canceled += instance.OnRotate;
+                @Bark.started += instance.OnBark;
+                @Bark.performed += instance.OnBark;
+                @Bark.canceled += instance.OnBark;
             }
         }
     }
@@ -227,5 +255,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnRotate(InputAction.CallbackContext context);
+        void OnBark(InputAction.CallbackContext context);
     }
 }
