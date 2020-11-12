@@ -13,12 +13,11 @@ public class EndGoalChecker : MonoBehaviour
     public BoxCollider boxCollider;
     [Header("List of Sheep")]
     public List<Movement_ForwardAM> safeSheep;
-    public int maxSheepCount;
+    public int sheepRequired;
 
     public event Action SheepMadeitEvent;
     
-    //may not need this event
-    public event Action ASheepMadeitEvent;
+  
 
     private void OnTriggerEnter(Collider other)
     {
@@ -31,7 +30,7 @@ public class EndGoalChecker : MonoBehaviour
             safeSheep.Add(other.transform.root.GetComponent<Movement_ForwardAM>());
             Destroy(other.transform.root.GetComponent<Movement_ForwardAM>());
             Debug.Log(safeSheep.Count.ToString());
-            ASheepMadeitEvent?.Invoke();
+            SheepMadeitEvent?.Invoke();
            
         }
     }
@@ -50,28 +49,6 @@ public class EndGoalChecker : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        
-    }
-
-    public void EndGoalReached()
-    {
-        if (safeSheep.Count >= maxSheepCount)
-        {
-            SheepMadeitEvent?.Invoke();
-        }
-    }
-
-    public void EndGoalNotReached()
-    {
-        if (safeSheep.Count < maxSheepCount)
-        {
-            //I dont know how this may work because this will keep spamming the event if there isn't enough sheep
-            //in the list
-            
-        }
-    }
     private void OnDrawGizmos()
     {
         Gizmos.color = new Color(1, 0, 0, 0.5f);

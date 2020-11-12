@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3719558085885857910}
   - component: {fileID: 4949777279267271520}
   - component: {fileID: 2877163827550266090}
-  - component: {fileID: 2068409624399846635}
   m_Layer: 0
   m_Name: RoadWaypointAsset
   m_TagString: Untagged
@@ -96,15 +95,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2068409624399846635
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7923057883923824653}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b386c852ca6363e4a8a9817dfde2cb49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

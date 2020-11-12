@@ -11,6 +11,9 @@ public class TMPTextHandlerR : MonoBehaviour
     private void Start()
     {
         textMeshR = GetComponent<TextMeshProUGUI>();
+        FindObjectOfType<MoleMachineR>().tmpEventStand += OnStand;
+        FindObjectOfType<MoleMachineR>().tmpEventJump += OnJumpState;
+        FindObjectOfType<MoleMachineR>().tmpEventWaypoint += OnWaypointFollow;
     }
 
     public void OnStand()
