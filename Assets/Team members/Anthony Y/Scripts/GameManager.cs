@@ -30,7 +30,7 @@ public class GameManager : NetworkBehaviour
     public event Action SheepDiedEvent;
     
     public EndGoalChecker endGoalChecker;
-    private bool isGameDone;
+   [SerializeField] private bool isGameDone;
     
 
     [Header("Sheep in Level")]

@@ -12,28 +12,28 @@ public class GameManagerEditor : Editor
    {
       base.OnInspectorGUI();
       GameManager gameManager = (GameManager) target;
-      if (GUILayout.Button("Simulate Map Overview"))
+      if (GUILayout.Button("Map Overview"))
       {
          gameManager.OverviewOfMap();
       }
-      if (GUILayout.Button("Simulate Game Started"))
+      if (GUILayout.Button("Game Started"))
       {
          gameManager.Playing();
       }
-      if (GUILayout.Button("Simulate Players Spawned"))
+      if (GUILayout.Button("Players Spawned"))
       {
          gameManager.PlayersSpawned();
       }
 
-      if (GUILayout.Button("Simulate Game Won"))
+      if (GUILayout.Button("Game Won"))
       {
          gameManager.EndGoalTrackerWin();
       }
-      if (GUILayout.Button("Simulate Game Lost"))
+      if (GUILayout.Button("Game Lost"))
       {
          gameManager.EndGoalTrackerLost();
       }
-      if (GUILayout.Button("Simulate Game Over"))
+      if (GUILayout.Button("Game Over"))
       {
          gameManager.GameOver();
       }
