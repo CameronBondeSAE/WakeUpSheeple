@@ -1,0 +1,147 @@
+{
+    "name": "Cams Controls",
+    "maps": [
+        {
+            "name": "In Game",
+            "id": "094944d6-15e3-4ab9-b276-7472bb623108",
+            "actions": [
+                {
+                    "name": "Bark",
+                    "type": "Button",
+                    "id": "32ba3c9d-4bad-40a8-b71d-3acf3ecf3cd0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Move",
+                    "type": "Button",
+                    "id": "6187aad4-c6a9-4629-a544-1c1c5d5648c5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Howl",
+                    "type": "Button",
+                    "id": "f152fda8-9cd6-4a90-8ff5-499e8f4ccab6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "78c1bf18-d870-48b2-92a1-659f9767c0dd",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Bark",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1714f9b2-d967-489f-8e5e-7bce84b448bd",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Bark",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5b83fb06-cb52-40f2-b994-c78bedbc4e2c",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "52e62f67-663b-459b-9740-afaf94640113",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Howl",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "In Menu",
+            "id": "c2e5c2e2-962c-48df-a5a5-b67af1234831",
+            "actions": [
+                {
+                    "name": "Select",
+                    "type": "Button",
+                    "id": "4f415a92-098e-43fa-bae7-684e849f036b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "474af09e-9afe-4805-bd7f-ce1377cc85bd",
+                    "path": "<XInputController>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "37164360-72ad-43e0-bde2-78e5410bc2d7",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Game Over",
+            "id": "e0b8abae-3d0e-4d95-a52d-50f3e459ad35",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "5214f8c7-62e2-4b8d-98e3-4ed5891af6e0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f19f4a9a-7591-4894-a880-66a9fa2b33ec",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

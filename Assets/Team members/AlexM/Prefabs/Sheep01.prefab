@@ -11,6 +11,10 @@ GameObject:
   - component: {fileID: 7828059398278480904}
   - component: {fileID: 1521166418}
   - component: {fileID: 6809044889052875844}
+  - component: {fileID: 134032813066214520}
+  - component: {fileID: 1994912455}
+  - component: {fileID: 2973978494779615501}
+  - component: {fileID: 1521166416}
   m_Layer: 8
   m_Name: Sheep01
   m_TagString: Untagged
@@ -49,7 +53,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 5
   m_AngularDrag: 10
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -66,6 +70,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0f72077c66f4bb48908b1f7346a5132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &134032813066214520
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2372177631083542375}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.55
+  m_Height: 1.0000001
+  m_Direction: 1
+  m_Center: {x: 0, y: -0.55, z: 0}
+--- !u!114 &1994912455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2372177631083542375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ed3548f30c9b2349827fe6065087fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zForce: 13.78
+--- !u!114 &2973978494779615501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2372177631083542375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d65ddb2c92154334b7077493be10aabb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 5
+--- !u!114 &1521166416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2372177631083542375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0ef0fcaac7e0ff40b512523d899e211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NeighboursDetector: {fileID: 2973978494779615501}
 --- !u!1 &4369274410258664551
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,7 +229,6 @@ GameObject:
   - component: {fileID: 1582967058935103189}
   - component: {fileID: 7472212680046124202}
   - component: {fileID: 8911564195205557213}
-  - component: {fileID: 1578514892}
   m_Layer: 8
   m_Name: Body
   m_TagString: Untagged
@@ -243,20 +299,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &1578514892
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4525549038140593646}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.55
-  m_Height: 1.0000001
-  m_Direction: 1
-  m_Center: {x: 0, y: -0.55, z: 0}
 --- !u!1 &5388453794899284846
 GameObject:
   m_ObjectHideFlags: 0

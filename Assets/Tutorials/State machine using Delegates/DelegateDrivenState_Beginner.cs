@@ -6,20 +6,23 @@ using Random = UnityEngine.Random;
 public class DelegateDrivenState_Beginner : MonoBehaviour
 {
 	// You COULD make the statemanager a component, but I've just made it a pure c# class, so I have to 'new' it myself (unlike components/monobehaviours)
-	public DelegateStateManager DelegateStateManager = new DelegateStateManager();
 
-	public DelegateState idle = new DelegateState();
-	public DelegateState run  = new DelegateState();
+	// The EMPTY variable for the manager which swaps states
+	public DelegateStateManager DelegateStateManager;
 
-	public int        health;
-	public string     name;
-	public GameObject target;
-	public Action     thing;
-
+	// The EMPTY variable for the individual states
+	public DelegateState idle;
+	public DelegateState run;
+	
 	void Start()
 	{
-		Debug.Log("Press space to change to run state. HACK: It's just to test");
+		// Create the manager which swaps states
+		DelegateStateManager = new DelegateStateManager();
+		// Create individual states
+		idle                 = new DelegateState();
+		run                  = new DelegateState();
 
+		// Assign which functions run to which states
 		// I'm ASSIGNING the variables to specific functions. Remember, variable just POINT to things... ANY thing! ints, strings, gameobjects, components... and... FUNCTIONS!
 		// This DOESN'T run the function here. It just REMEMBERS IT for later! (My statemanager code)
 		idle.Enter  = OnIdleEnter;
@@ -28,37 +31,10 @@ public class DelegateDrivenState_Beginner : MonoBehaviour
 
 		run.Enter  = OnRunEnter;
 		run.Update = OnRunUpdate;
+		// Note you don't HAVE to have Enter/Exit/Update, you can leave them out if you're not going to use them
 
+		// Set the default state
 		DelegateStateManager.ChangeState(idle);
-
-		// GetComponent<Renderer>().material.color = Color.red;
-
-		StartCoroutine(Sequence());
-		Debug.Log("I happened AFTER the call to coroutine");
-	}
-
-	public IEnumerator Sequence()
-	{
-		while (true)
-		{
-			transform.position += new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
-
-
-			// Vector3 randomOffset = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
-			// transform.position = transform.position + randomOffset;
-			
-			GetComponent<Renderer>().material.color = Color.red;
-			Debug.Log("Wait");
-			yield return new WaitForSeconds(1f);
-			GetComponent<Renderer>().material.color = Color.green;
-			Debug.Log("Do stuff");
-			yield return new WaitForSeconds(1f);
-			GetComponent<Renderer>().material.color = Color.blue;
-			Debug.Log("Finished");
-			yield return new WaitForSeconds(3f);
-		}
-
-		// StartCoroutine(Sequence());
 	}
 
 	void Update()
@@ -68,15 +44,15 @@ public class DelegateDrivenState_Beginner : MonoBehaviour
 	}
 
 
-	private void OnRunUpdate()
-	{
-	}
-
 	private void OnRunEnter()
 	{
 	}
 
-	private void OnIdleExit()
+	private void OnRunUpdate()
+	{
+	}
+
+	private void OnIdleEnter()
 	{
 	}
 
@@ -84,7 +60,7 @@ public class DelegateDrivenState_Beginner : MonoBehaviour
 	{
 	}
 
-	private void OnIdleEnter()
+	private void OnIdleExit()
 	{
 	}
 }

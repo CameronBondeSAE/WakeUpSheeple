@@ -5,22 +5,23 @@ namespace AlexM
 {
 	public class NeigboursDetector : MonoBehaviour
 	{
-		private float neighborRadius;
+		public float radius = 5f;
 
-		List<Transform> GetNearbyObjects(FlockAgent agent)
+		public List<Sheep> GetNearbyObjects()
 		{
-			List<Transform> context = new List<Transform>();
-			Collider[] contextCOlliders = Physics.OverlapSphere(agent.transform.position, neighborRadius);
-			foreach (Collider c in contextCOlliders)
+			List<Sheep> neighbours = new List<Sheep>();
+			Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
+
+			foreach (Collider c in colliders)
 			{
-				//THIS IS THE LINE TO CHANGE. CHECK FOR SHEEP HERE.
-				if (c != agent.AgentCollider)
+				// Is a sheep?
+				if (c.GetComponent<Sheep>())
 				{
-					context.Add(c.transform);
+					neighbours.Add(c.GetComponent<Sheep>());
 				}
 			}
 
-			return context;
+			return neighbours;
 		}
 	}
 }

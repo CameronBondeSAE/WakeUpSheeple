@@ -16,10 +16,10 @@ public class AchievementManagerFAKE : MonoBehaviour
 		// FakeSheep.sheepDeathEventStatic += FakeSheepOnsheepDeathEventStatic;
 	}
 
-	private void FakeSheepOnsheepDeathEventStatic(FakeSheep fakeSheep)
-	{
-		Debug.Log("Sheep died : Name = "+fakeSheep.name);
-	}
+	// private void FakeSheepOnsheepDeathEventStatic(Sheep fakeSheep)
+	// {
+		// Debug.Log("Sheep died : Name = "+fakeSheep.name);
+	// }
 
 	private void OnDisable()
 	{
