@@ -79,7 +79,10 @@ namespace AnthonyY
     
             transform.Translate(movement * (movementSpeed * Time.deltaTime), Space.World);
             transform.rotation = Quaternion.LookRotation(movement);
-            transform.forward = GetComponent<Rigidbody>().velocity;
+            Vector3 playerVelocity = GetComponent<Rigidbody>().velocity;
+            playerVelocity.y = 0;
+            transform.forward = new Vector3(playerVelocity.x,playerVelocity.y,playerVelocity.z);
+            
         }
 
         public void RpcBark()
