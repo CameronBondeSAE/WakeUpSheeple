@@ -1,27 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
+using Mirror;
 using Mirror.Examples.RigidbodyPhysics;
 using UnityEngine;
 
 public class LineScript : MonoBehaviour
 {
+    public GameObject pos0;
+    public GameObject pos1;
+    public GameObject pos2;
+    public GameObject pos3;
+    int timePassed = 0;
+    public float transformObject = 0f;
     // Start is called before the first frame update
     void Start()
     {
-        Vector3 startPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        Vector3 endPos = new Vector3(transform.position.x + 10, transform.position.y, transform.position.z + 10);
+        
     }
-
     // Update is called once per frame
     void Update()
     {
-        float y = 0;
-        float deviation = 0;
-        for (int x = 0; x < 10; x++)
-        {
-            deviation = deviation + Mathf.Cos(Time.time);
-            y = y + deviation * 1.5f;
-            
-        }
+        Vector3 a = Vector3.Lerp(pos0.transform.position, pos1.transform.position, transformObject);
+        Vector3 b = Vector3.Lerp(pos1.transform.position, pos2.transform.position, transformObject);
+        Vector3 c = Vector3.Lerp(pos2.transform.position, pos3.transform.position, transformObject);
+        Vector3 d = Vector3.Lerp(a, b, transformObject);
+        Vector3 e = Vector3.Lerp(b, c, transformObject);
+        this.transform.position = Vector3.Lerp(d, e, transformObject);
     }
 }
