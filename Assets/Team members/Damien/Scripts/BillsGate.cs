@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using AlexM;
 using UnityEditor.PackageManager;
 using UnityEngine;
 
@@ -29,7 +30,7 @@ namespace Damien
         // Start is called before the first frame update
         void Start()
         {
-          
+            OnDrawGizmosSelected();
         }
 
         private void Update()
@@ -43,7 +44,11 @@ namespace Damien
             AdministerVaccine();
             
         }
-
+        void OnDrawGizmosSelected()
+            {
+                Gizmos.color = Color.red;
+                Gizmos.DrawWireSphere(transform.position, range);
+            }
         void AdministerVaccine()
         {
             Debug.Log("Administer Vaccine");
@@ -52,10 +57,10 @@ namespace Damien
         {
             //Find nearest sheep
            //TODO: Hack Replace with sheep manager
-            GameObject[] sheeps = GameObject.FindGameObjectsWithTag(sheepTag);
+            Sheep[] sheeps = Sheep.FindObjectsOfType<Sheep>();
             float shortestDistance = Mathf.Infinity;
-            GameObject nearestSheep = null;
-            foreach (GameObject sheep in sheeps)
+            Sheep nearestSheep = null;
+            foreach (Sheep sheep in sheeps)
             {
                 float distanceToSheep = Vector3.Distance(transform.position, sheep.transform.position);
                 if (distanceToSheep < shortestDistance)
@@ -85,11 +90,7 @@ namespace Damien
                     partToRotate.transform.Rotate(0f, -rotateAngle * Time.deltaTime, 0f); 
                 }
             }
-            void OnDrawGizmosSelected()
-            {
-                Gizmos.color = Color.red;
-                Gizmos.DrawWireSphere(transform.position, range);
-            }
+            
         }
     }
 }
