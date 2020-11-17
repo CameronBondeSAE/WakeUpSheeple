@@ -213,7 +213,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 177.123, y: -56.35501, z: -1.4249878}
 --- !u!1 &1244105836
 GameObject:
@@ -337,6 +337,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2761646641719085047, guid: f2c3aa96670b0984cbb2a4981b2369d5, type: 3}
+      propertyPath: m_Name
+      value: Power
+      objectReference: {fileID: 0}
     - target: {fileID: 3332702030002534570, guid: f2c3aa96670b0984cbb2a4981b2369d5, type: 3}
       propertyPath: m_Name
       value: PropagandaTV
@@ -371,7 +375,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7809114567204742451, guid: f2c3aa96670b0984cbb2a4981b2369d5, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7809114567204742451, guid: f2c3aa96670b0984cbb2a4981b2369d5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -385,5 +389,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8293550546488568100, guid: f2c3aa96670b0984cbb2a4981b2369d5, type: 3}
+      propertyPath: m_Name
+      value: Logo
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2c3aa96670b0984cbb2a4981b2369d5, type: 3}
+--- !u!1 &8674708123927541702 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3332702030002534570, guid: f2c3aa96670b0984cbb2a4981b2369d5, type: 3}
+  m_PrefabInstance: {fileID: 8674708123927541701}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8674708123927541703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8674708123927541702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 144ad626482b8ba41aa6ea8aa4d8078e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
