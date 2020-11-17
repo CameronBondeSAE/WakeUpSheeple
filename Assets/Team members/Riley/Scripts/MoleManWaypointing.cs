@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class waypointsScriptR : MonoBehaviour
+public class MoleManWaypointing : MonoBehaviour
 {
     public List<Transform> waypointsList = new List<Transform>();
     private Transform currentWaypoint;

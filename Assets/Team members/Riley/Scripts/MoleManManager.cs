@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Media;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 //Problem & Needed code (Solution)
 
@@ -10,18 +11,18 @@ using UnityEngine;
 //This method adds a problem where the mole cant come out of the ground if there is something directly above (it also fixes this however)
 //Movement (Waypoint to a group, check if there are multiple in a radius, then make a path based on the distance that moves in a curve)
 
-public class MoleMachineR : MonoBehaviour
+public class MoleManManager : MonoBehaviour
 {
     public DelegateStateManager stateManager = new DelegateStateManager();
     public DelegateState standing = new DelegateState();
     public DelegateState jump = new DelegateState();
-    public DelegateState pauseStateR = new DelegateState();
-    public bool bPSR; //Bool for out "pausedstateR" so we can determine if we are already paused or not
+    [FormerlySerializedAs("pauseStateR")] public DelegateState pauseStateMole = new DelegateState();
+    [FormerlySerializedAs("bPSR")] public bool bPS; //Bool for out "pausedstate" so we can determine if we are already paused or not
     public AudioSource soundPlayer;
     public float force = 5.0f;
     public Rigidbody rb;
     public int timeWait; //Time wait int for the jump function to determine how long the mole is out of the ground
-    public int timeSWaitR; //Time wait for the pause button so when we click pause it doesn't instantly unpause
+    [FormerlySerializedAs("timeSWaitR")] public int timeSWait; //Time wait for the pause button so when we click pause it doesn't instantly unpause
     public int timeHoverWait;
     //----------------------------------WAYPOINT VARIABLES
     public DelegateState moveToWaypoint = new DelegateState();
@@ -39,7 +40,7 @@ public class MoleMachineR : MonoBehaviour
     public event Action tmpEventWaypoint;
     //----------------------------------EVENT VARIABLES
     //----------------------------------TRIGGER VARIABLES
-    private TriggerMoleR TriggerScriptR;
+    //private TriggerMoleR TriggerScriptR;
     //----------------------------------TRIGGER VARIABLES
     //----------------------------------UPDATE/START
     void Start()
@@ -50,13 +51,13 @@ public class MoleMachineR : MonoBehaviour
         jump.Enter = jumpStart;
         jump.Update = jumpUpdate; 
         jump.Exit = jumpExit;
-        pauseStateR.Enter = PauseStateRStart;
-        pauseStateR.Update = PauseStateRUpdate;
-        pauseStateR.Exit = PauseStateRExit;
-        FindObjectOfType<PauseManager>().PauseEvent += pauseEventR; //Find the pause manager and whenever PauseEvent is called run pauseEventR
+        pauseStateMole.Enter = PauseStateMoleStart;
+        pauseStateMole.Update = PauseStateMoleUpdate;
+        pauseStateMole.Exit = PauseStateMoleExit;
+        FindObjectOfType<PauseManager>().PauseEvent += pauseEventMole; //Find the pause manager and whenever PauseEvent is called run pauseEventR
         stateManager.ChangeState(standing); //on start set the default state to standing
         rb = GetComponent<Rigidbody>();
-        bPSR = false;
+        bPS = false;
         //----------------------------------WAYPOINT VARIABLES
         moveToWaypoint.Enter = moveToWaypointStart;
         moveToWaypoint.Update = moveToWaypointUpdate;
@@ -66,7 +67,7 @@ public class MoleMachineR : MonoBehaviour
         waypointFirstRound = false;
         //----------------------------------WAYPOINT VARIABLES
         //----------------------------------TRIGGER VARIABLES
-        TriggerScriptR = GetComponent<TriggerMoleR>();
+        //TriggerScriptR = GetComponent<TriggerMoleR>();
         //----------------------------------TRIGGER VARIABLES
         tmpEventStand?.Invoke();
     }
@@ -92,7 +93,7 @@ public class MoleMachineR : MonoBehaviour
         {
             timeHoverWait = timeHoverWait + 1;
         }
-        if (timeHoverWait > 600 && bPSR != true)
+        if (timeHoverWait > 600 && bPS != true)
         {
             stateManager.ChangeState(moveToWaypoint);
         }
@@ -122,7 +123,7 @@ public class MoleMachineR : MonoBehaviour
         {
             timeWait = timeWait + 1;
         }
-        if (timeWait > 300 && bPSR != true)
+        if (timeWait > 300 && bPS != true)
         {
             stateManager.ChangeState(standing);
         }
@@ -165,7 +166,7 @@ public class MoleMachineR : MonoBehaviour
         else
         {
             rb.isKinematic = true;
-            if (timeHoverWait > 1600 && bPSR == false)
+            if (timeHoverWait > 1600 && bPS == false)
             {
                 stateManager.ChangeState(jump);
                 timeHoverWait = 0;
@@ -181,32 +182,32 @@ public class MoleMachineR : MonoBehaviour
     }
     //----------------------------------WAYPOINT
     //----------------------------------PAUSE
-    private void pauseEventR()
+    private void pauseEventMole()
     {
-        if (bPSR == false)
+        if (bPS == false)
         {
             Debug.Log("PausedR");
-            bPSR = true; //This tells us we are paused
-            stateManager.ChangeState(pauseStateR);
+            bPS = true; //This tells us we are paused
+            stateManager.ChangeState(pauseStateMole);
         }
     }
-    private void PauseStateRStart()
+    private void PauseStateMoleStart()
     {
-        timeSWaitR = 0;
+        timeSWait = 0;
         rb.constraints = RigidbodyConstraints.FreezeAll; //Something similar to this can be used above "AMENDMENT"
     }
-    private void PauseStateRUpdate()
+    private void PauseStateMoleUpdate()
     {
-        timeSWaitR = timeSWaitR + 1; //This is the timer we wait for when we pause to prevent pressing p and instantly un-pausing after a pause (Could be changed)
-        if (Input.GetKeyDown(KeyCode.P) && timeSWaitR > 100)
+        timeSWait = timeSWait + 1; //This is the timer we wait for when we pause to prevent pressing p and instantly un-pausing after a pause (Could be changed)
+        if (Input.GetKeyDown(KeyCode.P) && timeSWait > 100)
         {
             stateManager.ChangeState(standing);
             Debug.Log("Exiting Pause");
         }
     }
-    private void PauseStateRExit()
+    private void PauseStateMoleExit()
     {
-        bPSR = false; //Reset our BoolPauseStateR to false so we can use pause again
+        bPS = false; //Reset our BoolPauseStateR to false so we can use pause again
         rb.constraints = RigidbodyConstraints.None | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
     }
     //----------------------------------PAUSE
@@ -223,7 +224,7 @@ public class MoleMachineR : MonoBehaviour
     //----------------------------------BUTTON FUNCTIONS
     private void OnDisable()
     { 
-        FindObjectOfType<PauseManager>().PauseEvent -= pauseEventR;
+        FindObjectOfType<PauseManager>().PauseEvent -= pauseEventMole;
     }
     
 }

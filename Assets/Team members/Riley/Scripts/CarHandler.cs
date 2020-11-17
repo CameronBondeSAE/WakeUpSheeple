@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class CarHandlerR : MonoBehaviour
+public class CarHandler : MonoBehaviour
 {
     public GameObject carRespawnObject;
     private Vector3 carRespawnPoint;

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEditor.UIElements;
 using UnityEngine;
 
-public class RoadHandlerR : MonoBehaviour
+public class RoadHandler : MonoBehaviour
 {
     public GameObject CarObjectToSpawn;
     private Vector3 carVector;
     private Rigidbody rb;
-    private float speedCarR = 50f;
+    private float carSpeed = 50f;
     GameObject instantiate;
     // Start is called before the first frame update
     void Start()
@@ -18,7 +18,7 @@ public class RoadHandlerR : MonoBehaviour
         instantiate = Instantiate<GameObject>(CarObjectToSpawn, carVector, transform.rotation);
         rb = instantiate.GetComponent<Rigidbody>();
         //FindObjectOfType<CarHandlerR>().DeleteEvent += deleteEvent;
-        rb.AddForce(-transform.right * speedCarR);
+        rb.AddForce(-transform.right * carSpeed);
     }
     // Update is called once per frame
     void Update()
