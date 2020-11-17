@@ -75,12 +75,12 @@ public event Action SheepDiedEvent;
         Debug.Log("SHOWING OVERVIEW OF MAP");
     }
 
-    public void PlayersSpawned(PlayerBehaviour conn)
+    public void PlayersSpawned(NetworkConnection conn, PlayerBehaviour player)
     {
-        playersSpawnedEvent?.Invoke(conn);
+        playersSpawnedEvent?.Invoke(player);
        GetComponent<PlayerBehaviour>()?.controls.Movement.Movement.Disable();
-       // networkManager.SpawnPlayer(conn);
-        Debug.Log("GameManager Event: PLAYERS SPAWNED but cannot move");
+       networkManager.SpawnPlayer(conn);
+       Debug.Log("GameManager Event: PLAYERS SPAWNED but cannot move");
     }
 
     public void PlayPhaseStarted()
@@ -112,7 +112,7 @@ public event Action SheepDiedEvent;
         // }
         
         
-        percentageOfSheepNeeded = sheepInLevel.Count * percentage * percentageIncrease;
+        percentageOfSheepNeeded = sheepInLevel.Count * percentage * percentageIncrease;  
         
 
         if (sheepInLevel.Count < 0)

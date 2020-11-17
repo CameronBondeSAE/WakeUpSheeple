@@ -22,7 +22,7 @@ public class GameManagerEditor : Editor
       }
       if (GUILayout.Button("Players Spawned"))
       {
-         gameManager.PlayersSpawned(null);
+         gameManager.PlayersSpawned(null,null);
       }
 
       if (GUILayout.Button("Game Won"))
