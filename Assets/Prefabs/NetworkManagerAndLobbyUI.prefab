@@ -1441,6 +1441,7 @@ MonoBehaviour:
   - Assets/Scenes/AJsLevel.unity
   - Assets/Student workspace/AlexM/Scenes/AM01.unity
   - Assets/Scenes/AStarMaze.unity
+  gameManager: {fileID: 0}
   heightOffset: 1.5
 --- !u!114 &6181736370761581533
 MonoBehaviour:
@@ -1535,7 +1536,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  networkManager: {fileID: 0}
+  gameNetworkManager: {fileID: 6181736370761581532}
   endGoalChecker: {fileID: 0}
   sheepInLevel: []
   deadSheep: []
@@ -3935,7 +3936,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6497264542455689841}
   m_HandleRect: {fileID: 6497264542455689854}
   m_Direction: 2
-  m_Value: -0.000026450129
+  m_Value: -0.0024334118
   m_Size: 0.9971444
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4733,7 +4734,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00079335284, y: 0.28846195}
+  m_AnchoredPosition: {x: 0.00079335284, y: 0.28910813}
   m_SizeDelta: {x: 0, y: 101.01}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &6497264541811411597
