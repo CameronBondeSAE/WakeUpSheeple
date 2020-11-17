@@ -56,6 +56,7 @@ public event Action SheepDiedEvent;
         // playersSpawnedEvent += PlayersSpawned;
         // // MapOverviewEvent += OverviewOfMap;
         // // GameOverEvent += GameOver;
+        gameNetworkManager.PhysicalPlayerSpawned += PlayersSpawned;
     }
 
     private void OnDisable()
@@ -66,6 +67,7 @@ public event Action SheepDiedEvent;
     //     playersSpawnedEvent -= PlayersSpawned;
     //     // MapOverviewEvent -= OverviewOfMap;
     //     // GameOverEvent -= GameOver;
+    gameNetworkManager.PhysicalPlayerSpawned -= PlayersSpawned;
     }
 
     public void OverviewOfMap()
@@ -78,16 +80,17 @@ public event Action SheepDiedEvent;
     public void PlayersSpawned(PlayerBehaviour player)
     {
         playersSpawnedEvent?.Invoke(player);
-       GetComponent<PlayerBehaviour>()?.controls.Movement.Movement.Disable();
+        Debug.Log("GameManager Event: PLAYERS SPAWNED but cannot move");
+      
+        // GetComponent<PlayerBehaviour>()?.controls.Movement.Movement.Disable();
        // networkManager.SpawnPlayer(conn);
-       Debug.Log("GameManager Event: PLAYERS SPAWNED but cannot move");
     }
 
     public void PlayPhaseStarted()
     {
         GamestartedEvent?.Invoke();
-        GetComponent<PlayerBehaviour>()?.controls.Movement.Movement.Enable();
         Debug.Log("GameManager Event: PLAYERS are Playing & player can be moved");
+        // GetComponent<PlayerBehaviour>()?.controls.Movement.Movement.Enable();
         //who spawned
     }
 
