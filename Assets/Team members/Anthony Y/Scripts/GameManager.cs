@@ -13,7 +13,7 @@ public class GameManager : NetworkBehaviour
 {
     
     [SerializeField]
-    private GameNetworkManager networkManager;
+    private GameNetworkManager gameNetworkManager;
     ///Players spawned
     public event Action<PlayerBehaviour> playersSpawnedEvent;
 
@@ -75,11 +75,11 @@ public event Action SheepDiedEvent;
         Debug.Log("SHOWING OVERVIEW OF MAP");
     }
 
-    public void PlayersSpawned(NetworkConnection conn, PlayerBehaviour player)
+    public void PlayersSpawned(PlayerBehaviour player)
     {
         playersSpawnedEvent?.Invoke(player);
        GetComponent<PlayerBehaviour>()?.controls.Movement.Movement.Disable();
-       networkManager.SpawnPlayer(conn);
+       // networkManager.SpawnPlayer(conn);
        Debug.Log("GameManager Event: PLAYERS SPAWNED but cannot move");
     }
 
