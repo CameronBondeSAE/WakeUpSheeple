@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0165614d5067af845ac4ba6b38957fbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  launchPower: 20
+  launchPower: 15
   launchDelay: 2
   launchDamage: 50
 --- !u!1 &4923860628001624313

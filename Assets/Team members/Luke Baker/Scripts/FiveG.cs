@@ -52,7 +52,7 @@ namespace LukeBaker
             attractorTrigger.onTriggerExitEvent -= Attraction;
         }
 
-        // when attract event triggered, attract objects entered
+        /// when attract event triggered, attract objects entered
         public void Attraction(Collider attractedCollider)
         {
             attractedCollider.GetComponent<Rigidbody>().AddForce(
@@ -60,11 +60,13 @@ namespace LukeBaker
                 attractSpeed * Time.deltaTime);
         }
 
+        ///This is the animation of the 5g tower ping that is constant
         public void AttractionPingVisual()
         {
             Sequence sequence = DOTween.Sequence();
-            sequence.Append(fiveGPing.transform.DOScale(fiveGPing.transform.localScale.normalized.magnitude,animationDuration).SetEase(ease));
-            sequence.Insert(1, fiveGPing.GetComponent<Material>().DOFade(0,animationDuration).SetDelay(delayAnimation));
+            sequence.Append(fiveGPing.transform.DOScale(0,0));
+            sequence.Append(fiveGPing.transform.DOScale(fiveGPing.transform.localScale, animationDuration).SetEase(ease));
+            sequence.Insert(1, fiveGPing.GetComponent<Renderer>().material.DOFade(0,animationDuration).SetDelay(delayAnimation));
             sequence.SetLoops(-1);
         }
         

@@ -27,7 +27,7 @@ namespace LukeBaker
             }
         }
 
-        //Launch the object that has entered
+        ///Launch the object that has entered
         IEnumerator Launch(Rigidbody rb)
         {
             yield return new WaitForSeconds(launchDelay);

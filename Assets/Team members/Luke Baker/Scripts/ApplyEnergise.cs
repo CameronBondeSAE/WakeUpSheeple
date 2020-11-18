@@ -35,7 +35,7 @@ namespace LukeBaker
             energiserTrigger.onTriggerExitEvent -= EnergiseObject;
         }
         
-        //Function for the inner collider of the 5G tower leads the object into a death or damage trap
+        ///Function for the inner collider of the 5G tower leads the object into a death or damage trap
         void EnergiseObject(Collider trigger)
         {
             Sequence sequence = DOTween.Sequence();
