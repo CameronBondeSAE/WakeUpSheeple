@@ -30,8 +30,9 @@ namespace LukeBaker
 
         [Header("Ping animation stuff")]
         public float animationDuration;
-        public GameObject attractPing;
+        public GameObject fiveGPing;
         public Ease ease;
+        public float delayAnimation;
 
         public void Start()
         {
@@ -62,8 +63,8 @@ namespace LukeBaker
         public void AttractionPingVisual()
         {
             Sequence sequence = DOTween.Sequence();
-            attractPing.SetActive(true);
-            sequence.Append(attractPing.transform.DOScale(attractPing.transform.localScale.normalized.magnitude,animationDuration * Time.deltaTime).SetEase(ease));
+            sequence.Append(fiveGPing.transform.DOScale(fiveGPing.transform.localScale.normalized.magnitude,animationDuration).SetEase(ease));
+            sequence.Insert(1, fiveGPing.GetComponent<Material>().DOFade(0,animationDuration).SetDelay(delayAnimation));
             sequence.SetLoops(-1);
         }
         
