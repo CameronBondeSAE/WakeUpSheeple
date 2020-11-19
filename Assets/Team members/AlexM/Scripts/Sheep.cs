@@ -4,8 +4,10 @@ using UnityEngine;
 
 namespace AlexM
 {
-    public class Sheep : MonoBehaviour
-    {
+    public class Sheep : CharacterBase
+	{
+		public bool isBlack = false;
+		
         // Start is called before the first frame update
         void Start()
         {
@@ -17,6 +19,16 @@ namespace AlexM
         {
 
         }
+
+		public void ChangeToBlack()
+		{
+			isBlack = true;
+		}
+
+		public void ChangeToWhite()
+		{
+			isBlack = false;
+		}
     }
 
 }
