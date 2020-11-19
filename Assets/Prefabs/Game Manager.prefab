@@ -48,7 +48,11 @@ MonoBehaviour:
   syncInterval: 0.1
   gameNetworkManager: {fileID: 0}
   endGoalChecker: {fileID: 0}
-  sheepInLevel: []
+  spawnerList:
+  - {fileID: 0}
+  - {fileID: 0}
+  endGoals:
+  - {fileID: 0}
   deadSheep: []
   percentage: 75
 --- !u!114 &2275449954905041088
