@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Media;
+using AlexM;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -33,6 +34,7 @@ public class MoleManManager : MonoBehaviour
     private int previousWaypointIndex;
     private float movementSpeed = 0.1f;
     public bool waypointFirstRound;
+    private GameObject sheepWaypoint;
     //----------------------------------WAYPOINT VARIABLES
     //----------------------------------EVENT VARIABLES
     public event Action tmpEventStand;
@@ -45,6 +47,16 @@ public class MoleManManager : MonoBehaviour
     //----------------------------------UPDATE/START
     void Start()
     {
+        //----------------------------------WAYPOINT VARIABLES
+        moveToWaypoint.Enter = moveToWaypointStart;
+        moveToWaypoint.Update = moveToWaypointUpdate;
+        moveToWaypoint.Exit = moveToWaypointExit;
+        currentWaypointIndex = 0;
+        currentWaypoint = waypointsList[currentWaypointIndex];
+        waypointFirstRound = false;
+        sheepWaypoint = GameObject.FindObjectOfType<Sheep>().gameObject; //HACK!!!!!!!!
+        waypointsList.Add(sheepWaypoint.transform);
+        //----------------------------------WAYPOINT VARIABLES
         standing.Enter = standingStart;
         standing.Update = standingUpdate;
         standing.Exit = standingExit;
@@ -58,14 +70,6 @@ public class MoleManManager : MonoBehaviour
         stateManager.ChangeState(standing); //on start set the default state to standing
         rb = GetComponent<Rigidbody>();
         bPS = false;
-        //----------------------------------WAYPOINT VARIABLES
-        moveToWaypoint.Enter = moveToWaypointStart;
-        moveToWaypoint.Update = moveToWaypointUpdate;
-        moveToWaypoint.Exit = moveToWaypointExit;
-        currentWaypointIndex = 0;
-        currentWaypoint = waypointsList[currentWaypointIndex];
-        waypointFirstRound = false;
-        //----------------------------------WAYPOINT VARIABLES
         //----------------------------------TRIGGER VARIABLES
         //TriggerScriptR = GetComponent<TriggerMoleR>();
         //----------------------------------TRIGGER VARIABLES
