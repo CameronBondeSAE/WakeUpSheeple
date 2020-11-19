@@ -52,10 +52,23 @@ public EndGoalChecker endGoalChecker;
     public float percentage = 75;
     private float percentageIncrease = 0.01f;
 
+    public int totalSheep;
+
 
     void Awake()
     {
        gameNetworkManager = FindObjectOfType<GameNetworkManager>();
+       foreach (Spawner spawner in spawnerList)
+       {
+           Debug.Log(spawner.amount.ToString());
+           totalSheep += spawner.amount ;
+           // spawner.SpawnedEvent += SheepTracker;
+       }
+
+       foreach (EndGoalChecker endGoal in endGoals)
+       {
+           endGoal.SheepMadeitEvent += SheepTracker;
+       }
     }
     private void OnEnable()
     {
@@ -77,6 +90,11 @@ public EndGoalChecker endGoalChecker;
     //     // MapOverviewEvent -= OverviewOfMap;
     //     // GameOverEvent -= GameOver;
     gameNetworkManager.PhysicalPlayerSpawned -= PlayersSpawned;
+    }
+
+    private void Update()
+    {
+        
     }
 
     public void OverviewOfMap()
@@ -104,14 +122,14 @@ public EndGoalChecker endGoalChecker;
     }
 
 //TOTAL SHEEP/DYING SHEEP
-    public void SheepTracker()
+    public void SheepTracker(CharacterBase character)
     {
         //TODO
         //KEEP TRACK OF SHEEP HERE LINKING IT TO THE SPAWN MANAGER
         //SPAWN MANAGER WILL KEEP TRACK WILL SPAWN THE AMOUNT OF SHEEP NEEDED
-        Debug.Log(spawnerList.Count.ToString());
         
-       
+
+
         //Remove sheep from list when it dies
 
         // foreach (var sheep in sheepInLevel)
@@ -122,14 +140,27 @@ public EndGoalChecker endGoalChecker;
         //         deadSheep.Add();
         //     }
         // }
+        bool goalsMet = true;
+        foreach (var goalChecker in endGoals)
+        {
+            if (goalChecker.safeSheep.Count < goalChecker.sheepRequired)
+            {
+                goalsMet = false;
+                break;
+            }
+        }
+
+        if (goalsMet)
+        {
+            EndGoalTrackerWin();
+        }
         
-        
-        percentageOfSheepNeeded = spawnerList.Count * percentage * percentageIncrease;  
+        percentageOfSheepNeeded = totalSheep * percentage * percentageIncrease;  
         
 
-        if (spawnerList.Count < 0)
+        if (totalSheep < 0)
         {
-            EndGoalTrackerLost();
+            EndGoalTrackerLost(character);
         }
     }
 
@@ -137,16 +168,12 @@ public EndGoalChecker endGoalChecker;
     public void EndGoalTrackerWin()
     {
         //SAFE SHEEP
-        if (endGoalChecker.safeSheep.Count >= percentageOfSheepNeeded)
-        {
-            endGoalChecker.safeSheep.Count.ToString();
-            WonEvent?.Invoke();
-            Debug.Log("GAME MANAGER: YOU WON THE  GAME ._.");
-        }
+        WonEvent?.Invoke();
+        Debug.Log("GAME MANAGER: YOU WON THE  GAME ._.");
     }
-    public void EndGoalTrackerLost()
+    public void EndGoalTrackerLost(CharacterBase character)
     {
-        SheepTracker();
+        SheepTracker(character);
         LostEvent?.Invoke();
         Debug.Log("GAME MANAGER: YOU LOST THE GAME :(");
     }
