@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace AlexM
 {
-    public class Sheep : MonoBehaviour
+    public class Sheep : CharacterBase
 	{
 		public bool isBlack = false;
 		
