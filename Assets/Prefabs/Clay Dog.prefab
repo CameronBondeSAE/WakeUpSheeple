@@ -183,7 +183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  movementSpeed: 10
+  movementSpeed: 200
   health: {fileID: -725918390782881256}
   dogBark: {fileID: -336919023003889543}
   wolfHowl: {fileID: 4825105750970700407}
