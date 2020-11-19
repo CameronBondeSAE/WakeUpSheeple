@@ -31,7 +31,7 @@ Transform:
   m_LocalScale: {x: 0.05, y: 1.42, z: 4.5}
   m_Children: []
   m_Father: {fileID: 319668135149111099}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5716772658056465747
 MeshFilter:
@@ -126,7 +126,7 @@ Transform:
   m_LocalScale: {x: 0.4, y: 0.75, z: 0.4}
   m_Children: []
   m_Father: {fileID: 319668135149111099}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2366794068475736759
 MeshFilter:
@@ -409,8 +409,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6931090913482289374}
-  - {fileID: 3164190467729981726}
   - {fileID: 2226114301806898629}
+  - {fileID: 3164190467729981726}
   - {fileID: 8500678148521956260}
   m_Father: {fileID: 0}
   m_RootOrder: 0
