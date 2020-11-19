@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class NukeBehaviour : MonoBehaviour
 {
+    [SerializeField] ParticleSystem particleSystem = null;
+
+    public GameObject radiationZone;
+    
+    
     // FUNCTIONS REQUIRED
     
     // if nuke collides with the ground, trigger explosion
@@ -12,24 +17,27 @@ public class NukeBehaviour : MonoBehaviour
     // leave behind radiation zone after explosion
     // radiation zone disappears over time
     
-    void Update()
+    void Start()
     {
-        void OnTriggerEnter(Collider other)
-        {
-            if (other.gameObject.CompareTag("Ground"))
-            {
-                Detonate();
-            }
-        }
-
-        void Detonate()
-        {
-            
-        }
-
-
-
+        particleSystem.Stop();
+        
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Nuke"))
+        {
+            Detonate();
+            other.gameObject.SetActive(false);
+            Debug.Log("Collision detected");
+        }
+    }
+
+    void Detonate()
+    {
+        particleSystem.Play();
+        Debug.Log("The nuke has landed!");
+        Instantiate(radiationZone);
+    }
     
 }
