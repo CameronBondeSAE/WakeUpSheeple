@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 namespace LukeBaker
@@ -18,8 +19,10 @@ namespace LukeBaker
         public float scale;
         /// Time between each point being drawn
         public float strikeDelay;
-        /// Angle of each 2 points of the strike
+        /// Random angle of each 2 points of the strike
         public float strikeAngle;
+        public float startStrikeWidth;
+        public float endWidthStrike;
 
         // Start is called before the first frame update
         void Start()
@@ -34,31 +37,35 @@ namespace LukeBaker
             float y = 0;
 
             lineRenderer.positionCount = maxVerticesAmount;
-            
+            //Setting the first point to object position
+            lineRenderer.SetPosition(0,transform.position);
             //looping through the points to the max amount of points
-            for (int x = 0; x < Random.Range(3, maxVerticesAmount); x++)
+            for (int x = 1; x < 10; x++)
             {
-                y = y + acceleration * scale;
-                
-                //branching the lightning by chance
-                int chanceOfBranch = Random.Range(0, 10);
-                Debug.Log(chanceOfBranch);
 
-                // if (chanceOfBranch > 6)
-                // {
-                //     for (int a = 0; a < Random.Range(2, maxVerticesAmount); a++)
-                //     {
-                //         LineRenderer branchLine = new LineRenderer();
-                //         lineRenderer.gameObject.AddComponent<LineRenderer>().;
-                //         branchLine.SetPosition(x, new Vector3(a, y, Random.Range(80, strikeAngle)));
-                //         yield return new WaitForSeconds(strikeDelay);
-                //     }
-                // }
+                 //branching the lightning by chance
+                 // int chanceOfBranch = Random.Range(0, 10);
+                 // Debug.Log(chanceOfBranch);
 
-                //visualise
-                lineRenderer.SetPosition(x, new Vector3(x, y, Random.Range(0, strikeAngle)));
-                yield return new WaitForSeconds(strikeDelay);
+                 // if (chanceOfBranch > 6)
+                 // {
+                 //     for (int a = 0; a < Random.Range(2, maxVerticesAmount); a++)
+                 //     {
+                 //         LineRenderer branchLine = lineRenderer.gameObject.AddComponent<LineRenderer>();
+                 //         StartCoroutine(LightningStrikes());
+                 //     }
+                 // }
+                 for (int i = x; i < 10; i++)
+                 {
+                     //visualise
+                     lineRenderer.SetPosition(i, new Vector3(Random.Range(-strikeAngle, strikeAngle), y, Random.Range(-strikeAngle, strikeAngle)) + lineRenderer.GetPosition(i-1));
+                     lineRenderer.startWidth = startStrikeWidth;
+                     lineRenderer.endWidth = endWidthStrike;
+                    
+                 }
+                 y = y + acceleration * scale;
 
+                 yield return new WaitForSeconds(strikeDelay);
             }
         }
     }
