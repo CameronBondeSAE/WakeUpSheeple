@@ -9,116 +9,122 @@ using UnityEngine.InputSystem;
 
 namespace AnthonyY
 {
-    public class PlayerBehaviour : NetworkBehaviour,IOwnable
-    {
-        [SyncVar]
-        public float movementSpeed;
+	public class PlayerBehaviour : NetworkBehaviour, IOwnable
+	{
+		[SyncVar]
+		public float movementSpeed;
 
-        public Health health;
+		public Health health;
 
-        public PlayerControls controls;
-        public AudioSource dogBark;
-        public AudioSource wolfHowl;
+		public PlayerControls controls;
+		public AudioSource    dogBark;
+		public AudioSource    wolfHowl;
 
-        [SerializeField]
-        private bool amIWolf = false;
-    
-        private void Awake()
-        {
-            controls = new PlayerControls();
-        }
-    
-    
-        private void OnEnable()
-        {
-            controls.Dog.Enable();
-            controls.Wolf.Enable();
-            controls.Movement.Enable();
-            health.DeathEvent += Death;
-            controls.Dog.Bark.performed += _  => RpcBark();
-            controls.Wolf.Howl.performed += _ => RpcHowl();
-            GetComponent<PauseManager>().PauseEvent += OnPauseEvent;
-        }
+		[SerializeField]
+		private bool amIWolf = false;
 
-        private void OnPauseEvent()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void OnDisable()
-        {
-            controls.Dog.Disable();
-            controls.Wolf.Disable();
-            controls.Movement.Disable();
-            health.DeathEvent -= Death;
-           
-        }
-    
-        public NetworkIdentity Owner { get; set; }
-        void Update()
-        {
-            // Debug.Log(Owner);
-            // if (isClient)
-            // {
-            //     if (Owner != null)
-            //     {
-            //         if (Owner.isLocalPlayer)
-            //         {
-            //             Vector3 movementInput = controls.GamePlayer.Movement.ReadValue<Vector2>();
-            //             CmdMove(movementInput);
-            //         }
-            //     }
-            // }
-            Vector3 movementInput = controls.Movement.Movement.ReadValue<Vector2>();
-            CmdMove(movementInput);
-        }
-    
-        [ClientRpc]
-        private void RpcMove(Vector2 movementInput)
-        {
-            Vector3 movement = new Vector3
-            {
-                x = movementInput.x,
-                z = movementInput.y
-            }.normalized;
-    
-    
-            transform.Translate(movement * (movementSpeed * Time.deltaTime), Space.World);
-            transform.rotation = Quaternion.LookRotation(movement);
-            Vector3 playerVelocity = GetComponent<Rigidbody>().velocity;
-            playerVelocity.y = 0;
-            transform.forward = new Vector3(playerVelocity.x,playerVelocity.y,playerVelocity.z);
-            
-        }
-
-        public void RpcBark()
-        {
-            dogBark.Play();
-            Debug.Log("Dog Audio Played");
+		private void Awake()
+		{
+			controls = new PlayerControls();
+		}
 
 
-        }
+		private void OnEnable()
+		{
+			controls.Dog.Enable();
+			controls.Wolf.Enable();
+			controls.Movement.Enable();
+			health.DeathEvent                       += Death;
+			controls.Dog.Bark.performed             += _ => RpcBark();
+			controls.Wolf.Howl.performed            += _ => RpcHowl();
+			GetComponent<PauseManager>().PauseEvent += OnPauseEvent;
+		}
+
+		private void OnPauseEvent()
+		{
+			throw new NotImplementedException();
+		}
+
+		private void OnDisable()
+		{
+			controls.Dog.Disable();
+			controls.Wolf.Disable();
+			controls.Movement.Disable();
+			health.DeathEvent -= Death;
+		}
+
+		public NetworkIdentity Owner { get; set; }
+
+		void Update()
+		{
+			// Debug.Log(Owner);
+			// if (isClient)
+			// {
+			//     if (Owner != null)
+			//     {
+			//         if (Owner.isLocalPlayer)
+			//         {
+			//             Vector3 movementInput = controls.GamePlayer.Movement.ReadValue<Vector2>();
+			//             CmdMove(movementInput);
+			//         }
+			//     }
+			// }
+			Vector3 movementInput = controls.Movement.Movement.ReadValue<Vector2>();
+			CmdMove(movementInput);
+		}
+
+		[ClientRpc]
+		private void RpcMove(Vector2 movementInput)
+		{
+			Vector3 movement = new Vector3
+							   {
+								   x = movementInput.x,
+								   z = movementInput.y
+							   }.normalized;
 
 
-        public void RpcHowl()
-        {
-            wolfHowl.Play();
-            Debug.Log("Wolf Audio Played");
-            
-        }
+			Rigidbody rb = GetComponent<Rigidbody>();
+
+			// transform.Translate(movement * (movementSpeed * Time.deltaTime), Space.World);
+			rb.velocity = movement * (movementSpeed * Time.deltaTime);
+
+			// Are we moving AT ALL?
+			if (rb.velocity.magnitude > 0.5f)
+			{
+				transform.rotation = Quaternion.LookRotation(movement);
+			}
 
 
-        private void Death(Health health)
-        {
-            Destroy(gameObject);
-        }
-    
-        //Actually moving the player on server
-        //***************************************SERVER CODE****************************
-        [Command]
-        private void CmdMove(Vector2 movementInput)
-        {
-            RpcMove(movementInput);
-        }
-    }
+			Vector3 playerVelocity = rb.velocity;
+			playerVelocity.y  = 0;
+			transform.forward = new Vector3(playerVelocity.x, playerVelocity.y, playerVelocity.z);
+		}
+
+		public void RpcBark()
+		{
+			dogBark.Play();
+			Debug.Log("Dog Audio Played");
+		}
+
+
+		public void RpcHowl()
+		{
+			wolfHowl.Play();
+			Debug.Log("Wolf Audio Played");
+		}
+
+
+		private void Death(Health health)
+		{
+			Destroy(gameObject);
+		}
+
+		//Actually moving the player on server
+		//***************************************SERVER CODE****************************
+		[Command]
+		private void CmdMove(Vector2 movementInput)
+		{
+			RpcMove(movementInput);
+		}
+	}
 }
