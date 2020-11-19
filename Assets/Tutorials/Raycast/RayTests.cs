@@ -69,6 +69,13 @@ public class RayTests : MonoBehaviour
 		}
 	}
 
+	// public void Lightning(LineRenderer lineRenderer)
+	// {
+	// 	// lineRenderer.stuff = 1
+	// 	LineRenderer addComponent = gameObject.AddComponent<LineRenderer>();
+	// 	Lightning(addComponent);
+	// }
+
 	void OnDrawGizmos()
 	{
 		if (raycastHit.transform != null && RayType == RayType.RaycastOut)
