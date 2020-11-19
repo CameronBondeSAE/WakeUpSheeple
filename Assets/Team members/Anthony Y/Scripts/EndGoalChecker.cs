@@ -29,7 +29,7 @@ public class EndGoalChecker : MonoBehaviour
             boxes.Add(other);
            //****SHEEP CODE**************
             safeSheep.Add(other.transform.root.GetComponent<Sheep>());
-            Destroy(other.transform.root.GetComponent<Sheep>());
+            // Destroy(other.transform.root.gameObject);
             Debug.Log(safeSheep.Count.ToString());
             SheepMadeitEvent?.Invoke();
            

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CamSpawner : MonoBehaviour
+public class Spawner : MonoBehaviour
 {
 	public GameObject prefab;
 	public float      radius;
@@ -17,6 +17,7 @@ public class CamSpawner : MonoBehaviour
 			Vector3 randomInsideUnitCircle = new Vector3(insideUnitCircle.x, 0, insideUnitCircle.y);
 
 			GameObject newGo = Instantiate(prefab, transform.position + (randomInsideUnitCircle * radius), Quaternion.Euler(0,Random.Range(0,360),0));
+			newGo.name = prefab.name + " "+i.ToString("##");
 		}
     }
 }

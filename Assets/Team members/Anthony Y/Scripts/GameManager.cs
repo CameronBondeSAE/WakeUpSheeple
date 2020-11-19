@@ -33,14 +33,19 @@ public class GameManager : NetworkBehaviour
     public event Action SheepSavedEvent;
 ///Happens when  a sheep died
 public event Action SheepDiedEvent;
-    
-    public EndGoalChecker endGoalChecker;
+public EndGoalChecker endGoalChecker;
+   
 
 
     [Header("Sheep in Level")]
 //Will be linked to sheep spawn manager later (TOTAL SHEEP)
-    public List<Sheep> sheepInLevel;
+    public List<Spawner> spawnerList;
+    public List<EndGoalChecker> endGoals;
+    
+    
     public List<Sheep> deadSheep;
+    
+    
     
     [Header("Percentage of Sheep")]
     private float percentageOfSheepNeeded;
@@ -104,7 +109,7 @@ public event Action SheepDiedEvent;
         //TODO
         //KEEP TRACK OF SHEEP HERE LINKING IT TO THE SPAWN MANAGER
         //SPAWN MANAGER WILL KEEP TRACK WILL SPAWN THE AMOUNT OF SHEEP NEEDED
-        Debug.Log(sheepInLevel.Count.ToString());
+        Debug.Log(spawnerList.Count.ToString());
         
        
         //Remove sheep from list when it dies
@@ -119,10 +124,10 @@ public event Action SheepDiedEvent;
         // }
         
         
-        percentageOfSheepNeeded = sheepInLevel.Count * percentage * percentageIncrease;  
+        percentageOfSheepNeeded = spawnerList.Count * percentage * percentageIncrease;  
         
 
-        if (sheepInLevel.Count < 0)
+        if (spawnerList.Count < 0)
         {
             EndGoalTrackerLost();
         }
