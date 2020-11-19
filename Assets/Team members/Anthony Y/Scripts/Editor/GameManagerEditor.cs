@@ -35,7 +35,7 @@ public class GameManagerEditor : Editor
       }
       if (GUILayout.Button("Game Over"))
       {
-         gameManager.GameOver();
+         gameManager.RpcGameOver();
       }
       
       

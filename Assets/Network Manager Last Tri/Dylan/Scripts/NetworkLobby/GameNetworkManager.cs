@@ -72,8 +72,13 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
         public List<string> levels;
 
         public GameManager gameManager;
-       
-        
+
+        public override void Awake()
+        {
+            gameManager = FindObjectOfType<GameManager>();
+            base.Awake();
+        }
+
         public override void Start()
         {
             // Debug.Log("Level Loaded");
@@ -111,6 +116,7 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
             
             // Need to subscribe before network starts
             base.Start();
+            
         }
 
         public void LoadLevel(string levelToLoadName, bool loadNextLevel)
