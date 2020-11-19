@@ -37,8 +37,14 @@ namespace AnthonyY
             health.DeathEvent += Death;
             controls.Dog.Bark.performed += _  => RpcBark();
             controls.Wolf.Howl.performed += _ => RpcHowl();
+            GetComponent<PauseManager>().PauseEvent += OnPauseEvent;
         }
-    
+
+        private void OnPauseEvent()
+        {
+            throw new NotImplementedException();
+        }
+
         private void OnDisable()
         {
             controls.Dog.Disable();

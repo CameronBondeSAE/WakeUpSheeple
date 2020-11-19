@@ -46,8 +46,12 @@ public event Action SheepDiedEvent;
     private float percentageOfSheepNeeded;
     public float percentage = 75;
     private float percentageIncrease = 0.01f;
-    
 
+
+    void Awake()
+    {
+       gameNetworkManager = FindObjectOfType<GameNetworkManager>();
+    }
     private void OnEnable()
     {
         // WonEvent += EndGoalTrackerWin;
@@ -150,10 +154,17 @@ public event Action SheepDiedEvent;
             //in the list
         }
     }
-
-    public void GameOver()
+[ClientRpc]
+    public void RpcGameOver()
     {
         GameOverEvent?.Invoke();
         Debug.Log("GAME OVER!");
+    }
+    
+    //*****SERVER CODE*********
+    [Command]
+    public void CmdGameOver()
+    {
+        RpcGameOver();
     }
 }
