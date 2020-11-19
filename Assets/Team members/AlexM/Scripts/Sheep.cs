@@ -7,6 +7,7 @@ namespace AlexM
     public class Sheep : CharacterBase
 	{
 		// Property for access to variable
+		[SerializeField]
 		private bool isBlack = false;
 		public bool IsBlack
 		{
