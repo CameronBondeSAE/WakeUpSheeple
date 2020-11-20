@@ -16,7 +16,7 @@ public class EndGoalChecker : MonoBehaviour
     public List<Sheep> safeSheep;
     public int sheepRequired;
 
-    public event Action SheepMadeitEvent;
+    public event Action<Sheep> SheepMadeitEvent;
     
   
 
@@ -28,10 +28,10 @@ public class EndGoalChecker : MonoBehaviour
             Debug.Log(other.gameObject.name);
             boxes.Add(other);
            //****SHEEP CODE**************
-            safeSheep.Add(other.transform.root.GetComponent<Sheep>());
-            Destroy(other.transform.root.GetComponent<Sheep>());
+            safeSheep.Add(other.GetComponent<Sheep>());
+            // Destroy(other.transform.root.gameObject);
             Debug.Log(safeSheep.Count.ToString());
-            SheepMadeitEvent?.Invoke();
+            SheepMadeitEvent?.Invoke(other.GetComponent<Sheep>());
            
         }
     }
@@ -42,7 +42,7 @@ public class EndGoalChecker : MonoBehaviour
         {
             //****SHEEP CODE**************
             Debug.Log(other.transform.root.gameObject.name + ": has left the zone");
-            safeSheep.Remove(other.transform.root.GetComponent<Sheep>());
+            safeSheep.Remove(other.GetComponent<Sheep>());
             Debug.Log(safeSheep.Count.ToString());
             
             boxes.Remove(other);

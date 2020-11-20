@@ -4,9 +4,25 @@ using UnityEngine;
 
 namespace AlexM
 {
-    public class Sheep : MonoBehaviour
-    {
-        // Start is called before the first frame update
+    public class Sheep : CharacterBase
+	{
+		// Property for access to variable
+		[SerializeField]
+		private bool isBlack = false;
+		public bool IsBlack
+		{
+			get
+			{
+				return isBlack;
+			}
+			// Make a readonly variable, by removing the ability to set it from outside this class!
+			// set
+			// {
+			// 	isBlack = value;
+			// }
+		}
+
+		// Start is called before the first frame update
         void Start()
         {
 
@@ -17,6 +33,16 @@ namespace AlexM
         {
 
         }
+
+		public void ChangeToBlack()
+		{
+			isBlack = true;
+		}
+
+		public void ChangeToWhite()
+		{
+			isBlack = false;
+		}
     }
 
 }

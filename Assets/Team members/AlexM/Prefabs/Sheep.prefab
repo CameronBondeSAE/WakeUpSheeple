@@ -15,8 +15,11 @@ GameObject:
   - component: {fileID: 1994912455}
   - component: {fileID: 2973978494779615501}
   - component: {fileID: 1521166416}
+  - component: {fileID: 7321521051079283999}
+  - component: {fileID: 298007302029047665}
+  - component: {fileID: 2572973270563412909}
   m_Layer: 8
-  m_Name: Sheep01
+  m_Name: Sheep
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,6 +73,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0f72077c66f4bb48908b1f7346a5132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBlack: 0
 --- !u!136 &134032813066214520
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -123,6 +127,55 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NeighboursDetector: {fileID: 2973978494779615501}
+--- !u!114 &7321521051079283999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2372177631083542375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  serverOnly: 0
+  m_AssetId: 
+  hasSpawned: 0
+--- !u!114 &298007302029047665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2372177631083542375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 216e6a283a45fef40be35f93b685acfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RayType: 0
+  ParticleSystem: {fileID: 0}
+  speed: 10
+--- !u!114 &2572973270563412909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2372177631083542375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f74aedd71d9a4f55b3ce499326d45fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  clientAuthority: 0
+  localPositionSensitivity: 0.01
+  localRotationSensitivity: 0.01
+  localScaleSensitivity: 0.01
 --- !u!1 &4369274410258664551
 GameObject:
   m_ObjectHideFlags: 0

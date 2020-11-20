@@ -1,3 +1,4 @@
+using AnthonyY;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,6 +18,17 @@ public class CamsDude_Model : CharacterBase
 	public event Action         JumpEvent;
 
 	public Health health;
+
+	void Awake()
+	{
+		// GameObject.FindObjectOfType<GameManager>().playersSpawnedEvent += OnplayersSpawnedEvent;
+	}
+
+	void OnplayersSpawnedEvent(PlayerBehaviour obj)
+	{
+		// Debug.Log("Player spawned = "+obj.Owner.name);
+	}
+
 
 	// Start is called before the first frame update
 	void Start()

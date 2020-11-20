@@ -31,7 +31,7 @@ public class GameManagerEditor : Editor
       }
       if (GUILayout.Button("Game Lost"))
       {
-         gameManager.EndGoalTrackerLost();
+         gameManager.EndGoalTrackerLost(null);
       }
       if (GUILayout.Button("Game Over"))
       {

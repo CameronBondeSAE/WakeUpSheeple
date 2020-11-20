@@ -30,19 +30,16 @@ namespace Damien
         // Start is called before the first frame update
         void Start()
         {
-            OnDrawGizmosSelected();
+            
         }
-
         private void Update()
         {
             UpdateInRange();
             
         }
-
         private void OnTriggerEnter(Collider target)
         {
             AdministerVaccine();
-            
         }
         void OnDrawGizmosSelected()
             {
@@ -68,10 +65,7 @@ namespace Damien
                     shortestDistance = distanceToSheep;
                     nearestSheep = sheep;
                 }
-            } 
-            
-            
-
+            }
             if (nearestSheep != null && shortestDistance <= range)
             {
                 //Debug.Log("Sheep is in Range");

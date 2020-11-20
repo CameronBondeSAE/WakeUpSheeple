@@ -50,6 +50,8 @@ MonoBehaviour:
   scale: 10
   strikeDelay: 0.01
   strikeAngle: 150
+  startStrikeWidth: 10
+  endWidthStrike: 1
 --- !u!120 &8546369013280047894
 LineRenderer:
   m_ObjectHideFlags: 0

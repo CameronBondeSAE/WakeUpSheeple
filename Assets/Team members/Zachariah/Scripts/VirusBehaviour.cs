@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using AlexM;
+using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Zach
 {
@@ -10,7 +12,7 @@ namespace Zach
         //private Vector3 currentVelocity;
         //public float velocity;
         //public GameObject Sheep;
-        public bool isAttached;
+        public Sheep isAttached;
 
         [Tooltip("Prefab for the Virus for instantiate")]
         public GameObject virus;
@@ -25,12 +27,14 @@ namespace Zach
         [SerializeField] [Tooltip("Location for the virus prefab to be stored")]
         private GameObject instantiate;
 
+        public float convertTimer;
+
         // Start is called before the first frame update\
 
         private void Awake()
         {
             //resetting bool here due to instantiate cloning instance not prefab
-            isAttached = false;
+            //isAttached = false;
         }
 
         
@@ -46,6 +50,15 @@ namespace Zach
                 deathTimer -= 1 * Time.deltaTime;
             else if (deathTimer < 0f) Destroy(gameObject);
             if (isAttached) deathTimer = 10000f;
+            if (isAttached)
+            {
+                convertTimer += Time.deltaTime;
+            }
+            
+            if (convertTimer > 10f)
+            {
+                GetComponentInParent<Sheep>().ChangeToBlack();
+            }
         }
 
 
@@ -53,7 +66,7 @@ namespace Zach
         private void OnTriggerEnter(Collider other)
         {
             //transform.parent;
-            if (other.GetComponent<CharacterBase>())
+            if (other.GetComponent<Sheep>())
             {
                 if (isAttached == false && !other.gameObject.GetComponentInChildren<VirusBehaviour>())
                 {
@@ -61,8 +74,10 @@ namespace Zach
                     transform1.parent = other.transform;
                     transform1.localPosition = new Vector3(0, 1, 0);
 
-                    isAttached = true;
+                    isAttached = other.GetComponent<Sheep>();
                     Debug.Log("Virus Attached");
+                    
+                    
                 }
                 else if (isAttached)
                 {
