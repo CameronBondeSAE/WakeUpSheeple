@@ -18,7 +18,7 @@ namespace Tim
             for (int i = 0; i < number; i++)
             {
                 Vector2 insideUnitCircle = Random.insideUnitCircle * radius;
-                Vector3 flatPos = new Vector3(insideUnitCircle.x, 0, insideUnitCircle.y);
+                Vector3 flatPos = new Vector3(insideUnitCircle.x, 1, insideUnitCircle.y);
                 GameObject newGo = Instantiate(prefab, flatPos, Quaternion.identity);
             }
         }
@@ -27,6 +27,16 @@ namespace Tim
         void Update()
         {
 
+        }
+        
+        public void Spawn()
+        {
+            for (int i = 0; i < number; i++)
+            {
+                Vector2 insideUnitCircle = Random.insideUnitCircle * radius;
+                Vector3 flatPos = new Vector3(insideUnitCircle.x, 1, insideUnitCircle.y);
+                GameObject newGo = Instantiate(prefab, flatPos, Quaternion.identity);
+            }
         }
     }
 }
