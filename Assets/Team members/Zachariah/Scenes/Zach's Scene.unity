@@ -980,6 +980,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sheep01
       objectReference: {fileID: 0}
+    - target: {fileID: 7321521051079283999, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: sceneId
+      value: 1060516160
+      objectReference: {fileID: 0}
     - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.0112996
