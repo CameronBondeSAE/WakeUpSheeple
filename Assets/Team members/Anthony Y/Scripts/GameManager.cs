@@ -41,10 +41,9 @@ public EndGoalChecker endGoalChecker;
 //Will be linked to sheep spawn manager later (TOTAL SHEEP)
     public List<Spawner> spawnerList;
     public List<EndGoalChecker> endGoals;
-    
-    
-    public List<Sheep> deadSheep;
-    
+    public List<Sheep> allSheep = new List<Sheep>();
+    public List<Sheep> deadSheep = new List<Sheep>();
+    public int totalSheep;
     
     
     [Header("Percentage of Sheep")]
@@ -52,7 +51,7 @@ public EndGoalChecker endGoalChecker;
     public float percentage = 75;
     private float percentageIncrease = 0.01f;
 
-    public int totalSheep;
+   
 
 
     void Awake()
@@ -62,12 +61,20 @@ public EndGoalChecker endGoalChecker;
        {
            Debug.Log(spawner.amount.ToString());
            totalSheep += spawner.amount ;
-           // spawner.SpawnedEvent += SheepTracker;
+          
+           spawner.SpawnedEvent += SheepTracker;
        }
 
+       // foreach (Sheep sheep in allSheep)
+       // {
+       //     allSheep.Add(sheep);
+       //     totalSheep += allSheep.Count;
+       //     Debug.Log(allSheep.Count.ToString());
+       // }
        foreach (EndGoalChecker endGoal in endGoals)
        {
            endGoal.SheepMadeitEvent += SheepTracker;
+           Debug.LogWarning("You NEED TO ADD AN END GOAL INTO THE SCENE");
        }
     }
     private void OnEnable()
@@ -127,19 +134,29 @@ public EndGoalChecker endGoalChecker;
         //TODO
         //KEEP TRACK OF SHEEP HERE LINKING IT TO THE SPAWN MANAGER
         //SPAWN MANAGER WILL KEEP TRACK WILL SPAWN THE AMOUNT OF SHEEP NEEDED
+        if (character is Sheep)
+        {
+            allSheep.Add(character as Sheep);
+        }
         
-
 
         //Remove sheep from list when it dies
 
-        // foreach (var sheep in sheepInLevel)
+        // foreach ( Sheep sheep in allSheep)
         // {
-        //     if (sheep.GetComponent<Health>().Death())
+        //     if ()
         //     {
-        //         sheepinLevel.Remove(sheep);
-        //         deadSheep.Add();
+        //         if (character is Sheep)
+        //         {
+        //             allSheep.Remove(character as Sheep);
+        //             deadSheep.Add(character as Sheep);
+        //         }
+        //         SheepDiedEvent?.Invoke();
         //     }
+        //     
         // }
+        
+        
         bool goalsMet = true;
         foreach (var goalChecker in endGoals)
         {

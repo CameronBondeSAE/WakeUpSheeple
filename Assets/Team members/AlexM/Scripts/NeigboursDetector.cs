@@ -6,6 +6,7 @@ namespace AlexM
 	public class NeigboursDetector : MonoBehaviour
 	{
 		public float radius = 5f;
+		public int lastAmountOfSheep;
 
 		public List<Sheep> GetNearbyObjects()
 		{
@@ -21,6 +22,7 @@ namespace AlexM
 				}
 			}
 
+			lastAmountOfSheep = neighbours.Count;
 			return neighbours;
 		}
 	}

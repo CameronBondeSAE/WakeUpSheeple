@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 3499355825039062645}
   - component: {fileID: 3499355825039062646}
   - component: {fileID: 3499355825039062647}
-  - component: {fileID: 6206022817353650379}
   - component: {fileID: 2865917947926955598}
+  - component: {fileID: 1926467412}
   m_Layer: 0
   m_Name: Lava
   m_TagString: Untagged
@@ -97,18 +97,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6206022817353650379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3499355825039062641}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dbeda490e4f920468fc35195d546538, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &2865917947926955598
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -122,3 +110,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.99999994, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1926467412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3499355825039062641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d1dc8b9d45af054f99475269de791b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lavaDamage: 50
+  deathJump: 200
