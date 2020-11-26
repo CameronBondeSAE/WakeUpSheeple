@@ -23,7 +23,7 @@ public class CoreSheepFinder : NetworkBehaviour
     {
         Debug.Log("i Waited for 3 seconds");
         StartCoroutine(MassFlockAmount(3f));
-       
+        centreSheep = FindObjectOfType<Sheep>();
     }
 
     // Update is called once per frame
@@ -51,11 +51,12 @@ public class CoreSheepFinder : NetworkBehaviour
             }
             yield return new WaitForSeconds(waitTime);
         }
-        void OnDrawGizmos()
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawSphere(centreofSheepFlock,100);
-        }
+       
+    }
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(centreofSheepFlock,100);
     }
 }
 
