@@ -11,6 +11,7 @@ public class CoreSheepFinder : NetworkBehaviour
 
     public Vector3 centreofSheepFlock;
     public GameManager gameManager;
+    public Sheep centreSheep;
     
     public int highestSheep;
 
@@ -22,30 +23,43 @@ public class CoreSheepFinder : NetworkBehaviour
     {
         Debug.Log("i Waited for 3 seconds");
         StartCoroutine(MassFlockAmount(3f));
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+      
     }
 
     IEnumerator MassFlockAmount(float waitTime)
     {
-        foreach (Sheep sheep in gameManager.allSheep)
+        while (true)
         {
-            // centre = centre - sheep.transform.localPosition;
-            if (sheep.GetComponent<NeigboursDetector>().GetNearbyObjects().Count > highestSheep)
+            highestSheep = 0;
+            foreach (Sheep sheep in gameManager.allSheep)
             {
-                highestSheep = sheep.GetComponent<NeigboursDetector>().GetNearbyObjects().Count;
-                centreofSheepFlock = sheep.transform.position;
+                // centre = centre - sheep.transform.localPosition;
+                if (sheep.GetComponent<NeigboursDetector>().GetNearbyObjects().Count > highestSheep)
+                {
+                    highestSheep = sheep.GetComponent<NeigboursDetector>().GetNearbyObjects().Count;
+                    centreofSheepFlock = sheep.transform.position;
+                    sheep.transform.position = centreSheep.transform.position;
+                    centreSheep.transform.position = centreofSheepFlock;
+                }
+               
             }
-           
+            yield return new WaitForSeconds(waitTime);
         }
-        
-        yield return new WaitForSeconds(waitTime);
+        void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(centreofSheepFlock,100);
+        }
     }
 }
+
+
 
 
 //foreach through all sheep (use a coroutine to only do it every few seconds for efficiency)
