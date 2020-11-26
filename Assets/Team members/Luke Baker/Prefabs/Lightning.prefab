@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8546369013280047892
 Transform:
   m_ObjectHideFlags: 0
@@ -46,12 +46,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineRenderer: {fileID: 8546369013280047894}
   maxVerticesAmount: 10
-  acceleration: -5
-  scale: 10
-  strikeDelay: 0.01
-  strikeAngle: 150
-  startStrikeWidth: 10
-  endWidthStrike: 1
+  acceleration: -1
+  scale: 1
+  timeStrikeIsOn: 1
+  lightningHitRange: 3
+  strikeAngle: 3
+  startStrikeWidth: 0.5
+  endWidthStrike: 0.5
 --- !u!120 &8546369013280047894
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -92,7 +93,17 @@ LineRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Positions: []
+  m_Positions:
+  - {x: -2.084097, y: 37, z: 3.7546558}
+  - {x: -4.1508484, y: 37, z: 4.2495394}
+  - {x: -6.979164, y: 36, z: 4.6861625}
+  - {x: -8.061779, y: 34, z: 5.1298566}
+  - {x: -9.871919, y: 31, z: 3.1171656}
+  - {x: -11.6843195, y: 27, z: 1.6997471}
+  - {x: -11.304563, y: 22, z: -0.962348}
+  - {x: -13.634558, y: 16, z: -0.6876378}
+  - {x: -11.199839, y: 9, z: 0.064881206}
+  - {x: -11.017715, y: 1, z: -2.2620163}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -101,7 +112,16 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
+        value: 0.5
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.5
         inSlope: 0
         outSlope: 0
         tangentMode: 0
