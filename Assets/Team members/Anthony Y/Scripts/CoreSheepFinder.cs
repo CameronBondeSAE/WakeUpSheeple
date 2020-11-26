@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using AlexM;
 using Mirror;
+using ParadoxNotion;
 using UnityEngine;
 using FlockBehavior = AJ.FlockBehavior;
 
-public class CoreSheepFinder : NetworkBehaviour
+public class CoreSheepFinder : MonoBehaviour
 {
     public NeigboursDetector neighboursDetect;
+
+    public Vector3 centreofFlockSheep;
+
 // [SyncVar]
 //     public Sheep centerofFlockSheep;
    
@@ -25,14 +29,25 @@ public class CoreSheepFinder : NetworkBehaviour
 
     IEnumerator MassFlockAmount()
     {
+        Vector3 centre = Vector3.zero;
+     
+
         foreach (Sheep sheep in neighboursDetect.GetNearbyObjects())
         {
-           sheep.GetComponent<NeigboursDetector>().GetNearbyObjects();
+            centre = centre + sheep.transform.localPosition;
+
         }
+        
+       
+        Debug.Log(centreofFlockSheep);
+        centreofFlockSheep = centre / (neighboursDetect.GetNearbyObjects().Count);
+        
+
+        
         yield return new WaitForSeconds(2f);
     }
 }
-
+    
 
 //foreach through all sheep (use a coroutine to only do it every few seconds for efficiency)
 // every sheep has a 'Neighbours' script

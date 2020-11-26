@@ -33,7 +33,7 @@ Transform:
   - {fileID: 1166583344140572437}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &1166583344113311410
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4827,6 +4827,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rainSlider: 0
+  cameraTransform: {fileID: 0}
+  childObject: {fileID: 1166583344140572436}
 --- !u!1 &1166583344140572436
 GameObject:
   m_ObjectHideFlags: 0
@@ -4838,7 +4840,6 @@ GameObject:
   - component: {fileID: 1166583344140572437}
   - component: {fileID: 1166583344140572432}
   - component: {fileID: 1166583344140572435}
-  - component: {fileID: 1166583344140572434}
   m_Layer: 0
   m_Name: RainSub
   m_TagString: Untagged
@@ -5112,8 +5113,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.05
-      minScalar: 0.07
+      scalar: 0.02
+      minScalar: 0.03
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -5218,8 +5219,8 @@ ParticleSystem:
     startSizeZ:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.05
-      minScalar: 0.07
+      scalar: 0.02
+      minScalar: 0.03
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -9640,16 +9641,3 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &1166583344140572434
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1166583344140572436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bd461aba0a1a984eb30829fd7e221ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rainSlider: 0
