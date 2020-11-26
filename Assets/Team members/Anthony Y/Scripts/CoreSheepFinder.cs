@@ -9,11 +9,11 @@ public class CoreSheepFinder : NetworkBehaviour
 {
     public NeigboursDetector neighboursDetect;
 
-    public Vector3 centreofSheepFlock;
+    public Vector3 centerofSheepFlock;
     public GameManager gameManager;
-    public Sheep centreSheep;
+    public Sheep centerSheep;
     
-    public int highestSheep;
+    public int highestSheepCount;
 
 // [SyncVar]
 //     public Sheep centerofFlockSheep;
@@ -23,7 +23,6 @@ public class CoreSheepFinder : NetworkBehaviour
     {
         Debug.Log("i Waited for 3 seconds");
         StartCoroutine(MassFlockAmount(3f));
-        centreSheep = FindObjectOfType<Sheep>();
     }
 
     // Update is called once per frame
@@ -36,16 +35,15 @@ public class CoreSheepFinder : NetworkBehaviour
     {
         while (true)
         {
-            highestSheep = 0;
+            highestSheepCount = 0;
             foreach (Sheep sheep in gameManager.allSheep)
             {
                 // centre = centre - sheep.transform.localPosition;
-                if (sheep.GetComponent<NeigboursDetector>().GetNearbyObjects().Count > highestSheep)
+                if (sheep.GetComponent<NeigboursDetector>().GetNearbyObjects().Count > highestSheepCount)
                 {
-                    highestSheep = sheep.GetComponent<NeigboursDetector>().GetNearbyObjects().Count;
-                    centreofSheepFlock = sheep.transform.position;
-                    sheep.transform.position = centreSheep.transform.position;
-                    centreSheep.transform.position = centreofSheepFlock;
+                    highestSheepCount = sheep.GetComponent<NeigboursDetector>().GetNearbyObjects().Count;
+                    centerofSheepFlock = sheep.transform.position;
+                    centerSheep = sheep;
                 }
                
             }
@@ -56,7 +54,7 @@ public class CoreSheepFinder : NetworkBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawSphere(centreofSheepFlock,2);
+        Gizmos.DrawSphere(centerofSheepFlock,2);
     }
 }
 

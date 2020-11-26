@@ -141,14 +141,21 @@ public EndGoalChecker endGoalChecker;
 
         //Remove sheep from list when it dies
 
-        // foreach (var sheep in sheepInLevel)
+        // foreach ( Sheep sheep in allSheep)
         // {
-        //     if (sheep.GetComponent<Health>().Death())
+        //     if ()
         //     {
-        //         sheepinLevel.Remove(sheep);
-        //         deadSheep.Add();
+        //         if (character is Sheep)
+        //         {
+        //             allSheep.Remove(character as Sheep);
+        //             deadSheep.Add(character as Sheep);
+        //         }
+        //         SheepDiedEvent?.Invoke();
         //     }
+        //     
         // }
+        
+        
         bool goalsMet = true;
         foreach (var goalChecker in endGoals)
         {
