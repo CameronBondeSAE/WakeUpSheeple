@@ -74,6 +74,7 @@ public EndGoalChecker endGoalChecker;
        foreach (EndGoalChecker endGoal in endGoals)
        {
            endGoal.SheepMadeitEvent += SheepTracker;
+           Debug.LogWarning("You NEED TO ADD AN END GOAL INTO THE SCENE");
        }
     }
     private void OnEnable()

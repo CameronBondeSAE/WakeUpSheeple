@@ -51,12 +51,12 @@ MonoBehaviour:
   endGoalChecker: {fileID: 0}
   spawnerList:
   - {fileID: 0}
-  - {fileID: 0}
   endGoals:
   - {fileID: 0}
+  allSheep: []
   deadSheep: []
-  percentage: 75
   totalSheep: 0
+  percentage: 75
 --- !u!114 &6004645011842931551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,9 +69,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd1db9b05772434ba6d501357db7201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   neighboursDetect: {fileID: 2973978494779615501, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
-  centerofFlockSheep: {x: 0, y: 0, z: 0}
-  flockVelocity: {x: 0, y: 0, z: 0}
+  centerofSheepFlock: {x: 0, y: 0, z: 0}
+  gameManager: {fileID: 7202999729521579578}
+  centerSheep: {fileID: 0}
+  highestSheepCount: 0
 --- !u!114 &2275449954905041088
 MonoBehaviour:
   m_ObjectHideFlags: 0
