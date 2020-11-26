@@ -10,16 +10,15 @@ public class CoreSheepFinder : MonoBehaviour
 {
     public NeigboursDetector neighboursDetect;
 
-    public Vector3 centerofFlockSheep;
-    public Spawner spawner;
-    
+    public Vector3 centreofFlockSheep;
+
 // [SyncVar]
 //     public Sheep centerofFlockSheep;
    
     // Start is called before the first frame update
     void Start()
     {
-        List<Sheep> nearbyObjects = neighboursDetect.GetNearbyObjects();
+        
     }
 
     // Update is called once per frame
@@ -30,18 +29,18 @@ public class CoreSheepFinder : MonoBehaviour
 
     IEnumerator MassFlockAmount()
     {
-        Vector3 center = Vector3.zero;
+        Vector3 centre = Vector3.zero;
      
 
         foreach (Sheep sheep in neighboursDetect.GetNearbyObjects())
         {
-            center = center + sheep.transform.localPosition;
+            centre = centre + sheep.transform.localPosition;
 
         }
         
        
-        Debug.Log(centerofFlockSheep);
-        centerofFlockSheep = center / (neighboursDetect.GetNearbyObjects().Count);
+        Debug.Log(centreofFlockSheep);
+        centreofFlockSheep = centre / (neighboursDetect.GetNearbyObjects().Count);
         
 
         
