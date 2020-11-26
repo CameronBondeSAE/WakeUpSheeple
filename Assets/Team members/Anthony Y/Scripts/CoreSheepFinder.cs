@@ -8,28 +8,42 @@ using FlockBehavior = AJ.FlockBehavior;
 public class CoreSheepFinder : NetworkBehaviour
 {
     public NeigboursDetector neighboursDetect;
+
+    public Vector3 centreofSheepFlock;
+    public GameManager gameManager;
+    
+    public int highestSheep;
+
 // [SyncVar]
 //     public Sheep centerofFlockSheep;
    
     // Start is called before the first frame update
     void Start()
     {
-        
+        Debug.Log("i Waited for 3 seconds");
+        StartCoroutine(MassFlockAmount(3f));
     }
 
     // Update is called once per frame
     void Update()
     {
-        StartCoroutine(MassFlockAmount());
+        
     }
 
-    IEnumerator MassFlockAmount()
+    IEnumerator MassFlockAmount(float waitTime)
     {
-        foreach (Sheep sheep in neighboursDetect.GetNearbyObjects())
+        foreach (Sheep sheep in gameManager.allSheep)
         {
-           sheep.GetComponent<NeigboursDetector>().GetNearbyObjects();
+            // centre = centre - sheep.transform.localPosition;
+            if (sheep.GetComponent<NeigboursDetector>().GetNearbyObjects().Count > highestSheep)
+            {
+                highestSheep = sheep.GetComponent<NeigboursDetector>().GetNearbyObjects().Count;
+                centreofSheepFlock = sheep.transform.position;
+            }
+           
         }
-        yield return new WaitForSeconds(2f);
+        
+        yield return new WaitForSeconds(waitTime);
     }
 }
 
