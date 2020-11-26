@@ -41,6 +41,9 @@ public class MoleManManager : MonoBehaviour
     public event Action tmpEventJump;
     public event Action tmpEventWaypoint;
     //----------------------------------EVENT VARIABLES
+    //----------------------------------TRIGGER VARIABLES
+    //private TriggerMoleR TriggerScriptR;
+    //----------------------------------TRIGGER VARIABLES
     //----------------------------------UPDATE/START
     void Start()
     {
@@ -63,7 +66,7 @@ public class MoleManManager : MonoBehaviour
         pauseStateMole.Enter = PauseStateMoleStart;
         pauseStateMole.Update = PauseStateMoleUpdate;
         pauseStateMole.Exit = PauseStateMoleExit;
-        FindObjectOfType<PauseManager>().PauseEvent += pauseEventMole; //Find the pause manager and whenever PauseEvent is called run pauseEvent
+        FindObjectOfType<PauseManager>().PauseEvent += pauseEventMole; //Find the pause manager and whenever PauseEvent is called run pauseEventR
         stateManager.ChangeState(standing); //on start set the default state to standing
         rb = GetComponent<Rigidbody>();
         bPS = false;
@@ -86,7 +89,7 @@ public class MoleManManager : MonoBehaviour
     }
     private void standingUpdate()
     {
-        if (transform.position.y > -1f) //Changes players height to above / below ground
+        if (transform.position.y > -1f) //NEEDS AMENDING, this makes the player bob at this height
         {
             rb.AddForce(-transform.up * force);
         }
@@ -116,7 +119,7 @@ public class MoleManManager : MonoBehaviour
     }
     private void jumpUpdate()
     {
-        if (transform.position.y < 0.3f) //Changes players height to above / below ground
+        if (transform.position.y < 0.3f) //NEEDS AMENDING, this makes the player bob at this height
         {
             rb.AddForce(transform.up * force);
         }
@@ -150,18 +153,22 @@ public class MoleManManager : MonoBehaviour
             currentWaypoint = waypointsList[currentWaypointIndex];
         }
         tmpEventWaypoint?.Invoke();
+        //
+        //Use a loop to add all sheep to the list of waypoints
+        //
     }
     private void moveToWaypointUpdate()
     {
+        //if (Trigger is active) {timeHoverWait = timeHoverWait + 1;} 
         timeHoverWait = timeHoverWait + 1; //Once trigger is implemented this needs to be changed to another else so it will change the sheep if the timer changes after specified time
-        if (Vector3.Distance(transform.position, currentWaypoint.position) > safeDistance) //Takes the distance of our mole to object and compares if it is bigger than safe distance
+        if (Vector3.Distance(transform.position, currentWaypoint.position) > safeDistance)
         {
-            Vector3 currentWaypointNoHeight = new Vector3(currentWaypoint.position.x, transform.position.y, currentWaypoint.position.z); //Takes the waypoint position
-            transform.LookAt(currentWaypointNoHeight); //Looks at the waypoint
-            rb.AddRelativeForce(Vector3.forward * movementSpeed, ForceMode.Force); //Applies force
+            Vector3 currentWaypointNoHeight = new Vector3(currentWaypoint.position.x, transform.position.y, currentWaypoint.position.z);
+            transform.LookAt(currentWaypointNoHeight);
+            rb.AddRelativeForce(Vector3.forward * movementSpeed, ForceMode.Force);
         }
         else
-        { //This is to stop our mole
+        {
             rb.isKinematic = true;
             if (timeHoverWait > 1600 && bPS == false)
             {
@@ -169,10 +176,10 @@ public class MoleManManager : MonoBehaviour
                 timeHoverWait = 0;
             }
         }
-        //
-        // Move to a different sheep after a specified set time to add randomness (Also use a trigger to detect how many sheep are in range to activate the popup)
-        //
     }
+    //
+    // Move to a different sheep after a specified set time to add randomness (Also use a trigger to detect how many sheep are in range to activate the popup)
+    //
     private void moveToWaypointExit()
     {
         
@@ -223,4 +230,5 @@ public class MoleManManager : MonoBehaviour
     { 
         FindObjectOfType<PauseManager>().PauseEvent -= pauseEventMole;
     }
+    
 }
