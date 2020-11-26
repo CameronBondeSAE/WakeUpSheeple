@@ -56,7 +56,7 @@ public class CoreSheepFinder : NetworkBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawSphere(centreofSheepFlock,100);
+        Gizmos.DrawSphere(centreofSheepFlock,2);
     }
 }
 
