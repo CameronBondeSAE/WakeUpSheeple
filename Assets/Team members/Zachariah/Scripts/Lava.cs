@@ -1,13 +1,24 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Zach
 {
     public class Lava : MonoBehaviour
     {
-        public int lavaDamage;
-        public float deathJump;
+        public int lavaDamage = 50;
+        public float deathJump = 200;
 
-        private void OnTriggerEnter(Collider other)
+        private void OnCollisionEnter(Collision other)
+        {
+            TouchedLava(other.collider);
+        }
+
+        private void OnTriggerStay(Collider other)
+        {
+            TouchedLava(other);
+        }
+
+        private void TouchedLava(Collider other)
         {
             var health = other.GetComponent<Health>();
             var jump = other.GetComponent<Rigidbody>();
