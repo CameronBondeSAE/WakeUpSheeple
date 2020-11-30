@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data.Common;
 using UnityEngine;
 
 public class NukeBehaviour : MonoBehaviour
 {
+    
     public GameObject nuke;
     public float power = 10.0f;
     public float radius = 5.0f;
     public float upForce = 1.0f;
- 
-    
-   void OnCollisionEnter()
+    public float nukeTimer = 15;
+
+   
+    void OnCollisionEnter()
     {
-        gameObject.SetActive(false);
         Detonate();
+        Debug.Log("Collision Detected");
     }
 
     void Detonate()
@@ -29,8 +30,10 @@ public class NukeBehaviour : MonoBehaviour
             {
                 rb.AddExplosionForce(power, explosionPosition, radius, upForce, ForceMode.Impulse);
             }
-            hit.GetComponent<Health>().Damage(150);
+            //hit.GetComponent<Health>().Damage(150);
         }
+        gameObject.SetActive(false);
         
     }
+
 }
