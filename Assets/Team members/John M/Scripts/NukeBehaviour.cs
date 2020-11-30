@@ -1,43 +1,36 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using UnityEngine;
 
 public class NukeBehaviour : MonoBehaviour
 {
-    [SerializeField] ParticleSystem particleSystem = null;
-
-    public GameObject radiationZone;
+    public GameObject nuke;
+    public float power = 10.0f;
+    public float radius = 5.0f;
+    public float upForce = 1.0f;
+ 
     
-    
-    // FUNCTIONS REQUIRED
-    
-    // if nuke collides with the ground, trigger explosion
-    // explode the nuke
-    // leave behind radiation zone after explosion
-    // radiation zone disappears over time
-    
-    void Start()
+   void OnCollisionEnter()
     {
-        particleSystem.Stop();
-        
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Nuke"))
-        {
-            Detonate();
-            other.gameObject.SetActive(false);
-            Debug.Log("Collision detected");
-        }
+        gameObject.SetActive(false);
+        Detonate();
     }
 
     void Detonate()
     {
-        particleSystem.Play();
-        Debug.Log("The nuke has landed!");
-        Instantiate(radiationZone);
+        Vector3 explosionPosition = nuke.transform.position;
+        Collider[] colliders = Physics.OverlapSphere(explosionPosition, radius);
+        foreach (Collider hit in colliders)
+        {
+            Rigidbody rb = hit.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.AddExplosionForce(power, explosionPosition, radius, upForce, ForceMode.Impulse);
+            }
+            hit.GetComponent<Health>().Damage(150);
+        }
+        
     }
-    
 }
