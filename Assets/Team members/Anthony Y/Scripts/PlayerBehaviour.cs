@@ -113,6 +113,27 @@ namespace AnthonyY
 			Debug.Log("Wolf Audio Played");
 		}
 
+		public void TurnIntoDog()
+		{
+			amIWolf = false;
+			if (amIWolf == false)
+			{
+				Debug.Log("I am now a dog");
+				controls.Wolf.Disable();
+				controls.Dog.Enable();
+			}
+		}
+
+		public void TurnIntoWolf()
+		{
+			amIWolf = true;
+			if (amIWolf)
+			{
+				Debug.Log("I am now a wolf");
+				controls.Wolf.Enable();
+				controls.Dog.Enable();
+			}
+		}
 
 		private void Death(Health health)
 		{
