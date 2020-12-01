@@ -33,7 +33,7 @@ public class GameManager : NetworkBehaviour
     public event Action SheepSavedEvent;
 ///Happens when  a sheep died
 public event Action SheepDiedEvent;
-public EndGoalChecker endGoalChecker;
+private EndGoalChecker endGoalChecker;
    
 
 
@@ -59,7 +59,11 @@ public EndGoalChecker endGoalChecker;
        gameNetworkManager = FindObjectOfType<GameNetworkManager>();
        foreach (Spawner spawner in spawnerList)
        {
-           Debug.Log(spawner.amount.ToString());
+           if (spawner == null)
+           {
+               Debug.LogWarning("YOU DONT HAVE THE SHEEP SPAWNER IN THE GAME MANAGER!");
+           }
+         
            totalSheep += spawner.amount ;
           
            spawner.SpawnedEvent += SheepTracker;
@@ -73,8 +77,12 @@ public EndGoalChecker endGoalChecker;
        // }
        foreach (EndGoalChecker endGoal in endGoals)
        {
+           if (endGoal == null)
+           {
+               Debug.LogWarning("You NEED TO ADD AN END GOAL INTO THE SCENE");
+           }
            endGoal.SheepMadeitEvent += SheepTracker;
-           Debug.LogWarning("You NEED TO ADD AN END GOAL INTO THE SCENE");
+          
        }
     }
     private void OnEnable()
