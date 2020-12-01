@@ -32,7 +32,7 @@ public class NukeBehaviour : MonoBehaviour
             }
             //hit.GetComponent<Health>().Damage(150);
         }
-        gameObject.SetActive(false);
+        Destroy(nuke);
         
     }
 
