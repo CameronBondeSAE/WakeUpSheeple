@@ -21,7 +21,7 @@ public class MoleManManager : MonoBehaviour
     [FormerlySerializedAs("bPSR")] public bool bPS; //Bool for out "pausedstate" so we can determine if we are already paused or not
     public AudioSource soundPlayer;
     public float force = 5.0f;
-    public Rigidbody rb;
+    public GameObject MainObject;
     public int timeWait; //Time wait int for the jump function to determine how long the mole is out of the ground
     [FormerlySerializedAs("timeSWaitR")] public int timeSWait; //Time wait for the pause button so when we click pause it doesn't instantly unpause
     public int timeHoverWait;
@@ -35,6 +35,9 @@ public class MoleManManager : MonoBehaviour
     private float movementSpeed = 0.1f;
     public bool waypointFirstRound;
     private GameObject sheepWaypoint;
+    public GameObject raycastHandler;
+    public bool particleOnOff;
+    private float distanceToPlatform;
     //----------------------------------WAYPOINT VARIABLES
     //----------------------------------EVENT VARIABLES
     public event Action tmpEventStand;
@@ -54,8 +57,8 @@ public class MoleManManager : MonoBehaviour
         currentWaypointIndex = 0;
         currentWaypoint = waypointsList[currentWaypointIndex];
         waypointFirstRound = false;
-        sheepWaypoint = GameObject.FindObjectOfType<Sheep>().gameObject; //HACK!!!!!!!!
-        waypointsList.Add(sheepWaypoint.transform);
+        //sheepWaypoint = GameObject.FindObjectOfType<Sheep>().gameObject; //HACK!!!!!!!!
+        //waypointsList.Add(sheepWaypoint.transform);
         //----------------------------------WAYPOINT VARIABLES
         standing.Enter = standingStart;
         standing.Update = standingUpdate;
@@ -68,7 +71,6 @@ public class MoleManManager : MonoBehaviour
         pauseStateMole.Exit = PauseStateMoleExit;
         FindObjectOfType<PauseManager>().PauseEvent += pauseEventMole; //Find the pause manager and whenever PauseEvent is called run pauseEventR
         stateManager.ChangeState(standing); //on start set the default state to standing
-        rb = GetComponent<Rigidbody>();
         bPS = false;
         //----------------------------------TRIGGER VARIABLES
         //TriggerScriptR = GetComponent<TriggerMoleR>();
@@ -78,6 +80,7 @@ public class MoleManManager : MonoBehaviour
     void Update()
     {
         stateManager.UpdateCurrentState();
+        distanceToPlatform = raycastHandler.GetComponent<RaycastHandler>().distanceToPlatformInfo;
     }
     //----------------------------------UPDATE/START
     //----------------------------------STANDING
@@ -85,21 +88,23 @@ public class MoleManManager : MonoBehaviour
     {
         timeHoverWait = 0;
         tmpEventStand?.Invoke();
-        rb.drag = 0.05f;
+        particleOnOff = false;
     }
     private void standingUpdate()
     {
-        if (transform.position.y > -1f) //NEEDS AMENDING, this makes the player bob at this height
+        if (distanceToPlatform > 100f)
         {
-            rb.AddForce(-transform.up * force);
+            float distanceToPlatformExact = distanceToPlatform - 100f;
+            Vector3 mainObjectNewLocal = new Vector3(MainObject.transform.position.x, MainObject.transform.localPosition.y - distanceToPlatformExact, MainObject.transform.localPosition.z);
+            MainObject.transform.localPosition = Vector3.MoveTowards(MainObject.transform.localPosition, mainObjectNewLocal, 0.1f);
         }
         else
         {
             timeHoverWait = timeHoverWait + 1;
-        }
-        if (timeHoverWait > 600 && bPS != true)
-        {
-            stateManager.ChangeState(moveToWaypoint);
+            if (timeHoverWait > 600 && bPS != true)
+            {
+                stateManager.ChangeState(moveToWaypoint);
+            }
         }
     }
     private void standingExit()
@@ -110,18 +115,17 @@ public class MoleManManager : MonoBehaviour
     //----------------------------------JUMP
     private void jumpStart()
     {
-        rb.drag = 2.5f;
         soundPlayer.Play();
         timeWait = 0; //reset our timewait to 0 whenever we start the jump function
-        rb.velocity = new Vector3(0, 0, 0);
-        rb.isKinematic = false;
         tmpEventJump?.Invoke();
+        particleOnOff = false;
     }
     private void jumpUpdate()
     {
-        if (transform.position.y < 0.3f) //NEEDS AMENDING, this makes the player bob at this height
+        if (distanceToPlatform < 101.75f) //NEEDS AMENDING, this makes the player bob at this height
         {
-            rb.AddForce(transform.up * force);
+            Vector3 mainObjectNewLocal = new Vector3(MainObject.transform.localPosition.x, MainObject.transform.localPosition.y + 1f, MainObject.transform.localPosition.z);
+            MainObject.transform.localPosition = Vector3.MoveTowards(MainObject.transform.localPosition, mainObjectNewLocal, 0.1f);
         }
         else
         {
@@ -153,23 +157,20 @@ public class MoleManManager : MonoBehaviour
             currentWaypoint = waypointsList[currentWaypointIndex];
         }
         tmpEventWaypoint?.Invoke();
-        //
-        //Use a loop to add all sheep to the list of waypoints
-        //
+        particleOnOff = true;
     }
     private void moveToWaypointUpdate()
     {
         //if (Trigger is active) {timeHoverWait = timeHoverWait + 1;} 
         timeHoverWait = timeHoverWait + 1; //Once trigger is implemented this needs to be changed to another else so it will change the sheep if the timer changes after specified time
-        if (Vector3.Distance(transform.position, currentWaypoint.position) > safeDistance)
+        if (Vector3.Distance(MainObject.transform.position, currentWaypoint.position) > safeDistance)
         {
-            Vector3 currentWaypointNoHeight = new Vector3(currentWaypoint.position.x, transform.position.y, currentWaypoint.position.z);
+            Vector3 currentWaypointNoHeight = new Vector3(currentWaypoint.position.x, MainObject.transform.position.y, currentWaypoint.position.z);
             transform.LookAt(currentWaypointNoHeight);
-            rb.AddRelativeForce(Vector3.forward * movementSpeed, ForceMode.Force);
+            MainObject.transform.position = Vector3.MoveTowards(MainObject.transform.position, currentWaypointNoHeight, 0.05f);
         }
         else
         {
-            rb.isKinematic = true;
             if (timeHoverWait > 1600 && bPS == false)
             {
                 stateManager.ChangeState(jump);
@@ -198,7 +199,7 @@ public class MoleManManager : MonoBehaviour
     private void PauseStateMoleStart()
     {
         timeSWait = 0;
-        rb.constraints = RigidbodyConstraints.FreezeAll; //Something similar to this can be used above "AMENDMENT"
+        MainObject.transform.position = MainObject.transform.up;
     }
     private void PauseStateMoleUpdate()
     {
@@ -212,7 +213,6 @@ public class MoleManManager : MonoBehaviour
     private void PauseStateMoleExit()
     {
         bPS = false; //Reset our BoolPauseStateR to false so we can use pause again
-        rb.constraints = RigidbodyConstraints.None | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
     }
     //----------------------------------PAUSE
     //----------------------------------BUTTON FUNCTIONS
