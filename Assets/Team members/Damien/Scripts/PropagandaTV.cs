@@ -6,29 +6,26 @@ using UnityEngine;
 
 namespace Damien
 {
-    public class PropagandaTV : MonoBehaviour{
-        
-    public float tvRadius = 10f;
-    public bool isOn = true;
-    
-    
+    public class PropagandaTV : MonoBehaviour
+    {
+        public float tvRadius = 10f;
+        public bool isOn = true;
+
+
         // Start is called before the first frame update
         void Start()
         {
             StartCoroutine(PlayVideo());
-
         }
 
         // Update is called once per frame
         void Update()
         {
             DetectSheep();
-            
         }
 
         public void DetectSheep()
         {
-            
             Sheep[] sheeps = Sheep.FindObjectsOfType<Sheep>();
             float shortestDistance = Mathf.Infinity;
             Sheep nearestSheep = null;
@@ -43,15 +40,18 @@ namespace Damien
             }
         }
 
+        public IEnumerator LureSheep()
+        {
+            //TODO:OnTriggerStay and use transform.LootAT()
+            yield return new WaitForSeconds(5f);
+        }
 
         public IEnumerator PlayVideo()
         {
             //TODO:PlayVideo on TV
-            
+
             yield return new WaitForSeconds(10f);
         }
-
-
 
         private void OnDrawGizmosSelected()
         {
