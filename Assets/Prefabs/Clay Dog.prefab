@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: -336919023003889543}
   - component: {fileID: 4825105750970700407}
   - component: {fileID: -7589666243691037477}
+  - component: {fileID: 1151471551929042282}
+  - component: {fileID: 4076011654519504666}
   m_Layer: 0
   m_Name: Clay Dog
   m_TagString: Untagged
@@ -188,6 +190,7 @@ MonoBehaviour:
   dogBark: {fileID: -336919023003889543}
   wolfHowl: {fileID: 4825105750970700407}
   amIWolf: 1
+  _owner: {fileID: 0}
 --- !u!114 &-725918390782881256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,7 +226,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 423.40454
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -401,7 +404,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2299596439350243934}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39a27414d67973c4993ed60ce377ed75, type: 3}
   m_Name: 
@@ -411,3 +414,27 @@ MonoBehaviour:
   dog:
     active: 1
   player: {fileID: 4887145999256628070}
+--- !u!114 &1151471551929042282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2299596439350243934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b2a4b73c57032a4d863b78e389dc2ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onRespawn:
+    m_PersistentCalls:
+      m_Calls: []
+  useCheckpoints: 0
+--- !u!81 &4076011654519504666
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2299596439350243934}
+  m_Enabled: 1
