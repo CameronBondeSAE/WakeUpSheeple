@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Runtime.Remoting.Messaging;
+using AlexM;
 using UnityEngine;
 using UnityEngine.Rendering;
 using Mirror;
@@ -55,9 +56,14 @@ namespace LukeBaker
         /// when attract event triggered, attract objects entered
         public void Attraction(Collider attractedCollider)
         {
-            attractedCollider.GetComponent<Rigidbody>().AddForce(
-                (gameObject.transform.position - attractedCollider.attachedRigidbody.transform.position).normalized *
-                attractSpeed * Time.deltaTime);
+            Sheep findSheep = attractedCollider.GetComponent<Sheep>();
+
+            if (findSheep != null)
+            {
+                attractedCollider.GetComponent<Rigidbody>().AddForce(
+                    (gameObject.transform.position - attractedCollider.attachedRigidbody.transform.position).normalized *
+                    attractSpeed * Time.deltaTime);
+            }
         }
 
         ///This is the animation of the 5g tower ping that is constant

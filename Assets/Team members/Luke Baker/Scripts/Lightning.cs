@@ -27,6 +27,8 @@ namespace LukeBaker
         public float strikeAngle;
         public float startStrikeWidth;
         public float endWidthStrike;
+        
+        public int damage;
 
         private void Start()
         {
@@ -43,24 +45,35 @@ namespace LukeBaker
             //Setting the first point to object position
             lineRenderer.SetPosition(0,transform.position);
             //looping through the points to the max amount of points
-            for (int x = 1; x < 10; x++)
+            for (int x = 1; x < maxVerticesAmount; x++)
             {
-                
-                 for (int i = x; i < 10; i++)
-                 {
-                     //visualise
-                     lineRenderer.SetPosition(i, new Vector3(Random.Range(-strikeAngle, strikeAngle)* scale, y * scale,
-                         Random.Range(-strikeAngle, strikeAngle) * scale) + lineRenderer.GetPosition(i-1));
-                     lineRenderer.startWidth = startStrikeWidth;
-                     lineRenderer.endWidth = endWidthStrike;
-                 }
-                 y = y + acceleration;
+                for (int i = x; i < maxVerticesAmount; i++)
+                {
+                    //visualise
+                    lineRenderer.SetPosition(i, new Vector3(Random.Range(-strikeAngle, strikeAngle)* scale, y * scale,
+                        Random.Range(-strikeAngle, strikeAngle) * scale) + lineRenderer.GetPosition(i-1));
+                    lineRenderer.startWidth = startStrikeWidth;
+                    lineRenderer.endWidth = endWidthStrike;
+                }
+                y = y + acceleration;
             }
             
-            //TODO figure out how to use OverlapSphere and what I am suppose to do with it.
-            //find the current strike point
-            Vector3 finalStrikePoint = lineRenderer.transform.position;
-            Physics.OverlapSphere(finalStrikePoint, lightningHitRange);
+            //find the final strike point & set the lightning collider position
+            //remember index things need -1 for reference because index starts at 0
+            Vector3 finalStrikePoint = lineRenderer.GetPosition(maxVerticesAmount-1);
+
+            //TODO figure out how to use OverlapSphere and what I am suppose to do with it?
+            Debug.DrawLine(finalStrikePoint,finalStrikePoint + Vector3.up, Color.green, 5f);
+            Collider[] overlapSphere = Physics.OverlapSphere(finalStrikePoint, lightningHitRange);
+
+            foreach (Collider col in overlapSphere)
+            {
+                if (col.GetComponent<Health>())
+                {
+                    
+                    col.GetComponent<Health>().Damage(damage);
+                }
+            }
 
             yield return new WaitForSeconds(timeStrikeIsOn);
             
@@ -75,6 +88,7 @@ namespace LukeBaker
             StartCoroutine(LightningStrike());
         }
         
+        //will probably need to destroy the object depending on the weather script
         public void LightningOff()
         {
             gameObject.SetActive(false);
