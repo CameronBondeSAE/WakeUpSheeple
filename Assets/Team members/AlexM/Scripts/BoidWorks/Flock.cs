@@ -27,11 +27,7 @@ namespace AlexM
         {
             get { return squareAvoidanceRadius; }
         }
-    
-    
-    
-    
-    
+
         // Start is called before the first frame update
         void Start()
         {

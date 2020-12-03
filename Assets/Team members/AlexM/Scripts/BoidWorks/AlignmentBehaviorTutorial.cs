@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace AlexM
 {
-    public class AlignmentBehavior : FilteredFlockBehavior
+    public class AlignmentBehaviorTutorial : FilteredFlockBehavior
     {
         private FlockBehavior _flockBehaviorImplementation;
 
