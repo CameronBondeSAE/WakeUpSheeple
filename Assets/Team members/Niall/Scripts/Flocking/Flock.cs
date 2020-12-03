@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Niall
 {
@@ -22,6 +24,8 @@ namespace Niall
         private float squareMaxSpeed;
         private float squareNeighbourRadius;
         private float squareAvoidanceRadius;
+
+        public StayInRadiusBehaviour sirb;
 
         public float SquareAvoidanceRadius
         {
@@ -76,6 +80,12 @@ namespace Niall
             
 
             return context;
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.white;
+            Gizmos.DrawWireSphere(transform.position, sirb.radius);
         }
     }
 }

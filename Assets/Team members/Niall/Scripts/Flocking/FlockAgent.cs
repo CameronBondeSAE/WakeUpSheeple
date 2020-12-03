@@ -28,7 +28,8 @@ namespace Niall
         {
             transform.forward = velocity;
             
-            rb.AddForce(velocity * Time.deltaTime);
+            rb.AddRelativeForce(velocity * Time.deltaTime);
+          
            // transform.position += velocity * Time.deltaTime;
 
         }
