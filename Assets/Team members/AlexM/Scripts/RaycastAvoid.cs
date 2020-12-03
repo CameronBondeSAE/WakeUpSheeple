@@ -12,13 +12,6 @@ public class RaycastAvoid : MonoBehaviour
 	public float speed = 100f;
 	public float distance = 5f;
 	public Transform MainTransform;
-
-	// Start is called before the first frame update
-	void Start()
-	{
-	}
-
-	// Update is called once per frame
 	void Update()
 	{
 		RaycastOut();
@@ -36,13 +29,6 @@ public class RaycastAvoid : MonoBehaviour
 			MainTransform.Rotate(0, Time.deltaTime * speed, 0);
 		}
 	}
-
-	// public void Lightning(LineRenderer lineRenderer)
-	// {
-	// 	// lineRenderer.stuff = 1
-	// 	LineRenderer addComponent = gameObject.AddComponent<LineRenderer>();
-	// 	Lightning(addComponent);
-	// }
 
 	void OnDrawGizmos()
 	{

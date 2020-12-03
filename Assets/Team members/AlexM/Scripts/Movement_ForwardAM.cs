@@ -32,7 +32,7 @@ public class Movement_ForwardAM : MonoBehaviour
    {
       if (_rB == null)
       {
-         Debug.Log("MV_Fwd: Assigning Rigidbody..");
+//         Debug.Log("MV_Fwd: Assigning Rigidbody..");
          _rB = GetComponent<Rigidbody>();
 
          if (_rB.constraints != RigidbodyConstraints.FreezeRotationX)
