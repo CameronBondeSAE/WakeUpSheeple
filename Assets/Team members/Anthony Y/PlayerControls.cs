@@ -25,6 +25,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""ToWolf"",
+                    ""type"": ""Button"",
+                    ""id"": ""636e170a-10e5-4538-a8cb-a9c31f01416c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -36,6 +44,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard & Mouse"",
                     ""action"": ""Bark"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""921a6146-3661-4644-aed1-4a129ee411be"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToWolf"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -52,6 +71,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""ToDog"",
+                    ""type"": ""Button"",
+                    ""id"": ""7b3f949b-f3cc-43b4-bf27-4817dde20f54"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -63,6 +90,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard & Mouse"",
                     ""action"": ""Howl"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""58870b02-9ac0-43d3-8491-d88b725038e9"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToDog"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -162,9 +200,11 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         // Dog
         m_Dog = asset.FindActionMap("Dog", throwIfNotFound: true);
         m_Dog_Bark = m_Dog.FindAction("Bark", throwIfNotFound: true);
+        m_Dog_ToWolf = m_Dog.FindAction("ToWolf", throwIfNotFound: true);
         // Wolf
         m_Wolf = asset.FindActionMap("Wolf", throwIfNotFound: true);
         m_Wolf_Howl = m_Wolf.FindAction("Howl", throwIfNotFound: true);
+        m_Wolf_ToDog = m_Wolf.FindAction("ToDog", throwIfNotFound: true);
         // Movement
         m_Movement = asset.FindActionMap("Movement", throwIfNotFound: true);
         m_Movement_Movement = m_Movement.FindAction("Movement", throwIfNotFound: true);
@@ -218,11 +258,13 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Dog;
     private IDogActions m_DogActionsCallbackInterface;
     private readonly InputAction m_Dog_Bark;
+    private readonly InputAction m_Dog_ToWolf;
     public struct DogActions
     {
         private @PlayerControls m_Wrapper;
         public DogActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Bark => m_Wrapper.m_Dog_Bark;
+        public InputAction @ToWolf => m_Wrapper.m_Dog_ToWolf;
         public InputActionMap Get() { return m_Wrapper.m_Dog; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -235,6 +277,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Bark.started -= m_Wrapper.m_DogActionsCallbackInterface.OnBark;
                 @Bark.performed -= m_Wrapper.m_DogActionsCallbackInterface.OnBark;
                 @Bark.canceled -= m_Wrapper.m_DogActionsCallbackInterface.OnBark;
+                @ToWolf.started -= m_Wrapper.m_DogActionsCallbackInterface.OnToWolf;
+                @ToWolf.performed -= m_Wrapper.m_DogActionsCallbackInterface.OnToWolf;
+                @ToWolf.canceled -= m_Wrapper.m_DogActionsCallbackInterface.OnToWolf;
             }
             m_Wrapper.m_DogActionsCallbackInterface = instance;
             if (instance != null)
@@ -242,6 +287,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Bark.started += instance.OnBark;
                 @Bark.performed += instance.OnBark;
                 @Bark.canceled += instance.OnBark;
+                @ToWolf.started += instance.OnToWolf;
+                @ToWolf.performed += instance.OnToWolf;
+                @ToWolf.canceled += instance.OnToWolf;
             }
         }
     }
@@ -251,11 +299,13 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Wolf;
     private IWolfActions m_WolfActionsCallbackInterface;
     private readonly InputAction m_Wolf_Howl;
+    private readonly InputAction m_Wolf_ToDog;
     public struct WolfActions
     {
         private @PlayerControls m_Wrapper;
         public WolfActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Howl => m_Wrapper.m_Wolf_Howl;
+        public InputAction @ToDog => m_Wrapper.m_Wolf_ToDog;
         public InputActionMap Get() { return m_Wrapper.m_Wolf; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -268,6 +318,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Howl.started -= m_Wrapper.m_WolfActionsCallbackInterface.OnHowl;
                 @Howl.performed -= m_Wrapper.m_WolfActionsCallbackInterface.OnHowl;
                 @Howl.canceled -= m_Wrapper.m_WolfActionsCallbackInterface.OnHowl;
+                @ToDog.started -= m_Wrapper.m_WolfActionsCallbackInterface.OnToDog;
+                @ToDog.performed -= m_Wrapper.m_WolfActionsCallbackInterface.OnToDog;
+                @ToDog.canceled -= m_Wrapper.m_WolfActionsCallbackInterface.OnToDog;
             }
             m_Wrapper.m_WolfActionsCallbackInterface = instance;
             if (instance != null)
@@ -275,6 +328,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Howl.started += instance.OnHowl;
                 @Howl.performed += instance.OnHowl;
                 @Howl.canceled += instance.OnHowl;
+                @ToDog.started += instance.OnToDog;
+                @ToDog.performed += instance.OnToDog;
+                @ToDog.canceled += instance.OnToDog;
             }
         }
     }
@@ -324,10 +380,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     public interface IDogActions
     {
         void OnBark(InputAction.CallbackContext context);
+        void OnToWolf(InputAction.CallbackContext context);
     }
     public interface IWolfActions
     {
         void OnHowl(InputAction.CallbackContext context);
+        void OnToDog(InputAction.CallbackContext context);
     }
     public interface IMovementActions
     {
