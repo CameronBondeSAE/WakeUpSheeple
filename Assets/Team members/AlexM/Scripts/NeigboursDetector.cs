@@ -15,7 +15,7 @@ namespace AlexM
 
 			foreach (Collider c in colliders)
 			{
-				// Is a sheep?
+				// Is targetDirection sheep?
 				if (c.GetComponent<Sheep>())
 				{
 					neighbours.Add(c.GetComponent<Sheep>());

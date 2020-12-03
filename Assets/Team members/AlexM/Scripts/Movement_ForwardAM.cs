@@ -42,7 +42,7 @@ public class Movement_ForwardAM : MonoBehaviour
       }
    }
 
-   private void Update()
+   private void FixedUpdate()
    {
       Debugging();
       //Move();

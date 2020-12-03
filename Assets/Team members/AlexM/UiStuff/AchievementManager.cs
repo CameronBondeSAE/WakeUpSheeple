@@ -12,7 +12,7 @@ namespace AlexM
 		/// <summary>
 		/// THIS SHOULD ALWAYS BE ON A CANVAS.
 		/// PLEASE NOTE:
-		/// You only need to add the TestGuy from the scene, and set a duration for how long the achievement popup is visible.
+		/// You only need to add the TestGuy from the scene, and set targetDirection duration for how long the achievement popup is visible.
 		///
 		/// To add new achievements, just subscribe to their event (please make the event with plenty of into attached)
 		/// And just call TriggerAchievement("Title", "SubText") inside the function created when subscribing to the event.

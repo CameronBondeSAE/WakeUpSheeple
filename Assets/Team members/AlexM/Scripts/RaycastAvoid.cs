@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using AlexM;
 using UnityEngine;
 
 
@@ -26,7 +27,10 @@ public class RaycastAvoid : MonoBehaviour
 		if (Physics.Raycast(ray, out raycastHit, distance))
 		{
 			// Rotate the guy if something is in his way
-			MainTransform.Rotate(0, Time.deltaTime * speed, 0);
+			//if (!raycastHit.transform.GetComponent<Sheep>())
+			{
+				MainTransform.Rotate(0, Time.deltaTime * speed, 0);
+			}
 		}
 	}
 

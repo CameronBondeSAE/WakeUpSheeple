@@ -15,7 +15,7 @@ namespace AlexM
 			{
 				return isBlack;
 			}
-			// Make a readonly variable, by removing the ability to set it from outside this class!
+			// Make targetDirection readonly variable, by removing the ability to set it from outside this class!
 			// set
 			// {
 			// 	isBlack = value;
