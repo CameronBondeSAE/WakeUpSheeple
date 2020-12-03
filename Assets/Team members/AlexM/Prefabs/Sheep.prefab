@@ -112,6 +112,7 @@ GameObject:
   - component: {fileID: 2973978494779615501}
   - component: {fileID: 4126474337583295161}
   - component: {fileID: 4647077496487458532}
+  - component: {fileID: 9059154389803321496}
   m_Layer: 8
   m_Name: Sheep
   m_TagString: Untagged
@@ -259,6 +260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NeighboursDetector: {fileID: 2973978494779615501}
+  force: 100
 --- !u!114 &4647077496487458532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,6 +273,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fc1ce8e00559d84c91ceac10e4664d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9059154389803321496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2372177631083542375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5b905bfdb70940459c5658d06f01dde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetDirection: {x: 0, y: 0, z: 0}
+  myPos: {x: 0, y: 0, z: 0}
+  target: {fileID: 0}
+  rb: {fileID: 0}
+  turnForce: 101
+  dogDistance: 1
 --- !u!1 &4369274410258664551
 GameObject:
   m_ObjectHideFlags: 0
