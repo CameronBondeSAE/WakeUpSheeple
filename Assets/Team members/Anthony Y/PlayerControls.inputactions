@@ -12,6 +12,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "ToWolf",
+                    "type": "Button",
+                    "id": "636e170a-10e5-4538-a8cb-a9c31f01416c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -23,6 +31,17 @@
                     "processors": "",
                     "groups": "Keyboard & Mouse",
                     "action": "Bark",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "921a6146-3661-4644-aed1-4a129ee411be",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToWolf",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -39,6 +58,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "ToDog",
+                    "type": "Button",
+                    "id": "7b3f949b-f3cc-43b4-bf27-4817dde20f54",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -50,6 +77,17 @@
                     "processors": "",
                     "groups": "Keyboard & Mouse",
                     "action": "Howl",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "58870b02-9ac0-43d3-8491-d88b725038e9",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToDog",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

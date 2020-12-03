@@ -2071,6 +2071,7 @@ MonoBehaviour:
   maxSpeed: 30
   neighbourRadius: 3
   avoidanceRadiusMultiplier: 0.5
+  sirb: {fileID: 0}
 --- !u!4 &1723335645
 Transform:
   m_ObjectHideFlags: 0
@@ -2219,6 +2220,10 @@ PrefabInstance:
       propertyPath: maxSpeed
       value: 10.6
       objectReference: {fileID: 0}
+    - target: {fileID: 8558197102660089715, guid: e1441f4678ffcad4bbd0dbb9ac94a8a7, type: 3}
+      propertyPath: sirb
+      value: 
+      objectReference: {fileID: 11400000, guid: 7b846394ace2552438cf2b026bf82ddc, type: 2}
     - target: {fileID: 8558197102660089716, guid: e1441f4678ffcad4bbd0dbb9ac94a8a7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -10,6 +10,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
+using Random = UnityEngine.Random;
 
 namespace Student_workspace.Dylan.Scripts.NetworkLobby
 {
@@ -57,7 +58,7 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
         public List<NetworkGamePlayer> GamePlayers { get; } = new List<NetworkGamePlayer>();
 
         [Tooltip("Not floating network dude")]
-        public List<PlayerBehaviour> topDownPlayers = new List<PlayerBehaviour>();
+        public List<PlayerBehaviour> physicalPlayers = new List<PlayerBehaviour>();
 
         [Header("Lobby")]
         public GameObject lobbyUI;
@@ -72,6 +73,8 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
         public List<string> levels;
 
         public GameManager gameManager;
+
+        public int pickAWolf;
 
         public override void Awake()
         {
@@ -186,7 +189,7 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
         {
             RoomPlayers.Clear();
             GamePlayers.Clear();
-            topDownPlayers.Clear();
+            physicalPlayers.Clear();
             StopConnection();
             base.OnStopClient();
         }
@@ -250,7 +253,7 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
         {
             RoomPlayers.Clear();
             GamePlayers.Clear();
-            topDownPlayers.Clear();
+            physicalPlayers.Clear();
             StopConnection();
             base.OnStopServer();
         }
@@ -334,14 +337,14 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
         public void RestartLevel()
         {
             ServerChangeScene(SceneManager.GetActiveScene().name);
-            topDownPlayers.Clear();
+            physicalPlayers.Clear();
             nextIndex = 0;
         }
 
 
         public override void OnServerChangeScene(string sceneName)
         {
-            topDownPlayers.Clear();
+            physicalPlayers.Clear();
         }
 
 
@@ -390,9 +393,8 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
                 spawnPoints[nextIndex].position.y + heightOffset, spawnPoints[nextIndex].position.z);
 
             GameObject playerInstance = Instantiate(physicalPlayerPrefab, spawnOffset, spawnPoints[nextIndex].rotation);
-           
-
-            float maxHeight = 0, minHeight = 0;
+            
+           float maxHeight = 0, minHeight = 0;
 
             foreach (Collider c in playerInstance.GetComponentsInChildren<Collider>())
             {
@@ -413,8 +415,9 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
             // gameManager.PlayersSpawned();
 
 
-            topDownPlayers.Add(playerInstance.GetComponent<PlayerBehaviour>());
-
+            physicalPlayers.Add(playerInstance.GetComponent<PlayerBehaviour>());
+            
+            
             nextIndex++;
 
             if (nextIndex >= spawnPoints.Count)
@@ -423,6 +426,9 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
             }
 			
 			PhysicalPlayerSpawned?.Invoke(playerInstance.GetComponent<PlayerBehaviour>());
+            pickAWolf = Random.Range(0, physicalPlayers.Count - 1);
+            physicalPlayers[pickAWolf].GetComponent<PlayerBehaviour>().TurnIntoWolf();
+            
         }
 
         public static void AddSpawnPoint(Transform transform)
