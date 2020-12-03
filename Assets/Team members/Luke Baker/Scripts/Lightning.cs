@@ -22,62 +22,77 @@ namespace LukeBaker
         /// Time the strike is visible for
         public float timeStrikeIsOn;
         /// The radius of lightning hit effect
-        public float lightningHitRange;
+        public float lightningHitRadius;
         /// Random angle of each 2 points of the strike
         public float strikeAngle;
-        public float startStrikeWidth;
-        public float endWidthStrike;
-        
+
         public int damage;
+        //public float distanceToGround;
 
         private void Start()
         {
             StartCoroutine(LightningStrike());
         }
 
+        // private void Update()
+        // {
+        //     RaycastGround();
+        // }
+        //
+        // //To check for the distance between lightning cast and ground
+        //  public void RaycastGround()
+        //  {
+        //      Ray ray = new Ray(transform.position, Vector3.down);
+        //      RaycastHit raycastToGround;
+        //      if (Physics.Raycast(ray, out raycastToGround))
+        //      {
+        //          Debug.DrawLine(ray.origin, raycastToGround.point, Color.green);
+        //      }
+        //      distanceToGround = raycastToGround.distance;
+        //  }
+
         public IEnumerator LightningStrike()
         {
-            gameObject.SetActive(true);
             float y = 0;
 
-            
             lineRenderer.positionCount = maxVerticesAmount;
             //Setting the first point to object position
             lineRenderer.SetPosition(0,transform.position);
             //looping through the points to the max amount of points
             for (int x = 1; x < maxVerticesAmount; x++)
             {
+                // every new segment is changing position randomly, so the linerenderer doesn't go back to 0
                 for (int i = x; i < maxVerticesAmount; i++)
                 {
                     //visualise
                     lineRenderer.SetPosition(i, new Vector3(Random.Range(-strikeAngle, strikeAngle)* scale, y * scale,
                         Random.Range(-strikeAngle, strikeAngle) * scale) + lineRenderer.GetPosition(i-1));
-                    lineRenderer.startWidth = startStrikeWidth;
-                    lineRenderer.endWidth = endWidthStrike;
                 }
+                //for direction
                 y = y + acceleration;
-            }
-            
-            //find the final strike point & set the lightning collider position
-            //remember index things need -1 for reference because index starts at 0
-            Vector3 finalStrikePoint = lineRenderer.GetPosition(maxVerticesAmount-1);
-
-            //TODO figure out how to use OverlapSphere and what I am suppose to do with it?
-            Debug.DrawLine(finalStrikePoint,finalStrikePoint + Vector3.up, Color.green, 5f);
-            Collider[] overlapSphere = Physics.OverlapSphere(finalStrikePoint, lightningHitRange);
-
-            foreach (Collider col in overlapSphere)
-            {
-                if (col.GetComponent<Health>())
+                
+                //this will make a line collision check between each line
+                if (Physics.Linecast(lineRenderer.GetPosition(x-1), lineRenderer.GetPosition(x)))
                 {
+                    //then this will check for each colliders that overlap and cause demage
+                    Collider[] overlapSphere = Physics.OverlapSphere(lineRenderer.GetPosition(x), lightningHitRadius);
+
+                    foreach (Collider col in overlapSphere)
+                    {
+                        if (col.GetComponent<Health>())
+                        {
                     
-                    col.GetComponent<Health>().Damage(damage);
+                            col.GetComponent<Health>().Damage(damage);
+                        }
+                    }
+                    //we hit something lightning will stop
+                    continue;
                 }
             }
 
             yield return new WaitForSeconds(timeStrikeIsOn);
             
-            //remove the strike
+            //TODO switch to destroy when finished if we want to make the cloud instantiate it
             LightningOff();
         }
         
