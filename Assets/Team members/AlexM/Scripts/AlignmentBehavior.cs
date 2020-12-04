@@ -15,7 +15,7 @@ namespace AlexM
 			Vector3 alignmentMove = Vector3.zero;
 
 			// Average all the directions
-			List<Sheep> nearbyObjects = NeighboursDetector.GetNearbyObjects();
+			List<Sheep> nearbyObjects = NeighboursDetector.GetNearbySheep();
 
 			// If no neighbours, direction would be ZERO (invalid)
 			if (nearbyObjects.Count <= 0)

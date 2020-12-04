@@ -29,6 +29,7 @@ public class RaycastAvoid : MonoBehaviour
 			// Rotate the guy if something is in his way
 			//if (!raycastHit.transform.GetComponent<Sheep>())
 			{
+				//Maybe think of a way to make this use the AddTorque version of movement too.
 				MainTransform.Rotate(0, Time.deltaTime * speed, 0);
 			}
 		}

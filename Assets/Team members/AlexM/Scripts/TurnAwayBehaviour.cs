@@ -12,16 +12,35 @@ public class TurnAwayBehaviour : MonoBehaviour
     public PlayerBehaviour target;
     public Rigidbody rb;
     public float turnForce;
-    public float dogDistance;
+    //private float dogDistance;
 
+    private List<PlayerBehaviour> ListOfWolves;
+    private float wolfDist;
+    private WolfDetector _wolfDetector;
+
+    /// <summary>
+    /// Possibly change this to OnEnable, see if that fixes the issue with the game manager restarting the game and everything breaking.
+    /// </summary>
     private void Start()
     {
-        target = FindObjectOfType<PlayerBehaviour>();
+        _wolfDetector = GetComponent<WolfDetector>();
+        //target = FindObjectOfType<PlayerBehaviour>();
         rb = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
+        //Populate list of potential wolves
+        ListOfWolves = _wolfDetector.GetNearbyWolves();
+        //Loop Through the list.
+        foreach (var Wolf in ListOfWolves)
+        {
+            wolfDist = new float();
+            wolfDist = Vector3.Distance(transform.position, Wolf.transform.position);
+            target = Wolf;
+            //Debug.Log(Wolf.transform.name + " is " + wolfDist + " away.");
+        }
+        
         if (target)
         {
             targetDirection = target.transform.position - rb.position;
@@ -30,10 +49,9 @@ public class TurnAwayBehaviour : MonoBehaviour
         {
             return;
         }
-        dogDistance = Vector3.Distance(target.transform.position, transform.position);
-        // Direction to target
         
-        
+        //dogDistance = Vector3.Distance(target.transform.position, transform.position);
+
         myPos = transform.forward;
 
         Vector3 cross = Vector3.Cross(targetDirection, myPos);
@@ -41,6 +59,7 @@ public class TurnAwayBehaviour : MonoBehaviour
         //Debug.DrawRay(transform.position, cross, Color.red, 0f, false);
         //Debug.Log(Vector3.Dot(targetDirection, myPos));
 
-        rb.AddTorque((cross * (turnForce * Time.deltaTime)) / dogDistance);
+        rb.AddTorque((cross * (turnForce * Time.deltaTime)) / wolfDist);
     }
+    
 }
