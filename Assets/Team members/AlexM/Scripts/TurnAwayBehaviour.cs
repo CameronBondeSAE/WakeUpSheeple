@@ -7,59 +7,63 @@ using UnityEngine;
 
 public class TurnAwayBehaviour : MonoBehaviour
 {
-    public Vector3 targetDirection;
-    public Vector3 myPos;
-    public PlayerBehaviour target;
-    public Rigidbody rb;
-    public float turnForce;
-    //private float dogDistance;
+	public Vector3 targetDirection;
+	public Vector3 myPos;
+	public PlayerBehaviour target;
+	public Rigidbody rb;
 
-    private List<PlayerBehaviour> ListOfWolves;
-    private float wolfDist;
-    private WolfDetector _wolfDetector;
+	public float turnForce;
+	//private float dogDistance;
 
-    /// <summary>
-    /// Possibly change this to OnEnable, see if that fixes the issue with the game manager restarting the game and everything breaking.
-    /// </summary>
-    private void Start()
-    {
-        _wolfDetector = GetComponent<WolfDetector>();
-        //target = FindObjectOfType<PlayerBehaviour>();
-        rb = GetComponent<Rigidbody>();
-    }
+	private List<PlayerBehaviour> ListOfWolves;
+	private float wolfDist;
+	private WolfDetector _wolfDetector;
 
-    void Update()
-    {
-        //Populate list of potential wolves
-        ListOfWolves = _wolfDetector.GetNearbyWolves();
-        //Loop Through the list.
-        foreach (var Wolf in ListOfWolves)
-        {
-            wolfDist = new float();
-            wolfDist = Vector3.Distance(transform.position, Wolf.transform.position);
-            target = Wolf;
-            //Debug.Log(Wolf.transform.name + " is " + wolfDist + " away.");
-        }
-        
-        if (target)
-        {
-            targetDirection = target.transform.position - rb.position;
-        }
-        else
-        {
-            return;
-        }
-        
-        //dogDistance = Vector3.Distance(target.transform.position, transform.position);
+	/// <summary>
+	/// Possibly change this to OnEnable, see if that fixes the issue with the game manager restarting the game and everything breaking.
+	/// </summary>
+	private void Start()
+	{
+		_wolfDetector = GetComponent<WolfDetector>();
+		//target = FindObjectOfType<PlayerBehaviour>();
+		rb = GetComponent<Rigidbody>();
+	}
 
-        myPos = transform.forward;
+	void Update()
+	{
+		//Populate list of potential wolves
+		ListOfWolves = _wolfDetector.GetNearbyWolves();
+		//Loop Through the list.
+		foreach (var Wolf in ListOfWolves)
+		{
+			wolfDist = new float();
+			wolfDist = Vector3.Distance(transform.position, Wolf.transform.position);
+			target = Wolf;
+			//Debug.Log(Wolf.transform.name + " is " + wolfDist + " away.");
+			
+			//Might need this if i have issues with wolves getting too close to sheep and sheep getting glitchy because of it.
+			// if (wolfDist < 0.3f)
+			// {
+			// 	wolfDist = 0.3f;
+			// }
 
-        Vector3 cross = Vector3.Cross(targetDirection, myPos);
 
-        //Debug.DrawRay(transform.position, cross, Color.red, 0f, false);
-        //Debug.Log(Vector3.Dot(targetDirection, myPos));
+			if (target)
+			{
+				targetDirection = target.transform.position - rb.position;
+			}
+			else
+			{
+				return;
+			}
 
-        rb.AddTorque((cross * (turnForce * Time.deltaTime)) / wolfDist);
-    }
-    
+			myPos = transform.forward;
+
+			Vector3 cross = Vector3.Cross(targetDirection, myPos);
+
+			//Debug.DrawRay(transform.position, cross, Color.red, 0f, false);
+			//Debug.Log(Vector3.Dot(targetDirection, myPos));
+			rb.AddTorque((cross * (turnForce * Time.deltaTime)) / (wolfDist * 2f));
+		}
+	}
 }

@@ -39,9 +39,9 @@ public class CoreSheepFinder : NetworkBehaviour
             foreach (Sheep sheep in gameManager.allSheep)
             {
                 // centre = centre - sheep.transform.localPosition;
-                if (sheep.GetComponent<NeigboursDetector>().GetNearbyObjects().Count > highestSheepCount)
+                if (sheep.GetComponent<NeigboursDetector>().GetNearbySheep().Count > highestSheepCount)
                 {
-                    highestSheepCount = sheep.GetComponent<NeigboursDetector>().GetNearbyObjects().Count;
+                    highestSheepCount = sheep.GetComponent<NeigboursDetector>().GetNearbySheep().Count;
                     centerofSheepFlock = sheep.transform.position;
                     centerSheep = sheep;
                 }

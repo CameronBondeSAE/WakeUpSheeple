@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using AlexM;
+using AnthonyY;
 using UnityEngine;
 
 
@@ -27,10 +28,14 @@ public class RaycastAvoid : MonoBehaviour
 		if (Physics.Raycast(ray, out raycastHit, distance))
 		{
 			// Rotate the guy if something is in his way
-			//if (!raycastHit.transform.GetComponent<Sheep>())
+			if (!raycastHit.transform.GetComponent<PlayerBehaviour>())
 			{
 				//Maybe think of a way to make this use the AddTorque version of movement too.
 				MainTransform.Rotate(0, Time.deltaTime * speed, 0);
+			}
+			else
+			{
+				MainTransform.Rotate(0, Time.deltaTime * (speed * 3f), 0);
 			}
 		}
 	}
