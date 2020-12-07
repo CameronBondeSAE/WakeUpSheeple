@@ -74,7 +74,7 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
 
         public GameManager gameManager;
 
-        public int pickAWolf;
+        private int pickAWolf;
 
         public override void Awake()
         {
@@ -355,10 +355,18 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
             {
                 SpawnPlayer(gamePlayer.connectionToClient);
             }
-
+            
             OnGameStart?.Invoke();
+            OnStartPickWolf();
+           
 
             base.OnServerSceneChanged(sceneName);
+        }
+
+        public void OnStartPickWolf()
+        {
+            pickAWolf = Random.Range(0, physicalPlayers.Count);
+            physicalPlayers[pickAWolf].GetComponent<PlayerBehaviour>().TurnIntoWolf();
         }
 
         public override void OnClientSceneChanged(NetworkConnection conn)
@@ -424,10 +432,9 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
             {
                 nextIndex = 0;
             }
-			
+            
 			PhysicalPlayerSpawned?.Invoke(playerInstance.GetComponent<PlayerBehaviour>());
-            pickAWolf = Random.Range(0, physicalPlayers.Count - 1);
-            physicalPlayers[pickAWolf].GetComponent<PlayerBehaviour>().TurnIntoWolf();
+           
             
         }
 
