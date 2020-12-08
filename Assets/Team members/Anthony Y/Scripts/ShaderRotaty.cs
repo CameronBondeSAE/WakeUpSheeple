@@ -6,11 +6,11 @@ public class ShaderRotaty : MonoBehaviour
 {
     public Material clay;
     private static readonly int RotationAmount = Shader.PropertyToID("RotationAmount");
-    // public new Light light;
+    public new Light light;
 
     void Start()
     {
-        // light.intensity = Random.Range(1, 10f);
+        light.intensity = Random.Range(1, 10f);
     }
 
     // Update is called once per frame
