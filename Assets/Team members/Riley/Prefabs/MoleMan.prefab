@@ -5281,9 +5281,8 @@ MonoBehaviour:
     active: 0
   pauseStateMole:
     active: 0
-  bPS: 0
+  boolPauseState: 0
   soundPlayer: {fileID: 4490975304555146081}
-  force: 5
   MainObject: {fileID: 1331914058720452097}
   timeWait: 0
   timeSWait: 0
