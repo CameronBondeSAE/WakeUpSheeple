@@ -18,13 +18,13 @@ public class MoleManManager : MonoBehaviour
     public DelegateState standing = new DelegateState();
     public DelegateState jump = new DelegateState();
     [FormerlySerializedAs("pauseStateR")] public DelegateState pauseStateMole = new DelegateState();
-    [FormerlySerializedAs("bPSR")] public bool bPS; //Bool for out "pausedstate" so we can determine if we are already paused or not
+    [FormerlySerializedAs("bPSR")] public bool boolPauseState; //Bool for out "pausedstate" so we can determine if we are already paused or not
     public AudioSource soundPlayer;
-    public float force = 5.0f;
     public GameObject MainObject;
     public int timeWait; //Time wait int for the jump function to determine how long the mole is out of the ground
     [FormerlySerializedAs("timeSWaitR")] public int timeSWait; //Time wait for the pause button so when we click pause it doesn't instantly unpause
     public int timeHoverWait;
+    private float verticalMovementSpeed = 0.03f;
     //----------------------------------WAYPOINT VARIABLES
     public DelegateState moveToWaypoint = new DelegateState();
     public List<Transform> waypointsList = new List<Transform>();
@@ -33,7 +33,7 @@ public class MoleManManager : MonoBehaviour
     private int currentWaypointIndex;
     private float safeDistance = 1.5f;
     private int previousWaypointIndex;
-    private float movementSpeed = 0.1f;
+    private float horizontalMovementSpeed = 0.0075f;
     public bool waypointFirstRound;
     private GameObject sheepWaypoint;
     public GameObject raycastHandler;
@@ -72,7 +72,7 @@ public class MoleManManager : MonoBehaviour
         pauseStateMole.Exit = PauseStateMoleExit;
         FindObjectOfType<PauseManager>().PauseEvent += pauseEventMole; //Find the pause manager and whenever PauseEvent is called run pauseEventR
         stateManager.ChangeState(standing); //on start set the default state to standing
-        bPS = false;
+        boolPauseState = false;
         //----------------------------------TRIGGER VARIABLES
         //TriggerScriptR = GetComponent<TriggerMoleR>();
         //----------------------------------TRIGGER VARIABLES
@@ -97,12 +97,12 @@ public class MoleManManager : MonoBehaviour
         {
             float distanceToPlatformExact = distanceToPlatform - 100f;
             Vector3 mainObjectNewLocal = new Vector3(MainObject.transform.position.x, MainObject.transform.localPosition.y - distanceToPlatformExact, MainObject.transform.localPosition.z);
-            MainObject.transform.localPosition = Vector3.MoveTowards(MainObject.transform.localPosition, mainObjectNewLocal, 0.1f);
+            MainObject.transform.localPosition = Vector3.Lerp(MainObject.transform.localPosition, mainObjectNewLocal, verticalMovementSpeed);
         }
         else
         {
             timeHoverWait = timeHoverWait + 1;
-            if (timeHoverWait > 600 && bPS != true)
+            if (timeHoverWait > 600 && boolPauseState != true)
             {
                 stateManager.ChangeState(moveToWaypoint);
             }
@@ -126,13 +126,13 @@ public class MoleManManager : MonoBehaviour
         if (distanceToPlatform < 101.75f) //NEEDS AMENDING, this makes the player bob at this height
         {
             Vector3 mainObjectNewLocal = new Vector3(MainObject.transform.localPosition.x, MainObject.transform.localPosition.y + 1f, MainObject.transform.localPosition.z);
-            MainObject.transform.localPosition = Vector3.MoveTowards(MainObject.transform.localPosition, mainObjectNewLocal, 0.1f);
+            MainObject.transform.localPosition = Vector3.Lerp(MainObject.transform.localPosition, mainObjectNewLocal, verticalMovementSpeed);
         }
         else
         {
             timeWait = timeWait + 1;
         }
-        if (timeWait > 300 && bPS != true)
+        if (timeWait > 300 && boolPauseState != true)
         {
             stateManager.ChangeState(standing);
         }
@@ -168,15 +168,12 @@ public class MoleManManager : MonoBehaviour
         {
             Vector3 currentWaypointNoHeight = new Vector3(currentWaypoint.position.x, MainObject.transform.position.y, currentWaypoint.position.z);
             transform.LookAt(currentWaypointNoHeight);
-            MainObject.transform.position = Vector3.MoveTowards(MainObject.transform.position, currentWaypointNoHeight, 0.05f);
+            MainObject.transform.position = Vector3.Lerp(MainObject.transform.position, currentWaypointNoHeight, horizontalMovementSpeed);
         }
-        else
+        if (timeHoverWait > 1600 && boolPauseState == false)
         {
-            if (timeHoverWait > 1600 && bPS == false)
-            {
-                stateManager.ChangeState(jump);
-                timeHoverWait = 0;
-            }
+            stateManager.ChangeState(jump);
+            timeHoverWait = 0;
         }
     }
     //
@@ -190,10 +187,10 @@ public class MoleManManager : MonoBehaviour
     //----------------------------------PAUSE
     private void pauseEventMole()
     {
-        if (bPS == false)
+        if (boolPauseState == false)
         {
             Debug.Log("PausedR");
-            bPS = true; //This tells us we are paused
+            boolPauseState = true; //This tells us we are paused
             stateManager.ChangeState(pauseStateMole);
         }
     }
@@ -213,7 +210,7 @@ public class MoleManManager : MonoBehaviour
     }
     private void PauseStateMoleExit()
     {
-        bPS = false; //Reset our BoolPauseStateR to false so we can use pause again
+        boolPauseState = false; //Reset our BoolPauseStateR to false so we can use pause again
     }
     //----------------------------------PAUSE
     //----------------------------------BUTTON FUNCTIONS
