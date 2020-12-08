@@ -93,7 +93,7 @@ private EndGoalChecker endGoalChecker;
         // playersSpawnedEvent += PlayersSpawned;
         // // MapOverviewEvent += OverviewOfMap;
         // // GameOverEvent += GameOver;
-        gameNetworkManager.PhysicalPlayerSpawned += PlayersSpawned;
+        gameNetworkManager.PhysicalPlayerSpawned += CmdPlayersSpawned;
     }
 
     private void OnDisable()
@@ -104,7 +104,7 @@ private EndGoalChecker endGoalChecker;
     //     playersSpawnedEvent -= PlayersSpawned;
     //     // MapOverviewEvent -= OverviewOfMap;
     //     // GameOverEvent -= GameOver;
-    gameNetworkManager.PhysicalPlayerSpawned -= PlayersSpawned;
+    gameNetworkManager.PhysicalPlayerSpawned -= CmdPlayersSpawned;
     }
 
     private void Update()
@@ -123,10 +123,23 @@ private EndGoalChecker endGoalChecker;
     {
         playersSpawnedEvent?.Invoke(player);
         Debug.Log("GameManager Event: PLAYERS SPAWNED but cannot move");
-      
+
         // GetComponent<PlayerBehaviour>()?.controls.Movement.Movement.Disable();
-       // networkManager.SpawnPlayer(conn);
+        // networkManager.SpawnPlayer(conn);
     }
+
+    [ClientRpc]
+    public void RpcPlayersSpawned(PlayerBehaviour player)
+    {
+        PlayersSpawned(player);
+    }
+
+    [Command]
+    void CmdPlayersSpawned(PlayerBehaviour player)
+    {
+        RpcPlayersSpawned(player);
+    }
+
 
     public void PlayPhaseStarted()
     {
