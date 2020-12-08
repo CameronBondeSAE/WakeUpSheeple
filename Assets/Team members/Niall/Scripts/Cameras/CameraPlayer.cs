@@ -41,6 +41,11 @@ namespace Niall
 
         void Move()
         {
+			if (OwnPlayer == null)
+			{
+				return;
+			}
+			
             transform.position = Vector3.SmoothDamp(transform.position, OwnPlayer.transform.position + offset,
                 ref velocity, smoothSpeed);
         }
