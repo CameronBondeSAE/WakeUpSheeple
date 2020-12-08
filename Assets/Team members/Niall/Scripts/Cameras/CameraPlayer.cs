@@ -29,8 +29,8 @@ namespace Niall
               {
                   OwnPlayer = player.transform;
                }
-            else
-            OwnPlayer = player.transform;
+            // else
+            // OwnPlayer = player.transform;
         }
 
 

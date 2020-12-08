@@ -25,12 +25,11 @@ public class EndGoalChecker : MonoBehaviour
         if (other.gameObject.GetComponent<Collider>())
         {
             //***********BOX CODE************
-            Debug.Log(other.gameObject.name);
             boxes.Add(other);
            //****SHEEP CODE**************
             safeSheep.Add(other.GetComponent<Sheep>());
+			Debug.Log(other.gameObject.name + ": Count = "+safeSheep.Count.ToString());
             // Destroy(other.transform.root.gameObject);
-            Debug.Log(safeSheep.Count.ToString());
             SheepMadeitEvent?.Invoke(other.GetComponent<Sheep>());
            
         }
@@ -41,9 +40,8 @@ public class EndGoalChecker : MonoBehaviour
         if (other.gameObject.GetComponent<Collider>())
         {
             //****SHEEP CODE**************
-            Debug.Log(other.transform.root.gameObject.name + ": has left the zone");
+            Debug.Log(other.transform.root.gameObject.name + ": has left the zone : Count = "+safeSheep.Count.ToString());
             safeSheep.Remove(other.GetComponent<Sheep>());
-            Debug.Log(safeSheep.Count.ToString());
             
             boxes.Remove(other);
             

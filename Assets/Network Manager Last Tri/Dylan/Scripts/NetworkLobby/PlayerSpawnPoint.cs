@@ -5,10 +5,27 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
 {
     public class PlayerSpawnPoint : MonoBehaviour
     {
-        private void Awake()
+		public float startRayHeightOffset = 100f;
+		public float floorOffset          = 1f;
+		public Vector3 finalSpawnPoint;
+		
+		private void Awake()
         {
             GameNetworkManager.AddSpawnPoint(transform);
-        }
+			
+			FindGroundSurfaceLevel();
+		}
+
+		public void FindGroundSurfaceLevel()
+		{
+			Ray        ray = new Ray(transform.position + new Vector3(0, startRayHeightOffset, 0), Vector3.down);
+			RaycastHit hitInfo;
+			
+			if (Physics.Raycast(ray, out hitInfo))
+			{
+				finalSpawnPoint = hitInfo.point + new Vector3(0, floorOffset, 0);
+			}
+		}
 
         private void OnDestroy()
         {

@@ -419,7 +419,10 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
 
             float totalHeight = maxHeight - minHeight;
 
-            NetworkServer.Spawn(playerInstance, conn);
+			// replace room player with game player
+			NetworkServer.ReplacePlayerForConnection(conn, playerInstance, true);
+
+            // NetworkServer.Spawn(playerInstance, conn);
             // gameManager.PlayersSpawned();
 
 
