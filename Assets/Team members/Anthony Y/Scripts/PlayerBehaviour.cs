@@ -21,11 +21,29 @@ namespace AnthonyY
 		public AudioSource    wolfHowl;
 
 		[SerializeField]
-		private bool amIWolf = false;
+		public bool amIWolf = false;
+		
+		public Material clay;
+		
+		private static readonly int Colour = Shader.PropertyToID("Color_9A1239AC");
 
 		private void Awake()
 		{
 			controls = new PlayerControls();
+			// amIWolf = false;
+		}
+
+		public override void OnStartClient()
+		{
+			base.OnStartClient();
+			
+		}
+
+		public override void OnStartLocalPlayer()
+		{
+			base.OnStartLocalPlayer();
+			
+			
 		}
 
 
@@ -37,7 +55,8 @@ namespace AnthonyY
 			health.DeathEvent                       += Death;
 			controls.Dog.Bark.performed             += _ => RpcBark();
 			controls.Wolf.Howl.performed            += _ => RpcHowl();
-			GetComponent<PauseManager>().PauseEvent += OnPauseEvent;
+			//GetComponent<PauseManager>().PauseEvent += OnPauseEvent;
+			
 		}
 
 		private void OnPauseEvent()
@@ -121,6 +140,7 @@ namespace AnthonyY
 				Debug.Log("I am now a dog");
 				controls.Wolf.Disable();
 				controls.Dog.Enable();
+				clay.SetColor(Colour,Color.green);
 			}
 		}
 
@@ -132,6 +152,7 @@ namespace AnthonyY
 				Debug.Log("I am now a wolf");
 				controls.Wolf.Enable();
 				controls.Dog.Enable();
+				clay.SetColor(Colour,Color.cyan);
 			}
 		}
 
