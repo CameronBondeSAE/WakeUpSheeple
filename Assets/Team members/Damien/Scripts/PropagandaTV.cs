@@ -10,7 +10,9 @@ namespace Damien
     {
         public float tvRadius = 10f;
         public bool isOn = true;
-
+        
+        public float maxAngle;
+        public float maxRadius = 10f;
 
         // Start is called before the first frame update
         void Start()
@@ -57,6 +59,13 @@ namespace Damien
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, tvRadius);
+            
+            Vector3 fovLine1 = Quaternion.AngleAxis(maxAngle, transform.up) * transform.forward * maxRadius;
+            Vector3 fovLine2 = Quaternion.AngleAxis(-maxAngle, transform.up) * transform.forward * maxRadius;
+
+            Gizmos.color = Color.blue;
+            Gizmos.DrawRay(transform.position, fovLine1);
+            Gizmos.DrawRay(transform.position, fovLine2);
         }
     }
 }
