@@ -8,7 +8,8 @@ namespace Damien
 {
     public class PropagandaTV : MonoBehaviour
     {
-        public float tvRadius = 10f;
+        public float tvInnerRadius = 10f;
+        public float tvOuterRadius = 15f;
         public bool isOn = true;
         
         public float maxAngle;
@@ -58,7 +59,10 @@ namespace Damien
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, tvRadius);
+            Gizmos.DrawWireSphere(transform.position, tvInnerRadius);
+            
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(transform.position, tvOuterRadius);
             
             Vector3 fovLine1 = Quaternion.AngleAxis(maxAngle, transform.up) * transform.forward * maxRadius;
             Vector3 fovLine2 = Quaternion.AngleAxis(-maxAngle, transform.up) * transform.forward * maxRadius;

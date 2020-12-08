@@ -8,10 +8,10 @@ using UnityEngine;
 
 namespace Damien
 {
-//Find all sheep in level
-//Determine the nearest sheep
-//See if nearest sheep is within range
-//Do something if sheep in within range
+//Find all players in level
+//Determine the nearest player
+//See if nearest player is within range
+//Do something if player in within range
 
     public class BillsGate : MonoBehaviour
     {
@@ -49,8 +49,7 @@ namespace Damien
         }
         void UpdateInRange()
         {
-            //Find nearest sheep
-           //TODO: Hack Replace with sheep manager
+            //Find nearest player
             PlayerBehaviour[] players = Sheep.FindObjectsOfType<PlayerBehaviour>();
             float shortestDistance = Mathf.Infinity;
             PlayerBehaviour nearestPlayer = null;
