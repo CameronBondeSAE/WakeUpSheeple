@@ -28,6 +28,7 @@ public class MoleManManager : MonoBehaviour
     //----------------------------------WAYPOINT VARIABLES
     public DelegateState moveToWaypoint = new DelegateState();
     public List<Transform> waypointsList = new List<Transform>();
+    public GameObject mainObjective;
     private Transform currentWaypoint;
     private int currentWaypointIndex;
     private float safeDistance = 1.5f;

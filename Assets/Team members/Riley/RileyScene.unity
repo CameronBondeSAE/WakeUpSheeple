@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 216842185}
   - component: {fileID: 216842184}
   - component: {fileID: 216842183}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Plane
   m_TagString: platformR
   m_Icon: {fileID: 0}
@@ -911,6 +911,7 @@ MonoBehaviour:
   waypointsList:
   - {fileID: 1651630969}
   - {fileID: 562453972}
+  mainObjective: {fileID: 0}
   waypointFirstRound: 0
   raycastHandler: {fileID: 311222411}
   particleOnOff: 0
