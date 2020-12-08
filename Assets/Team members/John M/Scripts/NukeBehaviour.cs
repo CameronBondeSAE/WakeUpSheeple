@@ -7,6 +7,7 @@ public class NukeBehaviour : MonoBehaviour
 {
     
     public GameObject nuke;
+    //particle effect to be added here
     public float power = 10.0f;
     public float radius = 5.0f;
     public float upForce = 1.0f;
@@ -22,15 +23,20 @@ public class NukeBehaviour : MonoBehaviour
     void Detonate()
     {
         Vector3 explosionPosition = nuke.transform.position;
+        //activate particle explosion for nuke
         Collider[] colliders = Physics.OverlapSphere(explosionPosition, radius);
         foreach (Collider hit in colliders)
         {
-            Rigidbody rb = hit.GetComponent<Rigidbody>();
-            if (rb != null)
+            if (hit.GetComponent<Health>())
             {
-                rb.AddExplosionForce(power, explosionPosition, radius, upForce, ForceMode.Impulse);
+                hit.GetComponent<Health>().Damage(150);
+                Rigidbody rb = hit.GetComponent<Rigidbody>();
+                if (rb != null)
+                {
+                    rb.AddExplosionForce(power, explosionPosition, radius, upForce, ForceMode.Impulse);
+                }
             }
-            //hit.GetComponent<Health>().Damage(150);
+            
         }
         Destroy(nuke);
         

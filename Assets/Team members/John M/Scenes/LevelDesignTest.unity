@@ -123,6 +123,81 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &139000024 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+  m_PrefabInstance: {fileID: 519301173}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &143723500 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+  m_PrefabInstance: {fileID: 926252489}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &171062132
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 355974795}
+    m_Modifications:
+    - target: {fileID: 1994912455, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372177631083542375, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_Name
+      value: Sheep (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7321521051079283999, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: sceneId
+      value: 466080619
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.0487385
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -10.680638
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 36.009098
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
 --- !u!1 &239149668
 GameObject:
   m_ObjectHideFlags: 0
@@ -5834,800 +5909,206 @@ MonoBehaviour:
       uvislands_:
       - polygonsAndIDs_:
         - polygonID_: 522686
-        - polygonID_: 522902
-        instanceID_: 523287
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522894
-        instanceID_: 579255
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522896
-        instanceID_: 579257
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522900
-        instanceID_: 579259
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522898
-        instanceID_: 579273
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522890
-        instanceID_: 579279
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522744
-        instanceID_: 581277
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522750
-        instanceID_: 581281
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522796
-        instanceID_: 582214
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522798
-        instanceID_: 582216
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522772
-        instanceID_: 582220
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522830
-        instanceID_: 582224
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522832
-        instanceID_: 582226
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522770
-        instanceID_: 582232
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522776
-        instanceID_: 582234
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522806
-        instanceID_: 583104
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522822
-        instanceID_: 583106
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522828
-        instanceID_: 583108
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522802
-        instanceID_: 583110
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522826
-        instanceID_: 583112
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522800
-        instanceID_: 583114
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522824
-        instanceID_: 583116
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522850
-        instanceID_: 583118
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522818
-        instanceID_: 583128
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522782
-        instanceID_: 583846
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522808
-        instanceID_: 583848
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522804
-        instanceID_: 583850
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522810
-        instanceID_: 583852
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522702
-        instanceID_: 584562
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522712
-        instanceID_: 584566
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522716
-        instanceID_: 584570
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522734
-        instanceID_: 585308
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522752
-        instanceID_: 585310
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522748
-        instanceID_: 585312
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522754
-        instanceID_: 585314
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522730
-        instanceID_: 585316
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522732
-        instanceID_: 585318
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522774
-        instanceID_: 585320
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522778
-        instanceID_: 585322
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522780
-        instanceID_: 585324
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522756
-        instanceID_: 585326
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522728
-        instanceID_: 586208
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522714
-        instanceID_: 586212
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522726
-        instanceID_: 586214
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522792
-        instanceID_: 586796
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523078
-        instanceID_: 587559
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523084
-        instanceID_: 587565
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523064
-        instanceID_: 587569
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523058
-        instanceID_: 587571
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523062
-        instanceID_: 587573
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522794
-        instanceID_: 587579
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522760
-        instanceID_: 588317
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522784
-        instanceID_: 588319
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522790
-        instanceID_: 588327
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522788
-        instanceID_: 588329
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522706
-        instanceID_: 589863
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522722
-        instanceID_: 589873
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522690
-        instanceID_: 590577
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522694
-        instanceID_: 590579
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522696
-        instanceID_: 590581
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522708
-        instanceID_: 590583
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522700
-        instanceID_: 590585
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522704
-        instanceID_: 590587
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522710
-        instanceID_: 590589
-        selected: 0
-      - polygonsAndIDs_:
         - polygonID_: 522688
-        instanceID_: 590591
-        selected: 0
-      - polygonsAndIDs_:
         - polygonID_: 522692
-        instanceID_: 590593
-        selected: 0
-      - polygonsAndIDs_:
         - polygonID_: 522698
-        instanceID_: 590595
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522762
-        instanceID_: 591348
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522758
-        instanceID_: 591350
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522764
-        instanceID_: 591352
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522738
-        instanceID_: 591354
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522736
-        instanceID_: 591356
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522742
-        instanceID_: 591358
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522768
-        instanceID_: 591360
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522746
-        instanceID_: 591362
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522766
-        instanceID_: 591364
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522740
-        instanceID_: 591366
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522720
-        instanceID_: 591368
-        selected: 0
-      - polygonsAndIDs_:
+        - polygonID_: 522702
+        - polygonID_: 522712
+        - polygonID_: 522716
+        - polygonID_: 522730
+        - polygonID_: 522732
+        - polygonID_: 522714
+        - polygonID_: 522726
+        - polygonID_: 522690
+        - polygonID_: 522694
+        - polygonID_: 522696
+        - polygonID_: 522708
+        - polygonID_: 522700
+        - polygonID_: 522704
+        - polygonID_: 522710
+        - polygonID_: 522734
+        - polygonID_: 522752
+        - polygonID_: 522748
+        - polygonID_: 522754
+        - polygonID_: 522774
+        - polygonID_: 522780
+        - polygonID_: 522756
+        - polygonID_: 522728
+        - polygonID_: 522706
+        - polygonID_: 522722
         - polygonID_: 522718
-        instanceID_: 591370
-        selected: 0
-      - polygonsAndIDs_:
         - polygonID_: 522724
-        instanceID_: 591372
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523036
-        instanceID_: 592264
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523032
-        instanceID_: 592955
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523052
-        instanceID_: 592959
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523076
-        instanceID_: 592961
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523060
-        instanceID_: 592963
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523054
-        instanceID_: 592965
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523048
-        instanceID_: 593539
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523074
-        instanceID_: 593543
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523056
-        instanceID_: 593547
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523044
-        instanceID_: 594159
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523042
-        instanceID_: 594163
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523050
-        instanceID_: 594169
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523070
-        instanceID_: 594765
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523046
-        instanceID_: 594767
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523066
-        instanceID_: 594769
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523072
-        instanceID_: 594771
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523082
-        instanceID_: 594773
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523080
-        instanceID_: 594775
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523068
-        instanceID_: 594777
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522786
-        instanceID_: 594779
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522994
-        instanceID_: 595451
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523000
-        instanceID_: 595453
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523014
-        instanceID_: 596087
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523026
-        instanceID_: 596089
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523028
-        instanceID_: 596091
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523004
-        instanceID_: 596093
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523012
-        instanceID_: 596095
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523030
-        instanceID_: 596097
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523034
-        instanceID_: 596099
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523020
-        instanceID_: 596101
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522982
-        instanceID_: 596624
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522990
-        instanceID_: 596628
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522912
-        instanceID_: 597296
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523002
-        instanceID_: 597786
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523016
-        instanceID_: 597788
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522998
-        instanceID_: 597790
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522984
-        instanceID_: 597796
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522992
-        instanceID_: 597798
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522904
-        instanceID_: 598456
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522906
-        instanceID_: 598458
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522986
-        instanceID_: 599026
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522934
-        instanceID_: 599032
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522948
-        instanceID_: 599034
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522932
-        instanceID_: 599036
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522928
-        instanceID_: 599038
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522910
-        instanceID_: 599046
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522908
-        instanceID_: 599048
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522914
-        instanceID_: 599050
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522926
-        instanceID_: 599704
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522924
-        instanceID_: 599706
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522930
-        instanceID_: 599708
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522976
-        instanceID_: 600928
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522978
-        instanceID_: 600930
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522980
-        instanceID_: 600932
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522974
-        instanceID_: 600934
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522950
-        instanceID_: 600948
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522944
-        instanceID_: 600950
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522968
-        instanceID_: 601478
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522970
-        instanceID_: 601488
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522972
-        instanceID_: 601490
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522940
-        instanceID_: 603306
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522946
-        instanceID_: 603308
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522956
-        instanceID_: 603310
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522966
-        instanceID_: 604552
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522952
-        instanceID_: 604554
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522958
-        instanceID_: 604556
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522964
-        instanceID_: 604558
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522960
-        instanceID_: 604560
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522954
-        instanceID_: 604562
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522962
-        instanceID_: 604564
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522942
-        instanceID_: 604566
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522860
-        instanceID_: 606098
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522868
-        instanceID_: 606102
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522878
-        instanceID_: 606106
-        selected: 0
-      - polygonsAndIDs_:
+        - polygonID_: 522744
+        - polygonID_: 522750
+        - polygonID_: 522770
+        - polygonID_: 522776
+        - polygonID_: 522800
+        - polygonID_: 522804
+        - polygonID_: 522810
+        - polygonID_: 522778
+        - polygonID_: 522746
+        - polygonID_: 522766
+        - polygonID_: 522740
+        - polygonID_: 522720
+        - polygonID_: 522772
+        - polygonID_: 522806
+        - polygonID_: 522822
+        - polygonID_: 522828
+        - polygonID_: 522802
+        - polygonID_: 522826
+        - polygonID_: 522824
+        - polygonID_: 522850
+        - polygonID_: 522818
+        - polygonID_: 522782
+        - polygonID_: 522808
+        - polygonID_: 522736
+        - polygonID_: 522742
+        - polygonID_: 522768
         - polygonID_: 522852
-        instanceID_: 606120
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522814
-        instanceID_: 607386
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522816
-        instanceID_: 607388
-        selected: 0
-      - polygonsAndIDs_:
         - polygonID_: 522820
-        instanceID_: 607390
-        selected: 0
-      - polygonsAndIDs_:
         - polygonID_: 522840
-        instanceID_: 607394
-        selected: 0
-      - polygonsAndIDs_:
         - polygonID_: 522812
-        instanceID_: 607400
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522834
-        instanceID_: 610442
-        selected: 0
-      - polygonsAndIDs_:
         - polygonID_: 522842
-        instanceID_: 610444
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522836
-        instanceID_: 610446
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522858
-        instanceID_: 610974
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522844
-        instanceID_: 610976
-        selected: 0
-      - polygonsAndIDs_:
         - polygonID_: 522846
-        instanceID_: 610978
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522838
-        instanceID_: 610984
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522880
-        instanceID_: 611626
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522882
-        instanceID_: 611628
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522876
-        instanceID_: 611630
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522864
-        instanceID_: 611632
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522862
-        instanceID_: 611634
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522866
-        instanceID_: 611636
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522884
-        instanceID_: 611638
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522848
-        instanceID_: 611640
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523024
-        instanceID_: 623313
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523022
-        instanceID_: 623315
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523010
-        instanceID_: 623317
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523018
-        instanceID_: 623319
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523006
-        instanceID_: 623321
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523008
-        instanceID_: 623323
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522996
-        instanceID_: 623325
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522936
-        instanceID_: 623327
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522988
-        instanceID_: 623329
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522938
-        instanceID_: 623331
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522918
-        instanceID_: 623333
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522874
-        instanceID_: 625065
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523040
-        instanceID_: 625067
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522872
-        instanceID_: 625069
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522888
-        instanceID_: 625071
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522920
-        instanceID_: 625073
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 523038
-        instanceID_: 625075
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522886
-        instanceID_: 625077
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522892
-        instanceID_: 625079
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522916
-        instanceID_: 625081
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522922
-        instanceID_: 625083
-        selected: 0
-      - polygonsAndIDs_:
-        - polygonID_: 522870
-        instanceID_: 625085
-        selected: 0
-      - polygonsAndIDs_:
         - polygonID_: 522856
-        instanceID_: 625087
-        selected: 0
-      - polygonsAndIDs_:
         - polygonID_: 522854
-        instanceID_: 625089
+        - polygonID_: 522796
+        - polygonID_: 522798
+        - polygonID_: 522830
+        - polygonID_: 522832
+        - polygonID_: 522792
+        - polygonID_: 523062
+        - polygonID_: 522794
+        - polygonID_: 522788
+        - polygonID_: 522762
+        - polygonID_: 522764
+        - polygonID_: 522738
+        - polygonID_: 522860
+        - polygonID_: 522868
+        - polygonID_: 522878
+        - polygonID_: 522814
+        - polygonID_: 522816
+        - polygonID_: 522834
+        - polygonID_: 522836
+        - polygonID_: 522858
+        - polygonID_: 522844
+        - polygonID_: 522838
+        - polygonID_: 522876
+        - polygonID_: 522864
+        - polygonID_: 522862
+        - polygonID_: 522866
+        - polygonID_: 522848
+        - polygonID_: 522874
+        - polygonID_: 523040
+        - polygonID_: 522872
+        - polygonID_: 522888
+        - polygonID_: 522920
+        - polygonID_: 523038
+        - polygonID_: 522886
+        - polygonID_: 522892
+        - polygonID_: 522916
+        - polygonID_: 522922
+        - polygonID_: 522870
+        - polygonID_: 522890
+        - polygonID_: 523064
+        - polygonID_: 523058
+        - polygonID_: 522790
+        - polygonID_: 522758
+        - polygonID_: 523036
+        - polygonID_: 523060
+        - polygonID_: 523054
+        - polygonID_: 522880
+        - polygonID_: 522882
+        - polygonID_: 522884
+        - polygonID_: 523022
+        - polygonID_: 523010
+        - polygonID_: 523008
+        - polygonID_: 522936
+        - polygonID_: 522938
+        - polygonID_: 522918
+        - polygonID_: 522894
+        - polygonID_: 522896
+        - polygonID_: 522900
+        - polygonID_: 522898
+        - polygonID_: 523078
+        - polygonID_: 523084
+        - polygonID_: 522760
+        - polygonID_: 522784
+        - polygonID_: 523052
+        - polygonID_: 523076
+        - polygonID_: 523074
+        - polygonID_: 523056
+        - polygonID_: 523082
+        - polygonID_: 523080
+        - polygonID_: 523068
+        - polygonID_: 522786
+        - polygonID_: 522912
+        - polygonID_: 522932
+        - polygonID_: 522908
+        - polygonID_: 522914
+        - polygonID_: 523024
+        - polygonID_: 523018
+        - polygonID_: 523006
+        - polygonID_: 522996
+        - polygonID_: 522988
+        - polygonID_: 522902
+        - polygonID_: 523032
+        - polygonID_: 523048
+        - polygonID_: 523050
+        - polygonID_: 523066
+        - polygonID_: 523072
+        - polygonID_: 523030
+        - polygonID_: 523034
+        - polygonID_: 523020
+        - polygonID_: 523016
+        - polygonID_: 522998
+        - polygonID_: 522992
+        - polygonID_: 522904
+        - polygonID_: 522906
+        - polygonID_: 522986
+        - polygonID_: 522934
+        - polygonID_: 522948
+        - polygonID_: 522928
+        - polygonID_: 522910
+        - polygonID_: 522924
+        - polygonID_: 522930
+        - polygonID_: 522950
+        - polygonID_: 522944
+        - polygonID_: 522946
+        - polygonID_: 522956
+        - polygonID_: 522958
+        - polygonID_: 523042
+        - polygonID_: 523070
+        - polygonID_: 523046
+        - polygonID_: 523026
+        - polygonID_: 523028
+        - polygonID_: 523012
+        - polygonID_: 522990
+        - polygonID_: 523002
+        - polygonID_: 522984
+        - polygonID_: 522926
+        - polygonID_: 522980
+        - polygonID_: 522974
+        - polygonID_: 522970
+        - polygonID_: 522972
+        - polygonID_: 522940
+        - polygonID_: 522966
+        - polygonID_: 522952
+        - polygonID_: 522964
+        - polygonID_: 522960
+        - polygonID_: 522954
+        - polygonID_: 522962
+        - polygonID_: 522942
+        - polygonID_: 523044
+        - polygonID_: 522994
+        - polygonID_: 523000
+        - polygonID_: 523014
+        - polygonID_: 523004
+        - polygonID_: 522982
+        - polygonID_: 522976
+        - polygonID_: 522978
+        - polygonID_: 522968
+        instanceID_: 625097
         selected: 0
     polygonGroupManager_:
       polygonGroups_: []
@@ -6654,6 +6135,42 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &355974794
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 355974795}
+  m_Layer: 0
+  m_Name: Sheeps
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &355974795
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355974794}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.4687386, y: 12.790638, z: -30.0691}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1573618771}
+  - {fileID: 1854901954}
+  - {fileID: 139000024}
+  - {fileID: 775791883}
+  - {fileID: 692374085}
+  - {fileID: 143723500}
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &454640441
 GameObject:
@@ -6862,67 +6379,277 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1001 &1323557523
+--- !u!1001 &519301173
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 355974795}
+    m_Modifications:
+    - target: {fileID: 1994912455, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372177631083542375, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_Name
+      value: Sheep (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7321521051079283999, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: sceneId
+      value: 2528890169
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.8112617
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -10.680638
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 36.009098
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+--- !u!4 &692374085 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+  m_PrefabInstance: {fileID: 2065229689}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &775791883 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+  m_PrefabInstance: {fileID: 1783000939}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &926252489
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 355974795}
+    m_Modifications:
+    - target: {fileID: 1994912455, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372177631083542375, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_Name
+      value: Sheep (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7321521051079283999, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: sceneId
+      value: 3968493451
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.981921
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -12.100638
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 29.77388
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+--- !u!1001 &1319711770
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 355974795}
+    m_Modifications:
+    - target: {fileID: 1994912455, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372177631083542375, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_Name
+      value: Sheep (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7321521051079283999, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: sceneId
+      value: 3286804817
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.338738
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -12.100638
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 29.77388
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+--- !u!4 &1573618771 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+  m_PrefabInstance: {fileID: 1319711770}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1706068976
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2469789914222127169, guid: cf96c0d5423c238419289e927d0304de, type: 3}
+    - target: {fileID: 2136914873786145934, guid: 47f37a8303a3848489e463f5dca12e48, type: 3}
+      propertyPath: m_Name
+      value: Sheep Variant (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5903841641983455201, guid: 47f37a8303a3848489e463f5dca12e48, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.5623684
+      value: -1.6686116
       objectReference: {fileID: 0}
-    - target: {fileID: 2469789914222127169, guid: cf96c0d5423c238419289e927d0304de, type: 3}
+    - target: {fileID: 5903841641983455201, guid: 47f37a8303a3848489e463f5dca12e48, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.0000038
+      value: 1.13
       objectReference: {fileID: 0}
-    - target: {fileID: 2469789914222127169, guid: cf96c0d5423c238419289e927d0304de, type: 3}
+    - target: {fileID: 5903841641983455201, guid: 47f37a8303a3848489e463f5dca12e48, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.16384888
+      value: -2.3270206
       objectReference: {fileID: 0}
-    - target: {fileID: 2469789914222127169, guid: cf96c0d5423c238419289e927d0304de, type: 3}
+    - target: {fileID: 5903841641983455201, guid: 47f37a8303a3848489e463f5dca12e48, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2469789914222127169, guid: cf96c0d5423c238419289e927d0304de, type: 3}
+    - target: {fileID: 5903841641983455201, guid: 47f37a8303a3848489e463f5dca12e48, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2469789914222127169, guid: cf96c0d5423c238419289e927d0304de, type: 3}
+    - target: {fileID: 5903841641983455201, guid: 47f37a8303a3848489e463f5dca12e48, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2469789914222127169, guid: cf96c0d5423c238419289e927d0304de, type: 3}
+    - target: {fileID: 5903841641983455201, guid: 47f37a8303a3848489e463f5dca12e48, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2469789914222127169, guid: cf96c0d5423c238419289e927d0304de, type: 3}
+    - target: {fileID: 5903841641983455201, guid: 47f37a8303a3848489e463f5dca12e48, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2469789914222127169, guid: cf96c0d5423c238419289e927d0304de, type: 3}
+    - target: {fileID: 5903841641983455201, guid: 47f37a8303a3848489e463f5dca12e48, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2469789914222127169, guid: cf96c0d5423c238419289e927d0304de, type: 3}
+    - target: {fileID: 5903841641983455201, guid: 47f37a8303a3848489e463f5dca12e48, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2469789914222127169, guid: cf96c0d5423c238419289e927d0304de, type: 3}
+    - target: {fileID: 5903841641983455201, guid: 47f37a8303a3848489e463f5dca12e48, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2469789914222127173, guid: cf96c0d5423c238419289e927d0304de, type: 3}
+    - target: {fileID: 6401645486532017910, guid: 47f37a8303a3848489e463f5dca12e48, type: 3}
       propertyPath: sceneId
-      value: 3310969915
-      objectReference: {fileID: 0}
-    - target: {fileID: 2469789914222127193, guid: cf96c0d5423c238419289e927d0304de, type: 3}
-      propertyPath: m_Name
-      value: Clay Wolf (1)
+      value: 3485267868
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: cf96c0d5423c238419289e927d0304de, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 47f37a8303a3848489e463f5dca12e48, type: 3}
 --- !u!1001 &1759996844
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6960,7 +6687,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8546369013280047892, guid: 01e32ad7fc1313941ba6c4c900c04363, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8546369013280047892, guid: 01e32ad7fc1313941ba6c4c900c04363, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7046,7 +6773,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 319668135149111099, guid: 1a716dd2cdab6a640ae19f629f2095f6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.7
+      value: -2.93
       objectReference: {fileID: 0}
     - target: {fileID: 319668135149111099, guid: 1a716dd2cdab6a640ae19f629f2095f6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7054,7 +6781,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 319668135149111099, guid: 1a716dd2cdab6a640ae19f629f2095f6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.7
+      value: 22.27
       objectReference: {fileID: 0}
     - target: {fileID: 319668135149111099, guid: 1a716dd2cdab6a640ae19f629f2095f6, type: 3}
       propertyPath: m_LocalRotation.x
@@ -7094,6 +6821,145 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a716dd2cdab6a640ae19f629f2095f6, type: 3}
+--- !u!1001 &1783000939
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 355974795}
+    m_Modifications:
+    - target: {fileID: 1994912455, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372177631083542375, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_Name
+      value: Sheep (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7321521051079283999, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: sceneId
+      value: 1179919162
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.0587385
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -10.680638
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 21.369099
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+--- !u!4 &1854901954 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+  m_PrefabInstance: {fileID: 171062132}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2065229689
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 355974795}
+    m_Modifications:
+    - target: {fileID: 1994912455, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372177631083542375, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_Name
+      value: Sheep (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6809044889052875844, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: isBlack
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7321521051079283999, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: sceneId
+      value: 3724911352
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.0812616
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -10.680638
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 21.369099
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828059398278480904, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
 --- !u!1001 &2124645913
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7103,7 +6969,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2784655972275080992, guid: f8fdb77d6c447e74ba22b802a00d785b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.0114784
+      value: -24.29
       objectReference: {fileID: 0}
     - target: {fileID: 2784655972275080992, guid: f8fdb77d6c447e74ba22b802a00d785b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7131,7 +6997,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2784655972275080992, guid: f8fdb77d6c447e74ba22b802a00d785b, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2784655972275080992, guid: f8fdb77d6c447e74ba22b802a00d785b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(HeliSpawner))]
-public class HelicopterEditor : Editor
+[CustomEditor(typeof(UFOSpawner))]
+public class UFOEditor : Editor
 {
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
 
-        if (GUILayout.Button("Spawn Helicopter"))
+        if (GUILayout.Button("Spawn UFO"))
         {
-            (target as HeliSpawner)?.SpawnNewHeli();
+            (target as UFOSpawner)?.SpawnNewUFO();
         }
     }
 }

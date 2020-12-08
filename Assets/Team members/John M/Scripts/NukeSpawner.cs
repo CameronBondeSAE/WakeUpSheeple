@@ -18,9 +18,13 @@ public class NukeSpawner : MonoBehaviour
     IEnumerator NukeRoutine()
     {
         audioSource.PlayOneShot(RandomClip());
-        yield return new WaitForSeconds(14);
+        yield return new WaitForSeconds(12);
         Instantiate(nukePrefab);
         nukePrefab.transform.position = new Vector3(0,75,0);
+        //position code to be updated once final change is made
+        //random InsideCircle to determine drop point
+        
+        
     }
     AudioClip RandomClip()
     {
