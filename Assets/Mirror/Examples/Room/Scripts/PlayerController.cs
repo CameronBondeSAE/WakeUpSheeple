@@ -52,16 +52,19 @@ namespace Mirror.Examples.NetworkRoom
 
         [Header("Diagnostics")]
         public float horizontal;
-        public float vertical;
-        public float turn;
-        public float jumpSpeed;
-        public bool isGrounded = true;
-        public bool isFalling;
+        public float   vertical;
+        public float   turn;
+        public float   jumpSpeed;
+        public bool    isGrounded = true;
+        public bool    isFalling;
         public Vector3 velocity;
+		public bool           isLocalPlayerDebug;
 
-        void Update()
-        {
-            if (!isLocalPlayer)
+		void Update()
+		{
+			isLocalPlayerDebug = isLocalPlayer;
+
+			if (!isLocalPlayer)
                 return;
 
             horizontal = Input.GetAxis("Horizontal");
