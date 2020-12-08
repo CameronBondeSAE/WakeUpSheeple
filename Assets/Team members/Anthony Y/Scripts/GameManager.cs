@@ -47,9 +47,8 @@ private EndGoalChecker endGoalChecker;
     
     
     [Header("Percentage of Sheep")]
-   [SerializeField]
-    private float percentage;
-    public float percentageofSheepNeeded = 75;
+    private float percentageOfSheepNeeded;
+    public float percentage = 75;
     private float percentageIncrease = 0.01f;
 
    
@@ -129,16 +128,6 @@ private EndGoalChecker endGoalChecker;
        // networkManager.SpawnPlayer(conn);
     }
 
-    [ClientRpc]
-   
-
-    [Command]
-    void CmdPlayersSpawned(PlayerBehaviour player)
-    {
-        
-    }
-    
-
     public void PlayPhaseStarted()
     {
         GamestartedEvent?.Invoke();
@@ -191,7 +180,7 @@ private EndGoalChecker endGoalChecker;
             EndGoalTrackerWin();
         }
         
-        percentage = totalSheep * percentageofSheepNeeded * percentageIncrease;  
+        percentageOfSheepNeeded = totalSheep * percentage * percentageIncrease;  
         
 
         if (totalSheep < 0)
@@ -216,7 +205,7 @@ private EndGoalChecker endGoalChecker;
 
     public void EndGoalNotReached()
     {
-        if (endGoalChecker.safeSheep.Count < percentage)
+        if (endGoalChecker.safeSheep.Count < percentageOfSheepNeeded)
         {
             //I dont know how this may work because this will keep spamming the event if there isn't enough sheep
             //in the list
