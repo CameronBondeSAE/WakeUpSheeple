@@ -23,8 +23,8 @@ public class CurveScriptDamien : MonoBehaviour
         Vector3 c = Vector3.Lerp(position2.transform.position, position3.transform.position, transformPoint);
         Vector3 d = Vector3.Lerp(a, b, transformPoint);
         Vector3 e = Vector3.Lerp(b, c, transformPoint);
-        
-        while(curveRunning == true);
+
+		if (curveRunning == true)
         {
             transformPoint = Mathf.PerlinNoise(0, 1);
         }

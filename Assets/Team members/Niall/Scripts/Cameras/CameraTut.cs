@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using AnthonyY;
+using Mirror;
+using System;
 using UnityEngine;
 
 namespace Team_members.Niall.Scripts.Cameras 
@@ -21,13 +23,18 @@ namespace Team_members.Niall.Scripts.Cameras
         public float zoomLimiter = 50f;
         private Vector3 velocity;
 
-        private void Awake()
+        private void OnEnable()
         {
             FindObjectOfType<GameManager>().playersSpawnedEvent += OnPlayersSpawnedEvent;
             cam = GetComponent<Camera>();
         }
 
-        private void OnPlayersSpawnedEvent(PlayerBehaviour player)
+		void OnDisable()
+		{
+			FindObjectOfType<GameManager>().playersSpawnedEvent -= OnPlayersSpawnedEvent;
+		}
+
+		private void OnPlayersSpawnedEvent(NetworkIdentity player)
         {
             // if (player.isLocalPlayer)
             //  {

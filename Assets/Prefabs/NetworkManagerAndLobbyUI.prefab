@@ -1433,12 +1433,12 @@ MonoBehaviour:
   mainMenu: {fileID: 6181736371995921298}
   useSameScene: 1
   levels:
-  - Assets/Scenes/Goose.unity
-  - Assets/Scenes/Anthonys DeathRUN.unity
-  - Assets/Scenes/DylanLevel.unity
-  - Assets/Scenes/AJsLevel.unity
-  - Assets/Student workspace/AlexM/Scenes/AM01.unity
-  - Assets/Scenes/AStarMaze.unity
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   gameManager: {fileID: 0}
   heightOffset: 1.5
 --- !u!114 &6181736370761581533
@@ -3899,8 +3899,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6497264542455689841}
   m_HandleRect: {fileID: 6497264542455689854}
   m_Direction: 2
-  m_Value: -0.0003703018
-  m_Size: 0.9970536
+  m_Value: -0.003306266
+  m_Size: 0.99708897
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4697,7 +4697,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000022888184, y: 0.2885631}
+  m_AnchoredPosition: {x: -0.000022888184, y: 0.28940976}
   m_SizeDelta: {x: 0, y: 101.01}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &6497264541811411597
@@ -4953,7 +4953,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6497264542568998323}
   m_HandleRect: {fileID: 6497264542568998320}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

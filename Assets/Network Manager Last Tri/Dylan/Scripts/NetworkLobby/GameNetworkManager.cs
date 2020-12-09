@@ -51,7 +51,7 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
 
         public static event Action<NetworkConnection> OnServerReadied;
 
-		public event Action<PlayerBehaviour> PhysicalPlayerSpawned;
+		public event Action<NetworkIdentity> PhysicalPlayerSpawned;
 		
 		
         public List<NetworkLobbyPlayer> RoomPlayers { get; } = new List<NetworkLobbyPlayer>();
@@ -436,10 +436,10 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
                 nextIndex = 0;
             }
             
-			PhysicalPlayerSpawned?.Invoke(playerInstance.GetComponent<PlayerBehaviour>());
+			PhysicalPlayerSpawned?.Invoke(playerInstance.GetComponent<NetworkIdentity>());
            
             
-        }
+        }	
 
         public static void AddSpawnPoint(Transform transform)
         {

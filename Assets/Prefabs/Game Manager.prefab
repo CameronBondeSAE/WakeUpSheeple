@@ -47,8 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  CameraPlayerFollowPrefab: {fileID: 2288651071870068882, guid: e120714066bf0e84daf082be0c7d9ffa, type: 3}
   gameNetworkManager: {fileID: 0}
-  endGoalChecker: {fileID: 0}
   spawnerList:
   - {fileID: 0}
   endGoals:
