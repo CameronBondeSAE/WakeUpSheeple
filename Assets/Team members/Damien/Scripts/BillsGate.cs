@@ -2,25 +2,22 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using AlexM;
+using AnthonyY;
 using UnityEditor.PackageManager;
 using UnityEngine;
 
 namespace Damien
 {
-//Find all sheep in level
-//Determine the nearest sheep
-//See if nearest sheep is within range
-//Do something if sheep in within range
+//Find all players in level
+//Determine the nearest player
+//See if nearest player is within range
+//Do something if player in within range
 
     public class BillsGate : MonoBehaviour
     {
         
-        public string sheepTag = "sheep";
-    
         private Transform inRange;
-        
-        
-        
+
         public float range = 3f;
         private float openAngle = 90f;
         public float rotateAngle = 15f;
@@ -52,21 +49,20 @@ namespace Damien
         }
         void UpdateInRange()
         {
-            //Find nearest sheep
-           //TODO: Hack Replace with sheep manager
-            Sheep[] sheeps = Sheep.FindObjectsOfType<Sheep>();
+            //Find nearest player
+            PlayerBehaviour[] players = Sheep.FindObjectsOfType<PlayerBehaviour>();
             float shortestDistance = Mathf.Infinity;
-            Sheep nearestSheep = null;
-            foreach (Sheep sheep in sheeps)
+            PlayerBehaviour nearestPlayer = null;
+            foreach (PlayerBehaviour player in players)
             {
-                float distanceToSheep = Vector3.Distance(transform.position, sheep.transform.position);
-                if (distanceToSheep < shortestDistance)
+                float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+                if (distanceToPlayer < shortestDistance)
                 {
-                    shortestDistance = distanceToSheep;
-                    nearestSheep = sheep;
+                    shortestDistance = distanceToPlayer;
+                    nearestPlayer = player;
                 }
             }
-            if (nearestSheep != null && shortestDistance <= range)
+            if (nearestPlayer != null && shortestDistance <= range)
             {
                 //Debug.Log("Sheep is in Range");
                 if (partToRotate.transform.localRotation.eulerAngles.y <openAngle)

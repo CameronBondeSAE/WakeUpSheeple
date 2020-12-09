@@ -20,7 +20,6 @@ GameObject:
   - component: {fileID: -725918390782881256}
   - component: {fileID: -336919023003889543}
   - component: {fileID: 4825105750970700407}
-  - component: {fileID: -7589666243691037477}
   m_Layer: 0
   m_Name: Clay Dog
   m_TagString: Untagged
@@ -134,7 +133,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clay: {fileID: 2100000, guid: 5fc03963ccd058a48a22c27ec3476639, type: 2}
-  light: {fileID: 0}
 --- !u!114 &6123762923093497166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,6 +186,7 @@ MonoBehaviour:
   dogBark: {fileID: -336919023003889543}
   wolfHowl: {fileID: 4825105750970700407}
   amIWolf: 1
+  clay: {fileID: 2100000, guid: 5fc03963ccd058a48a22c27ec3476639, type: 2}
 --- !u!114 &-725918390782881256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,20 +393,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &-7589666243691037477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2299596439350243934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39a27414d67973c4993ed60ce377ed75, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wolf:
-    active: 0
-  dog:
-    active: 1
-  player: {fileID: 4887145999256628070}

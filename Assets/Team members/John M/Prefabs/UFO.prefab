@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 2514153509697122412}
   - component: {fileID: 2514153509697122415}
   - component: {fileID: 2514153509697122414}
+  - component: {fileID: 531973635}
   m_Layer: 0
-  m_Name: Helicopter
+  m_Name: UFO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,8 +95,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1.0158046}
+  m_Center: {x: 0, y: 0, z: -0.0066714524}
 --- !u!114 &2514153509697122414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,7 +109,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd058128586ba594a94d1ee593364299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnLocations: []
+  UFO: {fileID: 2514153509697124241}
+  SpawnLocations:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   WaitLocations:
   - {fileID: 0}
   - {fileID: 0}
@@ -117,3 +122,22 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  move: 2
+  sheepMove: 1
+  RandomSpawn: 0
+  RandomWait: 0
+  RandomExit: 0
+  PickUpradius: 5
+--- !u!135 &531973635
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2514153509697124241}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.1316943
+  m_Center: {x: 0, y: -1.7836094, z: -0.16111068}

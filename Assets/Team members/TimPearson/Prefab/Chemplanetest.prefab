@@ -119,6 +119,7 @@ MonoBehaviour:
   planeHeight: 5
   trail: {fileID: 4516764012826488813}
   Virus: {fileID: 2704142560674385399, guid: e9becea97fca0c242bedfecf9161a56e, type: 3}
+  gameManager: {fileID: 0}
 --- !u!54 &137691029
 Rigidbody:
   m_ObjectHideFlags: 0

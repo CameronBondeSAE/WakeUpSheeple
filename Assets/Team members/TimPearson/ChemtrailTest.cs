@@ -19,6 +19,7 @@ public class ChemtrailTest : MonoBehaviour
     public ParticleSystem trail;
     public List<ParticleCollisionEvent> collisionEvents;
     public GameObject Virus;
+    private GameManager gameManager; 
 
 
     // Start is called before the first frame update
@@ -27,13 +28,14 @@ public class ChemtrailTest : MonoBehaviour
         if (target == null)
         {
            Debug.LogWarning("Chemplane NEEDS a target set",this);
-           return;
+           //return;
         }
         //Vector3 position = new Vector3(Random.Range(-41f,58f),2,Random.Range(-46,54));
         //Instantiate(enemy, position, Quaternion.identity);
         StartCoroutine("FlyOverSequence");
        // trail = GetComponent<ParticleSystem>();
         collisionEvents = new List<ParticleCollisionEvent>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     private void OnParticleCollision(GameObject other)
@@ -71,7 +73,7 @@ public class ChemtrailTest : MonoBehaviour
             //yield return new WaitForSeconds(5f);
             Vector3 position = new Vector3(Random.Range(-41f, 58f), planeHeight, Random.Range(-46, 54));
             transform.position = position;
-            Vector3 targetPos = target.position;
+            Vector3 targetPos = gameManager.GetComponent<CoreSheepFinder>().centerofSheepFlock;
             targetPos.y = planeHeight;
             velocity = (targetPos - transform.position).normalized * speed;
             yield return new WaitForSeconds(5f);
