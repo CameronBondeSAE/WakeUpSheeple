@@ -35,7 +35,6 @@ namespace AnthonyY
 
 		private void Awake()
 		{
-			controls = new PlayerControls();
 			// amIWolf = false;
 		}
 		
@@ -48,7 +47,13 @@ namespace AnthonyY
 		public override void OnStartLocalPlayer()
 		{
 			base.OnStartLocalPlayer();
-			
+			controls = new PlayerControls();
+			controls.Dog.Enable();
+			controls.Wolf.Enable();
+			controls.Movement.Enable();
+			health.DeathEvent                       += Death;
+			controls.Dog.Bark.performed             += _ => RpcBark();
+			controls.Wolf.Howl.performed            += _ => RpcHowl();
 			
 			// HACK
 			GameObject instantiate = Instantiate(cameraPrefab);
@@ -64,12 +69,7 @@ namespace AnthonyY
 
 		private void OnEnable()
 		{
-			controls.Dog.Enable();
-			controls.Wolf.Enable();
-			controls.Movement.Enable();
-			health.DeathEvent                       += Death;
-			controls.Dog.Bark.performed             += _ => RpcBark();
-			controls.Wolf.Howl.performed            += _ => RpcHowl();
+			
 			//GetComponent<PauseManager>().PauseEvent += OnPauseEvent;
 			
 		}
@@ -105,6 +105,7 @@ namespace AnthonyY
 			// }
 			if (isLocalPlayer)
 			{
+				
 				movementInput = controls.Movement.Movement.ReadValue<Vector2>();
 				CmdMove(movementInput);
 			}
