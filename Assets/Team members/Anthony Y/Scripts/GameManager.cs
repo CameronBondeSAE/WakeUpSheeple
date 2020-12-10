@@ -69,12 +69,6 @@ public class GameManager : NetworkBehaviour
         }
            
 
-        // Destroy all existing cameras
-		// HACK: There could be a time where you want other cameras in the scene, so this is too brute force
-		foreach (Camera cam in FindObjectsOfType<Camera>())
-		{
-			Destroy(cam.gameObject);
-		}
 
 		// Proper follow camera for this gamemode (full screen)
 		// cameraFollow = Instantiate(CameraPlayerFollowPrefab);
@@ -185,48 +179,6 @@ public class GameManager : NetworkBehaviour
 		}
 
 
-        if (totalSheep < 0)
-        {
-            EndGoalTrackerLost(character);
-        }
-    }
-
-    //Fire event when all required reach the level
-    public void EndGoalTrackerWin()
-    {
-        //SAFE SHEEP
-        WonEvent?.Invoke();
-        Debug.Log("GAME MANAGER: YOU WON THE  GAME ._.");
-    }
-    public void EndGoalTrackerLost(CharacterBase character)
-    {
-        SheepTracker(character);
-        LostEvent?.Invoke();
-        Debug.Log("GAME MANAGER: YOU LOST THE GAME :(");
-    }
-
-    public void EndGoalNotReached()
-    {
-        if (endGoalChecker.safeSheep.Count < percentageOfSheepNeeded)
-        {
-            //I dont know how this may work because this will keep spamming the event if there isn't enough sheep
-            //in the list
-        }
-    }
-[ClientRpc]
-    public void RpcGameOver()
-    {
-        GameOverEvent?.Invoke();
-        Debug.Log("GAME OVER!");
-    }
-    
-    //*****SERVER CODE*********
-    [Command]
-    public void CmdGameOver()
-    {
-        RpcGameOver();
-    }
-    
 		//Remove sheep from list when it dies
 
 		// foreach ( Sheep sheep in allSheep)
