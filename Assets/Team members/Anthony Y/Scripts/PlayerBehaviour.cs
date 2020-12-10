@@ -36,7 +36,7 @@ namespace AnthonyY
 		{
 			base.OnStartClient();
 			
-		}m
+		}
 
 		public override void OnStartLocalPlayer()
 		{
