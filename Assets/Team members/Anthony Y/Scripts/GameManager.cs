@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using AJ;
 using AlexM;
-using AnthonyY;
 using Mirror;
-using Mirror.Examples.Chat;
 using Student_workspace.Dylan.Scripts.NetworkLobby;
 using UnityEngine;
-using Random = System.Random;
 
 public class GameManager : NetworkBehaviour
 {
@@ -61,9 +57,13 @@ private EndGoalChecker endGoalChecker;
     {
 		gameNetworkManager                       =  FindObjectOfType<GameNetworkManager>();
 		// Forward on the event from Networkmanager to the normal gamemanager for convenience
-		gameNetworkManager.PhysicalPlayerSpawned += identity => PlayersSpawned(identity);
-		
-		// Destroy all existing cameras
+        if (!(gameNetworkManager is null))
+        {
+            gameNetworkManager.PhysicalPlayerSpawned += identity => PlayersSpawned(identity);
+        }
+           
+
+        // Destroy all existing cameras
 		// HACK: There could be a time where you want other cameras in the scene, so this is too brute force
 		// foreach (Camera cam in FindObjectsOfType<Camera>())
 		// {
