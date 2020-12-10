@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -31,6 +32,12 @@ namespace AlexM
 		{
 			isBlack = false;
 		}
-    }
+
+		private void OnCollisionEnter(Collision other)
+		{
+			//This should re-enable the movement of sheep when they get touched after getting stopped by propaganda TV's
+			GetComponent<Movement_ForwardAM>().enabled = true;
+		}
+	}
 
 }

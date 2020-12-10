@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace AlexM
@@ -7,10 +8,13 @@ namespace AlexM
 	{
 		public float radius = 5f;
 		public int lastAmountOfSheep;
+		List<Sheep> neighbours;
 
+		
 		public List<Sheep> GetNearbySheep()
 		{
-			List<Sheep> neighbours = new List<Sheep>();
+			
+			neighbours = new List<Sheep>();
 			Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
 
 			foreach (Collider c in colliders)

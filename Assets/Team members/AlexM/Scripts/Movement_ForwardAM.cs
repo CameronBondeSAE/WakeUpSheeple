@@ -21,12 +21,19 @@ public class Movement_ForwardAM : MonoBehaviour
    // public float maxSpeed;
 
    public event Action<Vector3> velEvent;
-   
+
+   //beacon even to passthrough all the info in this script
+   public event Action<Movement_ForwardAM> beacon;
    //Debugging
    private Vector3 vel;
-   
+   float previousForce;
 
 #endregion
+
+   private void OnEnable()
+   {
+      beacon?.Invoke(this);
+   }
 
    private void Awake()
    {
@@ -49,6 +56,16 @@ public class Movement_ForwardAM : MonoBehaviour
       GoForward();
       DoStop();
       
+   }
+
+   public float SetForce(float force)
+   {
+      previousForce = zForce;
+
+     
+      zForce = force;
+      
+      return zForce;
    }
    
    public void GoForward()

@@ -32,7 +32,7 @@ public class RaycastAvoid : MonoBehaviour
 				MainTransform.Rotate(0, Time.deltaTime * (speed * 3f), 0);
 			}
 
-			if (raycastHit.transform.gameObject.layer == LayerMask.NameToLayer("Obstacles"))
+			if (raycastHit.transform.gameObject.layer == LayerMask.NameToLayer("Obstacles") || raycastHit.transform.gameObject.layer == LayerMask.NameToLayer("Default") )
 			{
 				// string layerName = LayerMask.LayerToName(8).ToString();
 				// Debug.Log(MainTransform.name + "-" + transform.name + ": Hitting layer:: " + layerName, this);
