@@ -33,8 +33,7 @@ namespace Zach
 
         private void Awake()
         {
-            //resetting bool here due to instantiate cloning instance not prefab
-            //isAttached = false;
+            deathTimer = 15f;
         }
 
         
