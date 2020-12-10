@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using AJ;
 using AlexM;
 using Mirror;
 using Student_workspace.Dylan.Scripts.NetworkLobby;
@@ -217,14 +216,12 @@ private EndGoalChecker endGoalChecker;
     {
         //SAFE SHEEP
         WonEvent?.Invoke();
-        MusicAudioManager.PlaySFX("WonMusic");
         Debug.Log("GAME MANAGER: YOU WON THE  GAME ._.");
     }
     public void EndGoalTrackerLost(CharacterBase character)
     {
         SheepTracker(character);
         LostEvent?.Invoke();
-        MusicAudioManager.PlaySFX("LostMusic");
         Debug.Log("GAME MANAGER: YOU LOST THE GAME :(");
     }
 
@@ -240,7 +237,6 @@ private EndGoalChecker endGoalChecker;
     public void RpcGameOver()
     {
         GameOverEvent?.Invoke();
-        //MusicAudioManager.PlaySFX("GameOverMusic"); 
         Debug.Log("GAME OVER!");
     }
     
