@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using AJ;
 using AnthonyY;
 using Mirror;
-using Student_workspace.Blaide.scripts;
-using Student_workspace.Dylan.Scripts.Player;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
 namespace Student_workspace.Dylan.Scripts.NetworkLobby
@@ -51,7 +46,7 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
 
         public static event Action<NetworkConnection> OnServerReadied;
 
-		public event Action<PlayerBehaviour> PhysicalPlayerSpawned;
+		public event Action<NetworkIdentity> PhysicalPlayerSpawned;
 		
 		
         public List<NetworkLobbyPlayer> RoomPlayers { get; } = new List<NetworkLobbyPlayer>();
@@ -436,10 +431,10 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
                 nextIndex = 0;
             }
             
-			PhysicalPlayerSpawned?.Invoke(playerInstance.GetComponent<PlayerBehaviour>());
+			PhysicalPlayerSpawned?.Invoke(playerInstance.GetComponent<NetworkIdentity>());
            
             
-        }
+        }	
 
         public static void AddSpawnPoint(Transform transform)
         {

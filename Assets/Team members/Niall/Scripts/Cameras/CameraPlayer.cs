@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using AnthonyY;
 using Cinemachine;
 using DG.Tweening;
+using Mirror;
 using UnityEngine;
 
 namespace Niall
@@ -17,20 +18,32 @@ namespace Niall
         public Vector3 offset;
 
         private Vector3 velocity;
+		GameManager     gameManager;
 
-        private void Awake()
-        {
-            FindObjectOfType<GameManager>().playersSpawnedEvent += OnPlayersSpawnedEvent;
-        }
+        private void OnEnable()
+		{
+			// gameManager                     =  FindObjectOfType<GameManager>();
+			// if (gameManager)
+			// {
+				// gameManager.playersSpawnedEvent += OnPlayersSpawnedEvent;
+			// }
+		}
 
-        private void OnPlayersSpawnedEvent(PlayerBehaviour player)
+		void OnDisable()
+		{
+			// if (gameManager)
+			// {
+				// gameManager.playersSpawnedEvent -= OnPlayersSpawnedEvent;
+			// }
+		}
+
+		private void OnPlayersSpawnedEvent(NetworkIdentity player)
         {
-             if (player.isLocalPlayer)
-              {
-                  OwnPlayer = player.transform;
-               }
-            // else
-            // OwnPlayer = player.transform;
+            if (player.isClient)
+            {
+                OwnPlayer = player.transform;
+            }
+
         }
 
 

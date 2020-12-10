@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using AnthonyY;
 using DG.Tweening;
+using Mirror;
 using UnityEngine;
 
 [RequireComponent(typeof(Camera))]
@@ -15,21 +16,26 @@ public class CameraPlayer : MonoBehaviour
     public Vector3 offset;
     
     private Vector3 velocity;
-
-    private void Awake()
+	
+    private void OnEnable()
     {
         FindObjectOfType<GameManager>().playersSpawnedEvent += OnPlayersSpawnedEvent;
         cam = GetComponent<Camera>();
     }
 
-    private void OnPlayersSpawnedEvent(PlayerBehaviour player)
+	void OnDisable()
+	{
+		FindObjectOfType<GameManager>().playersSpawnedEvent -= OnPlayersSpawnedEvent;
+	}
+
+	private void OnPlayersSpawnedEvent(NetworkIdentity playerNetworkIdentity)
     {
        // if (player.isLocalPlayer)
       //  {
      //      target = player.transform;
      //   }
         
-       target = player.transform;
+       target = playerNetworkIdentity.transform;
         
     }
 

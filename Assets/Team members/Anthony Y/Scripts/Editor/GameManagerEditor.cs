@@ -1,9 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Student_workspace.Dylan.Scripts.NetworkLobby;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
-using UnityEngine.Experimental.XR;
 
 [CustomEditor(typeof(GameManager))]
 public class GameManagerEditor : Editor

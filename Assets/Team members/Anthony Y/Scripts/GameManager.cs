@@ -1,22 +1,19 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using AJ;
 using AlexM;
-using AnthonyY;
 using Mirror;
-using Mirror.Examples.Chat;
 using Student_workspace.Dylan.Scripts.NetworkLobby;
 using UnityEngine;
-using Random = System.Random;
 
 public class GameManager : NetworkBehaviour
 {
+	public GameObject CameraPlayerFollowPrefab;
     
     [SerializeField]
     private GameNetworkManager gameNetworkManager;
-    ///Players spawned
-    public event Action<PlayerBehaviour> playersSpawnedEvent;
+	///Players spawned
+    public event Action<NetworkIdentity> playersSpawnedEvent;
 
     ///Actually starting the game
     public event Action GamestartedEvent;
@@ -53,12 +50,31 @@ private EndGoalChecker endGoalChecker;
     private float percentageIncrease = 0.01f;
 
    
+	GameObject cameraFollow;
 
 
     void Awake()
     {
-       gameNetworkManager = FindObjectOfType<GameNetworkManager>();
-       foreach (Spawner spawner in spawnerList)
+		gameNetworkManager                       =  FindObjectOfType<GameNetworkManager>();
+		// Forward on the event from Networkmanager to the normal gamemanager for convenience
+        if (!(gameNetworkManager is null))
+        {
+            gameNetworkManager.PhysicalPlayerSpawned += identity => PlayersSpawned(identity);
+        }
+           
+
+        // Destroy all existing cameras
+		// HACK: There could be a time where you want other cameras in the scene, so this is too brute force
+		// foreach (Camera cam in FindObjectsOfType<Camera>())
+		// {
+			// Destroy(cam.gameObject);
+		// }
+
+		// Proper follow camera for this gamemode (full screen)
+		// cameraFollow = Instantiate(CameraPlayerFollowPrefab);
+		cameraFollow = FindObjectOfType<CameraPlayer>().gameObject;
+
+		foreach (Spawner spawner in spawnerList)
        {
            if (spawner == null)
            {
@@ -94,7 +110,7 @@ private EndGoalChecker endGoalChecker;
         // playersSpawnedEvent += PlayersSpawned;
         // // MapOverviewEvent += OverviewOfMap;
         // // GameOverEvent += GameOver;
-        gameNetworkManager.PhysicalPlayerSpawned += PlayersSpawned;
+        // gameNetworkManager.PhysicalPlayerSpawned += PlayersSpawned;
     }
 
     private void OnDisable()
@@ -105,7 +121,7 @@ private EndGoalChecker endGoalChecker;
     //     playersSpawnedEvent -= PlayersSpawned;
     //     // MapOverviewEvent -= OverviewOfMap;
     //     // GameOverEvent -= GameOver;
-    gameNetworkManager.PhysicalPlayerSpawned -= PlayersSpawned;
+    // gameNetworkManager.PhysicalPlayerSpawned -= PlayersSpawned;
     }
 
     private void Update()
@@ -113,21 +129,27 @@ private EndGoalChecker endGoalChecker;
         
     }
 
-    public void OverviewOfMap()
+	public void OverviewOfMap()
     {
         //CONTROLLING THE CAMERA TO SHOW NEW MECHANICS IN THE GAME
         MapOverviewEvent?.Invoke();
         Debug.Log("SHOWING OVERVIEW OF MAP");
     }
 
-    public void PlayersSpawned(PlayerBehaviour player)
-    {
-        playersSpawnedEvent?.Invoke(player);
-        Debug.Log("GameManager Event: PLAYERS SPAWNED but cannot move");
-      
-        // GetComponent<PlayerBehaviour>()?.controls.Movement.Movement.Disable();
-       // networkManager.SpawnPlayer(conn);
-    }
+	public void PlayersSpawned(NetworkIdentity networkIdentity)
+	{
+		// RPCPlayersSpawned(networkIdentity);
+		// GetComponent<PlayerBehaviour>()?.controls.Movement.Movement.Disable();
+		// networkManager.SpawnPlayer(conn);
+	}
+
+	// Mostly used for things like clientside cameras (Could use the OnClient functions from mirror too)
+	// [ClientRpc]
+	// public void RPCPlayersSpawned(NetworkIdentity networkIdentity)
+	// {
+		// playersSpawnedEvent?.Invoke(networkIdentity);
+		// Debug.Log("GameManager Event: PLAYERS SPAWNED but cannot move");
+	// }
 
     public void PlayPhaseStarted()
     {

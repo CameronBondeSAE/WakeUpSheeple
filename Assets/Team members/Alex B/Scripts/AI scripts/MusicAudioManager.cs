@@ -21,19 +21,19 @@ namespace AJ
 
         public static void PlaySFX(string clip)
         {
-            switch(clip)
-            {
-                case "WonMusic":
-                    audioSource.PlayOneShot(WonEventMusic);
-                    break;
-
-                case "LostMusic":
-                    audioSource.PlayOneShot(LostEventMusic);
-                    break;
-                case "GameOverMusic":
-                    audioSource.PlayOneShot(GameOverMusic);
-                    break;
-            }
+            // switch(clip)
+            // {
+            //     case "WonMusic":
+            //         audioSource.PlayOneShot(WonEventMusic);
+            //         break;
+            //
+            //     case "LostMusic":
+            //         audioSource.PlayOneShot(LostEventMusic);
+            //         break;
+            //     case "GameOverMusic":
+            //         audioSource.PlayOneShot(GameOverMusic);
+            //         break;
+            // }
         }
     }
 }

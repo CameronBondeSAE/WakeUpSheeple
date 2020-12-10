@@ -6,6 +6,7 @@ using Mirror.Examples.Chat;
 using Student_workspace.Dylan.Scripts.NetworkLobby;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Object = UnityEngine.Object;
 
 namespace AnthonyY
 {
@@ -26,13 +27,17 @@ namespace AnthonyY
 		public Material clay;
 		
 		private static readonly int Colour = Shader.PropertyToID("Color_9A1239AC");
+		public Vector3                     movement;
+		public Vector3                     movementInput;
+
+		// HACK
+		public GameObject cameraPrefab;
 
 		private void Awake()
 		{
-			controls = new PlayerControls();
 			// amIWolf = false;
 		}
-
+		
 		public override void OnStartClient()
 		{
 			base.OnStartClient();
@@ -42,19 +47,29 @@ namespace AnthonyY
 		public override void OnStartLocalPlayer()
 		{
 			base.OnStartLocalPlayer();
-			
-			
-		}
-
-
-		private void OnEnable()
-		{
+			controls = new PlayerControls();
 			controls.Dog.Enable();
 			controls.Wolf.Enable();
 			controls.Movement.Enable();
 			health.DeathEvent                       += Death;
 			controls.Dog.Bark.performed             += _ => RpcBark();
 			controls.Wolf.Howl.performed            += _ => RpcHowl();
+			
+			// HACK
+			GameObject instantiate = Instantiate(cameraPrefab);
+			instantiate.GetComponent<Niall.CameraPlayer>().OwnPlayer = transform;
+			// if (networkIdentity.isLocalPlayer)
+			// {
+			
+				// cameraFollow.GetComponent<CameraPlayer>().target = networkIdentity.transform;
+			// }
+	
+		}
+
+
+		private void OnEnable()
+		{
+			
 			//GetComponent<PauseManager>().PauseEvent += OnPauseEvent;
 			
 		}
@@ -88,35 +103,40 @@ namespace AnthonyY
 			//         }
 			//     }
 			// }
-			Vector3 movementInput = controls.Movement.Movement.ReadValue<Vector2>();
-			CmdMove(movementInput);
+			if (isLocalPlayer)
+			{
+				
+				movementInput = controls.Movement.Movement.ReadValue<Vector2>();
+				CmdMove(movementInput);
+			}
+			else
+			{
+				Rigidbody rb = GetComponent<Rigidbody>();
+
+				// transform.Translate(movement * (movementSpeed * Time.deltaTime), Space.World);
+				rb.velocity = movement * (movementSpeed * Time.deltaTime);
+
+				// Are we moving AT ALL?
+				if (rb.velocity.magnitude > 0.5f)
+				{
+					transform.rotation = Quaternion.LookRotation(movement);
+				}
+
+
+				Vector3 playerVelocity = rb.velocity;
+				playerVelocity.y  = 0;
+				transform.forward = new Vector3(playerVelocity.x, playerVelocity.y, playerVelocity.z);
+			}
 		}
 
 		[ClientRpc]
 		private void RpcMove(Vector2 movementInput)
 		{
-			Vector3 movement = new Vector3
-							   {
-								   x = movementInput.x,
-								   z = movementInput.y
-							   }.normalized;
-
-
-			Rigidbody rb = GetComponent<Rigidbody>();
-
-			// transform.Translate(movement * (movementSpeed * Time.deltaTime), Space.World);
-			rb.velocity = movement * (movementSpeed * Time.deltaTime);
-
-			// Are we moving AT ALL?
-			if (rb.velocity.magnitude > 0.5f)
-			{
-				transform.rotation = Quaternion.LookRotation(movement);
-			}
-
-
-			Vector3 playerVelocity = rb.velocity;
-			playerVelocity.y  = 0;
-			transform.forward = new Vector3(playerVelocity.x, playerVelocity.y, playerVelocity.z);
+			movement = new Vector3
+					   {
+						   x = movementInput.x,
+						   z = movementInput.y
+					   }.normalized;
 		}
 
 		public void RpcBark()
