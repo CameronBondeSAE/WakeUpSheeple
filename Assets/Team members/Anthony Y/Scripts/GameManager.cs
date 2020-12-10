@@ -185,6 +185,48 @@ public class GameManager : NetworkBehaviour
 		}
 
 
+        if (totalSheep < 0)
+        {
+            EndGoalTrackerLost(character);
+        }
+    }
+
+    //Fire event when all required reach the level
+    public void EndGoalTrackerWin()
+    {
+        //SAFE SHEEP
+        WonEvent?.Invoke();
+        Debug.Log("GAME MANAGER: YOU WON THE  GAME ._.");
+    }
+    public void EndGoalTrackerLost(CharacterBase character)
+    {
+        SheepTracker(character);
+        LostEvent?.Invoke();
+        Debug.Log("GAME MANAGER: YOU LOST THE GAME :(");
+    }
+
+    public void EndGoalNotReached()
+    {
+        if (endGoalChecker.safeSheep.Count < percentageOfSheepNeeded)
+        {
+            //I dont know how this may work because this will keep spamming the event if there isn't enough sheep
+            //in the list
+        }
+    }
+[ClientRpc]
+    public void RpcGameOver()
+    {
+        GameOverEvent?.Invoke();
+        Debug.Log("GAME OVER!");
+    }
+    
+    //*****SERVER CODE*********
+    [Command]
+    public void CmdGameOver()
+    {
+        RpcGameOver();
+    }
+    
 		//Remove sheep from list when it dies
 
 		// foreach ( Sheep sheep in allSheep)
