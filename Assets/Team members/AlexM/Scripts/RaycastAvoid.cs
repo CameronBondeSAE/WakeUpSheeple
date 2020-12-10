@@ -1,4 +1,5 @@
-﻿using AnthonyY;
+﻿using System;
+using AnthonyY;
 using UnityEngine;
 
 
@@ -10,6 +11,7 @@ public class RaycastAvoid : MonoBehaviour
 	public float distance = 5f;
 	public Transform MainTransform;
 	public LayerMask layer;
+	
 	void Update()
 	{
 		RaycastOut();

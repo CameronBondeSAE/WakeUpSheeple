@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 
 namespace AlexM
@@ -28,7 +29,12 @@ namespace AlexM
             return avoidanceMove;
 
         }
-        
+
+        //Put this here as just a test. Delete it
+        private void FixedUpdate()
+        {
+            CalculateMove();
+        }
     }
 }
 
