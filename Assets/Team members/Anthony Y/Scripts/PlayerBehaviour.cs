@@ -17,12 +17,12 @@ namespace AnthonyY
 
 		[SerializeField]
 		public bool amIWolf = false;
-		
+
 		public Material clay;
-		
-		private static readonly int Colour = Shader.PropertyToID("Color_9A1239AC");
-		public Vector3                     movement;
-		public Vector3                     movementInput;
+
+		private static readonly int     Colour = Shader.PropertyToID("Color_9A1239AC");
+		public                  Vector3 movement;
+		public                  Vector3 movementInput;
 
 		// HACK
 		public GameObject cameraPrefab;
@@ -31,7 +31,7 @@ namespace AnthonyY
 		{
 			// amIWolf = false;
 		}
-		
+
 		public override void OnStartClient()
 		{
 			base.OnStartClient();
@@ -45,27 +45,30 @@ namespace AnthonyY
 			controls.Dog.Enable();
 			controls.Wolf.Enable();
 			controls.Movement.Enable();
-			health.DeathEvent                       += Death;
-			controls.Dog.Bark.performed             += _ => RpcBark();
-			controls.Wolf.Howl.performed            += _ => RpcHowl();
-			
+			health.DeathEvent            += Death;
+			controls.Dog.Bark.performed  += _ => RpcBark();
+			controls.Wolf.Howl.performed += _ => RpcHowl();
+
 			// HACK
+			// Destroy all existing cameras
+			// HACK: There could be a time where you want other cameras in the scene, so this is too brute force
+			foreach (Camera cam in FindObjectsOfType<Camera>())
+			{
+				Destroy(cam.gameObject);
+			}
 			GameObject instantiate = Instantiate(cameraPrefab);
 			instantiate.GetComponent<Niall.CameraPlayer>().OwnPlayer = transform;
 			// if (networkIdentity.isLocalPlayer)
 			// {
-			
-				// cameraFollow.GetComponent<CameraPlayer>().target = networkIdentity.transform;
+
+			// cameraFollow.GetComponent<CameraPlayer>().target = networkIdentity.transform;
 			// }
-	
 		}
 
 
 		private void OnEnable()
 		{
-			
 			//GetComponent<PauseManager>().PauseEvent += OnPauseEvent;
-			
 		}
 
 		private void OnPauseEvent()
@@ -157,7 +160,7 @@ namespace AnthonyY
 					controls.Dog.Enable();
 				}
 
-				clay.SetColor(Colour,Color.green);
+				clay.SetColor(Colour, Color.green);
 			}
 		}
 
@@ -173,7 +176,7 @@ namespace AnthonyY
 					controls.Dog.Enable();
 				}
 
-				clay.SetColor(Colour,Color.cyan);
+				clay.SetColor(Colour, Color.cyan);
 			}
 		}
 

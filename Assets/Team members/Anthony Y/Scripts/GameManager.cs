@@ -69,12 +69,6 @@ public class GameManager : NetworkBehaviour
         }
            
 
-        // Destroy all existing cameras
-		// HACK: There could be a time where you want other cameras in the scene, so this is too brute force
-		// foreach (Camera cam in FindObjectsOfType<Camera>())
-		// {
-		// Destroy(cam.gameObject);
-		// }
 
 		// Proper follow camera for this gamemode (full screen)
 		// cameraFollow = Instantiate(CameraPlayerFollowPrefab);
