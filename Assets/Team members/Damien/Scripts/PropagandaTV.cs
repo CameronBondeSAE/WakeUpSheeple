@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Mime;
 using AlexM;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -26,13 +27,13 @@ namespace Damien
         // Start is called before the first frame update
         void Start()
         {
-
+            InvokeRepeating("DetectSheep", 0, 1);
         }
 
         // Update is called once per frame
         void Update()
         {
-            DetectSheep();
+            // DetectSheep();
         }
 
         public void DetectSheep()
@@ -43,30 +44,30 @@ namespace Damien
             foreach (Sheep sheep in sheeps)
             {
                 float distanceToSheep = Vector3.Distance(transform.position, sheep.transform.position);
-                if (distanceToSheep < shortestDistance)
+                /*if (distanceToSheep < shortestDistance)
                 {
                     shortestDistance = distanceToSheep;
                     nearestSheep = sheep;
                 }
-            }
 
-            if (nearestSheep == null)
-            {
-                return;
-            }
-
-            if (shortestDistance <= tvInnerRadius)
-            {
-                StartCoroutine(HypnotiseSheep());
-            }
-            else if (shortestDistance <= tvOuterRadius)
-            {
-                StartCoroutine(LureSheep());
-            }
-            else
-            {
-                StopCoroutine(HypnotiseSheep());
-                StopCoroutine(LureSheep());
+                if (nearestSheep == null)
+                {
+                    return;
+                }*/
+                
+                if (distanceToSheep <= tvInnerRadius)
+                {
+                    StartCoroutine(HypnotiseSheep());
+                }
+                else if (distanceToSheep <= tvOuterRadius)
+                {
+                    StartCoroutine(LureSheep());
+                }
+                else
+                {
+                    StopCoroutine(HypnotiseSheep());
+                    StopCoroutine(LureSheep());
+                }
             }
         }
 
@@ -76,33 +77,33 @@ namespace Damien
             yield return new WaitForSeconds(5f);
         }
 
-            public IEnumerator LureSheep()
-            {
-                //TODO:Maybe move sheep towards inner circle?
-                yield return new WaitForSeconds(5f);
-            }
+        public IEnumerator LureSheep()
+        {
+            //TODO:Maybe move sheep towards inner circle?
+            yield return new WaitForSeconds(5f);
+        }
 
-            public IEnumerator PlayVideo()
-            {
-                //TODO:PlayVideo on TV
+        public IEnumerator PlayVideo()
+        {
+            //TODO:PlayVideo on TV
 
-                yield return new WaitForSeconds(10f);
-            }
+            yield return new WaitForSeconds(10f);
+        }
 
-            private void OnDrawGizmosSelected()
-            {
-                Gizmos.color = Color.green;
-                Gizmos.DrawWireSphere(transform.position, tvInnerRadius);
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(transform.position, tvInnerRadius);
 
-                Gizmos.color = Color.yellow;
-                Gizmos.DrawWireSphere(transform.position, tvOuterRadius);
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(transform.position, tvOuterRadius);
 
-                Vector3 fovLine1 = Quaternion.AngleAxis(tvAngle, transform.up) * transform.forward * tvInnerRadius;
-                Vector3 fovLine2 = Quaternion.AngleAxis(-tvAngle, transform.up) * transform.forward * tvInnerRadius;
+            Vector3 fovLine1 = Quaternion.AngleAxis(tvAngle, transform.up) * transform.forward * tvInnerRadius;
+            Vector3 fovLine2 = Quaternion.AngleAxis(-tvAngle, transform.up) * transform.forward * tvInnerRadius;
 
-                Gizmos.color = Color.green;
-                Gizmos.DrawRay(transform.position, fovLine1);
-                Gizmos.DrawRay(transform.position, fovLine2);
-            }
+            Gizmos.color = Color.green;
+            Gizmos.DrawRay(transform.position, fovLine1);
+            Gizmos.DrawRay(transform.position, fovLine2);
         }
     }
+}
