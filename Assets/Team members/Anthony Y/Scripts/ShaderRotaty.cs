@@ -15,6 +15,14 @@ public class ShaderRotaty : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        clay.SetInt(RotationAmount,Random.Range(0,360));
+        if (GetComponent<Rigidbody>().velocity.magnitude > 0.1f)
+        {
+            clay.SetInt(RotationAmount,Random.Range(0,360));
+        }
+        else
+        {
+            clay.SetInt(RotationAmount, 0);
+        }
     }
+       
 }
