@@ -11,7 +11,6 @@ public class LineScript : MonoBehaviour
     public GameObject pos1;
     public GameObject pos2;
     public GameObject pos3;
-    int timePassed = 0;
     public float transformObject = 0f;
     // Start is called before the first frame update
     void Start()

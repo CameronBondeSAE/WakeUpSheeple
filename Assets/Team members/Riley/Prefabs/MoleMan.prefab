@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1331914058720452097}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 11.175635, y: 0.9999962, z: -3.5694904}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -213,19 +213,11 @@ MonoBehaviour:
     active: 0
   jump:
     active: 0
-  pauseStateMole:
-    active: 0
-  boolPauseState: 0
   soundPlayer: {fileID: 1444501466454130761}
-  MainObject: {fileID: 1331914058720452097}
   timeWait: 0
-  timeSWait: 0
-  timeHoverWait: 0
   moveToWaypoint:
     active: 0
-  waypointsList: []
   mainObjective: {fileID: 0}
-  waypointFirstRound: 0
   raycastHandler: {fileID: 4490975303521706167}
   particleOnOff: 0
 --- !u!1 &4490975303521706167

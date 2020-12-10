@@ -14,85 +14,74 @@ using UnityEngine.Serialization;
 
 public class MoleManManager : MonoBehaviour
 {
+    //----------------------------------GENERAL VARIABLES----------------------------------//
     public DelegateStateManager stateManager = new DelegateStateManager();
     public DelegateState standing = new DelegateState();
     public DelegateState jump = new DelegateState();
-    [FormerlySerializedAs("pauseStateR")] public DelegateState pauseStateMole = new DelegateState();
-    [FormerlySerializedAs("bPSR")] public bool boolPauseState; //Bool for out "pausedstate" so we can determine if we are already paused or not
     public AudioSource soundPlayer;
-    public GameObject MainObject;
-    public int timeWait; //Time wait int for the jump function to determine how long the mole is out of the ground
-    [FormerlySerializedAs("timeSWaitR")] public int timeSWait; //Time wait for the pause button so when we click pause it doesn't instantly unpause
-    public int timeHoverWait;
+    public int timeWait; //Time counter for waiting whenever a timer is needed
     private float verticalMovementSpeed = 0.03f;
-    //----------------------------------WAYPOINT VARIABLES
+    //----------------------------------GENERAL VARIABLES----------------------------------//
+    //----------------------------------WAYPOINT VARIABLES----------------------------------//
     public DelegateState moveToWaypoint = new DelegateState();
-    public List<Transform> waypointsList = new List<Transform>();
-    public GameObject mainObjective;
-    private Transform currentWaypoint;
-    private int currentWaypointIndex;
-    private float safeDistance = 1.5f;
-    private int previousWaypointIndex;
-    private float horizontalMovementSpeed = 0.0075f;
-    public bool waypointFirstRound;
-    private GameObject sheepWaypoint;
+    public GameObject mainGameManager;
+    private Vector3 currentWaypoint;
+    private float safeDistance = 2f;
     public GameObject raycastHandler;
     public bool particleOnOff;
     private float distanceToPlatform;
-    //----------------------------------WAYPOINT VARIABLES
-    //----------------------------------EVENT VARIABLES
+    private CoreSheepFinder gameManager;
+    private Vector3 velocity = Vector3.zero;
+    //----------------------------------WAYPOINT VARIABLES----------------------------------//
+    //----------------------------------EVENT VARIABLES----------------------------------//
     public event Action tmpEventStand;
     public event Action tmpEventJump;
     public event Action tmpEventWaypoint;
-    //----------------------------------EVENT VARIABLES
-    //----------------------------------TRIGGER VARIABLES
-    //private TriggerMoleR TriggerScriptR;
-    //----------------------------------TRIGGER VARIABLES
-    //----------------------------------UPDATE/START
+    //----------------------------------EVENT VARIABLES----------------------------------//
+    //----------------------------------UPDATE/START----------------------------------//
     void Start()
     {
-        //----------------------------------WAYPOINT VARIABLES
+        timeWait = 0;
+        //----------------------------------STATE MANAGER VARIABLES----------------------------------//
         moveToWaypoint.Enter = moveToWaypointStart;
         moveToWaypoint.Update = moveToWaypointUpdate;
         moveToWaypoint.Exit = moveToWaypointExit;
-        currentWaypointIndex = 0;
-        currentWaypoint = waypointsList[currentWaypointIndex];
-        waypointFirstRound = false;
-        //sheepWaypoint = GameObject.FindObjectOfType<Sheep>().gameObject; //HACK!!!!!!!!
-        //waypointsList.Add(sheepWaypoint.transform);
-        //----------------------------------WAYPOINT VARIABLES
         standing.Enter = standingStart;
         standing.Update = standingUpdate;
         standing.Exit = standingExit;
         jump.Enter = jumpStart;
         jump.Update = jumpUpdate; 
         jump.Exit = jumpExit;
-        pauseStateMole.Enter = PauseStateMoleStart;
-        pauseStateMole.Update = PauseStateMoleUpdate;
-        pauseStateMole.Exit = PauseStateMoleExit;
-        //FindObjectOfType<PauseManager>().PauseEvent += pauseEventMole; //Find the pause manager and whenever PauseEvent is called run pauseEventR
+        gameManager = mainGameManager.GetComponent<CoreSheepFinder>();
         stateManager.ChangeState(standing); //on start set the default state to standing
-        boolPauseState = false;
-        //----------------------------------TRIGGER VARIABLES
-        //TriggerScriptR = GetComponent<TriggerMoleR>();
-        //----------------------------------TRIGGER VARIABLES
         tmpEventStand?.Invoke();
+        //----------------------------------STATE MANAGER VARIABLES----------------------------------//
+        //----------------------------------INACTIVE VARIABLES----------------------------------//
+        //sheepWaypoint = GameObject.FindObjectOfType<Sheep>().gameObject; //HACK for adding sheep
+        //waypointsList.Add(sheepWaypoint.transform); //HACK for adding sheep
+        //TriggerScriptR = GetComponent<TriggerMoleR>();
+        //----------------------------------INACTIVE VARIABLES----------------------------------//
     }
     void Update()
     {
-        if (waypointsList == null)
+        if (mainGameManager == null)
         {
-            Debug.LogWarning("Waypoints MUST be added to the waypointsList");
+            Debug.LogWarning("GameManager must be added to mainGameManager");
             return;
         }
+        currentWaypoint = gameManager.centerofSheepFlock;
         stateManager.UpdateCurrentState();
         distanceToPlatform = raycastHandler.GetComponent<RaycastHandler>().distanceToPlatformInfo;
     }
-    //----------------------------------UPDATE/START
-    //----------------------------------STANDING
+    private void FixedUpdate()
+    {
+        timeWait = timeWait + 1;
+    }
+    //----------------------------------UPDATE/START----------------------------------//
+    //----------------------------------STANDING----------------------------------//
     private void standingStart()
     {
-        timeHoverWait = 0;
+        timeWait = 0;
         tmpEventStand?.Invoke();
         particleOnOff = false;
     }
@@ -101,31 +90,20 @@ public class MoleManManager : MonoBehaviour
         if (distanceToPlatform > 100f)
         {
             float distanceToPlatformExact = distanceToPlatform - 100f;
-            if (!(MainObject is null))
-            {
-                Vector3 mainObjectNewLocal = new Vector3(MainObject.transform.position.x, MainObject.transform.localPosition.y - distanceToPlatformExact, MainObject.transform.localPosition.z);
-                MainObject.transform.localPosition = Vector3.Lerp(MainObject.transform.localPosition, mainObjectNewLocal, verticalMovementSpeed);
-            }
-            else
-            {
-                Debug.Log("Main Object is not assigned");
-            }
+            Vector3 mainObjectNewLocal = new Vector3(transform.position.x, transform.localPosition.y - distanceToPlatformExact, transform.localPosition.z);
+            transform.localPosition = Vector3.Lerp(transform.localPosition, mainObjectNewLocal, verticalMovementSpeed);
         }
         else
         {
-            timeHoverWait = timeHoverWait + 1;
-            if (timeHoverWait > 600 && boolPauseState != true)
+            if (timeWait > 400)
             {
                 stateManager.ChangeState(moveToWaypoint);
             }
         }
     }
-    private void standingExit()
-    {
-        
-    }
-    //----------------------------------STANDING
-    //----------------------------------JUMP
+    private void standingExit(){}
+    //----------------------------------STANDING----------------------------------//
+    //----------------------------------JUMP----------------------------------//
     private void jumpStart()
     {
         soundPlayer.Play();
@@ -135,110 +113,51 @@ public class MoleManManager : MonoBehaviour
     }
     private void jumpUpdate()
     {
-        if (distanceToPlatform < 101.75f) //NEEDS AMENDING, this makes the player bob at this height
+        if (distanceToPlatform < 101.75f)
         {
-            Vector3 mainObjectNewLocal = new Vector3(MainObject.transform.localPosition.x, MainObject.transform.localPosition.y + 1f, MainObject.transform.localPosition.z);
-            MainObject.transform.localPosition = Vector3.Lerp(MainObject.transform.localPosition, mainObjectNewLocal, verticalMovementSpeed);
+            Vector3 mainObjectNewLocal = new Vector3(transform.localPosition.x, transform.localPosition.y + 1f, transform.localPosition.z);
+            transform.localPosition = Vector3.Lerp(transform.localPosition, mainObjectNewLocal, verticalMovementSpeed);
         }
-        else
-        {
-            timeWait = timeWait + 1;
-        }
-        if (timeWait > 300 && boolPauseState != true)
+        if (timeWait > 200)
         {
             stateManager.ChangeState(standing);
         }
     }
-    private void jumpExit()
-    {
-        waypointFirstRound = false;
-    }
-    //----------------------------------JUMP
-    //----------------------------------WAYPOINT
+    private void jumpExit(){}
+    //----------------------------------JUMP----------------------------------//
+    //----------------------------------WAYPOINT----------------------------------//
     private void moveToWaypointStart()
     {
-        timeHoverWait = 0;
-        if (currentWaypointIndex == 0 && waypointFirstRound == false)
-        {
-            waypointFirstRound = true;
-            currentWaypointIndex = 0;
-            currentWaypoint = waypointsList[currentWaypointIndex];
-        }
-        else
-        {
-            currentWaypointIndex = currentWaypointIndex + 1;
-            currentWaypoint = waypointsList[currentWaypointIndex];
-        }
         tmpEventWaypoint?.Invoke();
         particleOnOff = true;
+        timeWait = 0;
     }
     private void moveToWaypointUpdate()
     {
-        //if (Trigger is active) {timeHoverWait = timeHoverWait + 1;} 
-        timeHoverWait = timeHoverWait + 1; //Once trigger is implemented this needs to be changed to another else so it will change the sheep if the timer changes after specified time
-        if (!(currentWaypoint is null) && Vector3.Distance(MainObject.transform.position, currentWaypoint.position) > safeDistance)
+        if (Vector3.Distance(transform.position, currentWaypoint) > safeDistance)
         {
-            Vector3 currentWaypointNoHeight = new Vector3(currentWaypoint.position.x, MainObject.transform.position.y, currentWaypoint.position.z);
+            Vector3 currentWaypointNoHeight = new Vector3(currentWaypoint.x, transform.position.y, currentWaypoint.z);
             transform.LookAt(currentWaypointNoHeight);
-            MainObject.transform.position = Vector3.Lerp(MainObject.transform.position, currentWaypointNoHeight, horizontalMovementSpeed);
+            transform.position = Vector3.SmoothDamp(transform.position, currentWaypointNoHeight, ref velocity, 1.5f);
         }
-        if (timeHoverWait > 1600 && boolPauseState == false)
+        else
         {
-            stateManager.ChangeState(jump);
-            timeHoverWait = 0;
+            if (timeWait > 1000)
+            {
+                stateManager.ChangeState(jump);
+            }
         }
     }
-    //
-    // Move to a different sheep after a specified set time to add randomness (Also use a trigger to detect how many sheep are in range to activate the popup)
-    //
-    private void moveToWaypointExit()
-    {
-        
-    }
-    //----------------------------------WAYPOINT
-    //----------------------------------PAUSE
-    private void pauseEventMole()
-    {
-        if (boolPauseState == false)
-        {
-            Debug.Log("PausedR");
-            boolPauseState = true; //This tells us we are paused
-            stateManager.ChangeState(pauseStateMole);
-        }
-    }
-    private void PauseStateMoleStart()
-    {
-        timeSWait = 0;
-        MainObject.transform.position = MainObject.transform.up;
-    }
-    private void PauseStateMoleUpdate()
-    {
-        timeSWait = timeSWait + 1; //This is the timer we wait for when we pause to prevent pressing p and instantly un-pausing after a pause (Could be changed)
-        if (Input.GetKeyDown(KeyCode.P) && timeSWait > 100)
-        {
-            stateManager.ChangeState(standing);
-            Debug.Log("Exiting Pause");
-        }
-    }
-    private void PauseStateMoleExit()
-    {
-        boolPauseState = false; //Reset our BoolPauseStateR to false so we can use pause again
-    }
-    //----------------------------------PAUSE
-    //----------------------------------BUTTON FUNCTIONS
+    private void moveToWaypointExit(){}
+    //----------------------------------WAYPOINT----------------------------------//
+    //----------------------------------BUTTON FUNCTIONS----------------------------------//
     public void ForceJumpState()
     {
         stateManager.ChangeState(jump);
     }
-
     public void ForceWaypointState()
     {
         stateManager.ChangeState(moveToWaypoint);
     }
-    //----------------------------------BUTTON FUNCTIONS
-    private void OnDisable()
-    { 
-        //FindObjectOfType<PauseManager>().PauseEvent -= pauseEventMole;
-    }
-    
+    //----------------------------------BUTTON FUNCTIONS----------------------------------//
 }
