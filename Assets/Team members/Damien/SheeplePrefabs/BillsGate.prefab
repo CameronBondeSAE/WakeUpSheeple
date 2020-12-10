@@ -331,6 +331,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9b7322ab3091d5419b990966f1257b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 512
   range: 7
   rotateAngle: 15
   partToRotate: {fileID: 8500678148521956260}

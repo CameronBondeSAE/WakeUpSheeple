@@ -14,72 +14,66 @@ namespace Damien
 
     public class BillsGate : MonoBehaviour
     {
-        
+        public LayerMask layerMask;
         private Transform inRange;
 
         public float range = 3f;
         private float openAngle = 90f;
         public float rotateAngle = 15f;
-        
+
         public Transform partToRotate;
-        
+
         // Start is called before the first frame update
         void Start()
         {
-            
         }
+
         private void Update()
         {
             UpdateInRange();
-            
         }
+
         private void OnTriggerEnter(Collider target)
         {
             AdministerVaccine();
         }
+
         void OnDrawGizmosSelected()
-            {
-                Gizmos.color = Color.red;
-                Gizmos.DrawWireSphere(transform.position, range);
-            }
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, range);
+        }
+
         void AdministerVaccine()
         {
             Debug.Log("Administer Vaccine");
         }
+
         void UpdateInRange()
         {
-            //Find nearest player
-            PlayerBehaviour[] players = Sheep.FindObjectsOfType<PlayerBehaviour>();
+            Collider[] overlapSphere =
+                Physics.OverlapSphere(transform.position, range, layerMask, QueryTriggerInteraction.Ignore);
+
             float shortestDistance = Mathf.Infinity;
             PlayerBehaviour nearestPlayer = null;
-            foreach (PlayerBehaviour player in players)
-            {
-                float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-                if (distanceToPlayer < shortestDistance)
+            if (overlapSphere.Length > 0)
+            { //opening gate
+                if (partToRotate.transform.localRotation.eulerAngles.y < openAngle)
                 {
-                    shortestDistance = distanceToPlayer;
-                    nearestPlayer = player;
-                }
-            }
-            if (nearestPlayer != null && shortestDistance <= range)
-            {
-                //Debug.Log("Sheep is in Range");
-                if (partToRotate.transform.localRotation.eulerAngles.y <openAngle)
-                {
-                  //  Debug.Log("Rotation is less than 90");
+                    //  Debug.Log("Rotation is less than 90");
                     partToRotate.transform.Rotate(0f, rotateAngle * Time.deltaTime, 0f);
                 }
             }
-            else 
-            {
+            else
+
+            { //closing gate
                 //Debug.Log("Sheep is not in Range");
-                if(partToRotate.transform.rotation.y > 0f)
+                if (partToRotate.transform.rotation.y > 0f)
                 {
-                 //   Debug.Log("Rotation is more than 0");
-                    partToRotate.transform.Rotate(0f, -rotateAngle * Time.deltaTime, 0f); 
+                    //   Debug.Log("Rotation is more than 0");
+                    partToRotate.transform.Rotate(0f, -rotateAngle * Time.deltaTime, 0f);
                 }
             }
-            
         }
     }
 }
