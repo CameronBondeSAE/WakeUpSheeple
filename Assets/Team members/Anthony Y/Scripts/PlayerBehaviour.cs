@@ -35,7 +35,6 @@ namespace AnthonyY
 		public override void OnStartClient()
 		{
 			base.OnStartClient();
-			
 		}
 
 		public override void OnStartLocalPlayer()
@@ -56,6 +55,7 @@ namespace AnthonyY
 			{
 				Destroy(cam.gameObject);
 			}
+
 			GameObject instantiate = Instantiate(cameraPrefab);
 			instantiate.GetComponent<Niall.CameraPlayer>().OwnPlayer = transform;
 			// if (networkIdentity.isLocalPlayer)
@@ -105,24 +105,24 @@ namespace AnthonyY
 				if (controls != null) movementInput = controls.Movement.Movement.ReadValue<Vector2>();
 				CmdMove(movementInput);
 			}
-			else
+
+
+			// Move the dog
+			Rigidbody rb = GetComponent<Rigidbody>();
+
+			// transform.Translate(movement * (movementSpeed * Time.deltaTime), Space.World);
+			rb.AddForce(movement * (movementSpeed * Time.deltaTime), ForceMode.VelocityChange);
+
+			// Are we moving AT ALL?
+			if (rb.velocity.magnitude > 2.5f)
 			{
-				Rigidbody rb = GetComponent<Rigidbody>();
-
-				// transform.Translate(movement * (movementSpeed * Time.deltaTime), Space.World);
-				rb.velocity = movement * (movementSpeed * Time.deltaTime);
-
-				// Are we moving AT ALL?
-				if (rb.velocity.magnitude > 0.5f)
-				{
-					transform.rotation = Quaternion.LookRotation(movement);
-				}
-
-
+				// transform.rotation = Quaternion.LookRotation(movement);
 				Vector3 playerVelocity = rb.velocity;
 				playerVelocity.y  = 0;
 				transform.forward = new Vector3(playerVelocity.x, playerVelocity.y, playerVelocity.z);
 			}
+
+
 		}
 
 		[ClientRpc]
@@ -190,6 +190,7 @@ namespace AnthonyY
 		[Command]
 		private void CmdMove(Vector2 movementInput)
 		{
+			Debug.Log("movementInput = " + movementInput);
 			RpcMove(movementInput);
 		}
 	}

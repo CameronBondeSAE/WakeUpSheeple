@@ -130,4 +130,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OwnPlayer: {fileID: 0}
   smoothSpeed: 0.3
-  offset: {x: 0, y: 16.7, z: -5.1}
+  offset: {x: 0, y: 21.28, z: -7.3}
