@@ -39,12 +39,11 @@ namespace Niall
 
 		private void OnPlayersSpawnedEvent(NetworkIdentity player)
         {
-             if (player.isLocalPlayer)
-              {
-                  OwnPlayer = player.transform;
-               }
-            // else
-            // OwnPlayer = player.transform;
+            if (player.isClient)
+            {
+                OwnPlayer = player.transform;
+            }
+
         }
 
 

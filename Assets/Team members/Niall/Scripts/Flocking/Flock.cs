@@ -85,7 +85,7 @@ namespace Niall
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.white;
-            Gizmos.DrawWireSphere(transform.position, sirb.radius);
+            Gizmos.DrawSphere(transform.position, sirb.radius);
         }
     }
 }
