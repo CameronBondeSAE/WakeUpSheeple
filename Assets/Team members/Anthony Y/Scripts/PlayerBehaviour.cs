@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using Mirror;
-using Mirror.Examples.Chat;
-using Student_workspace.Dylan.Scripts.NetworkLobby;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using Object = UnityEngine.Object;
 
 namespace AnthonyY
 {
@@ -42,7 +36,7 @@ namespace AnthonyY
 		{
 			base.OnStartClient();
 			
-		}
+		}m
 
 		public override void OnStartLocalPlayer()
 		{
@@ -105,8 +99,7 @@ namespace AnthonyY
 			// }
 			if (isLocalPlayer)
 			{
-				
-				movementInput = controls.Movement.Movement.ReadValue<Vector2>();
+				if (controls != null) movementInput = controls.Movement.Movement.ReadValue<Vector2>();
 				CmdMove(movementInput);
 			}
 			else
@@ -158,8 +151,12 @@ namespace AnthonyY
 			if (amIWolf == false)
 			{
 				Debug.Log("I am now a dog");
-				controls.Wolf.Disable();
-				controls.Dog.Enable();
+				if (controls != null)
+				{
+					controls.Wolf.Disable();
+					controls.Dog.Enable();
+				}
+
 				clay.SetColor(Colour,Color.green);
 			}
 		}
@@ -170,8 +167,12 @@ namespace AnthonyY
 			if (amIWolf)
 			{
 				Debug.Log("I am now a wolf");
-				controls.Wolf.Enable();
-				controls.Dog.Enable();
+				if (controls != null)
+				{
+					controls.Wolf.Enable();
+					controls.Dog.Enable();
+				}
+
 				clay.SetColor(Colour,Color.cyan);
 			}
 		}
