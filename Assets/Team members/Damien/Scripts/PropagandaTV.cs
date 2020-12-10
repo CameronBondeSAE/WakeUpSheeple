@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using AlexM;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Damien
 {
@@ -11,10 +12,10 @@ namespace Damien
         public float tvInnerRadius = 10f;
         public float tvOuterRadius = 15f;
         public bool isOn = true;
-        
-        public float maxAngle;
-        public float maxRadius = 10f;
 
+        public float tvAngle;
+
+        public GameObject sheep;
         // Start is called before the first frame update
         void Start()
         {
@@ -41,11 +42,36 @@ namespace Damien
                     nearestSheep = sheep;
                 }
             }
+
+            if (nearestSheep == null)
+            {
+                return;
+            }
+
+            if (shortestDistance <= tvInnerRadius)
+            {
+                StartCoroutine(HypnotiseSheep());
+            }
+            else if (shortestDistance <= tvOuterRadius)
+            {
+                StartCoroutine(LureSheep());
+            }
+            else
+            {
+                StopCoroutine(HypnotiseSheep());
+                StopCoroutine(LureSheep());
+            }
+        }
+
+        public IEnumerator HypnotiseSheep()
+        {
+            
+            yield return new WaitForSeconds(5f);
         }
 
         public IEnumerator LureSheep()
         {
-            //TODO:OnTriggerStay and use transform.LootAT()
+            //TODO:Maybe move sheep towards inner circle?
             yield return new WaitForSeconds(5f);
         }
 
@@ -58,16 +84,16 @@ namespace Damien
 
         private void OnDrawGizmosSelected()
         {
-            Gizmos.color = Color.red;
+            Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(transform.position, tvInnerRadius);
-            
+
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(transform.position, tvOuterRadius);
-            
-            Vector3 fovLine1 = Quaternion.AngleAxis(maxAngle, transform.up) * transform.forward * maxRadius;
-            Vector3 fovLine2 = Quaternion.AngleAxis(-maxAngle, transform.up) * transform.forward * maxRadius;
 
-            Gizmos.color = Color.blue;
+            Vector3 fovLine1 = Quaternion.AngleAxis(tvAngle, transform.up) * transform.forward * tvInnerRadius;
+            Vector3 fovLine2 = Quaternion.AngleAxis(-tvAngle, transform.up) * transform.forward * tvInnerRadius;
+
+            Gizmos.color = Color.green;
             Gizmos.DrawRay(transform.position, fovLine1);
             Gizmos.DrawRay(transform.position, fovLine2);
         }
