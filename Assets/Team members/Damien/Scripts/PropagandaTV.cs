@@ -57,23 +57,22 @@ namespace Damien
                 
                 if (distanceToSheep <= tvInnerRadius)
                 {
-                    StartCoroutine(HypnotiseSheep());
+                    sheep.GetComponent<Movement_ForwardAM>().enabled = false;
                 }
                 else if (distanceToSheep <= tvOuterRadius)
                 {
-                    StartCoroutine(LureSheep());
+                    
                 }
                 else
                 {
-                    StopCoroutine(HypnotiseSheep());
-                    StopCoroutine(LureSheep());
+                    sheep.GetComponent<Movement_ForwardAM>().enabled = true;
                 }
             }
         }
 
         public IEnumerator HypnotiseSheep()
         {
-            sheep.GetComponent<Movement_ForwardAM>().enabled = false;
+           
             yield return new WaitForSeconds(5f);
         }
 
