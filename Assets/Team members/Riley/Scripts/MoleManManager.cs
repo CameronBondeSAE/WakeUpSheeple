@@ -70,7 +70,7 @@ public class MoleManManager : MonoBehaviour
         pauseStateMole.Enter = PauseStateMoleStart;
         pauseStateMole.Update = PauseStateMoleUpdate;
         pauseStateMole.Exit = PauseStateMoleExit;
-        FindObjectOfType<PauseManager>().PauseEvent += pauseEventMole; //Find the pause manager and whenever PauseEvent is called run pauseEventR
+        //FindObjectOfType<PauseManager>().PauseEvent += pauseEventMole; //Find the pause manager and whenever PauseEvent is called run pauseEventR
         stateManager.ChangeState(standing); //on start set the default state to standing
         boolPauseState = false;
         //----------------------------------TRIGGER VARIABLES
@@ -80,6 +80,11 @@ public class MoleManManager : MonoBehaviour
     }
     void Update()
     {
+        if (waypointsList == null)
+        {
+            Debug.LogWarning("Waypoints MUST be added to the waypointsList");
+            return;
+        }
         stateManager.UpdateCurrentState();
         distanceToPlatform = raycastHandler.GetComponent<RaycastHandler>().distanceToPlatformInfo;
     }
@@ -96,8 +101,15 @@ public class MoleManManager : MonoBehaviour
         if (distanceToPlatform > 100f)
         {
             float distanceToPlatformExact = distanceToPlatform - 100f;
-            Vector3 mainObjectNewLocal = new Vector3(MainObject.transform.position.x, MainObject.transform.localPosition.y - distanceToPlatformExact, MainObject.transform.localPosition.z);
-            MainObject.transform.localPosition = Vector3.Lerp(MainObject.transform.localPosition, mainObjectNewLocal, verticalMovementSpeed);
+            if (!(MainObject is null))
+            {
+                Vector3 mainObjectNewLocal = new Vector3(MainObject.transform.position.x, MainObject.transform.localPosition.y - distanceToPlatformExact, MainObject.transform.localPosition.z);
+                MainObject.transform.localPosition = Vector3.Lerp(MainObject.transform.localPosition, mainObjectNewLocal, verticalMovementSpeed);
+            }
+            else
+            {
+                Debug.Log("Main Object is not assigned");
+            }
         }
         else
         {
@@ -164,7 +176,7 @@ public class MoleManManager : MonoBehaviour
     {
         //if (Trigger is active) {timeHoverWait = timeHoverWait + 1;} 
         timeHoverWait = timeHoverWait + 1; //Once trigger is implemented this needs to be changed to another else so it will change the sheep if the timer changes after specified time
-        if (Vector3.Distance(MainObject.transform.position, currentWaypoint.position) > safeDistance)
+        if (!(currentWaypoint is null) && Vector3.Distance(MainObject.transform.position, currentWaypoint.position) > safeDistance)
         {
             Vector3 currentWaypointNoHeight = new Vector3(currentWaypoint.position.x, MainObject.transform.position.y, currentWaypoint.position.z);
             transform.LookAt(currentWaypointNoHeight);
@@ -226,7 +238,7 @@ public class MoleManManager : MonoBehaviour
     //----------------------------------BUTTON FUNCTIONS
     private void OnDisable()
     { 
-        FindObjectOfType<PauseManager>().PauseEvent -= pauseEventMole;
+        //FindObjectOfType<PauseManager>().PauseEvent -= pauseEventMole;
     }
     
 }
