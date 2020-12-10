@@ -43,10 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27285a1d3bf44354f9826b56a38b884e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ParticleSystem: {fileID: 0}
   speed: 100
   distance: 2
   MainTransform: {fileID: 7828059398278480904}
+  layer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &1390402862176288283
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,10 +92,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27285a1d3bf44354f9826b56a38b884e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ParticleSystem: {fileID: 0}
   speed: 250
   distance: 0.5
   MainTransform: {fileID: 7828059398278480904}
+  layer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &2372177631083542375
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,10 +515,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27285a1d3bf44354f9826b56a38b884e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ParticleSystem: {fileID: 0}
   speed: 100
   distance: 2
   MainTransform: {fileID: 7828059398278480904}
+  layer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &5388453794899284846
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,34 +1,34 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 
 namespace AlexM
 {
     public class AvoidanceBehavior : MonoBehaviour
-    
-    {
-        private FlockBehavior _flockBehaviorImplementation;
 
-        public  Vector3 CalculateMove(List<Transform> neigbours, Flock flock)
+    {
+        public float SquarAvoidanceRadius;
+        public  Vector3 CalculateMove()
         {
-            if (neigbours.Count == 0)
+            var neighbours = GetComponent<NeigboursDetector>().GetNearbySheep();
+            
+            if (neighbours.Count == 0)
                 return Vector3.zero;
             
             Vector3 avoidanceMove = Vector3.zero;
-            foreach (Transform item in neigbours)
+            foreach (Sheep item in neighbours)
             {
-                if (Vector3.SqrMagnitude(item.position - transform.position) < flock.SquareAvoidanceRadius)
+                if (Vector3.SqrMagnitude(item.transform.position - transform.position) < SquarAvoidanceRadius)
                 {
-                    avoidanceMove += (Vector3)(transform.position - item.position);
+                    avoidanceMove += (Vector3)(transform.position - item.transform.position);
                 }
                 
             }
-            avoidanceMove /= neigbours.Count;
+            avoidanceMove /= neighbours.Count;
 
             return avoidanceMove;
 
         }
+        
     }
 }
 

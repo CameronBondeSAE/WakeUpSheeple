@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace AlexM
 {
-    [CreateAssetMenu(menuName = "Boid/Behavior/Cohesion")]
+    //[CreateAssetMenu(menuName = "Boid/Behavior/Cohesion")]
     public class CohesionBehavior : FilteredFlockBehavior
     {
         private FlockBehavior _flockBehaviorImplementation;

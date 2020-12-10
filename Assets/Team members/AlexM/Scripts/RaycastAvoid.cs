@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using AlexM;
-using AnthonyY;
+﻿using AnthonyY;
 using UnityEngine;
 
 
 public class RaycastAvoid : MonoBehaviour
 {
-	public ParticleSystem ParticleSystem;
 	Ray ray = new Ray();
 	RaycastHit raycastHit = new RaycastHit();
 	public float speed = 100f;
 	public float distance = 5f;
 	public Transform MainTransform;
+	public LayerMask layer;
 	void Update()
 	{
 		RaycastOut();
@@ -21,21 +17,24 @@ public class RaycastAvoid : MonoBehaviour
 
 	void RaycastOut()
 	{
-		ray.origin = transform.position;
-		ray.direction = transform.forward;
+		var transform1 = transform;
+		ray.origin = transform1.position;
+		ray.direction = transform1.forward;
 
 
-		if (Physics.Raycast(ray, out raycastHit, distance))
+		if (Physics.Raycast(ray, out raycastHit, distance,layer))
 		{
 			// Rotate the guy if something is in his way
-			if (!raycastHit.transform.GetComponent<PlayerBehaviour>())
-			{
-				//Maybe think of a way to make this use the AddTorque version of movement too.
-				MainTransform.Rotate(0, Time.deltaTime * speed, 0);
-			}
-			else
+			if (raycastHit.transform.GetComponent<PlayerBehaviour>())
 			{
 				MainTransform.Rotate(0, Time.deltaTime * (speed * 3f), 0);
+			}
+
+			if (raycastHit.transform.gameObject.layer == LayerMask.NameToLayer("Obstacles"))
+			{
+				// string layerName = LayerMask.LayerToName(8).ToString();
+				// Debug.Log(MainTransform.name + "-" + transform.name + ": Hitting layer:: " + layerName, this);
+				MainTransform.Rotate(0, Time.deltaTime * speed, 0);
 			}
 		}
 	}
