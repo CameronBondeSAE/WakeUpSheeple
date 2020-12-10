@@ -179,7 +179,6 @@ public class GameManager : NetworkBehaviour
 		}
 
 
-<<<<<<< HEAD
         if (totalSheep < 0)
         {
             EndGoalTrackerLost(character);
@@ -221,7 +220,7 @@ public class GameManager : NetworkBehaviour
     {
         RpcGameOver();
     }
-=======
+    
 		//Remove sheep from list when it dies
 
 		// foreach ( Sheep sheep in allSheep)
@@ -305,5 +304,4 @@ public class GameManager : NetworkBehaviour
 	{
 		RpcGameOver();
 	}
->>>>>>> master
 }
