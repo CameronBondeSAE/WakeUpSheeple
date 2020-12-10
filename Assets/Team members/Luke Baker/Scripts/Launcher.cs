@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Mirror.Examples.RigidbodyPhysics;
+﻿using System.Collections;
 using UnityEngine;
-using DG.Tweening;
-using Mirror;
 
 namespace LukeBaker
 {

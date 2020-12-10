@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using AlexM;
+﻿using AlexM;
 using DG.Tweening;
-using UnityEditor.SceneManagement;
 using UnityEngine;
-using Mirror;
 
 namespace LukeBaker
 {

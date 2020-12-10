@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using DG.Tweening;
-using TMPro;
-using UnityEditor;
-using UnityEditor.SceneManagement;
+﻿using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
