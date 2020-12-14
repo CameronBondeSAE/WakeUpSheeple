@@ -32,6 +32,7 @@ public class MoleManManager : MonoBehaviour
     private float distanceToPlatform;
     private CoreSheepFinder gameManager;
     private Vector3 velocity = Vector3.zero;
+    private float particleDistanceSafety = 25f;
     //----------------------------------WAYPOINT VARIABLES----------------------------------//
     //----------------------------------EVENT VARIABLES----------------------------------//
     public event Action tmpEventStand;
@@ -129,11 +130,14 @@ public class MoleManManager : MonoBehaviour
     private void moveToWaypointStart()
     {
         tmpEventWaypoint?.Invoke();
-        particleOnOff = true;
         timeWait = 0;
     }
     private void moveToWaypointUpdate()
     {
+        if (Vector3.Distance(transform.position, currentWaypoint) < particleDistanceSafety)
+        {
+            particleOnOff = true;
+        }
         if (Vector3.Distance(transform.position, currentWaypoint) > safeDistance)
         {
             Vector3 currentWaypointNoHeight = new Vector3(currentWaypoint.x, transform.position.y, currentWaypoint.z);

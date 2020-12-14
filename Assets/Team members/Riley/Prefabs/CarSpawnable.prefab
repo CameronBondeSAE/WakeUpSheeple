@@ -127,4 +127,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carRespawnObject: {fileID: 0}
   destinationWaypoint: {fileID: 0}
-  speed: 12
+  speed: 35
