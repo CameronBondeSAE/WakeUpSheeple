@@ -20,7 +20,12 @@ namespace Niall
         private Vector3 velocity;
 		GameManager     gameManager;
 
-        private void OnEnable()
+		void Awake()
+		{
+			
+		}
+
+		private void OnEnable()
 		{
 			// gameManager                     =  FindObjectOfType<GameManager>();
 			// if (gameManager)

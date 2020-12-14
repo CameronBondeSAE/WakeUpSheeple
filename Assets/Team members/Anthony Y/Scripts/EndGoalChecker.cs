@@ -22,7 +22,8 @@ public class EndGoalChecker : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<Collider>())
+		// CAM FIX, was looking for collider, needs to look for Sheep
+        if (other.gameObject.GetComponent<Sheep>())
         {
             //***********BOX CODE************
             boxes.Add(other);
@@ -31,7 +32,9 @@ public class EndGoalChecker : MonoBehaviour
 			Debug.Log(other.gameObject.name + ": Count = "+safeSheep.Count.ToString());
             // Destroy(other.transform.root.gameObject);
             SheepMadeitEvent?.Invoke(other.GetComponent<Sheep>());
-           
+
+			// CAM HACK
+			Destroy(other.gameObject);
         }
     }
 

@@ -21,7 +21,7 @@ public class CoreSheepFinder : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("i Waited for 3 seconds");
+        // Debug.Log("i Waited for 3 seconds");
         StartCoroutine(MassFlockAmount(3f));
     }
 
@@ -38,6 +38,11 @@ public class CoreSheepFinder : NetworkBehaviour
             highestSheepCount = 0;
             foreach (Sheep sheep in gameManager.allSheep)
             {
+				// CAM FIX for null deleted sheep
+				if (sheep == null)
+				{
+					continue;
+				}
                 // centre = centre - sheep.transform.localPosition;
                 if (sheep.GetComponent<NeigboursDetector>().GetNearbySheep().Count > highestSheepCount)
                 {

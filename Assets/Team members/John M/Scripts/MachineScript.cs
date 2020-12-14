@@ -31,12 +31,12 @@ public class MachineScript : MonoBehaviour
 
     void OnIdleEnter()
     {
-        Debug.Log("Entering Idle State");
+        // Debug.Log("Entering Idle State");
     }
 
     void OnIdleUpdate()
     {
-        Debug.Log("Currently Idle");
+        // Debug.Log("Currently Idle");
         
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -46,19 +46,19 @@ public class MachineScript : MonoBehaviour
 
     void OnIdleExit()
     {
-        Debug.Log("Exiting Idle State");
+        // Debug.Log("Exiting Idle State");
         
     }
 
     void OnSpinEnter()
     {
-        Debug.Log("Entering Spin State");
+        // Debug.Log("Entering Spin State");
         
     }
 
     void OnSpinUpdate()
     {
-        Debug.Log("Currently Spinning");
+        // Debug.Log("Currently Spinning");
         transform.Rotate(Random.Range(1,7),Random.Range(1,3),Random.Range(1,8));
         
         if (Input.GetKeyDown(KeyCode.Space))
@@ -69,7 +69,7 @@ public class MachineScript : MonoBehaviour
 
     void OnSpinExit()
     {
-        Debug.Log("Exiting Spinning State");
+        // Debug.Log("Exiting Spinning State");
     }
     
 }

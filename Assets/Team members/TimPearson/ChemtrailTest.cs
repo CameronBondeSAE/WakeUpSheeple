@@ -60,7 +60,13 @@ public class ChemtrailTest : MonoBehaviour
     {
         GetComponent<Rigidbody>().velocity=velocity;
         Rigidbody rb = GetComponent<Rigidbody>();
-        transform.forward = rb.velocity;
+
+		
+		// CAM FIX
+		if (rb.velocity.magnitude > 0.01f)
+		{
+			transform.forward = rb.velocity;
+		}
 
 
     }
@@ -73,10 +79,18 @@ public class ChemtrailTest : MonoBehaviour
             //yield return new WaitForSeconds(5f);
             Vector3 position = new Vector3(Random.Range(-41f, 58f), planeHeight, Random.Range(-46, 54));
             transform.position = position;
-            Vector3 targetPos = gameManager.GetComponent<CoreSheepFinder>().centerofSheepFlock;
-            targetPos.y = planeHeight;
-            velocity = (targetPos - transform.position).normalized * speed;
-            yield return new WaitForSeconds(5f);
+			if (!(gameManager is null))
+			{
+				CoreSheepFinder coreSheepFinder = gameManager.GetComponent<CoreSheepFinder>();
+				if (coreSheepFinder)
+				{
+					Vector3 targetPos = coreSheepFinder.centerofSheepFlock;
+					targetPos.y = planeHeight;
+					velocity    = (targetPos - transform.position).normalized * speed;
+				}
+			}
+
+			yield return new WaitForSeconds(5f);
         }
         
         //Instantiate(enemy, position, Quaternion.identity);

@@ -1,5 +1,6 @@
 ﻿using System;
 using Mirror;
+using Student_workspace.Dylan.Scripts.NetworkLobby;
 using UnityEngine;
 
 namespace AnthonyY
@@ -55,9 +56,11 @@ namespace AnthonyY
 			{
 				Destroy(cam.gameObject);
 			}
-
 			GameObject instantiate = Instantiate(cameraPrefab);
 			instantiate.GetComponent<Niall.CameraPlayer>().OwnPlayer = transform;
+			
+			
+			
 			// if (networkIdentity.isLocalPlayer)
 			// {
 
@@ -88,6 +91,8 @@ namespace AnthonyY
 
 		void Update()
 		{
+			// Debug.Log(Owner.GetComponent<NetworkGamePlayer>().playerColor + ": "+Owner.GetComponent<NetworkGamePlayer>().displayName);
+			
 			// Debug.Log(Owner);
 			// if (isClient)
 			// {
@@ -113,12 +118,14 @@ namespace AnthonyY
 			// transform.Translate(movement * (movementSpeed * Time.deltaTime), Space.World);
 			rb.AddForce(movement * (movementSpeed * Time.deltaTime), ForceMode.VelocityChange);
 
+			
+			Vector3 playerVelocity = rb.velocity;
+			playerVelocity.y = 0;
+
 			// Are we moving AT ALL?
-			if (rb.velocity.magnitude > 2.5f)
+			if (playerVelocity.magnitude > 2.5f)
 			{
 				// transform.rotation = Quaternion.LookRotation(movement);
-				Vector3 playerVelocity = rb.velocity;
-				playerVelocity.y  = 0;
 				transform.forward = new Vector3(playerVelocity.x, playerVelocity.y, playerVelocity.z);
 			}
 
@@ -190,7 +197,7 @@ namespace AnthonyY
 		[Command]
 		private void CmdMove(Vector2 movementInput)
 		{
-			Debug.Log("movementInput = " + movementInput);
+			// Debug.Log("movementInput = " + movementInput);
 			RpcMove(movementInput);
 		}
 	}

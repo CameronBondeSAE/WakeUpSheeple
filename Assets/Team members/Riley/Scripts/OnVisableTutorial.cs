@@ -5,29 +5,57 @@ using Student_workspace.Dylan.Scripts.NetworkLobby;
 using UnityEngine;
 public class OnVisableTutorial : MonoBehaviour
 {
-    private bool firstVisablity;
-    private GameNetworkManager gameNetworkManager;
-    private Vector3 playerCoords;
-    private float tutorialSafeDistance;
-    private void Start()
+	public string tutorialText;
+	public float  safeDistance = 10f;
+	public float  offDistance = 15f;
+
+	PopupText PopupText;
+
+	public bool               firstVisablity;
+	public GameNetworkManager gameNetworkManager;
+	public Vector3            playerCoords;
+	public bool               finished;
+
+	private void Start()
     {
         firstVisablity = false;
         gameNetworkManager = FindObjectOfType<GameNetworkManager>();
-        tutorialSafeDistance = 10;
-    }
+
+		PopupText = GetComponentInChildren<PopupText>();
+	}
     private void Update()
     {
         if (gameNetworkManager == null || gameNetworkManager.localPlayer == null)
         {
-            Debug.Log("The NetworkManager does NOT exist in this scene");
+            // Debug.Log("The NetworkManager does NOT exist in this scene");
             return;
         }
-        playerCoords = gameNetworkManager.localPlayer.transform.position;
-        if (Vector3.Distance(transform.position, playerCoords) < tutorialSafeDistance && firstVisablity == false)
-        {
-            firstVisablity = true;
-            StartCoroutine(FirstTutorial());
-        }
+        playerCoords   = gameNetworkManager.localPlayer.transform.position;
+		playerCoords.y = transform.position.y; // Ignore the y of the player
+		
+		float distance = Vector3.Distance(transform.position, playerCoords);
+		
+		Debug.Log(distance);
+		
+		if (firstVisablity == false)
+		{
+			if (distance < safeDistance)
+			{
+				firstVisablity = true;
+				PopupText.text = tutorialText;
+				PopupText.Show();
+				// StartCoroutine(FirstTutorial());
+			}
+		}
+		else
+		{
+			if (finished == false && distance > offDistance)
+			{
+				finished = true;
+				PopupText.Hide();
+			}
+		}
+		
     }
     private IEnumerator FirstTutorial()
     {
