@@ -29,7 +29,7 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
         //[Header("Room")] [SerializeField] private NetworkLobbyPlayer lobbyPlayerPrefab = null;
         [Header("Game")]
         [SerializeField]
-        private NetworkGamePlayer gamePlayerPrefab = null;
+        private NetworkGamePlayer lobbyPlayerPrefab = null;
 
         public GameObject physicalPlayerPrefab;
 
@@ -70,6 +70,8 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
         public GameManager gameManager;
 
         private int pickAWolf;
+
+		public PlayerBehaviour localPlayer;
 
         public override void Awake()
         {
@@ -116,8 +118,8 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
             base.Start();
             
         }
-
-        public void LoadLevel(string levelToLoadName, bool loadNextLevel)
+		
+		public void LoadLevel(string levelToLoadName, bool loadNextLevel)
         {
             //possible issues might come up with gamescene not being this new scene
             //if so just assign game scene to this new scene when we load it here
@@ -220,7 +222,7 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
                 bool isLeader = RoomPlayers.Count == 0;
 
                 NetworkLobbyPlayer lobbyPlayerInstance =
-                    Instantiate(gamePlayerPrefab).GetComponent<NetworkLobbyPlayer>();
+                    Instantiate(lobbyPlayerPrefab).GetComponent<NetworkLobbyPlayer>();
 
                 lobbyPlayerInstance.IsLeader = isLeader;
 
@@ -348,7 +350,7 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
         {
             foreach (NetworkGamePlayer gamePlayer in GamePlayers)
             {
-                SpawnPlayer(gamePlayer.connectionToClient);
+                SpawnPlayer(gamePlayer.connectionToClient, gamePlayer.netIdentity);
             }
             
             OnGameStart?.Invoke();
@@ -382,7 +384,7 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
         [SerializeField]
         private float heightOffset;
 
-        public void SpawnPlayer(NetworkConnection conn)
+        public void SpawnPlayer(NetworkConnection conn, NetworkIdentity gamePlayer)
         {
             Transform spawnPoint = spawnPoints.ElementAtOrDefault(nextIndex);
 
@@ -414,6 +416,12 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
 
             float totalHeight = maxHeight - minHeight;
 
+
+
+			playerInstance.GetComponent<PlayerBehaviour>().Owner = gamePlayer;
+			
+			
+			
 			// replace room player with game player
 			NetworkServer.ReplacePlayerForConnection(conn, playerInstance, true);
 
@@ -423,6 +431,12 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
 
             physicalPlayers.Add(playerInstance.GetComponent<PlayerBehaviour>());
             
+			
+			// Keep track of local player for convenience
+			if (playerInstance.GetComponent<NetworkIdentity>().isLocalPlayer)
+			{
+				localPlayer = playerInstance.GetComponent<PlayerBehaviour>();
+			}
             
             nextIndex++;
 
