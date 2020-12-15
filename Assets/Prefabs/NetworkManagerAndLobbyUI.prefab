@@ -101,7 +101,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1420297293}
   m_LocalRotation: {x: 0.38268322, y: -0, z: -0, w: 0.9238797}
-  m_LocalPosition: {x: 0, y: 0, z: -39.41}
+  m_LocalPosition: {x: -235.7, y: -115.5, z: -154.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6181736370761581531}
@@ -1800,7 +1800,7 @@ MonoBehaviour:
   - {fileID: 160307577924929259, guid: 8c31ce50d8a2c174a89804b59345b6f7, type: 3}
   - {fileID: 5861387322311652483, guid: 2a31497c133919941b4780b5378c4dd7, type: 3}
   - {fileID: 2299596439350243934, guid: 17c71fbe5b598ae4c83f06ae4f2bea0c, type: 3}
-  - {fileID: 3479998447190896919, guid: 271d209dbcf7c954cbebc582da0bd349, type: 3}
+  - {fileID: 2372177631083542375, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
   - {fileID: 7159536423060581993, guid: c0659dc2345a37b4ebf0e38bb697011a, type: 3}
   - {fileID: 4050683963965574109, guid: c1356d4dc89da014394aa10d472a0097, type: 3}
   - {fileID: 897416773700603751, guid: f446683264781a24683796598a0405a8, type: 3}
@@ -2632,7 +2632,7 @@ MonoBehaviour:
   landingPagePanel: {fileID: 6181736371995921298}
   ipAddressInputField: {fileID: 3258684182347447647}
   joinButton: {fileID: 749148235305818106}
-  joinAnthony: {fileID: 3614205734696151960}
+  AnthonyButton: {fileID: 0}
 --- !u!1 &6181736371669995148
 GameObject:
   m_ObjectHideFlags: 0
@@ -4285,8 +4285,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6497264542455689841}
   m_HandleRect: {fileID: 6497264542455689854}
   m_Direction: 2
-  m_Value: -0.00021160103
-  m_Size: 0.9971444
+  m_Value: -0.000105800515
+  m_Size: 0.99711215
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5083,7 +5083,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00006222725, y: 0.2885189}
+  m_AnchoredPosition: {x: -0.000017166138, y: 0.28845817}
   m_SizeDelta: {x: 0, y: 101.01}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &6497264541811411597
@@ -5339,8 +5339,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6497264542568998323}
   m_HandleRect: {fileID: 6497264542568998320}
   m_Direction: 0
-  m_Value: 1
-  m_Size: 0.99999994
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6602,10 +6602,6 @@ PrefabInstance:
       value: ColorPicker2
       objectReference: {fileID: 0}
     - target: {fileID: 7568072289778255762, guid: d9a69e430ddc15245b12d361f521001e, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7568072289778255762, guid: d9a69e430ddc15245b12d361f521001e, type: 3}
       propertyPath: red
       value: 0
       objectReference: {fileID: 0}
@@ -6619,6 +6615,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7568072289778255762, guid: d9a69e430ddc15245b12d361f521001e, type: 3}
       propertyPath: color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7568072289778255762, guid: d9a69e430ddc15245b12d361f521001e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7568072289778255762, guid: d9a69e430ddc15245b12d361f521001e, type: 3}
