@@ -33,6 +33,7 @@ namespace Zach
 
         private void Awake()
         {
+            isAttached = null;
             deathTimer = 15f;
         }
 
