@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9202143830385378700}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,7 +51,7 @@ GameObject:
   - component: {fileID: 4825105750970700407}
   - component: {fileID: 6870714400537276556}
   - component: {fileID: 5278741674211831794}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Clay Dog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81826528f9bf8604a83a62a697465fed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 0
+  startingHealth: 100
   currentHealth: 0
 --- !u!82 &-336919023003889543
 AudioSource:
@@ -405,7 +405,7 @@ GameObject:
   - component: {fileID: 8255119142325396897}
   - component: {fileID: 1842261988323253286}
   - component: {fileID: 4728646420565120471}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -586,7 +586,7 @@ GameObject:
   - component: {fileID: 3647422445270131628}
   - component: {fileID: 7599877125873241728}
   - component: {fileID: 6686042358582942153}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -665,7 +665,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2377222051367011023}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -702,7 +702,7 @@ GameObject:
   - component: {fileID: 8514983056079575708}
   - component: {fileID: 8519335590017313197}
   - component: {fileID: 4723083577364853482}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -17,7 +17,7 @@ namespace Damien
         public LayerMask layerMask;
         private Transform inRange;
 
-        public float range = 3f;
+        public float range = 7f;
         private float openAngle = 90f;
         public float rotateAngle = 15f;
 
@@ -57,18 +57,19 @@ namespace Damien
             float shortestDistance = Mathf.Infinity;
             PlayerBehaviour nearestPlayer = null;
             if (overlapSphere.Length > 0)
-            { //opening gate
+            {
+                //opening gate
                 if (partToRotate.transform.localRotation.eulerAngles.y < openAngle)
                 {
                     //  Debug.Log("Rotation is less than 90");
                     partToRotate.transform.Rotate(0f, rotateAngle * Time.deltaTime, 0f);
                 }
             }
-            else
 
-            { //closing gate
-                //Debug.Log("Sheep is not in Range");
-                if (partToRotate.transform.rotation.y > 0f)
+            if (overlapSphere.Length == 0)
+            {
+                //closing gate
+                if (partToRotate.transform.eulerAngles.y > 0f)
                 {
                     //   Debug.Log("Rotation is more than 0");
                     partToRotate.transform.Rotate(0f, -rotateAngle * Time.deltaTime, 0f);

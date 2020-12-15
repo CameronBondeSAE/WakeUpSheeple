@@ -18,7 +18,10 @@ namespace LukeBaker
             //Health script for if the object has health apply some damage to it
             if (health != null)
             {
-                health.Damage(launchDamage);
+                if (health.currentHealth > 0f)
+                {
+                    health.Damage(launchDamage);
+                }
             }
         }
 
