@@ -25,4 +25,12 @@ public class CarHandler : MonoBehaviour
             transform.position = carRespawnPoint;
         }
     }
+    private void HitCar(Collider other) 
+    {
+        var health = other.GetComponent<Health>();
+        if (health != null)
+        {
+            health.Damage(1000);
+        }
+    }
 }
