@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace AJ
@@ -12,28 +13,30 @@ namespace AJ
         public static AudioClip WonEventMusic, LostEventMusic, GameOverMusic;
 
 
-        private void OnEnable()
+        public void OnEnable()
         {
             //Subscribe to event
             FindObjectOfType<GameManager>().WonEvent += OnWonEvent;
             FindObjectOfType<GameManager>().LostEvent += OnLostEvent;
         }
         
-        private void OnDisable()
+        public void OnDisable()
         {
-            // UNsubscribe to event
+            //Unsubscribe to event
             FindObjectOfType<GameManager>().WonEvent -= OnWonEvent;
             FindObjectOfType<GameManager>().LostEvent -= OnLostEvent;
         }
 
-        private void OnWonEvent()
+        public void OnWonEvent()
         {
             MusicAudioManager.PlaySFX("WonMusic");
+            Debug.Log("Play Music");
         }
 
-        private void OnLostEvent()
+        public void OnLostEvent()
         {
             MusicAudioManager.PlaySFX("LostMusic");
+            Debug.Log("Play Music");
         }
 
         // Start is called before the first frame update
@@ -47,7 +50,7 @@ namespace AJ
 
         public static void PlaySFX(string clip)
         {
-            
+            Debug.Log("Play Music");
         }
     }
 }
