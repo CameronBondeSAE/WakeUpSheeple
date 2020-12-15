@@ -17,6 +17,9 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
         [SerializeField] private TMP_InputField ipAddressInputField = null;
         [SerializeField] private Button joinButton = null;
 
+        [SerializeField]
+        private Button AnthonyButton;
+
         private void OnEnable()
         {
             GameNetworkManager.OnClientConnected += HandleClientConnected;
@@ -44,7 +47,15 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
 
 
         }
-        
+
+        public void JoinAnthony()
+        {
+            string ipAddress = ipAddressInputField.text;
+            string anthonyIpAdress = "175.32.111.30";
+
+            ipAddressInputField.text = anthonyIpAdress;
+        }
+
         private void HandleClientConnected()
         {
             joinButton.interactable = true;
