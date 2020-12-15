@@ -35,8 +35,6 @@ public class OnVisableTutorial : MonoBehaviour
 		
 		float distance = Vector3.Distance(transform.position, playerCoords);
 		
-		Debug.Log(distance);
-		
 		if (firstVisablity == false)
 		{
 			if (distance < safeDistance)
