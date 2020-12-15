@@ -25,7 +25,7 @@ public class CarHandler : MonoBehaviour
             transform.position = carRespawnPoint;
         }
     }
-    private void HitCar(Collider other) 
+    private void OnTriggerEnter(Collider other)
     {
         var health = other.GetComponent<Health>();
         if (health != null)
