@@ -305,6 +305,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1926467412, guid: aa336f9d4f586b245bb9b217e2c2aa98, type: 3}
+      propertyPath: deathJump
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 3499355825039062641, guid: aa336f9d4f586b245bb9b217e2c2aa98, type: 3}
       propertyPath: m_Name
       value: Lava
@@ -372,7 +376,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6137433425171452079, guid: 3b419512151589544a37e060476d087b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.11
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6137433425171452079, guid: 3b419512151589544a37e060476d087b, type: 3}
       propertyPath: m_LocalPosition.z
