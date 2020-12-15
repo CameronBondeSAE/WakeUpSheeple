@@ -26,7 +26,10 @@ namespace Zach
             if (health != null && jump != null)
             {
                 jump.AddForce(0, deathJump, 0);
-                health.Damage(lavaDamage);
+                if (health.currentHealth > 0)
+                {
+                    health.Damage(lavaDamage);
+                }
             }
         }
     }
