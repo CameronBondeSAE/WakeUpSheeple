@@ -65,13 +65,15 @@ namespace Damien
                 }
             }
             else
-
             { //closing gate
-                //Debug.Log("Sheep is not in Range");
-                if (partToRotate.transform.rotation.y > 0f)
+                if (partToRotate.transform.localRotation.eulerAngles.y > 0f)
                 {
                     //   Debug.Log("Rotation is more than 0");
                     partToRotate.transform.Rotate(0f, -rotateAngle * Time.deltaTime, 0f);
+                }
+                else if (partToRotate.transform.localRotation.eulerAngles.y > -1 || partToRotate.transform.localRotation.eulerAngles.y < 1)
+                {
+                    //do nothing
                 }
             }
         }
