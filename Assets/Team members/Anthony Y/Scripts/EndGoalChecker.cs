@@ -9,8 +9,8 @@ using UnityEngine;
 
 public class EndGoalChecker : MonoBehaviour
 {
-    [Header("List of Colliders")]
-    public List<Collider> boxes;
+    // [Header("List of Colliders")]
+    // public List<Collider> boxes;
     public BoxCollider boxCollider;
     [Header("List of Sheep")]
     public List<Sheep> safeSheep;
@@ -25,8 +25,8 @@ public class EndGoalChecker : MonoBehaviour
 		// CAM FIX, was looking for collider, needs to look for Sheep
         if (other.gameObject.GetComponent<Sheep>())
         {
-            //***********BOX CODE************
-            boxes.Add(other);
+            // //***********BOX CODE************
+            // boxes.Add(other);
            //****SHEEP CODE**************
             safeSheep.Add(other.GetComponent<Sheep>());
 			Debug.Log(other.gameObject.name + ": Count = "+safeSheep.Count.ToString());
@@ -46,7 +46,7 @@ public class EndGoalChecker : MonoBehaviour
             Debug.Log(other.transform.root.gameObject.name + ": has left the zone : Count = "+safeSheep.Count.ToString());
             safeSheep.Remove(other.GetComponent<Sheep>());
             
-            boxes.Remove(other);
+            // boxes.Remove(other);
             
         }
     }
