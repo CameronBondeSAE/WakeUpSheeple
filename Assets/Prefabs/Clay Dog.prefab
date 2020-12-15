@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81826528f9bf8604a83a62a697465fed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 0
+  startingHealth: 100
   currentHealth: 0
 --- !u!82 &-336919023003889543
 AudioSource:
