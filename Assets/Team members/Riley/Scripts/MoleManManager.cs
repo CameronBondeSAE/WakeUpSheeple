@@ -125,6 +125,14 @@ public class MoleManManager : MonoBehaviour
         }
     }
     private void jumpExit(){}
+    private void OnTriggerEnter(Collider other)
+    {
+        var health = other.GetComponent<Health>();
+        if (health != null)
+        {
+            health.Damage(1000);
+        }
+    }
     //----------------------------------JUMP----------------------------------//
     //----------------------------------WAYPOINT----------------------------------//
     private void moveToWaypointStart()
