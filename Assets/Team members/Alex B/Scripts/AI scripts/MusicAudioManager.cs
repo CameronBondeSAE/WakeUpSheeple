@@ -7,10 +7,10 @@ namespace AJ
 {
     public class MusicAudioManager : MonoBehaviour
     {
-        public GameManager gameManager;
+        private GameManager gameManager;
 
         static AudioSource audioSource;
-        public static AudioClip WonEventMusic, LostEventMusic, GameOverMusic;
+        public AudioClip WonEventMusic, LostEventMusic, GameOverMusic;
 
 
         public void OnEnable()
@@ -29,22 +29,21 @@ namespace AJ
 
         public void OnWonEvent()
         {
-            MusicAudioManager.PlaySFX("WonMusic");
+            audioSource.clip = WonEventMusic;
+            audioSource.Play();
             Debug.Log("Play Music");
         }
 
         public void OnLostEvent()
         {
-            MusicAudioManager.PlaySFX("LostMusic");
+            audioSource.clip = LostEventMusic;
+            audioSource.Play();
             Debug.Log("Play Music");
         }
 
         // Start is called before the first frame update
         void Start()
         {
-            WonEventMusic = Resources.Load<AudioClip>("WonMusic");
-            LostEventMusic = Resources.Load<AudioClip>("LostMusic");
-            GameOverMusic = Resources.Load<AudioClip>("GameOverMusic");
             audioSource = GetComponent<AudioSource>(); //Need to add music for the "game over music" maybe?
         }
 
