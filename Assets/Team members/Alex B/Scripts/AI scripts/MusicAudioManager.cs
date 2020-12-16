@@ -12,7 +12,6 @@ namespace AJ
         static AudioSource audioSource;
         public AudioClip WonEventMusic, LostEventMusic, GameOverMusic;
 
-
         public void OnEnable()
         {
             //Subscribe to event
@@ -45,11 +44,6 @@ namespace AJ
         void Start()
         {
             audioSource = GetComponent<AudioSource>(); //Need to add music for the "game over music" maybe?
-        }
-
-        public static void PlaySFX(string clip)
-        {
-            Debug.Log("Play Music");
         }
     }
 }
