@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 4452160783818175262}
   - component: {fileID: 4192159322473970757}
   - component: {fileID: 6718065406285803021}
+  - component: {fileID: -6890950864270801298}
+  - component: {fileID: -1455135301496539520}
   m_Layer: 0
   m_Name: Chemplane
   m_TagString: Chemplane
@@ -118,6 +120,8 @@ MonoBehaviour:
   planeHeight: 5
   trail: {fileID: 0}
   Virus: {fileID: 2704142560674385399, guid: e9becea97fca0c242bedfecf9161a56e, type: 3}
+  startingPosition: {x: 0, y: 0, z: 0}
+  coreSheepFinder: {fileID: 0}
 --- !u!54 &4452160783818175262
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4914,3 +4918,37 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &-6890950864270801298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4452160783818175236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  serverOnly: 0
+  m_AssetId: 
+  hasSpawned: 0
+--- !u!114 &-1455135301496539520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4452160783818175236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f74aedd71d9a4f55b3ce499326d45fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  clientAuthority: 0
+  localPositionSensitivity: 0.01
+  localRotationSensitivity: 0.01
+  localScaleSensitivity: 0.01

@@ -1801,7 +1801,7 @@ MonoBehaviour:
   - {fileID: 5861387322311652483, guid: 2a31497c133919941b4780b5378c4dd7, type: 3}
   - {fileID: 2299596439350243934, guid: 17c71fbe5b598ae4c83f06ae4f2bea0c, type: 3}
   - {fileID: 2372177631083542375, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
-  - {fileID: 7159536423060581993, guid: c0659dc2345a37b4ebf0e38bb697011a, type: 3}
+  - {fileID: 4452160783818175236, guid: c4d85c54b1622c441a3308c4177046e1, type: 3}
   - {fileID: 4050683963965574109, guid: c1356d4dc89da014394aa10d472a0097, type: 3}
   - {fileID: 897416773700603751, guid: f446683264781a24683796598a0405a8, type: 3}
   minPlayer: 1
@@ -4285,8 +4285,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6497264542455689841}
   m_HandleRect: {fileID: 6497264542455689854}
   m_Direction: 2
-  m_Value: -0.000105800515
-  m_Size: 0.99711215
+  m_Value: -0.000052900257
+  m_Size: 0.99668205
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5083,7 +5083,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000017166138, y: 0.28845817}
+  m_AnchoredPosition: {x: -0.000027147862, y: 0.2884919}
   m_SizeDelta: {x: 0, y: 101.01}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &6497264541811411597
@@ -5339,7 +5339,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6497264542568998323}
   m_HandleRect: {fileID: 6497264542568998320}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -6602,6 +6602,10 @@ PrefabInstance:
       value: ColorPicker2
       objectReference: {fileID: 0}
     - target: {fileID: 7568072289778255762, guid: d9a69e430ddc15245b12d361f521001e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7568072289778255762, guid: d9a69e430ddc15245b12d361f521001e, type: 3}
       propertyPath: red
       value: 0
       objectReference: {fileID: 0}
@@ -6615,10 +6619,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7568072289778255762, guid: d9a69e430ddc15245b12d361f521001e, type: 3}
       propertyPath: color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7568072289778255762, guid: d9a69e430ddc15245b12d361f521001e, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7568072289778255762, guid: d9a69e430ddc15245b12d361f521001e, type: 3}

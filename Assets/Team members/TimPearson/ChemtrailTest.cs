@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Mirror;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -8,7 +9,7 @@ namespace Tim
 {
     
 
-public class ChemtrailTest : MonoBehaviour
+public class ChemtrailTest : NetworkBehaviour
 {
     public Transform target;
     public float speed;
@@ -30,18 +31,20 @@ public class ChemtrailTest : MonoBehaviour
         
         gameManager = FindObjectOfType<GameManager>();
     }
+    
 
-    void Start()
+    public override void OnStartServer()
     {
+        base.OnStartServer();
         startingPosition = transform.position;
         if (target == null)
         {
-           Debug.LogWarning("Chemplane NEEDS a target set",this);
-           //return;
+            Debug.LogWarning("Chemplane NEEDS a target set",this);
+            //return;
         }
         coreSheepFinder = gameManager.GetComponent<CoreSheepFinder>();
         StartCoroutine("FlyOverSequence");
-       // trail = GetComponent<ParticleSystem>();
+        // trail = GetComponent<ParticleSystem>();
         collisionEvents = new List<ParticleCollisionEvent>();
         
     }
@@ -69,16 +72,17 @@ public class ChemtrailTest : MonoBehaviour
         GetComponent<Rigidbody>().velocity=velocity;
         Rigidbody rb = GetComponent<Rigidbody>();
 
-		
-		// CAM FIX
-		if (rb.velocity.magnitude > 0.01f)
-		{
-			transform.forward = rb.velocity;
-		}
-
+        if (isServer)
+        {
+            // CAM FIX
+            if (rb.velocity.magnitude > 0.01f)
+            {
+                transform.forward = rb.velocity;
+            }
+        }
+       
 
     }
-
     IEnumerator FlyOverSequence()
     {
         while (true)

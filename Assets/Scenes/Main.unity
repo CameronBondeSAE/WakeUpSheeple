@@ -3657,6 +3657,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2049589549}
     m_Modifications:
+    - target: {fileID: 1522121795492326984, guid: dc37545f7ae60614b80639ac5edac216, type: 3}
+      propertyPath: sceneId
+      value: 2751740499
+      objectReference: {fileID: 0}
     - target: {fileID: 1635317723893251565, guid: dc37545f7ae60614b80639ac5edac216, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -3772,13 +3776,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7202999729521579578, guid: b24305b124e89ec4ead84314d84865f9, type: 3}
-      propertyPath: endGoals.Array.data[0]
-      value: 
-      objectReference: {fileID: 192006166}
-    - target: {fileID: 7202999729521579578, guid: b24305b124e89ec4ead84314d84865f9, type: 3}
       propertyPath: spawnerList.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7202999729521579578, guid: b24305b124e89ec4ead84314d84865f9, type: 3}
+      propertyPath: endGoals.Array.data[0]
+      value: 
+      objectReference: {fileID: 192006166}
     - target: {fileID: 7202999729521579578, guid: b24305b124e89ec4ead84314d84865f9, type: 3}
       propertyPath: spawnerList.Array.data[0]
       value: 
@@ -4533,6 +4537,27 @@ Transform:
   m_Father: {fileID: 2049589549}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1198471898 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1635317723893251569, guid: dc37545f7ae60614b80639ac5edac216, type: 3}
+  m_PrefabInstance: {fileID: 644354113}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1198471906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198471898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 543566165
+  serverOnly: 0
+  m_AssetId: dc37545f7ae60614b80639ac5edac216
+  hasSpawned: 0
 --- !u!1 &1218307477
 GameObject:
   m_ObjectHideFlags: 0
@@ -6691,6 +6716,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6181736370761581532, guid: 29e34919de67780449d043c16eef9f5e, type: 3}
+      propertyPath: spawnPrefabs.Array.data[5]
+      value: 
+      objectReference: {fileID: 4452160783818175236, guid: c4d85c54b1622c441a3308c4177046e1, type: 3}
     - target: {fileID: 6181736370761581534, guid: 29e34919de67780449d043c16eef9f5e, type: 3}
       propertyPath: m_Name
       value: NetworkManagerAndLobbyUI
@@ -6741,7 +6770,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6497264541767905667, guid: 29e34919de67780449d043c16eef9f5e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.289314
+      value: 0.2884641
+      objectReference: {fileID: 0}
+    - target: {fileID: 6497264541767905667, guid: 29e34919de67780449d043c16eef9f5e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000027147862
       objectReference: {fileID: 0}
     - target: {fileID: 6497264541850599243, guid: 29e34919de67780449d043c16eef9f5e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -6759,12 +6792,20 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6497264542455689854, guid: 29e34919de67780449d043c16eef9f5e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6497264542568998320, guid: 29e34919de67780449d043c16eef9f5e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6497264542568998320, guid: 29e34919de67780449d043c16eef9f5e, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6497264542568998320, guid: 29e34919de67780449d043c16eef9f5e, type: 3}
+      propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8797963904188170714, guid: 29e34919de67780449d043c16eef9f5e, type: 3}
