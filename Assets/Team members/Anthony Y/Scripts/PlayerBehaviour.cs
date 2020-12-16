@@ -28,6 +28,9 @@ namespace AnthonyY
 		// HACK
 		public GameObject cameraPrefab;
 
+		[SyncVar]
+		public NetworkIdentity Owner;
+
 		private void Awake()
 		{
 			// amIWolf = false;
@@ -87,7 +90,6 @@ namespace AnthonyY
 			health.DeathEvent -= Death;
 		}
 
-		public NetworkIdentity Owner { get; set; }
 
 		void Update()
 		{
