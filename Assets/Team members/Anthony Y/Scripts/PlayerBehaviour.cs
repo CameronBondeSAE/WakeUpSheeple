@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace AnthonyY
 {
-	public class PlayerBehaviour : NetworkBehaviour, IOwnable
+	public class PlayerBehaviour : NetworkBehaviour
 	{
 		[SyncVar]
 		public float movementSpeed;
