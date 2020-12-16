@@ -169,7 +169,7 @@ namespace AnthonyY
 					controls.Dog.Enable();
 				}
 
-				clay.SetColor(Colour, Color.green);
+				clay.SetColor(Colour, Color.black);
 			}
 		}
 
@@ -185,7 +185,7 @@ namespace AnthonyY
 					controls.Dog.Enable();
 				}
 
-				clay.SetColor(Colour, Color.cyan);
+				clay.SetColor(Colour, Color.yellow);
 			}
 		}
 

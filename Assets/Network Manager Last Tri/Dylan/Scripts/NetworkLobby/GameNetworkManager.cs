@@ -69,7 +69,7 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
 
         public GameManager gameManager;
 
-        private int pickAWolf;
+        private int pickAWolfIndex;
 
 		public PlayerBehaviour localPlayer;
 
@@ -362,8 +362,19 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
 
         public void OnStartPickWolf()
         {
-            pickAWolf = Random.Range(0, physicalPlayers.Count);
-            physicalPlayers[pickAWolf].GetComponent<PlayerBehaviour>().TurnIntoWolf();
+            pickAWolfIndex = Random.Range(0, physicalPlayers.Count);
+            
+            for (int i = 0; i < physicalPlayers.Count; i++)
+            {
+                if (i == pickAWolfIndex)
+                {
+                    physicalPlayers[pickAWolfIndex].GetComponent<PlayerBehaviour>().TurnIntoWolf();
+                }
+                else
+                {
+                    physicalPlayers[pickAWolfIndex].GetComponent<PlayerBehaviour>().TurnIntoDog();
+                }
+            }
         }
 
         public override void OnClientSceneChanged(NetworkConnection conn)

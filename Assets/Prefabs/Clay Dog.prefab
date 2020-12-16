@@ -156,11 +156,12 @@ MonoBehaviour:
   health: {fileID: -725918390782881256}
   dogBark: {fileID: -336919023003889543}
   wolfHowl: {fileID: 4825105750970700407}
-  amIWolf: 1
+  amIWolf: 0
   clay: {fileID: 2100000, guid: 5fc03963ccd058a48a22c27ec3476639, type: 2}
   movement: {x: 0, y: 0, z: 0}
   movementInput: {x: 0, y: 0, z: 0}
   cameraPrefab: {fileID: 2288651071870068882, guid: e120714066bf0e84daf082be0c7d9ffa, type: 3}
+  Owner: {fileID: 0}
 --- !u!114 &-725918390782881256
 MonoBehaviour:
   m_ObjectHideFlags: 0
