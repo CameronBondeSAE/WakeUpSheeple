@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using Mirror;
 using Student_workspace.Dylan.Scripts.NetworkLobby;
 using UnityEngine;
 
 namespace AnthonyY
 {
-	public class PlayerBehaviour : NetworkBehaviour, IOwnable
+	public class PlayerBehaviour : NetworkBehaviour
 	{
 		[SyncVar]
 		public float movementSpeed;
@@ -28,6 +29,9 @@ namespace AnthonyY
 		// HACK
 		public GameObject cameraPrefab;
 
+		[SyncVar]
+		public NetworkIdentity Owner;
+
 		private void Awake()
 		{
 			// amIWolf = false;
@@ -46,8 +50,8 @@ namespace AnthonyY
 			controls.Wolf.Enable();
 			controls.Movement.Enable();
 			health.DeathEvent            += Death;
-			controls.Dog.Bark.performed  += _ => RpcBark();
-			controls.Wolf.Howl.performed += _ => RpcHowl();
+			controls.Dog.Bark.performed  += _ => CmdBark();
+			controls.Wolf.Howl.performed += _ => CmdHowl();
 
 			// HACK
 			// Destroy all existing cameras
@@ -87,7 +91,6 @@ namespace AnthonyY
 			health.DeathEvent -= Death;
 		}
 
-		public NetworkIdentity Owner { get; set; }
 
 		void Update()
 		{
@@ -141,20 +144,22 @@ namespace AnthonyY
 						   z = movementInput.y
 					   }.normalized;
 		}
-
+[ClientRpc]
 		public void RpcBark()
 		{
 			dogBark.Play();
 			Debug.Log("Dog Audio Played");
 		}
 
-
+[ClientRpc]
 		public void RpcHowl()
 		{
 			wolfHowl.Play();
 			Debug.Log("Wolf Audio Played");
 		}
-
+		
+		
+[ClientRpc]
 		public void TurnIntoDog()
 		{
 			amIWolf = false;
@@ -167,10 +172,10 @@ namespace AnthonyY
 					controls.Dog.Enable();
 				}
 
-				clay.SetColor(Colour, Color.green);
+				clay.SetColor(Colour, Color.black);
 			}
 		}
-
+[ClientRpc]
 		public void TurnIntoWolf()
 		{
 			amIWolf = true;
@@ -183,7 +188,7 @@ namespace AnthonyY
 					controls.Dog.Enable();
 				}
 
-				clay.SetColor(Colour, Color.cyan);
+				clay.SetColor(Colour, Color.yellow);
 			}
 		}
 
@@ -200,5 +205,18 @@ namespace AnthonyY
 			// Debug.Log("movementInput = " + movementInput);
 			RpcMove(movementInput);
 		}
+
+		[Command]
+		public void CmdBark()
+		{ 
+			RpcBark();	
+		}
+
+		[Command]
+		public void CmdHowl()
+		{
+			RpcHowl();	
+		}
+
 	}
 }

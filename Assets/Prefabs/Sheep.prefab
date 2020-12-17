@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1150626113551627471}
   - component: {fileID: 7588681357481765056}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FeelerRight
   m_TagString: Untagged
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
@@ -43,12 +43,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27285a1d3bf44354f9826b56a38b884e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 300
-  distance: 2
+  mainRigidbody: {fileID: 1521166418}
+  panic: 0
+  speed: -100
+  distance: 3
   MainTransform: {fileID: 7828059398278480904}
   layer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 3895
+  slowDownForObstaclesForce: 1000
 --- !u!1 &1390402862176288283
 GameObject:
   m_ObjectHideFlags: 0
@@ -59,7 +62,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7578480563434934805}
   - component: {fileID: 799125964390382341}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FeelerMid
   m_TagString: Untagged
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
@@ -92,12 +95,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27285a1d3bf44354f9826b56a38b884e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 500
+  mainRigidbody: {fileID: 1521166418}
+  panic: 1
+  speed: 800
   distance: 0.5
   MainTransform: {fileID: 7828059398278480904}
   layer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 3895
+  slowDownForObstaclesForce: 4000
 --- !u!1 &2372177631083542375
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,7 +125,7 @@ GameObject:
   - component: {fileID: 9059154389803321496}
   - component: {fileID: 1752998603513496375}
   - component: {fileID: 3391129651599921274}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sheep
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -251,7 +257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d65ddb2c92154334b7077493be10aabb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 4
+  radius: 8
   lastAmountOfSheep: 0
 --- !u!114 &8777377624074265046
 MonoBehaviour:
@@ -337,7 +343,7 @@ GameObject:
   - component: {fileID: 600426598239821462}
   - component: {fileID: 216347508652531906}
   - component: {fileID: 1194678179462907539}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -431,7 +437,7 @@ GameObject:
   - component: {fileID: 1582967058935103189}
   - component: {fileID: 7472212680046124202}
   - component: {fileID: 8911564195205557213}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -511,7 +517,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8868348360529997659}
   - component: {fileID: 4193426041491047238}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FeelerLeft
   m_TagString: Untagged
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
@@ -544,12 +550,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27285a1d3bf44354f9826b56a38b884e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 300
-  distance: 2
+  mainRigidbody: {fileID: 1521166418}
+  panic: 0
+  speed: 100
+  distance: 3
   MainTransform: {fileID: 7828059398278480904}
   layer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 3895
+  slowDownForObstaclesForce: 1000
 --- !u!1 &5388453794899284846
 GameObject:
   m_ObjectHideFlags: 0
@@ -562,7 +571,7 @@ GameObject:
   - component: {fileID: 6696128435479563525}
   - component: {fileID: 8269789629119920501}
   - component: {fileID: 961163076008220403}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Leg (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -657,7 +666,7 @@ GameObject:
   - component: {fileID: 7134791532378700571}
   - component: {fileID: 6570404111733107632}
   - component: {fileID: 1988554071482142319}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Leg (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -752,7 +761,7 @@ GameObject:
   - component: {fileID: 6663539560469842399}
   - component: {fileID: 4237963483284668882}
   - component: {fileID: 649927868233580221}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Leg (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -847,7 +856,7 @@ GameObject:
   - component: {fileID: 5375004319136876246}
   - component: {fileID: 1634760434853057680}
   - component: {fileID: 3489029304547892167}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}

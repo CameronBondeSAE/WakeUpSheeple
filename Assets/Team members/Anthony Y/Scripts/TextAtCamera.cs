@@ -13,7 +13,7 @@ public class TextAtCamera : MonoBehaviour
     private PlayerBehaviour playerBehaviour;
     void Awake()
     {
-        playerBehaviour = FindObjectOfType<PlayerBehaviour>();
+        playerBehaviour = GetComponent<PlayerBehaviour>();
     }
 
     // Update is called once per frame

@@ -268,3 +268,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CarObjectToSpawn: {fileID: 4703650891395689239, guid: 6754345ebc5366443a76d913d7dbdde9, type: 3}
   CarEndWaypoint: {fileID: 2777371909773684624}
+  carSpeed: 10

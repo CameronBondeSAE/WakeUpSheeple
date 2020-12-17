@@ -237,6 +237,7 @@ public class GameManager : NetworkBehaviour
 		SheepTracker(character);
 		LostEvent?.Invoke();
 		Debug.Log("GAME MANAGER: YOU LOST THE GAME :(");
+		hasWon = false;
 	}
 
 	public void EndGoalNotReached()
@@ -260,6 +261,6 @@ public class GameManager : NetworkBehaviour
 	[Command]
 	public void CmdGameOver()
 	{
-		RpcGameOver();
+		RpcGameOver();	
 	}
 }

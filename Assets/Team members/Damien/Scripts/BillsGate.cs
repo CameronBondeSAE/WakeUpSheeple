@@ -1,9 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using AlexM;
 using AnthonyY;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Damien
 {
@@ -19,7 +17,7 @@ namespace Damien
 
         public float range = 7f;
         private float openAngle = 90f;
-        public float rotateAngle = 15f;
+        public float rotateSpeed = 5f;
 
         public Transform partToRotate;
 
@@ -56,24 +54,22 @@ namespace Damien
 
             float shortestDistance = Mathf.Infinity;
             PlayerBehaviour nearestPlayer = null;
+
+
             if (overlapSphere.Length > 0)
             {
                 //opening gate
-                if (partToRotate.transform.localRotation.eulerAngles.y < openAngle)
-                {
-                    //  Debug.Log("Rotation is less than 90");
-                    partToRotate.transform.Rotate(0f, rotateAngle * Time.deltaTime, 0f);
-                }
+                partToRotate.localRotation = Quaternion.Euler(0,
+                    Mathf.Lerp(partToRotate.transform.localRotation.eulerAngles.y, openAngle,
+                        Time.deltaTime * rotateSpeed), 0);
+                Debug.Log(partToRotate.transform.localRotation.eulerAngles.y);
             }
-
-            if (overlapSphere.Length == 0)
+            else
             {
-                //closing gate
-                if (partToRotate.transform.eulerAngles.y > 0f)
-                {
-                    //   Debug.Log("Rotation is more than 0");
-                    partToRotate.transform.Rotate(0f, -rotateAngle * Time.deltaTime, 0f);
-                }
+                partToRotate.localRotation = Quaternion.Euler(0,
+                    Mathf.Lerp(partToRotate.transform.localRotation.eulerAngles.y, 0f,
+                        Time.deltaTime * rotateSpeed), 0);
+                
             }
         }
     }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Mirror;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -8,7 +9,7 @@ namespace Tim
 {
     
 
-public class ChemtrailTest : MonoBehaviour
+public class ChemtrailTest : NetworkBehaviour
 {
     public Transform target;
     public float speed;
@@ -19,23 +20,33 @@ public class ChemtrailTest : MonoBehaviour
     public ParticleSystem trail;
     public List<ParticleCollisionEvent> collisionEvents;
     public GameObject Virus;
-    private GameManager gameManager; 
+    private GameManager gameManager;
+    public Vector3 startingPosition;
+    public CoreSheepFinder coreSheepFinder;
 
 
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
+        
+        gameManager = FindObjectOfType<GameManager>();
+    }
+    
+
+    public override void OnStartServer()
+    {
+        base.OnStartServer();
+        startingPosition = transform.position;
         if (target == null)
         {
-           Debug.LogWarning("Chemplane NEEDS a target set",this);
-           //return;
+            Debug.LogWarning("Chemplane NEEDS a target set",this);
+            //return;
         }
-        //Vector3 position = new Vector3(Random.Range(-41f,58f),2,Random.Range(-46,54));
-        //Instantiate(enemy, position, Quaternion.identity);
+        coreSheepFinder = gameManager.GetComponent<CoreSheepFinder>();
         StartCoroutine("FlyOverSequence");
-       // trail = GetComponent<ParticleSystem>();
+        // trail = GetComponent<ParticleSystem>();
         collisionEvents = new List<ParticleCollisionEvent>();
-        gameManager = FindObjectOfType<GameManager>();
+        
     }
 
     private void OnParticleCollision(GameObject other)
@@ -61,36 +72,45 @@ public class ChemtrailTest : MonoBehaviour
         GetComponent<Rigidbody>().velocity=velocity;
         Rigidbody rb = GetComponent<Rigidbody>();
 
-		
-		// CAM FIX
-		if (rb.velocity.magnitude > 0.01f)
-		{
-			transform.forward = rb.velocity;
-		}
-
+        if (isServer)
+        {
+            // CAM FIX
+            if (rb.velocity.magnitude > 0.01f)
+            {
+                transform.forward = rb.velocity;
+            }
+        }
+       
 
     }
-
     IEnumerator FlyOverSequence()
     {
         while (true)
         {
-            
+            if (gameManager is null)
+            {
+                gameManager = FindObjectOfType<GameManager>();
+            }
             //yield return new WaitForSeconds(5f);
-            Vector3 position = new Vector3(Random.Range(-41f, 58f), planeHeight, Random.Range(-46, 54));
+            Vector3 position = coreSheepFinder.centerofSheepFlock + new Vector3(Random.Range(-41f, 58f), planeHeight, Random.Range(-46, 54));
             transform.position = position;
 			if (!(gameManager is null))
 			{
-				CoreSheepFinder coreSheepFinder = gameManager.GetComponent<CoreSheepFinder>();
-				if (coreSheepFinder)
+                
+				
+				if (coreSheepFinder != null) 
 				{
 					Vector3 targetPos = coreSheepFinder.centerofSheepFlock;
 					targetPos.y = planeHeight;
 					velocity    = (targetPos - transform.position).normalized * speed;
 				}
+                else
+                {
+                    Debug.Log("This is not working");
+                }
 			}
 
-			yield return new WaitForSeconds(5f);
+			yield return new WaitForSeconds(10f);
         }
         
         //Instantiate(enemy, position, Quaternion.identity);

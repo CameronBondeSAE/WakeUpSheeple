@@ -33,6 +33,7 @@ namespace Zach
 
         private void Awake()
         {
+            isAttached = null;
             deathTimer = 15f;
         }
 
@@ -56,7 +57,9 @@ namespace Zach
             
             if (convertTimer > 10f)
             {
-                GetComponentInParent<Sheep>().ChangeToBlack();
+                Sheep componentInParent = GetComponentInParent<Sheep>();
+                componentInParent?.ChangeToBlack();
+                Destroy(gameObject);
             }
         }
 

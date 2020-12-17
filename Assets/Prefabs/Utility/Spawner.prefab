@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3940507443033406527}
   - component: {fileID: 6323613389433987757}
+  - component: {fileID: 5790789338572438235}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -43,6 +44,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abe69167aca27564e879a833202dcc8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   prefab: {fileID: 2372177631083542375, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
   radius: 10
-  amount: 20
+  amount: 35
+--- !u!114 &5790789338572438235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4225685312202668331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  serverOnly: 1
+  m_AssetId: 
+  hasSpawned: 0

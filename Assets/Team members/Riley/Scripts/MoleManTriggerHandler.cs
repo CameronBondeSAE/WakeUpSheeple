@@ -8,23 +8,10 @@ public class MoleManTriggerHandler : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.gameObject.CompareTag("platformR"))
+        var health = other.GetComponent<Health>();
+        if (health != null)
         {
-            Debug.Log("Collision Detected");
-        }
-    }
-    private void OnTriggerStay(Collider other)
-    {
-        if (!other.gameObject.CompareTag("platformR"))
-        {
-            Debug.Log("Collision Still Detected");
-        }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (!other.gameObject.CompareTag("platformR"))
-        {
-            Debug.Log("Collision Removed");
+            health.Damage(10);
         }
     }
 }
