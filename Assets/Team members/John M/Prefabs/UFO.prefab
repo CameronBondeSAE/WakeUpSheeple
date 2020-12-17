@@ -110,24 +110,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UFO: {fileID: 2514153509697124241}
-  SpawnLocations:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  WaitLocations:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  ExitLocations:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  move: 2
-  sheepMove: 1
-  RandomSpawn: 0
-  RandomWait: 0
-  RandomExit: 0
-  PickUpradius: 5
+  gameManager: {fileID: 0}
+  coreSheepFinder: {fileID: 0}
+  move: 0.5
+  sheepMove: 0.2
 --- !u!135 &531973635
 SphereCollider:
   m_ObjectHideFlags: 0

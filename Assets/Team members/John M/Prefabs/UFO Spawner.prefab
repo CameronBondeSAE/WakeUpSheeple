@@ -43,19 +43,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c50164789f5cfbd49b9406a03a5166f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UFOPrefab: {fileID: 0}
-  SpawnLocations:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  WaitLocations:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  ExitLocations:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  RandomSpawn: 0
-  RandomWait: 0
-  RandomExit: 0
+  UFOPrefab: {fileID: 2514153509697124241, guid: 7149c958a210d6346bfeafcb972c2e9e, type: 3}

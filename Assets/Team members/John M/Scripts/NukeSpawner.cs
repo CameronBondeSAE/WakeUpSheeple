@@ -10,6 +10,16 @@ public class NukeSpawner : MonoBehaviour
     public AudioClip[] audioClipArray;
     AudioClip lastClip;
     
+    public GameManager gameManager;
+    public CoreSheepFinder coreSheepFinder;
+    private Vector3 spawnPosition;
+
+
+    private void Awake()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+    }
+   
     public void DropTheNuke()
     {
         StartCoroutine(NukeRoutine());
@@ -17,12 +27,15 @@ public class NukeSpawner : MonoBehaviour
 
     IEnumerator NukeRoutine()
     {
+        coreSheepFinder = gameManager.GetComponent<CoreSheepFinder>();
         audioSource.PlayOneShot(RandomClip());
+        //find the centre of the sheep flock at the current time and add random variance to it. Location is then set for spawn once alarm finished
+        spawnPosition = coreSheepFinder.centerofSheepFlock + new Vector3(Random.Range(-30f, 30f), 75, Random.Range(-30f, 30f));
         yield return new WaitForSeconds(12);
         Instantiate(nukePrefab);
-        nukePrefab.transform.position = new Vector3(0,75,0);
-        //position code to be updated once final change is made
-        //random InsideCircle to determine drop point
+        nukePrefab.transform.position = spawnPosition;
+        //nuke then drops from set location leading to explosion code
+        
         
         
     }

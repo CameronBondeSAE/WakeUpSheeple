@@ -49,6 +49,8 @@ MonoBehaviour:
   audioClipArray:
   - {fileID: 8300000, guid: 5dd0103ccb330cd4db00010c4a055f6f, type: 3}
   - {fileID: 8300000, guid: 60c778d391337f94395650b539b28bf9, type: 3}
+  coreSheepFinder: {fileID: 0}
+  gameManager: {fileID: 0}
 --- !u!82 &4129666497660190551
 AudioSource:
   m_ObjectHideFlags: 0
@@ -59,7 +61,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 5dd0103ccb330cd4db00010c4a055f6f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

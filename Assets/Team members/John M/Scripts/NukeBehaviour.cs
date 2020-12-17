@@ -12,8 +12,8 @@ public class NukeBehaviour : MonoBehaviour
     public float radius = 5.0f;
     public float upForce = 1.0f;
     public float nukeTimer = 15;
+    
 
-   
     void OnCollisionEnter()
     {
         Detonate();
@@ -29,7 +29,7 @@ public class NukeBehaviour : MonoBehaviour
         {
             if (hit.GetComponent<Health>())
             {
-                hit.GetComponent<Health>().Damage(150);
+                hit.GetComponent<Health>().Damage(75);
                 Rigidbody rb = hit.GetComponent<Rigidbody>();
                 if (rb != null)
                 {
