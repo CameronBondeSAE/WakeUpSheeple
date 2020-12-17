@@ -7,6 +7,16 @@ namespace AlexM
 {
     public class Sheep : CharacterBase
 	{
+		void Awake()
+		{
+			GetComponent<Health>().DeathEvent += OnDeathEvent;
+		}
+
+		void OnDeathEvent(Health health)
+		{
+			Destroy(gameObject);
+		}
+
 		// Property for access to variable
 		[SerializeField]
 		private bool isBlack = false;
