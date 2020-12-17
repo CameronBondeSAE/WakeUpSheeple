@@ -107,7 +107,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
@@ -4839,8 +4839,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbb76a17196e75c42882ecbc463011dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAttached: 0
+  isAttached: {fileID: 0}
   virus: {fileID: 2704142560674385399}
   incubation: 0
   deathTimer: 0
   instantiate: {fileID: 2704142560674385399}
+  convertTimer: 0
