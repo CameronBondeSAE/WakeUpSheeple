@@ -125,6 +125,7 @@ GameObject:
   - component: {fileID: 9059154389803321496}
   - component: {fileID: 1752998603513496375}
   - component: {fileID: 3391129651599921274}
+  - component: {fileID: 70245215046152251}
   m_Layer: 10
   m_Name: Sheep
   m_TagString: Untagged
@@ -331,6 +332,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 100
   currentHealth: 100
+--- !u!114 &70245215046152251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2372177631083542375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d0086eadb3350d4eb2696cbcabf10ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGrazing: 0
 --- !u!1 &4369274410258664551
 GameObject:
   m_ObjectHideFlags: 0

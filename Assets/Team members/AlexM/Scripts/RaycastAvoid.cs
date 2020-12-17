@@ -26,15 +26,16 @@ public class RaycastAvoid : MonoBehaviour
 	void RaycastOut()
 	{
 		var transform1 = transform;
-		ray.origin = transform1.position;
+		ray.origin    = transform1.position;
 		ray.direction = transform1.forward;
 
 
-		if (Physics.Raycast(ray, out raycastHit, distance,layer))
+		if (Physics.Raycast(ray, out raycastHit, distance, layer))
 		{
 			if (panic)
 			{
-				MainTransform.Rotate(0, (Mathf.Abs(speed) * -1f + (2f * Mathf.PerlinNoise(Time.time, 0))) * Time.deltaTime, 0);
+				MainTransform.Rotate(0,
+					(Mathf.Abs(speed) * -1f + (2f * Mathf.PerlinNoise(Time.time, 0))) * Time.deltaTime, 0);
 			}
 			else
 			{
@@ -48,12 +49,12 @@ public class RaycastAvoid : MonoBehaviour
 			//
 			// if (raycastHit.transform.gameObject.layer == LayerMask.NameToLayer("Obstacles") || raycastHit.transform.gameObject.layer == LayerMask.NameToLayer("Default") )
 			// {
-				// string layerName = LayerMask.LayerToName(8).ToString();
-				// Debug.Log(MainTransform.name + "-" + transform.name + ": Hitting layer:: " + layerName, this);
-				// MainTransform.Rotate(0, Time.deltaTime * speed, 0);
-				
-				// Push away from walls etc, instead of just hard turning
-				mainRigidbody.AddRelativeForce(0,0,-slowDownForObstaclesForce * Time.deltaTime);
+			// string layerName = LayerMask.LayerToName(8).ToString();
+			// Debug.Log(MainTransform.name + "-" + transform.name + ": Hitting layer:: " + layerName, this);
+			// MainTransform.Rotate(0, Time.deltaTime * speed, 0);
+
+			// Push away from walls etc, instead of just hard turning
+			mainRigidbody.AddRelativeForce(0, 0, -slowDownForObstaclesForce * Time.deltaTime);
 			// }
 		}
 	}

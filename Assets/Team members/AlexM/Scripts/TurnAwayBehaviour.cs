@@ -37,13 +37,6 @@ public class TurnAwayBehaviour : MonoBehaviour
 			wolfDist = Vector3.Distance(transform.position, Wolf.transform.position);
 			target = Wolf;
 			//Debug.Log(Wolf.transform.name + " is " + wolfDist + " away.");
-			
-			//Might need this if i have issues with wolves getting too close to sheep and sheep getting glitchy because of it.
-			// if (wolfDist < 0.3f)
-			// {
-			// 	wolfDist = 0.3f;
-			// }
-
 
 			if (target)
 			{
