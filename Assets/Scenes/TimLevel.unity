@@ -272,7 +272,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6497264541767905667, guid: 29e34919de67780449d043c16eef9f5e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.28845644
+      value: 0.28846556
       objectReference: {fileID: 0}
     - target: {fileID: 6497264541767905667, guid: 29e34919de67780449d043c16eef9f5e, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -18654,9 +18654,9 @@ PrefabInstance:
       propertyPath: sceneId
       value: 3468542409
       objectReference: {fileID: 0}
-    - target: {fileID: 1442112246234899866, guid: c4d85c54b1622c441a3308c4177046e1, type: 3}
-      propertyPath: planeHeight
-      value: 8.27
+    - target: {fileID: -6890950864270801298, guid: c4d85c54b1622c441a3308c4177046e1, type: 3}
+      propertyPath: m_AssetId
+      value: c4d85c54b1622c441a3308c4177046e1
       objectReference: {fileID: 0}
     - target: {fileID: 4452160783818175236, guid: c4d85c54b1622c441a3308c4177046e1, type: 3}
       propertyPath: m_Name

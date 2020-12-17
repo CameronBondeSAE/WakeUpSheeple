@@ -21,6 +21,8 @@ public class MoleManManager : MonoBehaviour
     public AudioSource soundPlayer;
     public int timeWait; //Time counter for waiting whenever a timer is needed
     private float verticalMovementSpeed = 0.03f;
+    public AudioClip jumpAudioClip;
+    public AudioClip burrowAudioClip;
     //----------------------------------GENERAL VARIABLES----------------------------------//
     //----------------------------------WAYPOINT VARIABLES----------------------------------//
     public DelegateState moveToWaypoint = new DelegateState();
@@ -107,6 +109,8 @@ public class MoleManManager : MonoBehaviour
     //----------------------------------JUMP----------------------------------//
     private void jumpStart()
     {
+        soundPlayer.clip = jumpAudioClip;
+        soundPlayer.volume = 1f;
         soundPlayer.Play();
         timeWait = 0; //reset our timewait to 0 whenever we start the jump function
         tmpEventJump?.Invoke();
@@ -137,6 +141,9 @@ public class MoleManManager : MonoBehaviour
     //----------------------------------WAYPOINT----------------------------------//
     private void moveToWaypointStart()
     {
+        soundPlayer.clip = burrowAudioClip;
+        soundPlayer.volume = 0.5f;
+        soundPlayer.Play();
         tmpEventWaypoint?.Invoke();
         timeWait = 0;
     }
