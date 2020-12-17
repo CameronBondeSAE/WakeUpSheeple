@@ -12,8 +12,8 @@ public class GameManagerUI_ViewModel : MonoBehaviour
 	void Awake()
 	{
 		gameManager = FindObjectOfType<GameManager>();
-		GameOver?.SetActive(false);
-		gameWon?.SetActive(false);
+		if (!(GameOver is null)) GameOver.SetActive(false);
+		if (!(gameWon is null)) gameWon.SetActive(false);
 	}
 
 	void OnEnable()
@@ -24,7 +24,7 @@ public class GameManagerUI_ViewModel : MonoBehaviour
 
 	private void GameManagerOnWonEvent()
 	{
-		gameWon?.SetActive(true);
+		if (!(gameWon is null)) gameWon.SetActive(true);
 	}
 
 	void OnDisable()

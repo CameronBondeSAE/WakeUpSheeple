@@ -53,6 +53,17 @@ namespace AnthonyY
 			base.OnStartClient();
 		}
 
+		public override void OnStartServer()
+		{
+			base.OnStartServer();
+			
+			if (isServer)
+			{
+				Debug.Log("PLAYER IS SERVER");
+				RpcTurnIntoWolf();
+			}
+		}
+
 		public override void OnStartLocalPlayer()
 		{
 			base.OnStartLocalPlayer();
@@ -203,12 +214,12 @@ namespace AnthonyY
 [ClientRpc]
 		public void RpcTurnIntoWolf()
 		{
+			Debug.Log("I am now a wolf");
 			amIWolf = true;
 			if (amIWolf)
 			{
 				youareWolf.gameObject.SetActive(true);
 				youareDog.gameObject.SetActive(false);
-				Debug.Log("I am now a wolf");
 				if (controls != null)
 				{
 					controls.Wolf.Enable();
