@@ -10,7 +10,7 @@ public class CarHandler : MonoBehaviour
     public GameObject carRespawnObject;
     private Vector3 carRespawnPoint;
     public GameObject destinationWaypoint;
-    public float speed = 15f;
+    public float speed;
     private float safeDistance = 5f;
     void Update()
     {

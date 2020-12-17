@@ -114,11 +114,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 820fce0377e11e147bed385bdd48e640, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   target: {fileID: 0}
-  speed: 20
+  speed: 10
   enemy: {fileID: 4452160783818175236}
   planeHeight: 5
-  trail: {fileID: 0}
+  trail: {fileID: 6718065406285803021}
   Virus: {fileID: 2704142560674385399, guid: e9becea97fca0c242bedfecf9161a56e, type: 3}
   startingPosition: {x: 0, y: 0, z: 0}
   coreSheepFinder: {fileID: 0}
