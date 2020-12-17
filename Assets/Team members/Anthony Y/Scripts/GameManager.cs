@@ -67,7 +67,7 @@ public class GameManager : NetworkBehaviour
         {
             gameNetworkManager.PhysicalPlayerSpawned += identity => PlayersSpawned(identity);
         }
-        DontDestroyOnLoad(this.gameObject);
+        // DontDestroyOnLoad(this.gameObject);
            
 
 
