@@ -374,11 +374,11 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
             {
                 if (i == pickAWolfIndex)
                 {
-                    physicalPlayers[pickAWolfIndex].GetComponent<PlayerBehaviour>().TurnIntoWolf();
+                    physicalPlayers[pickAWolfIndex].GetComponent<PlayerBehaviour>().RpcTurnIntoWolf();
                 }
                 else
                 {
-                    physicalPlayers[pickAWolfIndex].GetComponent<PlayerBehaviour>().TurnIntoDog();
+                    physicalPlayers[pickAWolfIndex].GetComponent<PlayerBehaviour>().RpcTurnIntoDog();
                 }
             }
         }

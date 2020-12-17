@@ -19,11 +19,13 @@ namespace AnthonyY
 		public AudioSource    wolfHowl;
 
 		[SerializeField]
+		[SyncVar]
 		public bool amIWolf = false;
 
 		public Material clay;
 
-		private static readonly int     Colour = Shader.PropertyToID("Color_9A1239AC");
+		[SyncVar]
+		private int ColourID;
 		public                  Vector3 movement;
 		public                  Vector3 movementInput;
 
@@ -42,7 +44,7 @@ namespace AnthonyY
 		private void Awake()
 		{
 			// amIWolf = false;
-		youareWolf.gameObject.SetActive(false);
+			youareWolf.gameObject.SetActive(false);
 			youareDog.gameObject.SetActive(false);
 		}
 
@@ -71,7 +73,7 @@ namespace AnthonyY
 			}
 			GameObject instantiate = Instantiate(cameraPrefab);
 			instantiate.GetComponent<Niall.CameraPlayer>().OwnPlayer = transform;
-			
+			ColourID = Shader.PropertyToID("Color_9A1239AC");
 			
 			
 			// if (networkIdentity.isLocalPlayer)
@@ -94,9 +96,9 @@ namespace AnthonyY
 
 		private void OnDisable()
 		{
-			controls.Dog.Disable();
-			controls.Wolf.Disable();
-			controls.Movement.Disable();
+			controls?.Dog.Disable();
+			controls?.Wolf.Disable();
+			controls?.Movement.Disable();
 			health.DeathEvent -= Death;
 		}
 
@@ -180,7 +182,7 @@ namespace AnthonyY
 		}
 		
 [ClientRpc]
-		public void TurnIntoDog()
+		public void RpcTurnIntoDog()
 		{
 			
 			amIWolf = false;
@@ -195,11 +197,11 @@ namespace AnthonyY
 					controls.Dog.Enable();
 				}
 				
-				clay.SetColor(Colour, Color.black);
+				clay.SetColor(ColourID, Color.black);
 			}
 		}
 [ClientRpc]
-		public void TurnIntoWolf()
+		public void RpcTurnIntoWolf()
 		{
 			amIWolf = true;
 			if (amIWolf)
@@ -213,7 +215,7 @@ namespace AnthonyY
 					controls.Dog.Enable();
 				}
 
-				clay.SetColor(Colour, Color.yellow);
+				clay.SetColor(ColourID, Color.yellow);
 			
 				
 			}
