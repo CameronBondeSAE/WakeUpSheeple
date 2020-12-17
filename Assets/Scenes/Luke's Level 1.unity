@@ -21820,7 +21820,7 @@ MonoBehaviour:
         - polygonID_: 5900
         - polygonID_: 5884
         - polygonID_: 5888
-        instanceID_: 12374
+        instanceID_: 12450
         selected: 0
     polygonGroupManager_:
       polygonGroups_: []
@@ -22644,7 +22644,7 @@ MonoBehaviour:
         - polygonID_: 5900
         - polygonID_: 5884
         - polygonID_: 5888
-        instanceID_: 12393
+        instanceID_: 12469
         selected: 0
     polygonGroupManager_:
       polygonGroups_: []
@@ -75012,7 +75012,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6497264541767905667, guid: 29e34919de67780449d043c16eef9f5e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.2884479
+      value: 0.28845933
       objectReference: {fileID: 0}
     - target: {fileID: 6497264541767905667, guid: 29e34919de67780449d043c16eef9f5e, type: 3}
       propertyPath: m_AnchoredPosition.x
