@@ -30,11 +30,11 @@ public class RaycastAvoid : MonoBehaviour
 		ray.direction = transform1.forward;
 
 
-		if (Physics.Raycast(ray, out raycastHit, distance,layer))
+		if (Physics.Raycast(ray, out raycastHit, distance,layer, QueryTriggerInteraction.Ignore))
 		{
 			if (panic)
 			{
-				MainTransform.Rotate(0, (Mathf.Abs(speed) * -1f + (2f * Mathf.PerlinNoise(Time.time, 0))) * Time.deltaTime, 0);
+				MainTransform.Rotate(0, Mathf.Abs(speed) * (-1f + (2f * Mathf.PerlinNoise(Time.time, 0))) * Time.deltaTime, 0);
 			}
 			else
 			{

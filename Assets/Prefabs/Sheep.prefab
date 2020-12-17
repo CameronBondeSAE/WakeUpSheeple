@@ -97,8 +97,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainRigidbody: {fileID: 1521166418}
   panic: 1
-  speed: 800
-  distance: 0.5
+  speed: 500
+  distance: 1
   MainTransform: {fileID: 7828059398278480904}
   layer:
     serializedVersion: 2
