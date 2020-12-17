@@ -10,33 +10,33 @@ using UnityEngine.UI;
 public class ScoreTracker : NetworkBehaviour
 {
     public GameNetworkManager gameNetworkManager;
-    public GameObject gm;
-    public EndGoalChecker endGoalCheck;
-    public GameObject endGoal;
+    public EndGoalChecker endGoal;
 
     public int tSheep;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI totalText;
-    public int safeSheep;
+    public int safeSheepN;
     public int goalSheep;
 
     public override void OnStartServer()
     {
-        endGoal = GameObject.Find("EndGoal");
-        endGoalCheck = endGoal.GetComponent<EndGoalChecker>();
+        endGoal= FindObjectOfType<EndGoalChecker>();
 
         gameNetworkManager = FindObjectOfType<GameNetworkManager>();
 
-        safeSheep = endGoalCheck.safeSheep.Count;
+        
         tSheep = gameNetworkManager.gameManager.allSheep.Count;
-        goalSheep = endGoalCheck.sheepRequired;
+        goalSheep = endGoal.sheepRequired;
     }
-
+    
 
     // Update is called once per frame
     void Update()
     {
+        
+        safeSheepN = endGoal.safeSheep.Count;
+        
         if (totalText != null) totalText.text = "Remaining Sheep: " + tSheep;
-        if (scoreText != null) scoreText.text = "Score: " + safeSheep + "/" + goalSheep;
+        if (scoreText != null) scoreText.text = "Score: " + safeSheepN + "/" + goalSheep;
     }
 }
