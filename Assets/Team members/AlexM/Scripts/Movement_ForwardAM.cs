@@ -59,23 +59,14 @@ public class Movement_ForwardAM : MonoBehaviour
 		// DoStop();
 	}
 
-	public float SetForce(float force)
-	{
-		previousForce = zForce;
-
-
-		zForce = force;
-
-		return zForce;
-	}
-
 	public void GoForward()
 	{
+		// HACK: Minimal speed always. Make variable
+		speedScale = Mathf.Clamp(speedScale, 0.1f, 1f);
+		
 		//forceApplied.z = zForce;
 		float finalSpeed = speedScale * zForce;
 
-		// HACK: Minimal speed always. Make variable
-		speedScale = Mathf.Clamp(speedScale, 0.5f, 1f);
 
 		Vector3 localSpeed = transform.InverseTransformDirection(new Vector3(0,0,finalSpeed));
 
@@ -105,6 +96,16 @@ public class Movement_ForwardAM : MonoBehaviour
 		// }
 
 	#endregion
+	}
+
+	public float SetForce(float force)
+	{
+		previousForce = zForce;
+
+
+		zForce = force;
+
+		return zForce;
 	}
 
 	void DoStop()

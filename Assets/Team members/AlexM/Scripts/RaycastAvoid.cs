@@ -17,6 +17,13 @@ public class RaycastAvoid : MonoBehaviour
 	public LayerMask layer;
 	public float     slowDownForObstaclesForce = 100f;
 
+	private float startingOffset;
+
+
+	private void Start()
+	{
+		startingOffset = transform.position.x;
+	}
 
 	void Update()
 	{
@@ -34,7 +41,7 @@ public class RaycastAvoid : MonoBehaviour
 		{
 			if (panic)
 			{
-				MainTransform.Rotate(0, Mathf.Abs(speed) * (-1f + (2f * Mathf.PerlinNoise(Time.time, 0))) * Time.deltaTime, 0);
+				MainTransform.Rotate(0, Mathf.Abs(speed) * (-1f + (2f * Mathf.PerlinNoise(startingOffset + Time.time, 0))) * Time.deltaTime, 0);
 			}
 			else
 			{
