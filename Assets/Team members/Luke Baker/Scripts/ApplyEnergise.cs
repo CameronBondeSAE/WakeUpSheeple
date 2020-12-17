@@ -20,8 +20,7 @@ namespace LukeBaker
         [Tooltip("The animation type for the movement of the energised object")]
         public Ease ease;
 
-        [Tooltip("When the energiser is triggered by an object, the object will moves toward the energiseEndPosition"),
-         Header("Required")]
+        [Tooltip("When the energiser is triggered by an object, the object will moves toward the energiseEndPosition")]
         public Transform energiseEndPosition;
 
         //Event Subscription
