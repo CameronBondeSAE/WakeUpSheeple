@@ -16,7 +16,9 @@ namespace AJ
             cubeTransform
                 .DOMoveY(5f, animDuration)
                 .SetEase(animEase)
-                .SetLoops(-1, LoopType.Incremental);
+                .SetLoops(-1);
+
+            //.SetLoops(-1, LoopType.Incremental);
         }
     }
 }
