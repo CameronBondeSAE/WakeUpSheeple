@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using AnthonyY;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -10,7 +10,7 @@ namespace Damien
 //See if nearest player is within range
 //Do something if player in within range
 
-    public class BillsGate : MonoBehaviour
+    public class DualBillsGate : MonoBehaviour
     {
         public LayerMask layerMask;
         private Transform inRange;
@@ -19,11 +19,13 @@ namespace Damien
         private float openAngle = 90f;
         public float rotateSpeed = 5f;
 
-        public Transform partToRotate;
+        public Transform partToRotate1;
+        public Transform partToRotate2;
 
         // Start is called before the first frame update
         void Start()
         {
+            
         }
 
         private void Update()
@@ -58,19 +60,26 @@ namespace Damien
 
             if (overlapSphere.Length > 0)
             {
-                
                 //opening gate
-                partToRotate.localRotation = Quaternion.Euler(0,
-                    Mathf.Lerp(partToRotate.transform.localRotation.eulerAngles.y, openAngle,
+                partToRotate1.localRotation = Quaternion.Euler(0,
+                    Mathf.Lerp(partToRotate1.transform.localRotation.eulerAngles.y, openAngle,
                         Time.deltaTime * rotateSpeed), 0);
-               // Debug.Log(partToRotate.transform.localRotation.eulerAngles.y);
+                partToRotate2.localRotation = Quaternion.Euler(0,
+                    Mathf.Lerp(partToRotate2.transform.localRotation.eulerAngles.y, -openAngle,
+                        Time.deltaTime * rotateSpeed), 0);
+               // Debug.Log(partToRotate1.transform.localRotation.eulerAngles.y);
+               // Debug.Log(partToRotate2.transform.localRotation.eulerAngles.y);
             }
             else
             {
-                partToRotate.localRotation = Quaternion.Euler(0,
-                    Mathf.Lerp(partToRotate.transform.localRotation.eulerAngles.y, 0f,
+                partToRotate1.localRotation = Quaternion.Euler(0,
+                    Mathf.Lerp(partToRotate1.transform.localRotation.eulerAngles.y, 0f,
                         Time.deltaTime * rotateSpeed), 0);
-                
+                partToRotate2.localRotation = Quaternion.Euler(0,
+                    Mathf.Lerp(partToRotate2.transform.localRotation.eulerAngles.y, 0f,
+                        Time.deltaTime * rotateSpeed), 0);
+             //   Debug.Log(partToRotate1.transform.localRotation.eulerAngles.y);
+              //  Debug.Log(partToRotate2.transform.localRotation.eulerAngles.y);
             }
         }
     }
