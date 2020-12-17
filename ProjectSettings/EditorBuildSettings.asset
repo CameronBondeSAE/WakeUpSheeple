@@ -12,4 +12,4 @@ EditorBuildSettings:
     path: Assets/Scenes/AnthonyLevel.unity
     guid: 90183d9de5e29ce47991d3ac4c2d5b91
   m_configObjects:
-    com.unity.input.settings: {fileID: 11400000, guid: 20b5df031ab14d34ea77de22eba70210, type: 2}
+    com.unity.input.settings: {fileID: 11400000, guid: 73b90dca48efe1e49b0b4ecad9028ea1, type: 2}
