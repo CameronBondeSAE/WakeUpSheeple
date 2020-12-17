@@ -101,7 +101,7 @@ public class ChemtrailTest : NetworkBehaviour
 				if (coreSheepFinder != null) 
 				{
 					Vector3 targetPos = coreSheepFinder.centerofSheepFlock;
-					targetPos.y = planeHeight;
+					targetPos.y = coreSheepFinder.centerofSheepFlock.y + planeHeight;
 					velocity    = (targetPos - transform.position).normalized * speed;
 				}
                 else
