@@ -15,6 +15,7 @@ public class OnVisableTutorial : MonoBehaviour
 	public GameNetworkManager gameNetworkManager;
 	public Vector3            playerCoords;
 	public bool               finished;
+	public List<OnVisableTutorial> tutorials;
 
 	private void Start()
     {
@@ -42,6 +43,10 @@ public class OnVisableTutorial : MonoBehaviour
 				firstVisablity = true;
 				PopupText.text = tutorialText;
 				PopupText.Show();
+				foreach (OnVisableTutorial tutorial in tutorials)
+				{
+					Destroy(tutorial.gameObject);
+				}
 				// StartCoroutine(FirstTutorial());
 			}
 		}
