@@ -19,6 +19,8 @@ public class CamsDude_Model : CharacterBase
 
 	public Health health;
 
+	public AudioSource audiosource;
+	
 	void Awake()
 	{
 		// GameObject.FindObjectOfType<GameManager>().playersSpawnedEvent += OnplayersSpawnedEvent;
@@ -49,7 +51,6 @@ public class CamsDude_Model : CharacterBase
 	public void CamsDeath(Health health)
 	{
 		// CamsDude death code here
-		GetComponent<AudioSource>()?.Play();
 		Destroy(gameObject);
 	}
 
