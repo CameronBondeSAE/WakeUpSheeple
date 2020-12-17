@@ -84,6 +84,7 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
             // Debug.Log("Level Loaded");
             // TODO move to UI ViewModel
             NetworkGamePlayer.OnInstantiated += UIOff;
+            LevelLoader.LoadLevelEvent += LoadLevel;
             // For debugging, use the same scene that you're testing easily
             if (useSameScene)
             {
@@ -113,10 +114,10 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
                 //run this on an event, invoke the event
                 UIOff();
             }
-            
+
+
             // Need to subscribe before network starts
             base.Start();
-            
         }
 		
 		public void LoadLevel(string levelToLoadName, bool loadNextLevel)
@@ -132,10 +133,15 @@ namespace Student_workspace.Dylan.Scripts.NetworkLobby
             }
             else
             {
+                
                 ServerChangeScene(levelToLoadName);
+
             }
 
             nextIndex = 0;
+            LevelLoader.LoadLevelEvent -= LoadLevel;
+            //should be done in start method if not can be uncommented
+            LevelLoader.LoadLevelEvent += LoadLevel;
         }
 
         public string NextLevel()
