@@ -300,7 +300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attractorTrigger: {fileID: 2357169482924936433}
   attractorCol: {fileID: 2474449638159111442}
-  attractSpeed: 1000
+  attractSpeed: 3000
   animationDuration: 2
   fiveGPing: {fileID: 6276584717916257416}
   ease: 1
