@@ -8,6 +8,7 @@ namespace LukeBaker
         public float launchPower;
         public int launchDelay;
         public int launchDamage;
+        public AudioSource launcherSound;
 
         public void OnTriggerEnter(Collider other)
         {
@@ -29,6 +30,10 @@ namespace LukeBaker
         IEnumerator Launch(Rigidbody rb)
         {
             yield return new WaitForSeconds(launchDelay);
+            
+            //sound play
+            launcherSound.Play();
+            
             rb.velocity = transform.up * launchPower;
         }
     }
