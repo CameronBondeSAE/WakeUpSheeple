@@ -4,6 +4,7 @@ using AlexM;
 using Mirror;
 using Student_workspace.Dylan.Scripts.NetworkLobby;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : NetworkBehaviour
 {
@@ -35,10 +36,9 @@ public class GameManager : NetworkBehaviour
 
 	///Happens when  a sheep died
 	public event Action SheepDiedEvent;
-
+	
 	private EndGoalChecker endGoalChecker;
-
-
+	
 	[Header("Sheep in Level")]
 //Will be linked to sheep spawn manager later (TOTAL SHEEP)
 	public List<Spawner> spawnerList;
@@ -67,6 +67,7 @@ public class GameManager : NetworkBehaviour
         {
             gameNetworkManager.PhysicalPlayerSpawned += identity => PlayersSpawned(identity);
         }
+        // DontDestroyOnLoad(this.gameObject);
            
 
 
@@ -91,7 +92,7 @@ public class GameManager : NetworkBehaviour
 
 			totalSheep += spawner.amount;
 
-			spawner.SpawnedEvent += SheepTracker;
+			spawner.SpawnedEvent += SpawnSheep;
 		}
 
 		// foreach (Sheep sheep in allSheep)
@@ -110,6 +111,7 @@ public class GameManager : NetworkBehaviour
 			endGoal.SheepMadeitEvent += SheepTracker;
 		}
 	}
+	
 
 	private void OnEnable()
 	{
@@ -167,8 +169,7 @@ public class GameManager : NetworkBehaviour
 		//who spawned
 	}
 
-//TOTAL SHEEP/DYING SHEEP
-	public void SheepTracker(CharacterBase character)
+	void SpawnSheep(CharacterBase character)
 	{
 		//TODO
 		//KEEP TRACK OF SHEEP HERE LINKING IT TO THE SPAWN MANAGER
@@ -177,23 +178,24 @@ public class GameManager : NetworkBehaviour
 		{
 			allSheep.Add(character as Sheep);
 		}
-
-
+	}
+//TOTAL SHEEP/DYING SHEEP
+	public void SheepTracker(CharacterBase character)
+	{
 		//Remove sheep from list when it dies
 
-		// foreach ( Sheep sheep in allSheep)
-		// {
-		//     if ()
-		//     {
-		//         if (character is Sheep)
-		//         {
-		//             allSheep.Remove(character as Sheep);
-		//             deadSheep.Add(character as Sheep);
-		//         }
-		//         SheepDiedEvent?.Invoke();
-		//     }
-		//     
-		// }
+		
+		    if (character.GetComponent<Health>().currentHealth < 0)
+		    {
+		        if (character is Sheep)
+		        {
+		            allSheep.Remove(character as Sheep);
+		            deadSheep.Add(character as Sheep);
+		        }
+		        SheepDiedEvent?.Invoke();
+		    }
+		    
+		
 
 
 		bool goalsMet = true;
@@ -205,12 +207,21 @@ public class GameManager : NetworkBehaviour
 				break;
 			}
 		}
-
-		if (goalsMet)
+		foreach (var goalChecker in endGoals)
 		{
-			EndGoalTrackerWin();
+			if (goalChecker.safeSheep.Count >= goalChecker.sheepRequired)
+			{
+				goalsMet = true;
+				EndGoalTrackerWin();
+				if (isServer)
+				{
+					GetComponent<LevelLoader>().LoadLevel();
+				}
+				
+				
+			}
 		}
-
+		
 		percentageOfSheepNeeded = totalSheep * percentage * percentageIncrease;
 
 
@@ -220,6 +231,8 @@ public class GameManager : NetworkBehaviour
 		}
 	}
 
+	
+    
 	public bool hasWon = false;
 
 	//Fire event when all required reach the level

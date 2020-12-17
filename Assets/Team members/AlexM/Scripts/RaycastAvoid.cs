@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using AnthonyY;
 using tripolygon.UModeler;
 using UnityEngine;
@@ -17,6 +17,13 @@ public class RaycastAvoid : MonoBehaviour
 	public LayerMask layer;
 	public float     slowDownForObstaclesForce = 100f;
 
+	private float startingOffset;
+
+
+	private void Start()
+	{
+		startingOffset = transform.position.x;
+	}
 
 	void Update()
 	{
@@ -30,11 +37,11 @@ public class RaycastAvoid : MonoBehaviour
 		ray.direction = transform1.forward;
 
 
-		if (Physics.Raycast(ray, out raycastHit, distance,layer))
+		if (Physics.Raycast(ray, out raycastHit, distance,layer, QueryTriggerInteraction.Ignore))
 		{
 			if (panic)
 			{
-				MainTransform.Rotate(0, (Mathf.Abs(speed) * -1f + (2f * Mathf.PerlinNoise(Time.time, 0))) * Time.deltaTime, 0);
+				MainTransform.Rotate(0, Mathf.Abs(speed) * (-1f + (2f * Mathf.PerlinNoise(startingOffset + Time.time, 0))) * Time.deltaTime, 0);
 			}
 			else
 			{
