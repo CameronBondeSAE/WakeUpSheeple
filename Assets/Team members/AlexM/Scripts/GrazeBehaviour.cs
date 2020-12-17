@@ -29,15 +29,24 @@ public class GrazeBehaviour : MonoBehaviour
    void Graze()
    {
       wolfDistance = 0;
-      foreach (PlayerBehaviour wolf in _wolfDetector.GetNearbyWolves())
+	  List<PlayerBehaviour> nearbyWolves = _wolfDetector.GetNearbyWolves();
+
+	  if (nearbyWolves.Count <= 0)
+	  {
+		  _moveController.speedScale = 0;
+		  return;
+	  }
+	  
+	  foreach (PlayerBehaviour wolf in nearbyWolves)
       {
          wolfDistance += Vector3.Distance(wolf.transform.position, transform.position);
       }
-      wolfDistance /= _wolfDetector.GetNearbyWolves().Count;
 
+	  wolfDistance /= nearbyWolves.Count;
       // if (wolfDistance > 1)
       {
-         _moveController.zForce = _wolfDetector.radius - wolfDistance;
+		  // Scale 0 to 1
+         _moveController.speedScale = (_wolfDetector.radius - wolfDistance)/_wolfDetector.radius;
       }
    }
 

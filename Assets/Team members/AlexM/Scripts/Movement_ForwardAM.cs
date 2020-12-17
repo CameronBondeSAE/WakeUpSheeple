@@ -12,8 +12,10 @@ public class Movement_ForwardAM : MonoBehaviour
 	[Header("Settings")]
 	private Rigidbody _rB;
 
+	public  float speedScale = 1f;
+	
 	[Tooltip("Adjust these to make the object move in the given direction")]
-	public float zForce;
+	public float zForce = 200f;
 
 	public event Action<Vector3> velEvent;
 
@@ -54,7 +56,7 @@ public class Movement_ForwardAM : MonoBehaviour
 		Debugging();
 		//Move();
 		GoForward();
-		DoStop();
+		// DoStop();
 	}
 
 	public float SetForce(float force)
@@ -70,9 +72,15 @@ public class Movement_ForwardAM : MonoBehaviour
 	public void GoForward()
 	{
 		//forceApplied.z = zForce;
-		Vector3 localSpeed = transform.InverseTransformDirection(new Vector3(0,0,zForce));
+		float finalSpeed = speedScale * zForce;
 
-		_rB.AddRelativeForce(0, 0, zForce);
+		// HACK: Minimal speed always. Make variable
+		speedScale = Mathf.Clamp(speedScale, 0.5f, 1f);
+
+		Vector3 localSpeed = transform.InverseTransformDirection(new Vector3(0,0,finalSpeed));
+
+		
+		_rB.AddRelativeForce(0, 0, finalSpeed);
 
 	#region BrokenMovement
 
