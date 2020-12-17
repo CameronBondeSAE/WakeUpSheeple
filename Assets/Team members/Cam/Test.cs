@@ -6,6 +6,9 @@ namespace Cam
 {
 	public class Test :MonoBehaviour
 	{
+		public DontDestroyOnLoad dontDestroyOnLoad;
+		
+		
 		void Start()
 		{
 			// Spawn the actionmap
