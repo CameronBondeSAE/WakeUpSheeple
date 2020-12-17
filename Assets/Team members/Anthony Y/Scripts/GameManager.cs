@@ -204,6 +204,7 @@ public class GameManager : NetworkBehaviour
 			if (goalChecker.safeSheep.Count < goalChecker.sheepRequired)
 			{
 				goalsMet = false;
+				
 				break;
 			}
 		}
@@ -265,9 +266,13 @@ public class GameManager : NetworkBehaviour
 	[ClientRpc]
 	public void RpcGameOver()
 	{
-		GameOverEvent?.Invoke();
-		//MusicAudioManager.PlaySFX("GameOverMusic"); 
-		Debug.Log("GAME OVER!");
+		if (hasWon == false)
+		{
+			GameOverEvent?.Invoke();
+			//MusicAudioManager.PlaySFX("GameOverMusic"); 
+			Debug.Log("GAME OVER!");
+		}
+		
 	}
 
 	//*****SERVER CODE*********
