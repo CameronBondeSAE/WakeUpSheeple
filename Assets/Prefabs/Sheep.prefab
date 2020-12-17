@@ -185,6 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0f72077c66f4bb48908b1f7346a5132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wool: {fileID: 2100000, guid: bd976881a05dd2041a011b9b2716aec2, type: 2}
   isBlack: 0
 --- !u!136 &134032813066214520
 CapsuleCollider:
