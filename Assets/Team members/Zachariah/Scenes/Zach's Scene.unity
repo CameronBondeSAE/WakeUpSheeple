@@ -1889,7 +1889,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 3895
 --- !u!114 &1114697118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2404,14 +2404,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2704142560674385387, guid: e9becea97fca0c242bedfecf9161a56e, type: 3}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 0.37
-      objectReference: {fileID: 0}
-    - target: {fileID: 2704142560674385387, guid: e9becea97fca0c242bedfecf9161a56e, type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 0.34
-      objectReference: {fileID: 0}
     - target: {fileID: 2704142560674385388, guid: e9becea97fca0c242bedfecf9161a56e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.9999995
