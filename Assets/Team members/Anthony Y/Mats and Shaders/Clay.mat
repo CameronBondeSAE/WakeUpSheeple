@@ -61,7 +61,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Rotate: 12
-    - RotationAmount: 84
+    - RotationAmount: 0
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 228
@@ -85,7 +85,7 @@ Material:
     - _ZWrite: 234
     m_Colors:
     - Color_45BDF7BE: {r: 1, g: 0.8980392, b: 0.1764706, a: 0}
-    - Color_9A1239AC: {r: 0, g: 1, b: 1, a: 1}
+    - Color_9A1239AC: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
