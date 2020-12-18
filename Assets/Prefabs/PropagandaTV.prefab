@@ -149,6 +149,10 @@ MonoBehaviour:
   tvOuterRadius: 13
   isOn: 1
   tvAngle: 45
+  screen: {fileID: 5275721008149355874}
+  mat1: {fileID: 2100000, guid: 138b17b648d347d41b42a84ee0b4668e, type: 2}
+  mat2: {fileID: 2100000, guid: 0991c1968ddd32b4c84367b9242d1f59, type: 2}
+  mat3: {fileID: 2100000, guid: 5f3ec2fc72c3e0a4f99232af2948ae03, type: 2}
   TvTarget: {fileID: 8288896303424397480}
   rb: {fileID: 0}
 --- !u!1 &2079164520472127888
@@ -340,7 +344,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d9c855052882970488c40744a5642469, type: 2}
+  - {fileID: 2100000, guid: 138b17b648d347d41b42a84ee0b4668e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
