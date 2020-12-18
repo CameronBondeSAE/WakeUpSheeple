@@ -12,7 +12,7 @@ namespace AJ
         public AudioSource audioSource;
         public AudioClip[] Sounds;
 
-        void Update()
+        void FixedUpdate()
         {
             if (Random.value < probability)
             {

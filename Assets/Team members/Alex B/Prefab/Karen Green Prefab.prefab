@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 0
-  probability: 0.0003
+  probability: 0.0005
   audioSource: {fileID: 1551734959}
   Sounds:
   - {fileID: 8300000, guid: 7435d9b8d71e45a40ae80830a2e8859b, type: 3}
@@ -171,8 +171,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 25
+  MinDistance: 10
+  MaxDistance: 30
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0

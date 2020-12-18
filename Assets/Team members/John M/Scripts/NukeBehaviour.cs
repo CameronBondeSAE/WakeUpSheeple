@@ -25,7 +25,8 @@ public class NukeBehaviour : MonoBehaviour
         Vector3 explosionPosition = nuke.transform.position;
         //activate particle explosion for nuke
         Collider[] colliders = Physics.OverlapSphere(explosionPosition, radius);
-        foreach (Collider hit in colliders)
+		
+		foreach (Collider hit in colliders)
         {
             if (hit.GetComponent<Health>())
             {
