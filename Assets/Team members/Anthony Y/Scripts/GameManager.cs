@@ -36,9 +36,9 @@ public class GameManager : NetworkBehaviour
 
 	///Happens when  a sheep died
 	public event Action SheepDiedEvent;
-	
+
 	private EndGoalChecker endGoalChecker;
-	
+
 	[Header("Sheep in Level")]
 //Will be linked to sheep spawn manager later (TOTAL SHEEP)
 	public List<Spawner> spawnerList;
@@ -46,17 +46,20 @@ public class GameManager : NetworkBehaviour
 	public List<EndGoalChecker> endGoals;
 	public List<Sheep>          allSheep  = new List<Sheep>();
 	public List<Sheep>          deadSheep = new List<Sheep>();
-[SyncVar]	public int                  totalSheep;
-	
-	[SerializeField]bool goalsMet = true;
+
+	[SyncVar]
+	public int totalSheep;
+
+	[SerializeField]
+	bool goalsMet = true;
 
 
 	[Header("Percentage of Sheep")]
 	private float percentageOfSheepNeeded;
 
-	public  float percentage         = 75;
-	private float percentageIncrease = 0.01f;
-	public LevelLoader levelLoader;
+	public  float       percentage         = 75;
+	private float       percentageIncrease = 0.01f;
+	public  LevelLoader levelLoader;
 
 
 	GameObject cameraFollow;
@@ -66,12 +69,11 @@ public class GameManager : NetworkBehaviour
 	{
 		gameNetworkManager = FindObjectOfType<GameNetworkManager>();
 		// Forward on the event from Networkmanager to the normal gamemanager for convenience
-        if (!(gameNetworkManager is null))
-        {
-            gameNetworkManager.PhysicalPlayerSpawned += identity => PlayersSpawned(identity);
-        }
-        // DontDestroyOnLoad(this.gameObject);
-           
+		if (!(gameNetworkManager is null))
+		{
+			gameNetworkManager.PhysicalPlayerSpawned += identity => PlayersSpawned(identity);
+		}
+		// DontDestroyOnLoad(this.gameObject);
 
 
 		// Proper follow camera for this gamemode (full screen)
@@ -121,7 +123,7 @@ public class GameManager : NetworkBehaviour
 	public override void OnStartServer()
 	{
 		base.OnStartServer();
-		
+
 		PlayPhaseStarted();
 	}
 
@@ -198,21 +200,25 @@ public class GameManager : NetworkBehaviour
 			allSheep.Add(character as Sheep);
 		}
 	}
+
 //TOTAL SHEEP/DYING SHEEP
 	public void SheepTracker(NetworkIdentity networkIdentity)
 	{
-		//Remove sheep from list when it dies
-		    if (networkIdentity != null && networkIdentity.GetComponent<Health>().currentHealth < 0)
-		    {
-		        if (networkIdentity is Sheep)
-		        {
-		            allSheep.Remove(networkIdentity.GetComponent<Sheep>());
-		            deadSheep.Add(networkIdentity.GetComponent<Sheep>());
-		        }
-		        SheepDiedEvent?.Invoke();
-		    }
-		    
+		Debug.Log("Sheep tracker called");
 		
+		//Remove sheep from list when it dies
+		if (networkIdentity != null && networkIdentity.GetComponent<Health>().currentHealth < 0)
+		{
+			if (networkIdentity is Sheep)
+			{
+				allSheep.Remove(networkIdentity.GetComponent<Sheep>());
+				deadSheep.Add(networkIdentity.GetComponent<Sheep>());
+			}
+
+			SheepDiedEvent?.Invoke();
+		}
+
+
 		foreach (var goalChecker in endGoals)
 		{
 			if (goalChecker.safeSheep.Count < goalChecker.sheepRequired)
@@ -222,18 +228,18 @@ public class GameManager : NetworkBehaviour
 				break;
 			}
 		}
-		
+
 		foreach (var goalChecker in endGoals)
 		{
 			if (goalChecker.safeSheep.Count >= goalChecker.sheepRequired)
 			{
 				EndGoalTrackerWin();
 				goalsMet = true;
-				
+
 				levelLoader.LoadLevel();
 			}
 		}
-		
+
 		percentageOfSheepNeeded = totalSheep * percentage * percentageIncrease;
 
 
@@ -243,15 +249,14 @@ public class GameManager : NetworkBehaviour
 		}
 	}
 
-	
-    
+
 	public bool hasWon = false;
 
 	//Fire event when all required reach the level
 	public void EndGoalTrackerWin()
 	{
 		hasWon = true;
-		
+
 		//SAFE SHEEP
 		WonEvent?.Invoke();
 		Debug.Log("GAME MANAGER: YOU WON THE  GAME ._.");
@@ -259,7 +264,6 @@ public class GameManager : NetworkBehaviour
 
 	public void EndGoalTrackerLost(NetworkIdentity networkIdentity)
 	{
-		
 		SheepTracker(networkIdentity);
 		LostEvent?.Invoke();
 		Debug.Log("GAME MANAGER: YOU LOST THE GAME :(");
@@ -282,7 +286,7 @@ public class GameManager : NetworkBehaviour
 		if (deadSheep.Count < endGoalChecker.sheepRequired / 2)
 		{
 			GameOverEvent?.Invoke();
-			
+
 			//MusicAudioManager.PlaySFX("GameOverMusic"); 
 			Debug.Log("GAME OVER!");
 		}
@@ -292,6 +296,6 @@ public class GameManager : NetworkBehaviour
 	[Command]
 	public void CmdGameOver()
 	{
-		RpcGameOver();	
+		RpcGameOver();
 	}
 }

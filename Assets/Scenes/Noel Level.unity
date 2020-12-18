@@ -1110,7 +1110,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6497264541767905667, guid: 29e34919de67780449d043c16eef9f5e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.28863797
+      value: 0.2894223
       objectReference: {fileID: 0}
     - target: {fileID: 6497264541850599243, guid: 29e34919de67780449d043c16eef9f5e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1187,7 +1187,7 @@ PrefabInstance:
       objectReference: {fileID: 208366021}
     - target: {fileID: 3874050478085292344, guid: fe3f375a372d1224b9611c9438f386c0, type: 3}
       propertyPath: sheepRequired
-      value: 24
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4207628742010886724, guid: fe3f375a372d1224b9611c9438f386c0, type: 3}
       propertyPath: m_Name
@@ -1744,7 +1744,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-2040
+  m_Name: pb_Mesh-2032062
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

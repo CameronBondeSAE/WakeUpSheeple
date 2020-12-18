@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using AlexM;
 using Mirror;
-using Mirror.Examples.Chat;
-using UnityEditor;
-using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 
 public class EndGoalChecker : MonoBehaviour
