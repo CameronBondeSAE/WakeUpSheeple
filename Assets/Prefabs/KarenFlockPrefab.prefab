@@ -69,7 +69,7 @@ MonoBehaviour:
   virus: {fileID: 2704142560674385399, guid: e9becea97fca0c242bedfecf9161a56e, type: 3}
   incubation: 0
   deathTimer: 15
-  keepAlive: 0
+  keepAlive: 1
   instantiate: {fileID: 2704142560674385399, guid: e9becea97fca0c242bedfecf9161a56e, type: 3}
   convertTimer: 0
 --- !u!82 &290173146523249682
@@ -180,8 +180,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 602df9e9941d9364ebe62fecc045f1cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 0
-  probability: 0.0003
+  value: 1
+  probability: 0.003
   audioSource: {fileID: 290173146523249682}
   Sounds:
   - {fileID: 8300000, guid: d3cbcf8dd06c51046b4bd8519a7322fc, type: 3}

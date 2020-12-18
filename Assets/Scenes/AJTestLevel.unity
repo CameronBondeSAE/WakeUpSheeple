@@ -4602,10 +4602,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: KarenFlockPrefab
       objectReference: {fileID: 0}
-    - target: {fileID: 1976190496633408470, guid: fc491b2b3373ca74dadc0e98028ad0bd, type: 3}
-      propertyPath: startingCount
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 1976190496633408471, guid: fc491b2b3373ca74dadc0e98028ad0bd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.02
@@ -4650,40 +4646,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5338686815130338992, guid: fc491b2b3373ca74dadc0e98028ad0bd, type: 3}
-      propertyPath: waypoints.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5338686815130338992, guid: fc491b2b3373ca74dadc0e98028ad0bd, type: 3}
-      propertyPath: waypoints.Array.data[1]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5338686815130338992, guid: fc491b2b3373ca74dadc0e98028ad0bd, type: 3}
-      propertyPath: waypoints.Array.data[2]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7412965521362495334, guid: fc491b2b3373ca74dadc0e98028ad0bd, type: 3}
-      propertyPath: value
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7412965521362495334, guid: fc491b2b3373ca74dadc0e98028ad0bd, type: 3}
-      propertyPath: probability
-      value: 0.003
-      objectReference: {fileID: 0}
-    - target: {fileID: 7474385234394446869, guid: fc491b2b3373ca74dadc0e98028ad0bd, type: 3}
-      propertyPath: virus
-      value: 
-      objectReference: {fileID: 2704142560674385399, guid: e9becea97fca0c242bedfecf9161a56e, type: 3}
-    - target: {fileID: 7474385234394446869, guid: fc491b2b3373ca74dadc0e98028ad0bd, type: 3}
-      propertyPath: instantiate
-      value: 
-      objectReference: {fileID: 2704142560674385399, guid: e9becea97fca0c242bedfecf9161a56e, type: 3}
-    - target: {fileID: 7474385234394446869, guid: fc491b2b3373ca74dadc0e98028ad0bd, type: 3}
-      propertyPath: keepAlive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5338686815130338992, guid: fc491b2b3373ca74dadc0e98028ad0bd, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc491b2b3373ca74dadc0e98028ad0bd, type: 3}
 --- !u!1001 &1218707354
 PrefabInstance:
