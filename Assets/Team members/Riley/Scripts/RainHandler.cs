@@ -22,10 +22,10 @@ public class RainHandler : MonoBehaviour
         var main = ps.main;
         var mainCO = cps.main;
         var emissionCO = cps.emission;
-        main.maxParticles = Mathf.RoundToInt(rainSlider * 30f);
-        emission.rateOverTime = Mathf.RoundToInt(rainSlider * 30f);
-        mainCO.maxParticles = Mathf.RoundToInt(rainSlider * 30f);
-        emissionCO.rateOverTime = Mathf.RoundToInt(rainSlider * 30f);
+        main.maxParticles = Mathf.RoundToInt(rainSlider * 100f);
+        emission.rateOverTime = Mathf.RoundToInt(rainSlider * 100f);
+        mainCO.maxParticles = Mathf.RoundToInt(rainSlider * 100f);
+        emissionCO.rateOverTime = Mathf.RoundToInt(rainSlider * 100f);
         // ----- Moves object to camera ----- //
         //Vector3 cameraPos = new Vector3(cameraTransform.position.x, cameraTransform.position.y + 5, cameraTransform.position.z);
         //transform.position = cameraPos;
