@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using AlexM;
+using Mirror;
 using Mirror.Examples.Chat;
 using UnityEditor;
 using UnityEditor.IMGUI.Controls;
@@ -16,7 +17,7 @@ public class EndGoalChecker : MonoBehaviour
     public List<Sheep> safeSheep;
     public int sheepRequired;
 
-    public event Action<Sheep> SheepMadeitEvent;
+    public event Action<NetworkIdentity> SheepMadeitEvent;
     
   
 
@@ -31,14 +32,19 @@ public class EndGoalChecker : MonoBehaviour
             safeSheep.Add(other.GetComponent<Sheep>());
 			Debug.Log(other.gameObject.name + ": Count = "+safeSheep.Count.ToString());
             // Destroy(other.transform.root.gameObject);
-            SheepMadeitEvent?.Invoke(other.GetComponent<Sheep>());
+            RpcSheepMadeIt(other.GetComponent<NetworkIdentity>());
             other.GetComponent<Rigidbody>().isKinematic = true;
 			// CAM HACK
 			// Destroy(other.gameObject);
         }
     }
 
-    private void OnTriggerExit(Collider other)
+	void RpcSheepMadeIt(NetworkIdentity other)
+	{
+		SheepMadeitEvent?.Invoke(other);
+	}
+
+	private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.GetComponent<Collider>())
         {

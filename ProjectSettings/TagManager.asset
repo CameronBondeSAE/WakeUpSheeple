@@ -8,6 +8,7 @@ TagManager:
   - Bird
   - platformR
   - PlayerTest
+  - LobbyCamera
   layers:
   - Default
   - TransparentFX

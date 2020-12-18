@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 1420297294}
   m_Layer: 0
   m_Name: Default lobby camera
-  m_TagString: Untagged
+  m_TagString: LobbyCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4290,8 +4290,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6497264542455689841}
   m_HandleRect: {fileID: 6497264542455689854}
   m_Direction: 2
-  m_Value: -0.0007406036
-  m_Size: 0.9971444
+  m_Value: 0.000052901654
+  m_Size: 0.99714446
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5088,7 +5088,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000027147862, y: 0.28867665}
+  m_AnchoredPosition: {x: -0.000027147862, y: 0.28843403}
   m_SizeDelta: {x: 0, y: 101.01}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &6497264541811411597

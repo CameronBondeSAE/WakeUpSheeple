@@ -169,10 +169,16 @@ public class GameManager : NetworkBehaviour
 
 	public void PlayPhaseStarted()
 	{
-		GamestartedEvent?.Invoke();
-		Debug.Log("GameManager Event: PLAYERS are Playing & player can be moved");
+		RpcPlayPhaseStarted();
 		// GetComponent<PlayerBehaviour>()?.controls.Movement.Movement.Enable();
 		//who spawned
+	}
+
+	[ClientRpc]
+	void RpcPlayPhaseStarted()
+	{
+		GamestartedEvent?.Invoke();
+		Debug.Log("GameManager Event: PLAYERS are Playing & player can be moved");
 	}
 
 	void SpawnSheep(CharacterBase character)
@@ -186,17 +192,17 @@ public class GameManager : NetworkBehaviour
 		}
 	}
 //TOTAL SHEEP/DYING SHEEP
-	public void SheepTracker(CharacterBase character)
+	public void SheepTracker(NetworkIdentity networkIdentity)
 	{
 		//Remove sheep from list when it dies
-
+			
 		
-		    if (character.GetComponent<Health>().currentHealth < 0)
+		    if (networkIdentity.GetComponent<Health>().currentHealth < 0)
 		    {
-		        if (character is Sheep)
+		        if (networkIdentity is Sheep)
 		        {
-		            allSheep.Remove(character as Sheep);
-		            deadSheep.Add(character as Sheep);
+		            allSheep.Remove(networkIdentity.GetComponent<Sheep>());
+		            deadSheep.Add(networkIdentity.GetComponent<Sheep>());
 		        }
 		        SheepDiedEvent?.Invoke();
 		    }
@@ -228,7 +234,7 @@ public class GameManager : NetworkBehaviour
 
 		if (totalSheep <= 0)
 		{
-			EndGoalTrackerLost(character);
+			EndGoalTrackerLost(networkIdentity);
 		}
 	}
 
@@ -246,11 +252,13 @@ public class GameManager : NetworkBehaviour
 		Debug.Log("GAME MANAGER: YOU WON THE  GAME ._.");
 	}
 
-	public void EndGoalTrackerLost(CharacterBase character)
+	public void EndGoalTrackerLost(NetworkIdentity networkIdentity)
 	{
-		SheepTracker(character);
+		
+		SheepTracker(networkIdentity);
 		LostEvent?.Invoke();
 		Debug.Log("GAME MANAGER: YOU LOST THE GAME :(");
+		hasWon = false;
 		hasWon = false;
 	}
 

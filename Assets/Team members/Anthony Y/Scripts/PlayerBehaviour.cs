@@ -80,9 +80,9 @@ namespace AnthonyY
 			// HACK
 			// Destroy all existing cameras
 			// HACK: There could be a time where you want other cameras in the scene, so this is too brute force
-			foreach (Camera cam in FindObjectsOfType<Camera>())
+			foreach (GameObject cam in GameObject.FindGameObjectsWithTag("LobbyCamera"))
 			{
-				Destroy(cam.gameObject);
+				Destroy(cam);
 			}
 			GameObject instantiate = Instantiate(cameraPrefab);
 			instantiate.GetComponent<Niall.CameraPlayer>().OwnPlayer = transform;
