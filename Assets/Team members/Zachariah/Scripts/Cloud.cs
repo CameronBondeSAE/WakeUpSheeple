@@ -74,10 +74,10 @@ namespace Zach
             }
             //transform.position = Vector3.MoveTowards(transform.position, centreSheep,1f);
             //Use of cloudMovingSpeed is for changing the overall speed of the cloud moving
-            if (CoreSheepFinder.centerofSheepFlock != null) //Null check again to keep update running without it incase - RM
-            {
-                centreSheep = new Vector3(CoreSheepFinder.centerofSheepFlock.x,CoreSheepFinder.centerofSheepFlock.y,CoreSheepFinder.centerofSheepFlock.z);
-            }
+            // if (CoreSheepFinder.centerofSheepFlock != null) //Null check again to keep update running without it incase - RM
+            // {
+                // centreSheep = new Vector3(CoreSheepFinder.centerofSheepFlock.x,CoreSheepFinder.centerofSheepFlock.y,CoreSheepFinder.centerofSheepFlock.z);
+            // }
             transform.Translate((distance * Time.deltaTime) * cloudMovingSpeed);
         }
 
