@@ -9,14 +9,15 @@ namespace AJ
     {
         public float value = 0f;
         public float probability = 9f;
-        static AudioSource audioSource;
-        public AudioClip WonEventMusic, LostEventMusic, GameOverMusic;
+        public AudioSource audioSource;
+        public AudioClip[] Sounds;
 
         void Update()
         {
-            if (Random.value > probability)
+            if (Random.value < probability)
             {
-                
+                audioSource.clip = Sounds[Random.Range(0, Sounds.Length)];
+                audioSource.Play();
             }
         }
     }
