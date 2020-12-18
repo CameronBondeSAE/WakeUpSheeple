@@ -28,23 +28,6 @@ namespace LukeBaker
             StartCoroutine(LightningStrike());
         }
 
-        // private void Update()
-        // {
-        //     RaycastGround();
-        // }
-        //
-        // //To check for the distance between lightning cast and ground
-        //  public void RaycastGround()
-        //  {
-        //      Ray ray = new Ray(transform.position, Vector3.down);
-        //      RaycastHit raycastToGround;
-        //      if (Physics.Raycast(ray, out raycastToGround))
-        //      {
-        //          Debug.DrawLine(ray.origin, raycastToGround.point, Color.green);
-        //      }
-        //      distanceToGround = raycastToGround.distance;
-        //  }
-
         public IEnumerator LightningStrike()
         {
             float y = 0;
