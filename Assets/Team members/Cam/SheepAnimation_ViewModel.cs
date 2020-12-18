@@ -1,10 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class SheepAnimation_ViewModel : MonoBehaviour
 {
-	public Animator  Animator;
+	public Animator  anim;
 	public Rigidbody rb;
 	public float     speedScale     = 0.25f;
 	public float     speedThreshold = 5;
@@ -14,10 +16,12 @@ public class SheepAnimation_ViewModel : MonoBehaviour
 
 	public float flingAmount;
 
-    // Start is called before the first frame update
-    void Start()
+	public bool  flingToVelocity           = false;
+	public float minimumVelocityToFling = 1f;
+
+	// Start is called before the first frame update
+	void Start()
 	{
-		Animator.speed = Random.Range(0.75f, 1.25f);
 		//
 		// float velocityMagnitude = rb.velocity.magnitude * speedScale;
 		//
@@ -30,18 +34,39 @@ public class SheepAnimation_ViewModel : MonoBehaviour
 
 		for (int index = 0; index < thingsToFling.Count; index++)
 		{
+			// Debug.Log("New thing to fling:" + thingsToFling[index].name);
 			Transform thing = thingsToFling[index];
-			initRotOfThings.Add(thing.rotation);
+			initRotOfThings.Add(thing.localRotation);
 			// initRotOfThings[index] = thing.rotation;
+		}
+		
+		if (anim != null)
+		{
+			anim.speed = Random.Range(0.75f, 1.25f);
 		}
 	}
 
-    public void LegFling()
+	void FixedUpdate()
+	{
+		if (flingToVelocity)
+		{
+			if (rb.velocity.magnitude > minimumVelocityToFling)
+			{
+				if (Random.value > 0.8f)
+				{
+					// Debug.Log("Random Leg fling");
+					LegFling();
+				}
+			}
+		}
+	}
+
+	public void LegFling()
 	{
 		for (int index = 0; index < thingsToFling.Count; index++)
 		{
 			Transform thing = thingsToFling[index];
-			thing.rotation = initRotOfThings[index] * Quaternion.Euler(Random.Range(-flingAmount, flingAmount), Random.Range(-flingAmount, flingAmount), Random.Range(-flingAmount, flingAmount));// Random.rotation;
+			thing.localRotation = initRotOfThings[index] * Quaternion.Euler(Random.Range(-flingAmount, flingAmount), Random.Range(-flingAmount, flingAmount), Random.Range(-flingAmount, flingAmount)); // Random.rotation;
 		}
 	}
 }
