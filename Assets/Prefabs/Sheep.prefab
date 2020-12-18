@@ -46,7 +46,7 @@ MonoBehaviour:
   mainRigidbody: {fileID: 1521166418}
   panic: 0
   speed: -500
-  distance: 5
+  distance: 2
   MainTransform: {fileID: 7828059398278480904}
   layer:
     serializedVersion: 2
@@ -181,7 +181,7 @@ MonoBehaviour:
   mainRigidbody: {fileID: 1521166418}
   panic: 1
   speed: 20000
-  distance: 1
+  distance: 3
   MainTransform: {fileID: 7828059398278480904}
   layer:
     serializedVersion: 2
@@ -564,7 +564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e106e72ab654b144bda041f839a0926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animator: {fileID: 3448594779670395477}
+  anim: {fileID: 3448594779670395477}
   rb: {fileID: 1521166418}
   speedScale: 0.25
   speedThreshold: 5
@@ -576,6 +576,8 @@ MonoBehaviour:
   - {fileID: 4756666607754380078}
   initRotOfThings: []
   flingAmount: 25
+  flingToVelocity: 0
+  minimumVelocityToFling: 1
 --- !u!114 &4434131486139907596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -754,7 +756,7 @@ MonoBehaviour:
   mainRigidbody: {fileID: 1521166418}
   panic: 0
   speed: 500
-  distance: 5
+  distance: 2
   MainTransform: {fileID: 7828059398278480904}
   layer:
     serializedVersion: 2
