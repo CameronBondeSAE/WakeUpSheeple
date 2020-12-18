@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 500631937591898624}
   - component: {fileID: 1381652530059594780}
   - component: {fileID: 8289060354968860010}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8288896303424397480}
   - component: {fileID: 857562306642763964}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: PropagandaTV
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,17 +139,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 144ad626482b8ba41aa6ea8aa4d8078e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layerMask:
+  layerMaskPlayer:
     serializedVersion: 2
-    m_Bits: 0
-  tvInnerRadius: 10
-  tvOuterRadius: 15
+    m_Bits: 512
+  layerMaskSheep:
+    serializedVersion: 2
+    m_Bits: 1024
+  tvInnerRadius: 7
+  tvOuterRadius: 13
   isOn: 1
-  tvAngle: 0
-  sheep: {fileID: 0}
-  targetDirection: {x: 0, y: 0, z: 0}
-  myPos: {x: 0, y: 0, z: 0}
-  target: {fileID: 0}
+  tvAngle: 45
+  TvTarget: {fileID: 8288896303424397480}
   rb: {fileID: 0}
 --- !u!1 &2079164520472127888
 GameObject:
@@ -196,7 +196,7 @@ GameObject:
   - component: {fileID: 5170618945604973362}
   - component: {fileID: 6941358222150214526}
   - component: {fileID: 8673882602387802015}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Metal2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,7 +292,7 @@ GameObject:
   - component: {fileID: 2433304347564349533}
   - component: {fileID: 5275721008149355874}
   - component: {fileID: 1668070804217033030}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -387,7 +387,7 @@ GameObject:
   - component: {fileID: 1433630320288991260}
   - component: {fileID: 5735910929547894736}
   - component: {fileID: 1413674631518012689}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Antenna
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -402,7 +402,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7563486799747522903}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.08002809, y: 0.213, z: 0}
+  m_LocalPosition: {x: 0, y: 0.213, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children:
   - {fileID: 6225020211225640342}
@@ -486,7 +486,7 @@ GameObject:
   - component: {fileID: 6407769377376789626}
   - component: {fileID: 8324841846546110132}
   - component: {fileID: 5557914962438327132}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Sphere (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -581,7 +581,7 @@ GameObject:
   - component: {fileID: 7661626445438687255}
   - component: {fileID: 3211307118958440166}
   - component: {fileID: 906182128819083901}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -676,7 +676,7 @@ GameObject:
   - component: {fileID: 5726859875656356442}
   - component: {fileID: 4463101210055394114}
   - component: {fileID: 7902627807083770995}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Metal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
