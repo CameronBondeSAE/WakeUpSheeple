@@ -149,7 +149,7 @@ MonoBehaviour:
   tvOuterRadius: 13
   isOn: 1
   tvAngle: 45
-  TvTarget: {fileID: 0}
+  TvTarget: {fileID: 8288896303424397480}
   rb: {fileID: 0}
 --- !u!1 &2079164520472127888
 GameObject:
