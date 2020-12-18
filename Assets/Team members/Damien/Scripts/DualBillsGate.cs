@@ -62,12 +62,12 @@ namespace Damien
             {
                 //opening gate
                 partToRotate1.localRotation = Quaternion.Euler(0,
-                    Mathf.Lerp(partToRotate1.transform.localRotation.eulerAngles.y, openAngle,
+                    Mathf.LerpAngle(partToRotate1.transform.localRotation.eulerAngles.y, openAngle,
                         Time.deltaTime * rotateSpeed), 0);
                 
                 
                 partToRotate2.localRotation = Quaternion.Euler(0,
-                    Mathf.Lerp(partToRotate2.transform.localRotation.eulerAngles.y, -openAngle,
+                    Mathf.LerpAngle(partToRotate2.transform.localRotation.eulerAngles.y, -openAngle,
                         Time.deltaTime * rotateSpeed), 0);
                 
                 // Debug.Log(partToRotate1.transform.localRotation.eulerAngles.y);
@@ -76,10 +76,10 @@ namespace Damien
             else
             {
                 partToRotate1.localRotation = Quaternion.Euler(0,
-                    Mathf.Lerp(partToRotate1.transform.localRotation.eulerAngles.y, 0f,
+                    Mathf.LerpAngle(partToRotate1.transform.localRotation.eulerAngles.y, 0f,
                         Time.deltaTime * rotateSpeed), 0);
                 partToRotate2.localRotation = Quaternion.Euler(0,
-                    Mathf.Lerp(partToRotate2.transform.localRotation.eulerAngles.y, 0f,
+                    Mathf.LerpAngle(partToRotate2.transform.localRotation.eulerAngles.y, -0f,
                         Time.deltaTime * rotateSpeed), 0);
              //   Debug.Log(partToRotate1.transform.localRotation.eulerAngles.y);
              //  Debug.Log(partToRotate2.transform.localRotation.eulerAngles.y);
