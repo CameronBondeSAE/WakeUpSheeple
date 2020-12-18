@@ -73,7 +73,7 @@ namespace AnthonyY
 			controls.Dog.Enable();
 			controls.Wolf.Enable();
 			controls.Movement.Enable();
-			health.DeathEvent            += Death;
+			// health?.DeathEvent            += Death;
 			controls.Dog.Bark.performed  += _ => CmdBark();
 			controls.Wolf.Howl.performed += _ => CmdHowl();
 
@@ -112,7 +112,7 @@ namespace AnthonyY
 			controls?.Dog.Disable();
 			controls?.Wolf.Disable();
 			controls?.Movement.Disable();
-			health.DeathEvent -= Death;
+			// health.DeathEvent -= Death;
 		}
 
 

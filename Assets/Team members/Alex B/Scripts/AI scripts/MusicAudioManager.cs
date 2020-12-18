@@ -7,16 +7,19 @@ using UnityEngine;
 
 namespace AJ
 {
-    public class MusicAudioManager : MonoBehaviour
+    public class MusicAudioManager : NetworkBehaviour
     {
         private GameManager gameManager;
 
         public AudioSource audioSource;
         public AudioClip   WonEventMusic, LostEventMusic, GameOverMusic, sheepSavedMusic, playMusic;
 
-        public void OnEnable()
-        {
-            //Subscribe to event
+
+		public override void OnStartServer()
+		{
+			base.OnStartServer();
+
+			//Subscribe to event
 			GameManager gm = FindObjectOfType<GameManager>();
 			gm.WonEvent += OnWonEvent;
             gm.LostEvent += OnLostEvent;
@@ -26,6 +29,9 @@ namespace AJ
 			}
 			
 			gm.GamestartedEvent += GmOnGamestartedEvent;
+			
+			// Hack
+			GmOnGamestartedEvent();
         }
 
 		void GmOnGamestartedEvent()

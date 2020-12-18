@@ -58,10 +58,10 @@ namespace Zach
             {
                 main = ps.main;
             }
-            if (CoreSheepFinder.centerofSheepFlock != null) //Simple null check to tell the dev what they need - RM
-            {
-                Debug.LogWarning("The center of sheep cannot be detected. Is the game manager in?");
-            }
+            // if (CoreSheepFinder.centerofSheepFlock != null) //Simple null check to tell the dev what they need - RM
+            // {
+                // Debug.LogWarning("The center of sheep cannot be detected. Is the game manager in?");
+            // }
         }
 
         // Update is called once per frame

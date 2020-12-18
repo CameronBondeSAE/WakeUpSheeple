@@ -117,7 +117,14 @@ public class GameManager : NetworkBehaviour
 			endGoal.SheepMadeitEvent += SheepTracker;
 		}
 	}
-	
+
+	public override void OnStartServer()
+	{
+		base.OnStartServer();
+		
+		PlayPhaseStarted();
+	}
+
 
 	private void OnEnable()
 	{
@@ -195,9 +202,7 @@ public class GameManager : NetworkBehaviour
 	public void SheepTracker(NetworkIdentity networkIdentity)
 	{
 		//Remove sheep from list when it dies
-			
-		
-		    if (networkIdentity.GetComponent<Health>().currentHealth < 0)
+		    if (networkIdentity != null && networkIdentity.GetComponent<Health>().currentHealth < 0)
 		    {
 		        if (networkIdentity is Sheep)
 		        {
