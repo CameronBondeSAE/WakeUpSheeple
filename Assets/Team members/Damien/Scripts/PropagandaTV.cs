@@ -11,18 +11,17 @@ namespace Damien
 {
     public class PropagandaTV : MonoBehaviour
     {
-        public LayerMask layerMask;
+        public LayerMask layerMaskPlayer;
+        public LayerMask layerMaskSheep;
+        
         public float tvInnerRadius = 5f;
         public float tvOuterRadius = 10f;
         public bool isOn = true;
 
         public float tvAngle = 45f;
 
-        public GameObject sheep;
-
-        public Vector3 targetDirection;
-        public Vector3 myPos;
-        public PropagandaTV target;
+      
+        public Transform TvTarget;
 
         public Rigidbody rb;
 
@@ -40,16 +39,30 @@ namespace Damien
 
         public void DetectSheep()
         {
+            Collider[] overlapSphere0 =
+                Physics.OverlapSphere(transform.position, tvOuterRadius, layerMaskSheep,
+                    QueryTriggerInteraction.Ignore);
+            
+
             Collider[] overlapSphere =
-                Physics.OverlapSphere(transform.position, tvOuterRadius, layerMask, QueryTriggerInteraction.Ignore);
+                Physics.OverlapSphere(transform.position, tvOuterRadius, layerMaskPlayer, 
+                    QueryTriggerInteraction.Ignore);
 
             Sheep[] sheeps = Sheep.FindObjectsOfType<Sheep>();
             float shortestDistance = Mathf.Infinity;
             Sheep nearestSheep = null;
             foreach (Sheep sheep in sheeps)
-
             {
-                if (overlapSphere.Length == 0)
+                if (overlapSphere0.Length == 0) //no sheep in radius
+                {
+                    
+                }
+
+                if (overlapSphere0.Length > 0) //sheep are in radius
+                {
+                    sheep.transform.LookAt(TvTarget);
+                }
+                    if (overlapSphere.Length == 0) //no players in radius
                 {
                     float distanceToSheep = Vector3.Distance(transform.position, sheep.transform.position);
 
@@ -62,12 +75,14 @@ namespace Damien
                     }
                 }
 
-                if (overlapSphere.Length > 0)
+                if (overlapSphere.Length > 0) //players are in radius
                 {
                     float distanceToSheep = Vector3.Distance(transform.position, sheep.transform.position);
                     if (distanceToSheep <= tvInnerRadius)
                         sheep.GetComponent<Movement_ForwardAM>().enabled = true;
-                    sheep.GetComponent<Rigidbody>().isKinematic = false;
+                        sheep.GetComponent<Rigidbody>().isKinematic = false;
+                        
+                        
                 }
             }
         }
