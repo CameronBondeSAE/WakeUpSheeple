@@ -272,7 +272,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6497264541767905667, guid: 29e34919de67780449d043c16eef9f5e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.5206885
+      value: 0.2884911
       objectReference: {fileID: 0}
     - target: {fileID: 6497264541767905667, guid: 29e34919de67780449d043c16eef9f5e, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -20727,10 +20727,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4452160783818175258, guid: c4d85c54b1622c441a3308c4177046e1, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4575912810302548279, guid: c4d85c54b1622c441a3308c4177046e1, type: 3}
       propertyPath: mainRenderableMesh
       value: 
@@ -20759,18 +20755,10 @@ PrefabInstance:
       propertyPath: mainRenderableMesh
       value: 
       objectReference: {fileID: 694388300}
-    - target: {fileID: 6718065406285803021, guid: c4d85c54b1622c441a3308c4177046e1, type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 7053841083988278099, guid: c4d85c54b1622c441a3308c4177046e1, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 694388300}
-    - target: {fileID: 8311408285912954843, guid: c4d85c54b1622c441a3308c4177046e1, type: 3}
-      propertyPath: m_SelectedEditorRenderState
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8601638274031164118, guid: c4d85c54b1622c441a3308c4177046e1, type: 3}
       propertyPath: mainRenderableMesh
       value: 
