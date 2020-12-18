@@ -10,6 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1976190496633408471}
   - component: {fileID: 1976190496633408470}
+  - component: {fileID: 7474385234394446869}
+  - component: {fileID: 290173146523249682}
+  - component: {fileID: 7412965521362495334}
   m_Layer: 0
   m_Name: KarenFlockPrefab
   m_TagString: Untagged
@@ -45,8 +48,143 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agentPrefab: {fileID: 7119511714556738324, guid: d459049814186f6499b65138e4498c33, type: 3}
   behavior: {fileID: 11400000, guid: d37bf734dcd1b7c44a9b618e745eb822, type: 2}
-  startingCount: 10
+  startingCount: 20
   driveFactor: 1
   maxSpeed: 75
   neighborRadius: 7
   avoidanceRadiusMultiplier: 0.5
+--- !u!114 &7474385234394446869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976190496633408468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbb76a17196e75c42882ecbc463011dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAttached: {fileID: 6809044889052875844, guid: 9598d307b1f01dd4f8b1673b79e00e1a, type: 3}
+  virus: {fileID: 2704142560674385399, guid: e9becea97fca0c242bedfecf9161a56e, type: 3}
+  incubation: 0
+  deathTimer: 15
+  keepAlive: 1
+  instantiate: {fileID: 2704142560674385399, guid: e9becea97fca0c242bedfecf9161a56e, type: 3}
+  convertTimer: 0
+--- !u!82 &290173146523249682
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976190496633408468}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -6467569869485028759, guid: 3675495dac43d1a46ab6062053aaafb9, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 25
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &7412965521362495334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976190496633408468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602df9e9941d9364ebe62fecc045f1cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value: 1
+  probability: 0.003
+  audioSource: {fileID: 290173146523249682}
+  Sounds:
+  - {fileID: 8300000, guid: d3cbcf8dd06c51046b4bd8519a7322fc, type: 3}
+  - {fileID: 8300000, guid: 7435d9b8d71e45a40ae80830a2e8859b, type: 3}
+  - {fileID: 8300000, guid: fac12df997b680449ad8c27f9eaf9e35, type: 3}
+  - {fileID: 8300000, guid: 5a9aa3ec763678541acfcfef0322dac6, type: 3}
