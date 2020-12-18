@@ -13,13 +13,17 @@ namespace AJ
         // Start is called before the first frame update
         void Start()
         {
-            cubeTransform
+            var tweenerCore = cubeTransform
                 .DOMoveY(5f, animDuration)
+                .SetDelay(Random.Range(0, 2f))
                 .SetEase(animEase)
                 .SetLoops(-1);
-
+            //tweenerCore.Pause();
+            //yield return new WaitForSeconds(Random.Range(0, 2f));
+            //tweenerCore.Play();
             //.SetLoops(-1, LoopType.Incremental);
         }
+        
     }
 }
 
