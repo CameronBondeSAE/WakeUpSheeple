@@ -32,9 +32,10 @@ public class EndGoalChecker : MonoBehaviour
 			Debug.Log(other.gameObject.name + ": Count = "+safeSheep.Count.ToString());
             // Destroy(other.transform.root.gameObject);
             SheepMadeitEvent?.Invoke(other.GetComponent<Sheep>());
-
+            other.GetComponent<Rigidbody>().isKinematic = true;
 			// CAM HACK
-			Destroy(other.gameObject);
+			// Destroy(other.gameObject);
+            
         }
     }
 
@@ -50,6 +51,7 @@ public class EndGoalChecker : MonoBehaviour
             
         }
     }
+    
 
     private void OnDrawGizmos()
     {

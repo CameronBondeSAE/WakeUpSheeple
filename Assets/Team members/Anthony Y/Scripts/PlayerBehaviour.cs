@@ -38,6 +38,8 @@ namespace AnthonyY
 		public GameObject youareWolf;
 		public GameObject youareDog;
 		
+		public float coolDownTime = 10;
+		private float nextAudioPlayed = 0;
 		
 
 
@@ -166,8 +168,7 @@ namespace AnthonyY
 						   z = movementInput.y
 					   }.normalized;
 		}
-		public float coolDownTime = 10;
-		private float nextAudioPlayed = 0;
+		
 [ClientRpc]
 		public void RpcBark()
 		{

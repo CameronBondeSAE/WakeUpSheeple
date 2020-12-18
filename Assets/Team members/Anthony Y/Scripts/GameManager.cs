@@ -47,6 +47,8 @@ public class GameManager : NetworkBehaviour
 	public List<Sheep>          allSheep  = new List<Sheep>();
 	public List<Sheep>          deadSheep = new List<Sheep>();
 	public int                  totalSheep;
+	
+	[SerializeField]bool goalsMet = true;
 
 
 	[Header("Percentage of Sheep")]
@@ -54,6 +56,7 @@ public class GameManager : NetworkBehaviour
 
 	public  float percentage         = 75;
 	private float percentageIncrease = 0.01f;
+	public LevelLoader levelLoader;
 
 
 	GameObject cameraFollow;
@@ -90,9 +93,12 @@ public class GameManager : NetworkBehaviour
 				Debug.LogWarning("YOU DONT HAVE THE SHEEP SPAWNER IN THE GAME MANAGER!");
 			}
 
-			totalSheep += spawner.amount;
+			if (!(spawner is null))
+			{
+				totalSheep += spawner.amount;
 
-			spawner.SpawnedEvent += SpawnSheep;
+				spawner.SpawnedEvent += SpawnSheep;
+			}
 		}
 
 		// foreach (Sheep sheep in allSheep)
@@ -196,9 +202,6 @@ public class GameManager : NetworkBehaviour
 		    }
 		    
 		
-
-
-		bool goalsMet = true;
 		foreach (var goalChecker in endGoals)
 		{
 			if (goalChecker.safeSheep.Count < goalChecker.sheepRequired)
@@ -208,25 +211,22 @@ public class GameManager : NetworkBehaviour
 				break;
 			}
 		}
+		
 		foreach (var goalChecker in endGoals)
 		{
 			if (goalChecker.safeSheep.Count >= goalChecker.sheepRequired)
 			{
-				goalsMet = true;
 				EndGoalTrackerWin();
-				if (isServer)
-				{
-					GetComponent<LevelLoader>().LoadLevel();
-				}
+				goalsMet = true;
 				
-				
+				levelLoader.LoadLevel();
 			}
 		}
 		
 		percentageOfSheepNeeded = totalSheep * percentage * percentageIncrease;
 
 
-		if (totalSheep < 0)
+		if (totalSheep <= 0)
 		{
 			EndGoalTrackerLost(character);
 		}
@@ -248,7 +248,6 @@ public class GameManager : NetworkBehaviour
 
 	public void EndGoalTrackerLost(CharacterBase character)
 	{
-		
 		SheepTracker(character);
 		LostEvent?.Invoke();
 		Debug.Log("GAME MANAGER: YOU LOST THE GAME :(");
@@ -267,7 +266,7 @@ public class GameManager : NetworkBehaviour
 	[ClientRpc]
 	public void RpcGameOver()
 	{
-		if (deadSheep.Count > endGoalChecker.sheepRequired / 2)
+		if (deadSheep.Count < endGoalChecker.sheepRequired / 2)
 		{	
 			GameOverEvent?.Invoke();
 			//MusicAudioManager.PlaySFX("GameOverMusic"); 

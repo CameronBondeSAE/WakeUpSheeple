@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1574130558}
+    - target: {fileID: 3874050478085292344, guid: fe3f375a372d1224b9611c9438f386c0, type: 3}
+      propertyPath: sheepRequired
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4207628742010886724, guid: fe3f375a372d1224b9611c9438f386c0, type: 3}
       propertyPath: m_Name
       value: EndGoal with Box
@@ -2762,13 +2766,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7202999729521579578, guid: b24305b124e89ec4ead84314d84865f9, type: 3}
-      propertyPath: endGoals.Array.data[0]
-      value: 
-      objectReference: {fileID: 192006166}
-    - target: {fileID: 7202999729521579578, guid: b24305b124e89ec4ead84314d84865f9, type: 3}
       propertyPath: spawnerList.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7202999729521579578, guid: b24305b124e89ec4ead84314d84865f9, type: 3}
+      propertyPath: endGoals.Array.data[0]
+      value: 
+      objectReference: {fileID: 192006166}
     - target: {fileID: 7202999729521579578, guid: b24305b124e89ec4ead84314d84865f9, type: 3}
       propertyPath: spawnerList.Array.data[0]
       value: 
@@ -2777,6 +2781,10 @@ PrefabInstance:
       propertyPath: spawnerList.Array.data[1]
       value: 
       objectReference: {fileID: 1710985404}
+    - target: {fileID: 7202999729521579578, guid: b24305b124e89ec4ead84314d84865f9, type: 3}
+      propertyPath: levelLoader
+      value: 
+      objectReference: {fileID: 880834439}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b24305b124e89ec4ead84314d84865f9, type: 3}
 --- !u!1001 &700478798
@@ -2990,6 +2998,17 @@ Transform:
   m_Father: {fileID: 310347254}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &880834439 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1560297336208729080, guid: b24305b124e89ec4ead84314d84865f9, type: 3}
+  m_PrefabInstance: {fileID: 697219809}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf24bc770c398034187a2be10f0243a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &901995434 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7388353376184388056, guid: afe76002f30749d4ebeaa7e098399205, type: 3}
@@ -3504,7 +3523,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1722706
+  m_Name: pb_Mesh-31524
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4608,6 +4627,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6181736370761581532, guid: 29e34919de67780449d043c16eef9f5e, type: 3}
+      propertyPath: levels.Array.data[8]
+      value: Assets/Scenes/AnthonyLevel.unity
+      objectReference: {fileID: 0}
     - target: {fileID: 6181736370761581534, guid: 29e34919de67780449d043c16eef9f5e, type: 3}
       propertyPath: m_Name
       value: NetworkManagerAndLobbyUI
@@ -4662,7 +4685,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6497264541767905667, guid: 29e34919de67780449d043c16eef9f5e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.28890425
+      value: 0.36319688
       objectReference: {fileID: 0}
     - target: {fileID: 6497264541850599243, guid: 29e34919de67780449d043c16eef9f5e, type: 3}
       propertyPath: m_AnchorMax.x
