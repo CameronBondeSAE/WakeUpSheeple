@@ -20,6 +20,12 @@ namespace Damien
 
         public float tvAngle = 45f;
 
+        public MeshRenderer screen;
+        public Material mat1;
+        public Material mat2;
+        public Material mat3;
+        
+
       
         public Transform TvTarget;
 
@@ -34,7 +40,7 @@ namespace Damien
         // Update is called once per frame
         void Update()
         {
-            // DetectSheep();
+           // screen.material
         }
 
         public void DetectSheep()
@@ -53,11 +59,7 @@ namespace Damien
             Sheep nearestSheep = null;
             foreach (Sheep sheep in sheeps)
             {
-                if (overlapSphere0.Length == 0) //no sheep in radius
-                {
-                    
-                }
-
+                
                 if (overlapSphere0.Length > 0) //sheep are in radius
                 {
                     sheep.transform.LookAt(TvTarget);
