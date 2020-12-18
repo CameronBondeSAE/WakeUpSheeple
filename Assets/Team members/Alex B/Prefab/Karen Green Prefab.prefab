@@ -172,9 +172,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 10
-  MaxDistance: 30
+  MaxDistance: 20
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -182,23 +182,23 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
+      time: 0.5
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: -2.0008
+      outSlope: -2.0008
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: -0.5002
+      outSlope: -0.5002
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -254,6 +254,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7113999702948541042}
     m_Modifications:
+    - target: {fileID: 2704142560674385384, guid: e9becea97fca0c242bedfecf9161a56e, type: 3}
+      propertyPath: keepAlive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2704142560674385388, guid: e9becea97fca0c242bedfecf9161a56e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7202999729521579578}
   - component: {fileID: 6004645011842931551}
   - component: {fileID: 2275449954905041088}
+  - component: {fileID: 1560297336208729080}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -51,12 +52,15 @@ MonoBehaviour:
   gameNetworkManager: {fileID: 0}
   spawnerList:
   - {fileID: 0}
+  - {fileID: 0}
   endGoals:
   - {fileID: 0}
   allSheep: []
   deadSheep: []
   totalSheep: 0
+  goalsMet: 1
   percentage: 75
+  hasWon: 0
 --- !u!114 &6004645011842931551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,3 +96,19 @@ MonoBehaviour:
   serverOnly: 0
   m_AssetId: 
   hasSpawned: 0
+--- !u!114 &1560297336208729080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2340323059468957875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf24bc770c398034187a2be10f0243a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  levelToLoad: 
+  LoadNextLevel: 1
