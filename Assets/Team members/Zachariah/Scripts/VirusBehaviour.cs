@@ -23,6 +23,8 @@ namespace Zach
 
         [Tooltip("How long it takes the virus to die without being attached")]
         public float deathTimer = 15f;
+        [Tooltip("Tick if you want the object to live instead of delete")]
+        public bool keepAlive;
 
         [SerializeField] [Tooltip("Location for the virus prefab to be stored")]
         private GameObject instantiate;
@@ -48,14 +50,13 @@ namespace Zach
             incubation += Time.deltaTime;
             if (deathTimer > 0f)
                 deathTimer -= 1 * Time.deltaTime;
-            else if (deathTimer < 0f) Destroy(gameObject);
+            else if (deathTimer < 0f  && keepAlive == false) Destroy(gameObject);
             if (isAttached) deathTimer = 10000f;
             if (isAttached)
             {
                 convertTimer += Time.deltaTime;
             }
-            
-            if (convertTimer > 10f)
+            if (convertTimer > 10f  && keepAlive == false)
             {
                 Sheep componentInParent = GetComponentInParent<Sheep>();
                 componentInParent?.ChangeToBlack();
