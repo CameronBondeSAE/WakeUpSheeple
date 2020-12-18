@@ -46,7 +46,7 @@ public class GameManager : NetworkBehaviour
 	public List<EndGoalChecker> endGoals;
 	public List<Sheep>          allSheep  = new List<Sheep>();
 	public List<Sheep>          deadSheep = new List<Sheep>();
-	public int                  totalSheep;
+[SyncVar]	public int                  totalSheep;
 	
 	[SerializeField]bool goalsMet = true;
 
@@ -267,8 +267,9 @@ public class GameManager : NetworkBehaviour
 	public void RpcGameOver()
 	{
 		if (deadSheep.Count < endGoalChecker.sheepRequired / 2)
-		{	
+		{
 			GameOverEvent?.Invoke();
+			
 			//MusicAudioManager.PlaySFX("GameOverMusic"); 
 			Debug.Log("GAME OVER!");
 		}

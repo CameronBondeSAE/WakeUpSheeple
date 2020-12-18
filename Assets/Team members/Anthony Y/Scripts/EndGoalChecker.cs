@@ -35,7 +35,6 @@ public class EndGoalChecker : MonoBehaviour
             other.GetComponent<Rigidbody>().isKinematic = true;
 			// CAM HACK
 			// Destroy(other.gameObject);
-            
         }
     }
 

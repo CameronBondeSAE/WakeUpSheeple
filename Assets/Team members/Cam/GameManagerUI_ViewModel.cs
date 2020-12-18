@@ -33,8 +33,14 @@ public class GameManagerUI_ViewModel : MonoBehaviour
 		gameManager.WonEvent -= GameManagerOnWonEvent;
 	}
 
-	void GameManagerOnGameOverEvent()
+	IEnumerator GameOverDelay()
 	{
+		yield return new WaitForSeconds(2);
 		GameOver?.SetActive(true);
 	}
+	void GameManagerOnGameOverEvent()
+	{
+		StartCoroutine(GameOverDelay());
+	}
+	
 }
