@@ -14,11 +14,11 @@ public class PlayerBehaviourEditor : Editor
 
         if (GUILayout.Button("Turn into Wolf"))
         {
-            playerBehaviour.TurnIntoWolf();
+            playerBehaviour.RpcTurnIntoWolf();
         }
         if (GUILayout.Button("Turn into Dog"))
         {
-            playerBehaviour.TurnIntoDog();
+            playerBehaviour.RpcTurnIntoDog();
         }
     }
 }

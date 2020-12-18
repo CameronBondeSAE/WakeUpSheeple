@@ -1,12 +1,23 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class UFOSpawner : MonoBehaviour
 {
     public GameObject UFOPrefab;
+
+    private void Start()
+    {
+        UFOPrefab.GetComponent<UFOBehaviour>();
+    }
+
+    public void SpawnNewUFO()
+    {
+        Instantiate(UFOPrefab);
+    }
     
-    public List <Transform> SpawnLocations;
+    /*public List <Transform> SpawnLocations;
     public List <Transform> WaitLocations;
     public List <Transform> ExitLocations;
 
@@ -30,4 +41,5 @@ public class UFOSpawner : MonoBehaviour
         go.GetComponent<UFOBehaviour>().RandomWait = RandomWait;
         go.GetComponent<UFOBehaviour>().RandomExit = RandomExit;
     }
+    */
 }

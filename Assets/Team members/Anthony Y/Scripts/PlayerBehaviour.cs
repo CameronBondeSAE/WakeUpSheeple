@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 using Mirror;
 using Student_workspace.Dylan.Scripts.NetworkLobby;
+using TMPro;
 using UnityEngine;
 
 namespace AnthonyY
@@ -18,11 +19,13 @@ namespace AnthonyY
 		public AudioSource    wolfHowl;
 
 		[SerializeField]
+		[SyncVar]
 		public bool amIWolf = false;
 
 		public Material clay;
 
-		private static readonly int     Colour = Shader.PropertyToID("Color_9A1239AC");
+		[SyncVar]
+		private int ColourID;
 		public                  Vector3 movement;
 		public                  Vector3 movementInput;
 
@@ -31,15 +34,34 @@ namespace AnthonyY
 
 		[SyncVar]
 		public NetworkIdentity Owner;
+		
+		public GameObject youareWolf;
+		public GameObject youareDog;
+		
+		
+
 
 		private void Awake()
 		{
 			// amIWolf = false;
+			youareWolf.gameObject.SetActive(false);
+			youareDog.gameObject.SetActive(false);
 		}
 
 		public override void OnStartClient()
 		{
 			base.OnStartClient();
+		}
+
+		public override void OnStartServer()
+		{
+			base.OnStartServer();
+			
+			if (isServer)
+			{
+				Debug.Log("PLAYER IS SERVER");
+				RpcTurnIntoWolf();
+			}
 		}
 
 		public override void OnStartLocalPlayer()
@@ -62,7 +84,7 @@ namespace AnthonyY
 			}
 			GameObject instantiate = Instantiate(cameraPrefab);
 			instantiate.GetComponent<Niall.CameraPlayer>().OwnPlayer = transform;
-			
+			ColourID = Shader.PropertyToID("Color_9A1239AC");
 			
 			
 			// if (networkIdentity.isLocalPlayer)
@@ -85,9 +107,9 @@ namespace AnthonyY
 
 		private void OnDisable()
 		{
-			controls.Dog.Disable();
-			controls.Wolf.Disable();
-			controls.Movement.Disable();
+			controls?.Dog.Disable();
+			controls?.Wolf.Disable();
+			controls?.Movement.Disable();
 			health.DeathEvent -= Death;
 		}
 
@@ -144,51 +166,69 @@ namespace AnthonyY
 						   z = movementInput.y
 					   }.normalized;
 		}
+		public float coolDownTime = 10;
+		private float nextAudioPlayed = 0;
 [ClientRpc]
 		public void RpcBark()
 		{
-			dogBark.Play();
-			Debug.Log("Dog Audio Played");
+			if (Time.time > nextAudioPlayed)
+			{
+				nextAudioPlayed = Time.time + coolDownTime;
+				dogBark.Play();
+				Debug.Log("Dog Audio Played");
+			}
 		}
 
+		
 [ClientRpc]
 		public void RpcHowl()
 		{
-			wolfHowl.Play();
-			Debug.Log("Wolf Audio Played");
+			if (Time.time > nextAudioPlayed)
+			{
+				nextAudioPlayed = Time.time + coolDownTime;
+				wolfHowl.Play();
+				Debug.Log("Wolf Audio Played");
+			}
+			
 		}
 		
-		
 [ClientRpc]
-		public void TurnIntoDog()
+		public void RpcTurnIntoDog()
 		{
+			
 			amIWolf = false;
 			if (amIWolf == false)
 			{
+				youareDog.gameObject.SetActive(true);
+				youareWolf.gameObject.SetActive(false);
 				Debug.Log("I am now a dog");
 				if (controls != null)
 				{
 					controls.Wolf.Disable();
 					controls.Dog.Enable();
 				}
-
-				clay.SetColor(Colour, Color.black);
+				
+				clay.SetColor(ColourID, Color.black);
 			}
 		}
 [ClientRpc]
-		public void TurnIntoWolf()
+		public void RpcTurnIntoWolf()
 		{
+			Debug.Log("I am now a wolf");
 			amIWolf = true;
 			if (amIWolf)
 			{
-				Debug.Log("I am now a wolf");
+				youareWolf.gameObject.SetActive(true);
+				youareDog.gameObject.SetActive(false);
 				if (controls != null)
 				{
 					controls.Wolf.Enable();
 					controls.Dog.Enable();
 				}
 
-				clay.SetColor(Colour, Color.yellow);
+				clay.SetColor(ColourID, Color.yellow);
+			
+				
 			}
 		}
 

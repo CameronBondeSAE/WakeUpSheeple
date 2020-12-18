@@ -6984,6 +6984,18 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 665335415760498661, guid: 2c16a6b89a2e69d4586938901c17e3db, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 665335415760498661, guid: 2c16a6b89a2e69d4586938901c17e3db, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 665335415760498661, guid: 2c16a6b89a2e69d4586938901c17e3db, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: 4037314648609025293, guid: 2c16a6b89a2e69d4586938901c17e3db, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4
@@ -7060,6 +7072,10 @@ PrefabInstance:
       propertyPath: launchDelay
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8575456238330822781, guid: 2c16a6b89a2e69d4586938901c17e3db, type: 3}
+      propertyPath: launcherSound
+      value: 
+      objectReference: {fileID: 1276773730}
     - target: {fileID: 8701904084934889190, guid: 2c16a6b89a2e69d4586938901c17e3db, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -21338,6 +21354,10 @@ PrefabInstance:
       propertyPath: launchDelay
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8575456238330822781, guid: 2c16a6b89a2e69d4586938901c17e3db, type: 3}
+      propertyPath: launcherSound
+      value: 
+      objectReference: {fileID: 1285622033}
     - target: {fileID: 8701904084934889190, guid: 2c16a6b89a2e69d4586938901c17e3db, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -21820,7 +21840,7 @@ MonoBehaviour:
         - polygonID_: 5900
         - polygonID_: 5884
         - polygonID_: 5888
-        instanceID_: 12374
+        instanceID_: 12602
         selected: 0
     polygonGroupManager_:
       polygonGroups_: []
@@ -22644,7 +22664,7 @@ MonoBehaviour:
         - polygonID_: 5900
         - polygonID_: 5884
         - polygonID_: 5888
-        instanceID_: 12393
+        instanceID_: 12621
         selected: 0
     polygonGroupManager_:
       polygonGroups_: []
@@ -55378,6 +55398,11 @@ MonoBehaviour:
   assetPath: 
   isInvisibleObject: 0
   mainRenderableMesh: {fileID: 1890769952}
+--- !u!82 &1251265449 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5962340761273869997, guid: 2c16a6b89a2e69d4586938901c17e3db, type: 3}
+  m_PrefabInstance: {fileID: 1726286212}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1257532236
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -68062,6 +68087,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8e9cc6d766fade44bb6f975e9d9da9e, type: 3}
+--- !u!82 &1276773730 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5962340761273869997, guid: 2c16a6b89a2e69d4586938901c17e3db, type: 3}
+  m_PrefabInstance: {fileID: 168892051}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1278051009
 GameObject:
   m_ObjectHideFlags: 0
@@ -74420,6 +74450,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a716dd2cdab6a640ae19f629f2095f6, type: 3}
+--- !u!82 &1285622033 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5962340761273869997, guid: 2c16a6b89a2e69d4586938901c17e3db, type: 3}
+  m_PrefabInstance: {fileID: 475979812}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1307379256
 GameObject:
   m_ObjectHideFlags: 0
@@ -75012,7 +75047,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6497264541767905667, guid: 29e34919de67780449d043c16eef9f5e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.2884479
+      value: 0.28847075
       objectReference: {fileID: 0}
     - target: {fileID: 6497264541767905667, guid: 29e34919de67780449d043c16eef9f5e, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -81716,7 +81751,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1926467412, guid: aa336f9d4f586b245bb9b217e2c2aa98, type: 3}
       propertyPath: lavaDamage
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1926467412, guid: aa336f9d4f586b245bb9b217e2c2aa98, type: 3}
       propertyPath: deathJump
@@ -81880,6 +81915,10 @@ PrefabInstance:
       propertyPath: launchDelay
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8575456238330822781, guid: 2c16a6b89a2e69d4586938901c17e3db, type: 3}
+      propertyPath: launcherSound
+      value: 
+      objectReference: {fileID: 1251265449}
     - target: {fileID: 8701904084934889190, guid: 2c16a6b89a2e69d4586938901c17e3db, type: 3}
       propertyPath: m_Layer
       value: 0

@@ -23,6 +23,7 @@ public class ChemtrailTest : NetworkBehaviour
     private GameManager gameManager;
     public Vector3 startingPosition;
     public CoreSheepFinder coreSheepFinder;
+    public AudioSource planeSound;
 
 
     // Start is called before the first frame update
@@ -87,6 +88,7 @@ public class ChemtrailTest : NetworkBehaviour
     {
         while (true)
         {
+            
             if (gameManager is null)
             {
                 gameManager = FindObjectOfType<GameManager>();
@@ -109,8 +111,9 @@ public class ChemtrailTest : NetworkBehaviour
                     Debug.Log("This is not working");
                 }
 			}
-
+            
 			yield return new WaitForSeconds(10f);
+            planeSound.Play();
         }
         
         //Instantiate(enemy, position, Quaternion.identity);

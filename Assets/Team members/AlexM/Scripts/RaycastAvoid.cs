@@ -1,6 +1,7 @@
 ﻿﻿using System;
 using AnthonyY;
-using tripolygon.UModeler;
+ using Mirror;
+ using tripolygon.UModeler;
 using UnityEngine;
 using Math = UnityEngine.ProBuilder.Math;
 
@@ -17,6 +18,12 @@ public class RaycastAvoid : MonoBehaviour
 	public LayerMask layer;
 	public float     slowDownForObstaclesForce = 100f;
 
+	private float startingOffset;
+	
+	private void Start()
+	{
+		startingOffset = transform.position.x;
+	}
 
 	void Update()
 	{
@@ -34,11 +41,13 @@ public class RaycastAvoid : MonoBehaviour
 		{
 			if (panic)
 			{
-				MainTransform.Rotate(0, Mathf.Abs(speed) * (-1f + (2f * Mathf.PerlinNoise(Time.time, 0))) * Time.deltaTime, 0);
+				mainRigidbody.AddTorque(0, Mathf.Abs(speed) * (-1f + (2f * Mathf.PerlinNoise(startingOffset + Time.time /5f, 0))) * Time.deltaTime, 0);
+				// MainTransform.Rotate(0, Mathf.Abs(speed) * (-1f + (2f * Mathf.PerlinNoise(startingOffset + Time.time, 0))) * Time.deltaTime, 0);
 			}
 			else
 			{
-				MainTransform.Rotate(0, speed * Time.deltaTime, 0);
+				mainRigidbody.AddTorque(0, speed * Time.deltaTime, 0);
+				// MainTransform.Rotate(0, speed * Time.deltaTime, 0);
 			}
 			// Rotate the guy if something is in his way
 			// if (raycastHit.transform.GetComponent<PlayerBehaviour>())

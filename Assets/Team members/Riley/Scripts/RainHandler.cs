@@ -7,7 +7,7 @@ public class RainHandler : MonoBehaviour
     public float rainSlider = 0.0F;
     private ParticleSystem ps;
     private ParticleSystem cps;
-    public Transform cameraTransform;
+    //public Transform cameraTransform;
     public GameObject childObject;
 
     void Start()
@@ -27,8 +27,8 @@ public class RainHandler : MonoBehaviour
         mainCO.maxParticles = Mathf.RoundToInt(rainSlider * 30f);
         emissionCO.rateOverTime = Mathf.RoundToInt(rainSlider * 30f);
         // ----- Moves object to camera ----- //
-        Vector3 cameraPos = new Vector3(cameraTransform.position.x, cameraTransform.position.y + 5, cameraTransform.position.z);
-        transform.position = cameraPos;
+        //Vector3 cameraPos = new Vector3(cameraTransform.position.x, cameraTransform.position.y + 5, cameraTransform.position.z);
+        //transform.position = cameraPos;
     }
     /*void OnGUI()
     {

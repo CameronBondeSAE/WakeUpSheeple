@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Mirror;
 using UnityEngine;
 
 namespace AlexM
 {
     public class Sheep : CharacterBase
 	{
+		public Material wool;
+		private static readonly int     Colour = Shader.PropertyToID("Color_B9F56194");
 		void Awake()
 		{
 			GetComponent<Health>().DeathEvent += OnDeathEvent;
@@ -36,6 +39,7 @@ namespace AlexM
 		public void ChangeToBlack()
 		{
 			isBlack = true;
+			wool.SetColor(Colour, Color.black);
 		}
 
 		public void ChangeToWhite()

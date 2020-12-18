@@ -204,6 +204,7 @@ public class GameManager : NetworkBehaviour
 			if (goalChecker.safeSheep.Count < goalChecker.sheepRequired)
 			{
 				goalsMet = false;
+
 				break;
 			}
 		}
@@ -247,6 +248,7 @@ public class GameManager : NetworkBehaviour
 
 	public void EndGoalTrackerLost(CharacterBase character)
 	{
+		
 		SheepTracker(character);
 		LostEvent?.Invoke();
 		Debug.Log("GAME MANAGER: YOU LOST THE GAME :(");
@@ -265,9 +267,12 @@ public class GameManager : NetworkBehaviour
 	[ClientRpc]
 	public void RpcGameOver()
 	{
-		GameOverEvent?.Invoke();
-		//MusicAudioManager.PlaySFX("GameOverMusic"); 
-		Debug.Log("GAME OVER!");
+		if (deadSheep.Count > endGoalChecker.sheepRequired / 2)
+		{	
+			GameOverEvent?.Invoke();
+			//MusicAudioManager.PlaySFX("GameOverMusic"); 
+			Debug.Log("GAME OVER!");
+		}
 	}
 
 	//*****SERVER CODE*********

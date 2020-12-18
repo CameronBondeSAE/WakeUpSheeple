@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net.Mime;
 using AlexM;
+using NodeCanvas.Tasks.Actions;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -10,6 +11,7 @@ namespace Damien
 {
     public class PropagandaTV : MonoBehaviour
     {
+        public LayerMask layerMask;
         public float tvInnerRadius = 5f;
         public float tvOuterRadius = 10f;
         public bool isOn = true;
@@ -38,41 +40,40 @@ namespace Damien
 
         public void DetectSheep()
         {
+            Collider[] overlapSphere =
+                Physics.OverlapSphere(transform.position, tvOuterRadius, layerMask, QueryTriggerInteraction.Ignore);
+
             Sheep[] sheeps = Sheep.FindObjectsOfType<Sheep>();
             float shortestDistance = Mathf.Infinity;
             Sheep nearestSheep = null;
             foreach (Sheep sheep in sheeps)
+
             {
-                float distanceToSheep = Vector3.Distance(transform.position, sheep.transform.position);
-                /*if (distanceToSheep < shortestDistance)
+                if (overlapSphere.Length == 0)
                 {
-                    shortestDistance = distanceToSheep;
-                    nearestSheep = sheep;
+                    float distanceToSheep = Vector3.Distance(transform.position, sheep.transform.position);
+
+                    if (distanceToSheep <= tvInnerRadius)
+                    {
+                        sheep.GetComponent<Movement_ForwardAM>().enabled = false;
+                        sheep.GetComponent<Rigidbody>().isKinematic = true;
+                        
+                        
+                    }
                 }
 
-                if (nearestSheep == null)
+                if (overlapSphere.Length > 0)
                 {
-                    return;
-                }*/
-                
-                if (distanceToSheep <= tvInnerRadius)
-                {
-                    sheep.GetComponent<Movement_ForwardAM>().enabled = false;
-                }
-                else if (distanceToSheep <= tvOuterRadius)
-                {
-                    
-                }
-                else
-                {
-                    sheep.GetComponent<Movement_ForwardAM>().enabled = true;
+                    float distanceToSheep = Vector3.Distance(transform.position, sheep.transform.position);
+                    if (distanceToSheep <= tvInnerRadius)
+                        sheep.GetComponent<Movement_ForwardAM>().enabled = true;
+                    sheep.GetComponent<Rigidbody>().isKinematic = false;
                 }
             }
         }
 
         public IEnumerator HypnotiseSheep()
         {
-           
             yield return new WaitForSeconds(5f);
         }
 
