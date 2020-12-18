@@ -14,6 +14,7 @@ public class NukeSpawner : NetworkBehaviour
     public GameManager gameManager;
     public CoreSheepFinder coreSheepFinder;
     private Vector3 spawnPosition;
+    public float DropRadius;
 
 
     private void Awake()
@@ -44,7 +45,7 @@ public class NukeSpawner : NetworkBehaviour
 
 			if (isServer)
 			{
-				spawnPosition = transform.position + new Vector3(Random.Range(-30f, 30f), 75, Random.Range(-30f, 30f));
+				spawnPosition = transform.position + new Vector3(DropRadius, 75, DropRadius);
 				GameObject newNukeClone = Instantiate(nukePrefab);
 				newNukeClone.transform.position = spawnPosition;
 				

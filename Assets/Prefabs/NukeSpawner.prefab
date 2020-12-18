@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4129666497660190548}
   - component: {fileID: 4129666497660190549}
   - component: {fileID: 4129666497660190551}
+  - component: {fileID: 1923517813520794983}
   m_Layer: 0
   m_Name: NukeSpawner
   m_TagString: Untagged
@@ -44,13 +45,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27cae29c4f9dcbf4ebc32783cb9c8cbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   nukePrefab: {fileID: 887197407283748473, guid: 20499ba3c8e827442afea38cbcb460eb, type: 3}
   audioSource: {fileID: 4129666497660190551}
   audioClipArray:
   - {fileID: 8300000, guid: 5dd0103ccb330cd4db00010c4a055f6f, type: 3}
   - {fileID: 8300000, guid: 60c778d391337f94395650b539b28bf9, type: 3}
-  coreSheepFinder: {fileID: 0}
   gameManager: {fileID: 0}
+  coreSheepFinder: {fileID: 0}
+  DropRadius: 5
 --- !u!82 &4129666497660190551
 AudioSource:
   m_ObjectHideFlags: 0
@@ -72,7 +76,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 15
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -107,7 +111,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -147,3 +151,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1923517813520794983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4129666497660190546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  serverOnly: 0
+  m_AssetId: 
+  hasSpawned: 0
