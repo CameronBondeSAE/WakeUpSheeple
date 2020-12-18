@@ -13,7 +13,7 @@ namespace Damien
     {
         public LayerMask layerMaskPlayer;
         public LayerMask layerMaskSheep;
-        
+
         public float tvInnerRadius = 5f;
         public float tvOuterRadius = 10f;
         public bool isOn = true;
@@ -24,9 +24,8 @@ namespace Damien
         public Material mat1;
         public Material mat2;
         public Material mat3;
-        
 
-      
+
         public Transform TvTarget;
 
         public Rigidbody rb;
@@ -35,12 +34,12 @@ namespace Damien
         void Start()
         {
             InvokeRepeating("DetectSheep", 0, 1);
+            StartCoroutine(Screenchange());
         }
 
         // Update is called once per frame
         void Update()
         {
-           // screen.material
         }
 
         public void DetectSheep()
@@ -48,10 +47,10 @@ namespace Damien
             Collider[] overlapSphere0 =
                 Physics.OverlapSphere(transform.position, tvOuterRadius, layerMaskSheep,
                     QueryTriggerInteraction.Ignore);
-            
+
 
             Collider[] overlapSphere =
-                Physics.OverlapSphere(transform.position, tvOuterRadius, layerMaskPlayer, 
+                Physics.OverlapSphere(transform.position, tvOuterRadius, layerMaskPlayer,
                     QueryTriggerInteraction.Ignore);
 
             Sheep[] sheeps = Sheep.FindObjectsOfType<Sheep>();
@@ -59,12 +58,12 @@ namespace Damien
             Sheep nearestSheep = null;
             foreach (Sheep sheep in sheeps)
             {
-                
                 if (overlapSphere0.Length > 0) //sheep are in radius
                 {
                     sheep.transform.LookAt(TvTarget);
                 }
-                    if (overlapSphere.Length == 0) //no players in radius
+
+                if (overlapSphere.Length == 0) //no players in radius
                 {
                     float distanceToSheep = Vector3.Distance(transform.position, sheep.transform.position);
 
@@ -72,8 +71,6 @@ namespace Damien
                     {
                         sheep.GetComponent<Movement_ForwardAM>().enabled = false;
                         sheep.GetComponent<Rigidbody>().isKinematic = true;
-                        
-                        
                     }
                 }
 
@@ -82,16 +79,22 @@ namespace Damien
                     float distanceToSheep = Vector3.Distance(transform.position, sheep.transform.position);
                     if (distanceToSheep <= tvInnerRadius)
                         sheep.GetComponent<Movement_ForwardAM>().enabled = true;
-                        sheep.GetComponent<Rigidbody>().isKinematic = false;
-                        
-                        
+                    sheep.GetComponent<Rigidbody>().isKinematic = false;
                 }
             }
         }
 
-        public IEnumerator HypnotiseSheep()
+        public IEnumerator Screenchange()
         {
-            yield return new WaitForSeconds(5f);
+            while (true)
+            {
+                yield return new WaitForSeconds(0.1f);
+                screen.sharedMaterial = mat1;
+                yield return new WaitForSeconds(0.1f);
+                screen.sharedMaterial = mat2;
+                yield return new WaitForSeconds(0.1f);
+                screen.sharedMaterial = mat3;
+            }
         }
 
         public IEnumerator LureSheep()
