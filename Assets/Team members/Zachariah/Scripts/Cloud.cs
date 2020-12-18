@@ -68,16 +68,16 @@ namespace Zach
         void Update()
         {
             point = (Random.insideUnitSphere * 5) + transform.position;
-            if (CoreSheepFinder.centerofSheepFlock != null) //Null check again to keep update running without it incase - RM
-            {
-                centreSheep = new Vector3(CoreSheepFinder.centerofSheepFlock.x,CoreSheepFinder.centerofSheepFlock.y,CoreSheepFinder.centerofSheepFlock.z);
-            }
             if (weatherManager != null)
             {
                 main.maxParticles = Mathf.RoundToInt(weatherManager.Humidity * 1000);
             }
             //transform.position = Vector3.MoveTowards(transform.position, centreSheep,1f);
             //Use of cloudMovingSpeed is for changing the overall speed of the cloud moving
+            if (CoreSheepFinder.centerofSheepFlock != null) //Null check again to keep update running without it incase - RM
+            {
+                centreSheep = new Vector3(CoreSheepFinder.centerofSheepFlock.x,CoreSheepFinder.centerofSheepFlock.y,CoreSheepFinder.centerofSheepFlock.z);
+            }
             transform.Translate((distance * Time.deltaTime) * cloudMovingSpeed);
         }
 
