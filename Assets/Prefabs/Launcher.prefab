@@ -43,10 +43,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.98988086
-  m_Height: 3.9376385
+  m_Radius: 0.66428614
+  m_Height: 1.8085797
   m_Direction: 1
-  m_Center: {x: 0.48988575, y: -0.9688417, z: -0.00000011920929}
+  m_Center: {x: 0.61149365, y: -2.0333745, z: -0.025550371}
 --- !u!114 &8575456238330822781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,10 +59,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0165614d5067af845ac4ba6b38957fbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  launchPower: 15
-  launchDelay: 2
-  launchDamage: 50
-  launcherSound: {fileID: 0}
+  launchPower: 300
+  launchDelay: 0.5
+  launchDamage: 0
+  launcherSound: {fileID: 5962340761273869997}
 --- !u!1 &7138590106545948733
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,7 +250,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8935110943275810918}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.34, y: -0.47, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3241309420690521282}
