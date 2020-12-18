@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class NukeSpawner : NetworkBehaviour
 {
@@ -15,12 +16,11 @@ public class NukeSpawner : NetworkBehaviour
     public CoreSheepFinder coreSheepFinder;
     private Vector3 spawnPosition;
     public ParticleSystem ParticleSystem;
-
-
+    
     private void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();
-    }
+        }
 
 	public override void OnStartServer()
 	{
@@ -45,7 +45,6 @@ public class NukeSpawner : NetworkBehaviour
 			//find the centre of the sheep flock at the current time and add random variance to it. Location is then set for spawn once alarm finished
 			yield return new WaitForSeconds(12);
 			
-
 			if (isServer)
 			{
 				spawnPosition = transform.position + new Vector3(Random.Range(-30f, 30f), 75, Random.Range(-30f, 30f));
