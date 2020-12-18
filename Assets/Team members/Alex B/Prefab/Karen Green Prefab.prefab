@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7119511714556738324}
   - component: {fileID: 6286616610597295501}
   - component: {fileID: 6289941514015979485}
+  - component: {fileID: -1225015782678408374}
   m_Layer: 0
   m_Name: Karen Green Prefab
   m_TagString: Untagged
@@ -129,6 +130,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &-1225015782678408374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3513296262929233762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602df9e9941d9364ebe62fecc045f1cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1541014286625747417
 PrefabInstance:
   m_ObjectHideFlags: 0
