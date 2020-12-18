@@ -272,7 +272,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6497264541767905667, guid: 29e34919de67780449d043c16eef9f5e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.28892154
+      value: 0.28845555
       objectReference: {fileID: 0}
     - target: {fileID: 6497264541767905667, guid: 29e34919de67780449d043c16eef9f5e, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -2427,7 +2427,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8575456238330822781, guid: 2c16a6b89a2e69d4586938901c17e3db, type: 3}
       propertyPath: launchPower
-      value: 300
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 8605101060277932989, guid: 2c16a6b89a2e69d4586938901c17e3db, type: 3}
       propertyPath: mainRenderableMesh
