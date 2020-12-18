@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 1551734959}
   - component: {fileID: 1465352604488475996}
   - component: {fileID: 6341333912214716473}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Karen Green Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -350,6 +350,10 @@ PrefabInstance:
     - target: {fileID: 2704142560674385399, guid: e9becea97fca0c242bedfecf9161a56e, type: 3}
       propertyPath: m_Name
       value: Virus
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704142560674385399, guid: e9becea97fca0c242bedfecf9161a56e, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9becea97fca0c242bedfecf9161a56e, type: 3}
