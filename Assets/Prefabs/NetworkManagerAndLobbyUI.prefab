@@ -1817,12 +1817,17 @@ MonoBehaviour:
   mainMenu: {fileID: 6181736371995921298}
   useSameScene: 1
   levels:
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Assets/Scenes/Level01 - Small.unity
+  - Assets/Scenes/Luke's Level 1.unity
+  - Assets/Scenes/Noel Level.unity
+  - Assets/Scenes/TimLevel.unity
+  - Assets/Scenes/Zach's Level 1.unity
+  - Assets/Scenes/Rileys Level 1.unity
+  - Assets/Scenes/AnthonyTerrainLevel.unity
+  - Assets/Scenes/John Level 1.unity
+  - Assets/Scenes/AnthonyLevel.unity
+  - Assets/Scenes/AJTestLevel.unity
+  - Assets/Scenes/Main.unity
   gameManager: {fileID: 0}
   localPlayer: {fileID: 0}
   heightOffset: 1.5
@@ -4285,8 +4290,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6497264542455689841}
   m_HandleRect: {fileID: 6497264542455689854}
   m_Direction: 2
-  m_Value: -0.000052900257
-  m_Size: 0.99668205
+  m_Value: -0.0007406036
+  m_Size: 0.9971444
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5083,7 +5088,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000027147862, y: 0.2884919}
+  m_AnchoredPosition: {x: -0.000027147862, y: 0.28867665}
   m_SizeDelta: {x: 0, y: 101.01}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &6497264541811411597

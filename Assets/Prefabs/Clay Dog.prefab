@@ -348,6 +348,7 @@ MonoBehaviour:
   Owner: {fileID: 0}
   youareWolf: {fileID: 398351670223865677}
   youareDog: {fileID: 8006688392904319404}
+  coolDownTime: 3
 --- !u!114 &-725918390782881256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,7 +372,7 @@ AudioSource:
   m_GameObject: {fileID: 2299596439350243934}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -6467569869485028759, guid: 3675495dac43d1a46ab6062053aaafb9, type: 2}
   m_audioClip: {fileID: 8300000, guid: 79d490856201c774b874a4bbdb80989f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -467,7 +468,7 @@ AudioSource:
   m_GameObject: {fileID: 2299596439350243934}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -6467569869485028759, guid: 3675495dac43d1a46ab6062053aaafb9, type: 2}
   m_audioClip: {fileID: 8300000, guid: ce4a9d9fbc33bf34a91ea6eb610d6de1, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
