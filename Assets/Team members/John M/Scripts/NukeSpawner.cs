@@ -14,7 +14,7 @@ public class NukeSpawner : NetworkBehaviour
     public GameManager gameManager;
     public CoreSheepFinder coreSheepFinder;
     private Vector3 spawnPosition;
-    public float DropRadius;
+    public ParticleSystem ParticleSystem;
 
 
     private void Awake()
@@ -38,17 +38,20 @@ public class NukeSpawner : NetworkBehaviour
     {
 		while (true)
 		{
+			
 			coreSheepFinder = gameManager.GetComponent<CoreSheepFinder>();
 			audioSource.PlayOneShot(RandomClip());
+			ParticleSystem.Play();
 			//find the centre of the sheep flock at the current time and add random variance to it. Location is then set for spawn once alarm finished
 			yield return new WaitForSeconds(12);
+			
 
 			if (isServer)
 			{
-				spawnPosition = transform.position + new Vector3(DropRadius, 75, DropRadius);
+				spawnPosition = transform.position + new Vector3(Random.Range(-30f, 30f), 75, Random.Range(-30f, 30f));
 				GameObject newNukeClone = Instantiate(nukePrefab);
 				newNukeClone.transform.position = spawnPosition;
-				
+				ParticleSystem.Stop();
 				NetworkServer.Spawn(newNukeClone);
 			}
 			//nuke then drops from set location leading to explosion code
