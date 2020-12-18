@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Media;
 using AlexM;
+using Mirror;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -12,7 +13,7 @@ using UnityEngine.Serialization;
 //This method adds a problem where the mole cant come out of the ground if there is something directly above (it also fixes this however)
 //Movement (Waypoint to a group, check if there are multiple in a radius, then make a path based on the distance that moves in a curve)
 
-public class MoleManManager : MonoBehaviour
+public class MoleManManager : NetworkBehaviour
 {
     //----------------------------------GENERAL VARIABLES----------------------------------//
     public DelegateStateManager stateManager = new DelegateStateManager();
@@ -90,19 +91,23 @@ public class MoleManManager : MonoBehaviour
     }
     private void standingUpdate()
     {
-        if (distanceToPlatform > 100f)
+        if (isServer)
         {
-            float distanceToPlatformExact = distanceToPlatform - 100f;
-            Vector3 mainObjectNewLocal = new Vector3(transform.position.x, transform.localPosition.y - distanceToPlatformExact, transform.localPosition.z);
-            transform.localPosition = Vector3.Lerp(transform.localPosition, mainObjectNewLocal, verticalMovementSpeed);
-        }
-        else
-        {
-            if (timeWait > 400)
+            if (distanceToPlatform > 100f)
             {
-                stateManager.ChangeState(moveToWaypoint);
+                float distanceToPlatformExact = distanceToPlatform - 100f;
+                Vector3 mainObjectNewLocal = new Vector3(transform.position.x, transform.localPosition.y - distanceToPlatformExact, transform.localPosition.z);
+                transform.localPosition = Vector3.Lerp(transform.localPosition, mainObjectNewLocal, verticalMovementSpeed);
+            }
+            else
+            {
+                if (timeWait > 400)
+                {
+                    stateManager.ChangeState(moveToWaypoint);
+                }
             }
         }
+       
     }
     private void standingExit(){}
     //----------------------------------STANDING----------------------------------//
