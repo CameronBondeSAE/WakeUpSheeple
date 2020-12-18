@@ -169,15 +169,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6181736370761581532, guid: 29e34919de67780449d043c16eef9f5e, type: 3}
       propertyPath: levels.Array.data[1]
-      value: Assets/Scenes/AY Dungeon 2.unity
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6181736370761581532, guid: 29e34919de67780449d043c16eef9f5e, type: 3}
       propertyPath: levels.Array.data[2]
-      value: Assets/Scenes/Goose.unity
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6181736370761581532, guid: 29e34919de67780449d043c16eef9f5e, type: 3}
       propertyPath: levels.Array.data[3]
-      value: Assets/Scenes/CamsDungeon.unity
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6181736370761581534, guid: 29e34919de67780449d043c16eef9f5e, type: 3}
       propertyPath: m_Name
