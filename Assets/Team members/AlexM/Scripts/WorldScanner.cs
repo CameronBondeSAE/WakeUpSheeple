@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,6 +15,7 @@ namespace AlexM
 	{
 		public bool isBlocked;
 		public bool isGoal;
+		public bool visited;
 		public Vector3 myPos;
 	}
 	
@@ -25,6 +27,14 @@ namespace AlexM
 		public int       zNum = 50;
 		public LayerMask layerMask;
 		public LayerMask goalMask;
+		public float sizeX = 0.8f;
+		public float sizeY = 0.8f;
+		public float sizeZ = 0.8f;
+
+		private void Start()
+		{
+			DrawGrid();
+		}
 
 		public void DrawGrid()
 		{
@@ -37,12 +47,12 @@ namespace AlexM
 				{
 					Nodes[x,z] = new Node();
 				
-					if (Physics.CheckBox(transform.position + new Vector3(x, 0, z), new Vector3(0.8f, 0.8f, 0.8f), Quaternion.identity, layerMask.value))
+					if (Physics.CheckBox(transform.position + new Vector3(x, 0, z), new Vector3(sizeX, sizeY, sizeZ), Quaternion.identity, layerMask.value))
 					{
 						Nodes[x, z].isBlocked = true;
 					}
 					
-					if (Physics.CheckBox(transform.position + new Vector3(x, 0, z), new Vector3(0.8f, 0.8f, 0.8f), Quaternion.identity, goalMask.value))
+					if (Physics.CheckBox(transform.position + new Vector3(x, 0, z), new Vector3(sizeX, sizeY, sizeZ), Quaternion.identity, goalMask.value))
 					{
 						Nodes[x, z].isGoal = true;
 					}
