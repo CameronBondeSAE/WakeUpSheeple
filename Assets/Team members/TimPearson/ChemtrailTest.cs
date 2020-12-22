@@ -40,7 +40,7 @@ public class ChemtrailTest : NetworkBehaviour
         startingPosition = transform.position;
         if (target == null)
         {
-            Debug.LogWarning("Chemplane NEEDS a target set",this);
+            //Debug.LogWarning("Chemplane NEEDS a target set",this);
             //return;
         }
         coreSheepFinder = gameManager.GetComponent<CoreSheepFinder>();

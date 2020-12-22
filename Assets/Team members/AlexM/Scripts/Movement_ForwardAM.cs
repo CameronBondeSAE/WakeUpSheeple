@@ -62,7 +62,7 @@ public class Movement_ForwardAM : MonoBehaviour
 	public void GoForward()
 	{
 		// HACK: Minimal speed always. Make variable
-		speedScale = Mathf.Clamp(speedScale, 0.1f, 1f);
+		speedScale = Mathf.Clamp(speedScale, 0.15f, 1f);
 		
 		//forceApplied.z = zForce;
 		float finalSpeed = speedScale * zForce;

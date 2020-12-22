@@ -9,7 +9,37 @@ EditorBuildSettings:
     path: Assets/Scenes/Level01 - Small.unity
     guid: b92b87eabdff98d44a8709811412e892
   - enabled: 1
+    path: Assets/Scenes/Luke's Level 1.unity
+    guid: 9da274eefe6b7cb41854d3b471cf9348
+  - enabled: 1
+    path: Assets/Scenes/Noel Level.unity
+    guid: 125401a169d78fa4680f29c66681e4bd
+  - enabled: 1
+    path: Assets/Scenes/TimLevel.unity
+    guid: 0900a10f6d752b543bb89a9d4169a65f
+  - enabled: 1
+    path: Assets/Scenes/Zach's Level 1.unity
+    guid: 85bc6723ed6691a4ab9534b6d5bc347a
+  - enabled: 1
+    path: Assets/Scenes/Rileys Level 1.unity
+    guid: cada816d6618318488e35cd762cc7d83
+  - enabled: 1
+    path: Assets/Scenes/AnthonyTerrainLevel.unity
+    guid: f5597339deb5cd44bafd86cf212a4c8e
+  - enabled: 1
+    path: Assets/Scenes/John Level 1.unity
+    guid: 66d54d9724bc3fd4e8d60f2728b64766
+  - enabled: 1
     path: Assets/Scenes/AnthonyLevel.unity
     guid: 90183d9de5e29ce47991d3ac4c2d5b91
+  - enabled: 1
+    path: Assets/Scenes/AJTestLevel.unity
+    guid: b79d3b0dd74d31443b1b1b598f576b0e
+  - enabled: 1
+    path: Assets/Scenes/MinimalLevelTemplate.unity
+    guid: 4b35a1bc18147064695b759415394a90
+  - enabled: 1
+    path: Assets/Scenes/Main.unity
+    guid: 235350b2dfd3c6d4a8eccce13fef0c01
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 73b90dca48efe1e49b0b4ecad9028ea1, type: 2}

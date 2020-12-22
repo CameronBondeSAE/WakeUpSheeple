@@ -38,6 +38,8 @@ namespace AnthonyY
 		public GameObject youareWolf;
 		public GameObject youareDog;
 		
+		public float coolDownTime = 10;
+		private float nextAudioPlayed = 0;
 		
 
 
@@ -53,6 +55,17 @@ namespace AnthonyY
 			base.OnStartClient();
 		}
 
+		public override void OnStartServer()
+		{
+			base.OnStartServer();
+			
+			if (isServer)
+			{
+				Debug.Log("PLAYER IS SERVER");
+				RpcTurnIntoWolf();
+			}
+		}
+
 		public override void OnStartLocalPlayer()
 		{
 			base.OnStartLocalPlayer();
@@ -60,16 +73,16 @@ namespace AnthonyY
 			controls.Dog.Enable();
 			controls.Wolf.Enable();
 			controls.Movement.Enable();
-			health.DeathEvent            += Death;
+			// health?.DeathEvent            += Death;
 			controls.Dog.Bark.performed  += _ => CmdBark();
 			controls.Wolf.Howl.performed += _ => CmdHowl();
 
 			// HACK
 			// Destroy all existing cameras
 			// HACK: There could be a time where you want other cameras in the scene, so this is too brute force
-			foreach (Camera cam in FindObjectsOfType<Camera>())
+			foreach (GameObject cam in GameObject.FindGameObjectsWithTag("LobbyCamera"))
 			{
-				Destroy(cam.gameObject);
+				Destroy(cam);
 			}
 			GameObject instantiate = Instantiate(cameraPrefab);
 			instantiate.GetComponent<Niall.CameraPlayer>().OwnPlayer = transform;
@@ -99,7 +112,7 @@ namespace AnthonyY
 			controls?.Dog.Disable();
 			controls?.Wolf.Disable();
 			controls?.Movement.Disable();
-			health.DeathEvent -= Death;
+			// health.DeathEvent -= Death;
 		}
 
 
@@ -155,8 +168,7 @@ namespace AnthonyY
 						   z = movementInput.y
 					   }.normalized;
 		}
-		public float coolDownTime = 10;
-		private float nextAudioPlayed = 0;
+		
 [ClientRpc]
 		public void RpcBark()
 		{
@@ -203,12 +215,12 @@ namespace AnthonyY
 [ClientRpc]
 		public void RpcTurnIntoWolf()
 		{
+			Debug.Log("I am now a wolf");
 			amIWolf = true;
 			if (amIWolf)
 			{
 				youareWolf.gameObject.SetActive(true);
 				youareDog.gameObject.SetActive(false);
-				Debug.Log("I am now a wolf");
 				if (controls != null)
 				{
 					controls.Wolf.Enable();

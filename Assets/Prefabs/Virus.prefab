@@ -4843,5 +4843,6 @@ MonoBehaviour:
   virus: {fileID: 2704142560674385399}
   incubation: 0
   deathTimer: 0
+  shouldDie: 0
   instantiate: {fileID: 2704142560674385399}
   convertTimer: 0

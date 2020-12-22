@@ -18,5 +18,6 @@ public class LevelLoader : NetworkBehaviour
     public void LoadLevel()
     {
         LoadLevelEvent?.Invoke(levelToLoad,LoadNextLevel);
+        Debug.Log("Next level Loaded");
     }
 }

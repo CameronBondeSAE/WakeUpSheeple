@@ -6,14 +6,14 @@ namespace LukeBaker
     public class Launcher : MonoBehaviour
     {
         public float launchPower;
-        public int launchDelay;
+        public float launchDelay;
         public int launchDamage;
         public AudioSource launcherSound;
 
         public void OnTriggerEnter(Collider other)
         {
             Health health = other.GetComponent<Health>();
-            
+
             StartCoroutine(Launch(other.attachedRigidbody));
             
             //Health script for if the object has health apply some damage to it
@@ -29,12 +29,15 @@ namespace LukeBaker
         ///Launch the object that has entered
         IEnumerator Launch(Rigidbody rb)
         {
+            //delay if needed
             yield return new WaitForSeconds(launchDelay);
             
             //sound play
             launcherSound.Play();
             
-            rb.velocity = transform.up * launchPower;
+            //direction set then adding force to that direction
+            Vector3 direction = transform.up;
+            rb.AddForce(direction * launchPower,ForceMode.Impulse);
         }
     }
 }

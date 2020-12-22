@@ -334,8 +334,8 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 512
-  range: 10
-  rotateSpeed: 5
+  range: 20
+  rotateSpeed: 3
   partToRotate: {fileID: 8500678148521956260}
 --- !u!1 &6572913784585241961
 GameObject:

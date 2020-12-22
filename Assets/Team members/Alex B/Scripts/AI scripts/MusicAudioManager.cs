@@ -1,29 +1,56 @@
-﻿using System.Collections;
+﻿using AlexM;
+using Mirror;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace AJ
 {
-    public class MusicAudioManager : MonoBehaviour
+    public class MusicAudioManager : NetworkBehaviour
     {
         private GameManager gameManager;
 
-        static AudioSource audioSource;
-        public AudioClip WonEventMusic, LostEventMusic, GameOverMusic;
+        public AudioSource audioSource;
+        public AudioClip   WonEventMusic, LostEventMusic, GameOverMusic, sheepSavedMusic, playMusic;
 
-        public void OnEnable()
-        {
-            //Subscribe to event
-            FindObjectOfType<GameManager>().WonEvent += OnWonEvent;
-            FindObjectOfType<GameManager>().LostEvent += OnLostEvent;
+
+		public override void OnStartServer()
+		{
+			base.OnStartServer();
+
+			//Subscribe to event
+			GameManager gm = FindObjectOfType<GameManager>();
+			gm.WonEvent += OnWonEvent;
+            gm.LostEvent += OnLostEvent;
+			if (gm.endGoals.Count>0)
+			{
+				gm.endGoals[0].SheepMadeitEvent += OnSheepMadeitEvent;
+			}
+			
+			gm.GamestartedEvent += GmOnGamestartedEvent;
+			
+			// Hack
+			GmOnGamestartedEvent();
         }
-        
-        public void OnDisable()
+
+		void GmOnGamestartedEvent()
+		{
+			audioSource.clip = playMusic;
+			audioSource.Play();
+		}
+
+		void OnSheepMadeitEvent(NetworkIdentity networkIdentity)
+		{
+			// audioSource.clip = sheepSavedMusic;
+			audioSource.PlayOneShot(sheepSavedMusic);
+		}
+
+		public void OnDisable()
         {
             //Unsubscribe to event
-            FindObjectOfType<GameManager>().WonEvent -= OnWonEvent;
-            FindObjectOfType<GameManager>().LostEvent -= OnLostEvent;
+            // FindObjectOfType<GameManager>().WonEvent -= OnWonEvent;
+            // FindObjectOfType<GameManager>().LostEvent -= OnLostEvent;
         }
 
         public void OnWonEvent()

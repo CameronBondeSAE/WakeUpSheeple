@@ -52,7 +52,8 @@ namespace LukeBaker
                 //This will make the white sheep follow the black sheep
                 else if (findSheep.IsBlack == false)
                 {
-                    Debug.Log("is white sheep");
+                    //Debug.Log("is white sheep");
+                    return;
                 }
             }
         }

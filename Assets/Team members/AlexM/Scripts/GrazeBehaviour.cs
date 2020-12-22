@@ -19,6 +19,8 @@ public class GrazeBehaviour : MonoBehaviour
    private Sheep _sheep;
    private float speed = 100f;
    private float startingNumber;
+
+   public Rigidbody rb;
    private void OnEnable()
    {
       _wolfDetector = GetComponent<WolfDetector>();
@@ -28,6 +30,7 @@ public class GrazeBehaviour : MonoBehaviour
 
    private void Start()
    {
+	   rb = GetComponent<Rigidbody>();
 	   //helping randomise the perlinNoise
 	   startingNumber = transform.position.x;
    }
@@ -43,7 +46,8 @@ public class GrazeBehaviour : MonoBehaviour
 	  {
 		  //random-ish turning and moving for when wolves arent within detection radius
 		  _moveController.speedScale = (Mathf.PerlinNoise((startingNumber + Time.time), 0) / 3f);
-		  transform.Rotate(0, Mathf.Abs(speed) * (-1f + (2f * (Mathf.PerlinNoise(startingNumber + Time.time, 0)))) * Time.deltaTime, 0);
+		  // transform.Rotate(0, Mathf.Abs(speed) * (-1f + (2f * (Mathf.PerlinNoise(startingNumber + Time.time, 0)))) * Time.deltaTime, 0);
+		  rb.AddTorque(0, Mathf.Abs(speed) * (-1f + (2f * (Mathf.PerlinNoise(startingNumber + Time.time, 0)))) * Time.deltaTime, 0);
 		  return;
 	  }
 	  
