@@ -617,6 +617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e76f684e36b1660489810c62a07588b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CubeForGrid: {fileID: 6267369815782419167, guid: 2802a40bbde678d4493c58dabbcb2dfa, type: 3}
   xNum: 50
   zNum: 50
   layerMask:
@@ -732,8 +733,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1068256982}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: -0.15715551, y: -0.69183767, z: 0.15672395, w: -0.6870957}
+  m_LocalPosition: {x: -33.15067, y: 8.64265, z: -19.103077}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

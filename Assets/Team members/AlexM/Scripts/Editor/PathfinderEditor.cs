@@ -25,12 +25,12 @@ namespace AlexM
             
             if (GUILayout.Button("X+1"))
             {
-                x++;
+                x = 1;
                 ((Pathfinder)target).stepTo(x, 0);
             }
             if (GUILayout.Button("Y+1"))
             {
-                z++;
+                z = 1;
                 ((Pathfinder)target).stepTo(0, z);
             }
             GUILayout.EndHorizontal();
@@ -38,13 +38,13 @@ namespace AlexM
             GUILayout.BeginHorizontal();
             if (GUILayout.Button("X-1"))
             {
-                x--;
+                x = -1;
                 ((Pathfinder)target).stepTo(x, 0);
             }
 
             if (GUILayout.Button("Y-1"))
             {
-                z--;
+                z = -1;
                 ((Pathfinder)target).stepTo(0, z);
             }
             GUILayout.EndHorizontal();

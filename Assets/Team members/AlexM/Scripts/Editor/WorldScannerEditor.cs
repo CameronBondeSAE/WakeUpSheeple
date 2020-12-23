@@ -19,7 +19,7 @@ namespace AlexM
             
             if (GUILayout.Button("Draw the Grid"))
             {
-                ((WorldScanner)target).DrawGrid();
+                ((WorldScanner)target).ScanWorld();
             }
             
             GUILayout.EndHorizontal();

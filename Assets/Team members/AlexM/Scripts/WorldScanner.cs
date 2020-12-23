@@ -17,12 +17,14 @@ namespace AlexM
 		public bool isGoal;
 		public bool visited;
 		public Vector3 myPos;
+		public GameObject cube;
 	}
 	
 	public class WorldScanner : MonoBehaviour
 	{
 
 		public Node[,]   Nodes;
+		public GameObject CubeForGrid;
 		public int       xNum = 50;
 		public int       zNum = 50;
 		public LayerMask layerMask;
@@ -33,10 +35,11 @@ namespace AlexM
 
 		private void Start()
 		{
-			DrawGrid();
+			ScanWorld();
+			InstantianteGrid();
 		}
 
-		public void DrawGrid()
+		public void ScanWorld()
 		{
 			// Create the actual array
 			Nodes = new Node[xNum,zNum];
@@ -60,12 +63,10 @@ namespace AlexM
 			}
 		}
 
-		void OnDrawGizmos()
+		void InstantianteGrid()
 		{
-			
 			Vector3 transformPosition = transform.position;
-			Vector3 size              = new Vector3(0.8f, 0.8f, 0.8f);
-
+			Vector3 size              = new Vector3(1f, 1f, 1f);
 			
 			for (int x = 0; x < xNum; x++)
 			{
@@ -73,23 +74,51 @@ namespace AlexM
 				{
 					if (Nodes != null && !Nodes[x,z].isBlocked)
 					{
-						Gizmos.color = Color.green;
-						Gizmos.DrawCube(transformPosition + new Vector3(x, 0, z), size);
-					}
-					
-					if (Nodes != null && Nodes[x,z].isBlocked)
-					{
-						Gizmos.color = Color.red;
-						Gizmos.DrawCube(transformPosition + new Vector3(x, 0, z), size);
-					}
-
-					if (Nodes != null && Nodes[x,z].isGoal)
-					{
-						Gizmos.color = Color.yellow;
-						Gizmos.DrawCube(transformPosition + new Vector3(x, 0, z), size);
+						GameObject cube = Instantiate(CubeForGrid, transformPosition + new Vector3(x, 0, z),Quaternion.identity);
+						Nodes[x, z].cube = cube;
+						Nodes[x, z].cube.transform.parent = gameObject.transform;
+						Nodes[x, z].cube.transform.name = " [" +  Nodes[x, z].cube.transform.position.ToString() + "] ";
+						//cube.transform.parent = gameObject.transform;
+						//cube.transform.name = " [" + transform.position.ToString() + "] ";
+						//Nodes[x, z].myPos = transformPosition + new Vector3(x, 0, z);
 					}
 				}
 			}
 		}
+		
+		// void OnDrawGizmos()
+		// {
+		// 	
+		// 	Vector3 transformPosition = transform.position;
+		// 	Vector3 size              = new Vector3(0.8f, 0.8f, 0.8f);
+		//
+		// 	
+		// 	for (int x = 0; x < xNum; x++)
+		// 	{
+		// 		for (int z = 0; z < zNum; z++)
+		// 		{
+		// 			if (Nodes != null && !Nodes[x,z].isBlocked)
+		// 			{
+		// 				Gizmos.color = Color.green;
+		// 				Gizmos.DrawCube(transformPosition + new Vector3(x, 0, z), size);
+		// 				Nodes[x, z].myPos = transformPosition + new Vector3(x, 0, z);
+		// 			}
+		// 			
+		// 			if (Nodes != null && Nodes[x,z].isBlocked)
+		// 			{
+		// 				Gizmos.color = Color.red;
+		// 				Gizmos.DrawCube(transformPosition + new Vector3(x, 0, z), size);
+		// 				Nodes[x, z].myPos = transformPosition + new Vector3(x, 0, z);
+		// 			}
+		//
+		// 			if (Nodes != null && Nodes[x,z].isGoal)
+		// 			{
+		// 				Gizmos.color = Color.yellow;
+		// 				Gizmos.DrawCube(transformPosition + new Vector3(x, 0, z), size);
+		// 				Nodes[x, z].myPos = transformPosition + new Vector3(x, 0, z);
+		// 			}
+		// 		}
+		// 	}
+		// }
 	}
 }
