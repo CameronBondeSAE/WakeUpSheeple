@@ -18,7 +18,7 @@ namespace AJ
         public float speed = 1.0f;
         public Transform target;
         public float degreesPerSecond = 50f;
-        
+        public bool canTurnLeft, canTurnRight;
 
 
         public void Update()
@@ -42,38 +42,55 @@ namespace AJ
             layerMask = ~layerMask;
 
             RaycastHit hit;
-
-            //from current position, seeing if the raycast did hit something
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit,
-                1.5f, layerMask))
+            RaycastHit hitLeft;
+            RaycastHit hitRight;
+            
+            if (!Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out hitLeft,1.5f, layerMask))
             {
+                canTurnLeft = true;
+            }
+            else
+            {
+                canTurnLeft = false;
+            }
+            
+            if (!Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), out hitRight,1.5f, layerMask))
+            {
+                canTurnRight = true;
+            }
+            else
+            {
+                canTurnRight = false;
+            }
+            
+            //from current position, seeing if the raycast did hit something
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit,1.5f, layerMask))
+            {
+
+                if (canTurnLeft)
+                {
+                    transform.Rotate(new Vector3(0f,-90f,0f));
+                }
                 
-                
-                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance,
-                    Color.blue);
+                if (canTurnRight)
+                {
+                    transform.Rotate(new Vector3(0f,90f,0f));
+                }
+
+                if (!canTurnLeft && !canTurnRight)
+                {
+                    transform.Rotate(new Vector3(0f,180f,0f));
+                }
+
+                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance,Color.blue);
                 Debug.Log("Did Hit");
                 
                 //GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0f,0f,-9f) * speed);
 
             }
             //from current position, it will tell me that it isn't hitting anything
-            
 
-            var rayLeft = Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out hit,
-                1.5f, layerMask);
-            
-            var rayRight = Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), out hit,
-                1.5f, layerMask);
 
-            if (!rayLeft)
-            {
-                transform.Rotate(new Vector3(0f,-90f,0f));
-            }
-            
-            if (!rayRight)
-            {
-                transform.Rotate(new Vector3(0f,90f,0f));
-            }
             
             
             //telling me if there is an object in the way
