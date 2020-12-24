@@ -12,9 +12,9 @@ namespace Zach
     {
         public LineRenderer lineRenderer;
 
-        //public float scale = 1f;
-        //public float pNoiseX = 0;
-        //public float pNoiseY = 0;
+        public float scale = 1f;
+        public float pNoiseX = 0;
+        public float pNoiseY = 0;
         // Start is called before the first frame update
       
         
@@ -29,7 +29,7 @@ namespace Zach
         {
           
 
-            /*float y = 0; 
+            float y = 0; 
             
             lineRenderer.positionCount = 15;
             float fast = 0;
@@ -43,7 +43,7 @@ namespace Zach
                 y = y + Mathf.Sin(pNoiseX) * scale;
                 
                 lineRenderer.SetPosition(x, new Vector3(x,y,0));
-            }*/
+            }
         }
     }
 }
