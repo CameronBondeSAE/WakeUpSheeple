@@ -15,9 +15,8 @@ public class SubscribedObject : MonoBehaviour
     }
     void randomPosition()
     {
-        GetComponent<Renderer>().material.color =
-            new Color(Random.Range(10, 200), Random.Range(10, 200), Random.Range(10, 200), 200);
-        transform.position = new Vector3(transform.position.x + Random.Range(-rangeToMove, rangeToMove), transform.position.y + Random.Range(-rangeToMove, rangeToMove), transform.position.z + Random.Range(-rangeToMove, rangeToMove));
-        
+        transform.position = new Vector3(transform.position.x + Random.Range(-rangeToMove, rangeToMove),
+            transform.position.y + Random.Range(-rangeToMove, rangeToMove),
+            transform.position.z + Random.Range(-rangeToMove, rangeToMove));
     }
 }

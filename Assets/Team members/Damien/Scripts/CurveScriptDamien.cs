@@ -1,6 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using Damien;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class CurveScriptDamien : MonoBehaviour
 {
@@ -14,6 +17,11 @@ public class CurveScriptDamien : MonoBehaviour
     public bool curveRunning = true;
 
     public float transformPoint = 0f;
+
+    private void Start()
+    {
+        FindObjectOfType<Button>().actionButton += randomOnCurve;
+    }
 
     void Update()
     {
@@ -30,5 +38,11 @@ public class CurveScriptDamien : MonoBehaviour
         }
         
         point.transform.position = Vector3.Lerp(d, e, transformPoint);
+    }
+
+    void randomOnCurve()
+    {
+        transformPoint = Random.Range(0.00f, 1.00f);
+        //Debug.Log("randomoncurve called");
     }
 }
